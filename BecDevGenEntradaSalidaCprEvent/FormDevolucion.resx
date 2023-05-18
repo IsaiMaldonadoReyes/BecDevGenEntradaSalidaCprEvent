@@ -117,4 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnDevolucionCompletar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
+        MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnBBIRCTLM9JvAAAABqUlEQVRIS62VP0vDUBRHWyyuKoIi
+        HYSCBXFwcKt10qofwFEcXd2Kq5+hFHFxUas46eZW/BIOgn+wdXIQBEsVtZ6bdyOvTdKXth44mNzc333N
+        M2kT3Wi1Whm8VjNa/h8YuIVv6POOO5jUlv5gwCReYhRXmNb23iC4gS8yxcErbmrMDc0jeCDJHjnHcR0T
+        Dg0FrEl3n0i2oOOCcLHhtQ1GQ8cF0YaB0XFB9LrPE67hisN1lN4/dFwQve5TxRm8cSg927iMUzik44Jw
+        0UYWWMDPLt7jqMbd0GxT1bITepfwDJ/xA+t4inltMVCwkTvImcMAD9qfwn2vEk0ZU1ELhG1RE7Pa7xru
+        Uw5dwCtGwHXZll7Ih93BtDlsY1UXkD2P4hFn8cI7M1Qk9G2OPWSBNN51OKELyD80DPnym8MxvJWCUpfQ
+        IX55p+4tkqfFZx6LKDV5H4ZRPqBNU6PxIGDfQVFrWUzikRQ7qHnBuBCQ59xmV+t75jTAsReMC4G8ybVh
+        77nND+Y0Gh9C8hLFoaSR3iAob7JrkRKaN7lfGLCIFZRfNHmS5O8JWtuSSPwC0ENBsQhpPfYAAAAASUVO
+        RK5CYII=
+</value>
+  </data>
+  <metadata name="id_salida.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="producto_codigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="producto_cantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="producto_cantidad_devolucion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="producto_cantidad_extra.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

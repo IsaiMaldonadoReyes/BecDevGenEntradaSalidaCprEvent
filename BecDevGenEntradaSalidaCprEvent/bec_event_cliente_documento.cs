@@ -12,9 +12,15 @@ namespace BecDevGenEntradaSalidaCprEvent
     using System;
     using System.Collections.Generic;
     
-    public partial class admCaracteristicas
+    public partial class bec_event_cliente_documento
     {
-        public int CIDPADRECARACTERISTICA { get; set; }
-        public string CNOMBRECARACTERISTICA { get; set; }
+        public int id { get; set; }
+        public string codigo_cliente { get; set; }
+        public string codigo_documento { get; set; }
+        public string codigo_salida { get; set; }
+        public string codigo_entrada { get; set; }
+        public string codigo_factura { get; set; }
+        public string codigo_pago { get; set; }
+        public string codigo_almacen_defectuoso { get; set; }
     }
 }

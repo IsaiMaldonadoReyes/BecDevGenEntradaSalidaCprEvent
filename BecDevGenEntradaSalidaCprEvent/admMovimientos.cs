@@ -81,5 +81,6 @@ namespace BecDevGenEntradaSalidaCprEvent
         public double CCOMVENTA { get; set; }
         public int CIDMOVTODESTINO { get; set; }
         public int CNUMEROCONSOLIDACIONES { get; set; }
+        public string COBJIMPU01 { get; set; }
     }
 }

@@ -14,17 +14,30 @@ namespace BecDevGenEntradaSalidaCprEvent
     
     public partial class bec_event_documento_encabezado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public bec_event_documento_encabezado()
+        {
+            this.bec_event_documento_movimiento = new HashSet<bec_event_documento_movimiento>();
+        }
+    
         public int id { get; set; }
         public Nullable<System.DateTime> fecha_creacion { get; set; }
         public Nullable<int> id_cliente { get; set; }
         public string codigo_cliente { get; set; }
-        public Nullable<int> id_agente { get; set; }
-        public string codigo_agente { get; set; }
+        public Nullable<int> id_creador { get; set; }
+        public string codigo_creador { get; set; }
         public Nullable<int> id_contpaq_documento { get; set; }
         public Nullable<double> folio_contpaq_documento { get; set; }
         public string serie_contpaq_documento { get; set; }
         public string tipo { get; set; }
         public Nullable<double> unix { get; set; }
         public Nullable<bool> procesado { get; set; }
+        public string estado { get; set; }
+        public Nullable<int> id_documento_origen { get; set; }
+        public Nullable<int> id_operador { get; set; }
+        public string codigo_operador { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<bec_event_documento_movimiento> bec_event_documento_movimiento { get; set; }
     }
 }

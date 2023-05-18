@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="adEventModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="adEventModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admAgentes">
           <Key>
             <PropertyRef Name="CIDAGENTE" />
@@ -65,41 +65,6 @@
           <Property Name="CSCALMAC2" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CSCALMAC3" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CSISTORIG" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admCaracteristicas">
-          <Key>
-            <PropertyRef Name="CIDPADRECARACTERISTICA" />
-          </Key>
-          <Property Name="CIDPADRECARACTERISTICA" Type="int" Nullable="false" />
-          <Property Name="CNOMBRECARACTERISTICA" Type="varchar" MaxLength="60" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admCaracteristicasValores">
-          <Key>
-            <PropertyRef Name="CIDVALORCARACTERISTICA" />
-          </Key>
-          <Property Name="CIDVALORCARACTERISTICA" Type="int" Nullable="false" />
-          <Property Name="CIDPADRECARACTERISTICA" Type="int" Nullable="false" />
-          <Property Name="CVALORCARACTERISTICA" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="CNEMOCARACTERISTICA" Type="varchar" MaxLength="3" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admClasificaciones">
-          <Key>
-            <PropertyRef Name="CIDCLASIFICACION" />
-          </Key>
-          <Property Name="CIDCLASIFICACION" Type="int" Nullable="false" />
-          <Property Name="CNOMBRECLASIFICACION" Type="varchar" MaxLength="60" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admClasificacionesValores">
-          <Key>
-            <PropertyRef Name="CIDVALORCLASIFICACION" />
-          </Key>
-          <Property Name="CIDVALORCLASIFICACION" Type="int" Nullable="false" />
-          <Property Name="CVALORCLASIFICACION" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="CIDCLASIFICACION" Type="int" Nullable="false" />
-          <Property Name="CCODIGOVALORCLASIFICACION" Type="varchar" MaxLength="3" Nullable="false" />
-          <Property Name="CSEGCONT1" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CSEGCONT2" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CSEGCONT3" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="admClientes">
           <Key>
@@ -431,6 +396,7 @@
           <Property Name="CIDCUENTA" Type="int" Nullable="false" />
           <Property Name="CCLAVESAT" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="CIDPRSEG08" Type="int" Nullable="false" />
+          <Property Name="CUSAOBJIMP" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="admDocumentos">
           <Key>
@@ -570,27 +536,6 @@
           <Property Name="CMUNICIPIO" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="CSUCURSAL" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
-        <EntityType Name="admEjercicios">
-          <Key>
-            <PropertyRef Name="CIDEJERCICIO" />
-          </Key>
-          <Property Name="CIDEJERCICIO" Type="int" Nullable="false" />
-          <Property Name="CNUMEROEJERCICIO" Type="int" Nullable="false" />
-          <Property Name="CFECINIPERIODO1" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO2" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO3" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO4" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO5" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO6" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO7" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO8" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO9" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO10" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO11" Type="datetime" Nullable="false" />
-          <Property Name="CFECINIPERIODO12" Type="datetime" Nullable="false" />
-          <Property Name="CFECHAFINAL" Type="datetime" Nullable="false" />
-          <Property Name="CEJERCICIO" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="admFoliosDigitales">
           <Key>
             <PropertyRef Name="CIDFOLDIG" />
@@ -658,22 +603,6 @@
           <Property Name="CERRORVAL" Type="int" Nullable="false" />
           <Property Name="CACUSECAN" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="CIDDOCTODSL" Type="varchar" MaxLength="40" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admMonedas">
-          <Key>
-            <PropertyRef Name="CIDMONEDA" />
-          </Key>
-          <Property Name="CIDMONEDA" Type="int" Nullable="false" />
-          <Property Name="CNOMBREMONEDA" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="CSIMBOLOMONEDA" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="CPOSICIONSIMBOLO" Type="int" Nullable="false" />
-          <Property Name="CPLURAL" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="CSINGULAR" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="CDESCRIPCIONPROTEGIDA" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="CIDBANDERA" Type="int" Nullable="false" />
-          <Property Name="CDECIMALESMONEDA" Type="int" Nullable="false" />
-          <Property Name="CTIMESTAMP" Type="varchar" MaxLength="23" Nullable="false" />
-          <Property Name="CCLAVESAT" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="admMovimientos">
           <Key>
@@ -746,6 +675,7 @@
           <Property Name="CCOMVENTA" Type="float" Nullable="false" />
           <Property Name="CIDMOVTODESTINO" Type="int" Nullable="false" />
           <Property Name="CNUMEROCONSOLIDACIONES" Type="int" Nullable="false" />
+          <Property Name="COBJIMPU01" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="admProductos">
           <Key>
@@ -859,26 +789,6 @@
           <Property Name="CCLAVESAT" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="CCANTIDADFISCAL" Type="float" Nullable="false" />
         </EntityType>
-        <EntityType Name="admProductosDetalles">
-          <Key>
-            <PropertyRef Name="CIDPRODUCTO" />
-          </Key>
-          <Property Name="CIDPRODUCTO" Type="int" Nullable="false" />
-          <Property Name="CTIPOPRODUCTO" Type="int" Nullable="false" />
-          <Property Name="CIDPRODUCTOPADRE" Type="int" Nullable="false" />
-          <Property Name="CIDVALORCARACTERISTICA1" Type="int" Nullable="false" />
-          <Property Name="CIDVALORCARACTERISTICA2" Type="int" Nullable="false" />
-          <Property Name="CIDVALORCARACTERISTICA3" Type="int" Nullable="false" />
-          <Property Name="CTIMESTAMP" Type="varchar" MaxLength="23" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admProductosFotos">
-          <Key>
-            <PropertyRef Name="CIDFOTOPRODUCTO" />
-          </Key>
-          <Property Name="CIDFOTOPRODUCTO" Type="int" Nullable="false" />
-          <Property Name="CNOMBREFOTOPRODUCTO" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="CFOTOPRODUCTO" Type="text" />
-        </EntityType>
         <EntityType Name="admUnidadesMedidaPeso">
           <Key>
             <PropertyRef Name="CIDUNIDAD" />
@@ -890,6 +800,31 @@
           <Property Name="CCLAVEINT" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="CCLAVESAT" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
+        <EntityType Name="bec_event_cliente_documento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_cliente" Type="nvarchar(max)" />
+          <Property Name="codigo_documento" Type="nvarchar(max)" />
+          <Property Name="codigo_salida" Type="nvarchar(max)" />
+          <Property Name="codigo_entrada" Type="nvarchar(max)" />
+          <Property Name="codigo_factura" Type="nvarchar(max)" />
+          <Property Name="codigo_pago" Type="nvarchar(max)" />
+          <Property Name="codigo_almacen_defectuoso" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="bec_event_documento_abono">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_documento_origen" Type="int" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="monto" Type="float" />
+          <Property Name="id_contpaq_documento" Type="int" />
+          <Property Name="unix" Type="float" />
+          <Property Name="procesado" Type="bit" />
+        </EntityType>
         <EntityType Name="bec_event_documento_encabezado">
           <Key>
             <PropertyRef Name="id" />
@@ -898,14 +833,18 @@
           <Property Name="fecha_creacion" Type="datetime" />
           <Property Name="id_cliente" Type="int" />
           <Property Name="codigo_cliente" Type="nvarchar(max)" />
-          <Property Name="id_agente" Type="int" />
-          <Property Name="codigo_agente" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_creador" Type="int" />
+          <Property Name="codigo_creador" Type="nvarchar" MaxLength="50" />
           <Property Name="id_contpaq_documento" Type="int" />
           <Property Name="folio_contpaq_documento" Type="float" />
           <Property Name="serie_contpaq_documento" Type="nvarchar" MaxLength="50" />
           <Property Name="tipo" Type="nvarchar" MaxLength="50" />
           <Property Name="unix" Type="float" />
           <Property Name="procesado" Type="bit" />
+          <Property Name="estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_documento_origen" Type="int" />
+          <Property Name="id_operador" Type="int" />
+          <Property Name="codigo_operador" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="bec_event_documento_movimiento">
           <Key>
@@ -919,32 +858,45 @@
           <Property Name="tipo" Type="nvarchar" MaxLength="50" />
           <Property Name="unix" Type="float" />
           <Property Name="procesado" Type="bit" />
+          <Property Name="cantidad_producto_defectuoso" Type="float" />
+          <Property Name="id_movimiento_contpaq_defectuoso" Type="int" />
         </EntityType>
+        <Association Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
+          <End Role="bec_event_documento_encabezado" Type="Self.bec_event_documento_encabezado" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="bec_event_documento_movimiento" Type="Self.bec_event_documento_movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bec_event_documento_encabezado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bec_event_documento_movimiento">
+              <PropertyRef Name="id_documento_encabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="adEventModelStoreContainer">
           <EntitySet Name="admAgentes" EntityType="Self.admAgentes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admAlmacenes" EntityType="Self.admAlmacenes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admCaracteristicas" EntityType="Self.admCaracteristicas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admCaracteristicasValores" EntityType="Self.admCaracteristicasValores" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admClasificaciones" EntityType="Self.admClasificaciones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admClasificacionesValores" EntityType="Self.admClasificacionesValores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admClientes" EntityType="Self.admClientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admConceptos" EntityType="Self.admConceptos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admDocumentos" EntityType="Self.admDocumentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admDocumentosModelo" EntityType="Self.admDocumentosModelo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admDomicilios" EntityType="Self.admDomicilios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admEjercicios" EntityType="Self.admEjercicios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admFoliosDigitales" EntityType="Self.admFoliosDigitales" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admMonedas" EntityType="Self.admMonedas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admMovimientos" EntityType="Self.admMovimientos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admProductos" EntityType="Self.admProductos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admProductosDetalles" EntityType="Self.admProductosDetalles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="admProductosFotos" EntityType="Self.admProductosFotos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="admUnidadesMedidaPeso" EntityType="Self.admUnidadesMedidaPeso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bec_event_cliente_documento" EntityType="Self.bec_event_cliente_documento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bec_event_documento_abono" EntityType="Self.bec_event_documento_abono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bec_event_documento_encabezado" EntityType="Self.bec_event_documento_encabezado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bec_event_documento_movimiento" EntityType="Self.bec_event_documento_movimiento" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado" Association="Self.FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
+            <End Role="bec_event_documento_encabezado" EntitySet="bec_event_documento_encabezado" />
+            <End Role="bec_event_documento_movimiento" EntitySet="bec_event_documento_movimiento" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="adEventModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1008,41 +960,6 @@
           <Property Name="CSCALMAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CSCALMAC3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CSISTORIG" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admCaracteristicas">
-          <Key>
-            <PropertyRef Name="CIDPADRECARACTERISTICA" />
-          </Key>
-          <Property Name="CIDPADRECARACTERISTICA" Type="Int32" Nullable="false" />
-          <Property Name="CNOMBRECARACTERISTICA" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admCaracteristicasValores">
-          <Key>
-            <PropertyRef Name="CIDVALORCARACTERISTICA" />
-          </Key>
-          <Property Name="CIDVALORCARACTERISTICA" Type="Int32" Nullable="false" />
-          <Property Name="CIDPADRECARACTERISTICA" Type="Int32" Nullable="false" />
-          <Property Name="CVALORCARACTERISTICA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CNEMOCARACTERISTICA" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admClasificaciones">
-          <Key>
-            <PropertyRef Name="CIDCLASIFICACION" />
-          </Key>
-          <Property Name="CIDCLASIFICACION" Type="Int32" Nullable="false" />
-          <Property Name="CNOMBRECLASIFICACION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admClasificacionesValores">
-          <Key>
-            <PropertyRef Name="CIDVALORCLASIFICACION" />
-          </Key>
-          <Property Name="CIDVALORCLASIFICACION" Type="Int32" Nullable="false" />
-          <Property Name="CVALORCLASIFICACION" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CIDCLASIFICACION" Type="Int32" Nullable="false" />
-          <Property Name="CCODIGOVALORCLASIFICACION" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CSEGCONT1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CSEGCONT2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CSEGCONT3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="admClientes">
           <Key>
@@ -1374,6 +1291,7 @@
           <Property Name="CIDCUENTA" Type="Int32" Nullable="false" />
           <Property Name="CCLAVESAT" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CIDPRSEG08" Type="Int32" Nullable="false" />
+          <Property Name="CUSAOBJIMP" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="admDocumentos">
           <Key>
@@ -1513,27 +1431,6 @@
           <Property Name="CMUNICIPIO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CSUCURSAL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="admEjercicios">
-          <Key>
-            <PropertyRef Name="CIDEJERCICIO" />
-          </Key>
-          <Property Name="CIDEJERCICIO" Type="Int32" Nullable="false" />
-          <Property Name="CNUMEROEJERCICIO" Type="Int32" Nullable="false" />
-          <Property Name="CFECINIPERIODO1" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO2" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO3" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO4" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO5" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO6" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO7" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO8" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO9" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO10" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO11" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECINIPERIODO12" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CFECHAFINAL" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CEJERCICIO" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="admFoliosDigitales">
           <Key>
             <PropertyRef Name="CIDFOLDIG" />
@@ -1601,22 +1498,6 @@
           <Property Name="CERRORVAL" Type="Int32" Nullable="false" />
           <Property Name="CACUSECAN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CIDDOCTODSL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admMonedas">
-          <Key>
-            <PropertyRef Name="CIDMONEDA" />
-          </Key>
-          <Property Name="CIDMONEDA" Type="Int32" Nullable="false" />
-          <Property Name="CNOMBREMONEDA" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CSIMBOLOMONEDA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CPOSICIONSIMBOLO" Type="Int32" Nullable="false" />
-          <Property Name="CPLURAL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CSINGULAR" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CDESCRIPCIONPROTEGIDA" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CIDBANDERA" Type="Int32" Nullable="false" />
-          <Property Name="CDECIMALESMONEDA" Type="Int32" Nullable="false" />
-          <Property Name="CTIMESTAMP" Type="String" MaxLength="23" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CCLAVESAT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="admMovimientos">
           <Key>
@@ -1689,6 +1570,7 @@
           <Property Name="CCOMVENTA" Type="Double" Nullable="false" />
           <Property Name="CIDMOVTODESTINO" Type="Int32" Nullable="false" />
           <Property Name="CNUMEROCONSOLIDACIONES" Type="Int32" Nullable="false" />
+          <Property Name="COBJIMPU01" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="admProductos">
           <Key>
@@ -1802,26 +1684,6 @@
           <Property Name="CCLAVESAT" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CCANTIDADFISCAL" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="admProductosDetalles">
-          <Key>
-            <PropertyRef Name="CIDPRODUCTO" />
-          </Key>
-          <Property Name="CIDPRODUCTO" Type="Int32" Nullable="false" />
-          <Property Name="CTIPOPRODUCTO" Type="Int32" Nullable="false" />
-          <Property Name="CIDPRODUCTOPADRE" Type="Int32" Nullable="false" />
-          <Property Name="CIDVALORCARACTERISTICA1" Type="Int32" Nullable="false" />
-          <Property Name="CIDVALORCARACTERISTICA2" Type="Int32" Nullable="false" />
-          <Property Name="CIDVALORCARACTERISTICA3" Type="Int32" Nullable="false" />
-          <Property Name="CTIMESTAMP" Type="String" MaxLength="23" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="admProductosFotos">
-          <Key>
-            <PropertyRef Name="CIDFOTOPRODUCTO" />
-          </Key>
-          <Property Name="CIDFOTOPRODUCTO" Type="Int32" Nullable="false" />
-          <Property Name="CNOMBREFOTOPRODUCTO" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CFOTOPRODUCTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="admUnidadesMedidaPeso">
           <Key>
             <PropertyRef Name="CIDUNIDAD" />
@@ -1833,6 +1695,52 @@
           <Property Name="CCLAVEINT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CCLAVESAT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityContainer Name="adConexionDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admAgentes" EntityType="Self.admAgentes" />
+          <EntitySet Name="admAlmacenes" EntityType="Self.admAlmacenes" />
+          <EntitySet Name="admClientes" EntityType="Self.admClientes" />
+          <EntitySet Name="admConceptos" EntityType="Self.admConceptos" />
+          <EntitySet Name="admDocumentos" EntityType="Self.admDocumentos" />
+          <EntitySet Name="admDocumentosModelo" EntityType="Self.admDocumentosModelo" />
+          <EntitySet Name="admDomicilios" EntityType="Self.admDomicilios" />
+          <EntitySet Name="admFoliosDigitales" EntityType="Self.admFoliosDigitales" />
+          <EntitySet Name="admMovimientos" EntityType="Self.admMovimientos" />
+          <EntitySet Name="admProductos" EntityType="Self.admProductos" />
+          <EntitySet Name="admUnidadesMedidaPeso" EntityType="Self.admUnidadesMedidaPeso" />
+          <EntitySet Name="bec_event_documento_abono" EntityType="adEventModel.bec_event_documento_abono" />
+          <EntitySet Name="bec_event_cliente_documento" EntityType="adEventModel.bec_event_cliente_documento" />
+          <EntitySet Name="bec_event_documento_encabezado" EntityType="adEventModel.bec_event_documento_encabezado" />
+          <EntitySet Name="bec_event_documento_movimiento" EntityType="adEventModel.bec_event_documento_movimiento" />
+          <AssociationSet Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado" Association="adEventModel.FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
+            <End Role="bec_event_documento_encabezado" EntitySet="bec_event_documento_encabezado" />
+            <End Role="bec_event_documento_movimiento" EntitySet="bec_event_documento_movimiento" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bec_event_documento_abono">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_documento_origen" Type="Int32" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="monto" Type="Double" />
+          <Property Name="id_contpaq_documento" Type="Int32" />
+          <Property Name="unix" Type="Double" />
+          <Property Name="procesado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="bec_event_cliente_documento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_documento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_salida" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_entrada" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_factura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_pago" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_almacen_defectuoso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="bec_event_documento_encabezado">
           <Key>
             <PropertyRef Name="id" />
@@ -1841,14 +1749,19 @@
           <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
           <Property Name="id_cliente" Type="Int32" />
           <Property Name="codigo_cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="id_agente" Type="Int32" />
-          <Property Name="codigo_agente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_creador" Type="Int32" />
+          <Property Name="codigo_creador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="id_contpaq_documento" Type="Int32" />
           <Property Name="folio_contpaq_documento" Type="Double" />
           <Property Name="serie_contpaq_documento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="unix" Type="Double" />
           <Property Name="procesado" Type="Boolean" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_documento_origen" Type="Int32" />
+          <Property Name="id_operador" Type="Int32" />
+          <Property Name="codigo_operador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bec_event_documento_movimiento" Relationship="adEventModel.FK_bec_event_documento_movimiento_bec_event_documento_encabezado" FromRole="bec_event_documento_encabezado" ToRole="bec_event_documento_movimiento" />
         </EntityType>
         <EntityType Name="bec_event_documento_movimiento">
           <Key>
@@ -1862,30 +1775,24 @@
           <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="unix" Type="Double" />
           <Property Name="procesado" Type="Boolean" />
+          <Property Name="cantidad_producto_defectuoso" Type="Double" />
+          <Property Name="id_movimiento_contpaq_defectuoso" Type="Int32" />
+          <NavigationProperty Name="bec_event_documento_encabezado" Relationship="adEventModel.FK_bec_event_documento_movimiento_bec_event_documento_encabezado" FromRole="bec_event_documento_movimiento" ToRole="bec_event_documento_encabezado" />
         </EntityType>
-        <EntityContainer Name="adConexionDB" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="admAgentes" EntityType="Self.admAgentes" />
-          <EntitySet Name="admAlmacenes" EntityType="Self.admAlmacenes" />
-          <EntitySet Name="admCaracteristicas" EntityType="Self.admCaracteristicas" />
-          <EntitySet Name="admCaracteristicasValores" EntityType="Self.admCaracteristicasValores" />
-          <EntitySet Name="admClasificaciones" EntityType="Self.admClasificaciones" />
-          <EntitySet Name="admClasificacionesValores" EntityType="Self.admClasificacionesValores" />
-          <EntitySet Name="admClientes" EntityType="Self.admClientes" />
-          <EntitySet Name="admConceptos" EntityType="Self.admConceptos" />
-          <EntitySet Name="admDocumentos" EntityType="Self.admDocumentos" />
-          <EntitySet Name="admDocumentosModelo" EntityType="Self.admDocumentosModelo" />
-          <EntitySet Name="admDomicilios" EntityType="Self.admDomicilios" />
-          <EntitySet Name="admEjercicios" EntityType="Self.admEjercicios" />
-          <EntitySet Name="admFoliosDigitales" EntityType="Self.admFoliosDigitales" />
-          <EntitySet Name="admMonedas" EntityType="Self.admMonedas" />
-          <EntitySet Name="admMovimientos" EntityType="Self.admMovimientos" />
-          <EntitySet Name="admProductos" EntityType="Self.admProductos" />
-          <EntitySet Name="admProductosDetalles" EntityType="Self.admProductosDetalles" />
-          <EntitySet Name="admProductosFotos" EntityType="Self.admProductosFotos" />
-          <EntitySet Name="admUnidadesMedidaPeso" EntityType="Self.admUnidadesMedidaPeso" />
-          <EntitySet Name="bec_event_documento_encabezado" EntityType="Self.bec_event_documento_encabezado" />
-          <EntitySet Name="bec_event_documento_movimiento" EntityType="Self.bec_event_documento_movimiento" />
-        </EntityContainer>
+        <Association Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
+          <End Type="adEventModel.bec_event_documento_encabezado" Role="bec_event_documento_encabezado" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="adEventModel.bec_event_documento_movimiento" Role="bec_event_documento_movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bec_event_documento_encabezado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bec_event_documento_movimiento">
+              <PropertyRef Name="id_documento_encabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1952,45 +1859,6 @@
                 <ScalarProperty Name="CSCALMAC2" ColumnName="CSCALMAC2" />
                 <ScalarProperty Name="CSCALMAC3" ColumnName="CSCALMAC3" />
                 <ScalarProperty Name="CSISTORIG" ColumnName="CSISTORIG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="admCaracteristicas">
-            <EntityTypeMapping TypeName="adEventModel.admCaracteristicas">
-              <MappingFragment StoreEntitySet="admCaracteristicas">
-                <ScalarProperty Name="CIDPADRECARACTERISTICA" ColumnName="CIDPADRECARACTERISTICA" />
-                <ScalarProperty Name="CNOMBRECARACTERISTICA" ColumnName="CNOMBRECARACTERISTICA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="admCaracteristicasValores">
-            <EntityTypeMapping TypeName="adEventModel.admCaracteristicasValores">
-              <MappingFragment StoreEntitySet="admCaracteristicasValores">
-                <ScalarProperty Name="CIDVALORCARACTERISTICA" ColumnName="CIDVALORCARACTERISTICA" />
-                <ScalarProperty Name="CIDPADRECARACTERISTICA" ColumnName="CIDPADRECARACTERISTICA" />
-                <ScalarProperty Name="CVALORCARACTERISTICA" ColumnName="CVALORCARACTERISTICA" />
-                <ScalarProperty Name="CNEMOCARACTERISTICA" ColumnName="CNEMOCARACTERISTICA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="admClasificaciones">
-            <EntityTypeMapping TypeName="adEventModel.admClasificaciones">
-              <MappingFragment StoreEntitySet="admClasificaciones">
-                <ScalarProperty Name="CIDCLASIFICACION" ColumnName="CIDCLASIFICACION" />
-                <ScalarProperty Name="CNOMBRECLASIFICACION" ColumnName="CNOMBRECLASIFICACION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="admClasificacionesValores">
-            <EntityTypeMapping TypeName="adEventModel.admClasificacionesValores">
-              <MappingFragment StoreEntitySet="admClasificacionesValores">
-                <ScalarProperty Name="CIDVALORCLASIFICACION" ColumnName="CIDVALORCLASIFICACION" />
-                <ScalarProperty Name="CVALORCLASIFICACION" ColumnName="CVALORCLASIFICACION" />
-                <ScalarProperty Name="CIDCLASIFICACION" ColumnName="CIDCLASIFICACION" />
-                <ScalarProperty Name="CCODIGOVALORCLASIFICACION" ColumnName="CCODIGOVALORCLASIFICACION" />
-                <ScalarProperty Name="CSEGCONT1" ColumnName="CSEGCONT1" />
-                <ScalarProperty Name="CSEGCONT2" ColumnName="CSEGCONT2" />
-                <ScalarProperty Name="CSEGCONT3" ColumnName="CSEGCONT3" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2127,6 +1995,7 @@
           <EntitySetMapping Name="admConceptos">
             <EntityTypeMapping TypeName="adEventModel.admConceptos">
               <MappingFragment StoreEntitySet="admConceptos">
+                <ScalarProperty Name="CUSAOBJIMP" ColumnName="CUSAOBJIMP" />
                 <ScalarProperty Name="CIDCONCEPTODOCUMENTO" ColumnName="CIDCONCEPTODOCUMENTO" />
                 <ScalarProperty Name="CCODIGOCONCEPTO" ColumnName="CCODIGOCONCEPTO" />
                 <ScalarProperty Name="CNOMBRECONCEPTO" ColumnName="CNOMBRECONCEPTO" />
@@ -2468,28 +2337,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="admEjercicios">
-            <EntityTypeMapping TypeName="adEventModel.admEjercicios">
-              <MappingFragment StoreEntitySet="admEjercicios">
-                <ScalarProperty Name="CIDEJERCICIO" ColumnName="CIDEJERCICIO" />
-                <ScalarProperty Name="CNUMEROEJERCICIO" ColumnName="CNUMEROEJERCICIO" />
-                <ScalarProperty Name="CFECINIPERIODO1" ColumnName="CFECINIPERIODO1" />
-                <ScalarProperty Name="CFECINIPERIODO2" ColumnName="CFECINIPERIODO2" />
-                <ScalarProperty Name="CFECINIPERIODO3" ColumnName="CFECINIPERIODO3" />
-                <ScalarProperty Name="CFECINIPERIODO4" ColumnName="CFECINIPERIODO4" />
-                <ScalarProperty Name="CFECINIPERIODO5" ColumnName="CFECINIPERIODO5" />
-                <ScalarProperty Name="CFECINIPERIODO6" ColumnName="CFECINIPERIODO6" />
-                <ScalarProperty Name="CFECINIPERIODO7" ColumnName="CFECINIPERIODO7" />
-                <ScalarProperty Name="CFECINIPERIODO8" ColumnName="CFECINIPERIODO8" />
-                <ScalarProperty Name="CFECINIPERIODO9" ColumnName="CFECINIPERIODO9" />
-                <ScalarProperty Name="CFECINIPERIODO10" ColumnName="CFECINIPERIODO10" />
-                <ScalarProperty Name="CFECINIPERIODO11" ColumnName="CFECINIPERIODO11" />
-                <ScalarProperty Name="CFECINIPERIODO12" ColumnName="CFECINIPERIODO12" />
-                <ScalarProperty Name="CFECHAFINAL" ColumnName="CFECHAFINAL" />
-                <ScalarProperty Name="CEJERCICIO" ColumnName="CEJERCICIO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="admFoliosDigitales">
             <EntityTypeMapping TypeName="adEventModel.admFoliosDigitales">
               <MappingFragment StoreEntitySet="admFoliosDigitales">
@@ -2559,26 +2406,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="admMonedas">
-            <EntityTypeMapping TypeName="adEventModel.admMonedas">
-              <MappingFragment StoreEntitySet="admMonedas">
-                <ScalarProperty Name="CIDMONEDA" ColumnName="CIDMONEDA" />
-                <ScalarProperty Name="CNOMBREMONEDA" ColumnName="CNOMBREMONEDA" />
-                <ScalarProperty Name="CSIMBOLOMONEDA" ColumnName="CSIMBOLOMONEDA" />
-                <ScalarProperty Name="CPOSICIONSIMBOLO" ColumnName="CPOSICIONSIMBOLO" />
-                <ScalarProperty Name="CPLURAL" ColumnName="CPLURAL" />
-                <ScalarProperty Name="CSINGULAR" ColumnName="CSINGULAR" />
-                <ScalarProperty Name="CDESCRIPCIONPROTEGIDA" ColumnName="CDESCRIPCIONPROTEGIDA" />
-                <ScalarProperty Name="CIDBANDERA" ColumnName="CIDBANDERA" />
-                <ScalarProperty Name="CDECIMALESMONEDA" ColumnName="CDECIMALESMONEDA" />
-                <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
-                <ScalarProperty Name="CCLAVESAT" ColumnName="CCLAVESAT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="admMovimientos">
             <EntityTypeMapping TypeName="adEventModel.admMovimientos">
               <MappingFragment StoreEntitySet="admMovimientos">
+                <ScalarProperty Name="COBJIMPU01" ColumnName="COBJIMPU01" />
                 <ScalarProperty Name="CIDMOVIMIENTO" ColumnName="CIDMOVIMIENTO" />
                 <ScalarProperty Name="CIDDOCUMENTO" ColumnName="CIDDOCUMENTO" />
                 <ScalarProperty Name="CNUMEROMOVIMIENTO" ColumnName="CNUMEROMOVIMIENTO" />
@@ -2762,28 +2593,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="admProductosDetalles">
-            <EntityTypeMapping TypeName="adEventModel.admProductosDetalles">
-              <MappingFragment StoreEntitySet="admProductosDetalles">
-                <ScalarProperty Name="CIDPRODUCTO" ColumnName="CIDPRODUCTO" />
-                <ScalarProperty Name="CTIPOPRODUCTO" ColumnName="CTIPOPRODUCTO" />
-                <ScalarProperty Name="CIDPRODUCTOPADRE" ColumnName="CIDPRODUCTOPADRE" />
-                <ScalarProperty Name="CIDVALORCARACTERISTICA1" ColumnName="CIDVALORCARACTERISTICA1" />
-                <ScalarProperty Name="CIDVALORCARACTERISTICA2" ColumnName="CIDVALORCARACTERISTICA2" />
-                <ScalarProperty Name="CIDVALORCARACTERISTICA3" ColumnName="CIDVALORCARACTERISTICA3" />
-                <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="admProductosFotos">
-            <EntityTypeMapping TypeName="adEventModel.admProductosFotos">
-              <MappingFragment StoreEntitySet="admProductosFotos">
-                <ScalarProperty Name="CIDFOTOPRODUCTO" ColumnName="CIDFOTOPRODUCTO" />
-                <ScalarProperty Name="CNOMBREFOTOPRODUCTO" ColumnName="CNOMBREFOTOPRODUCTO" />
-                <ScalarProperty Name="CFOTOPRODUCTO" ColumnName="CFOTOPRODUCTO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="admUnidadesMedidaPeso">
             <EntityTypeMapping TypeName="adEventModel.admUnidadesMedidaPeso">
               <MappingFragment StoreEntitySet="admUnidadesMedidaPeso">
@@ -2796,35 +2605,68 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="bec_event_documento_abono">
+            <EntityTypeMapping TypeName="adEventModel.bec_event_documento_abono">
+              <MappingFragment StoreEntitySet="bec_event_documento_abono">
+                <ScalarProperty Name="procesado" ColumnName="procesado" />
+                <ScalarProperty Name="unix" ColumnName="unix" />
+                <ScalarProperty Name="id_contpaq_documento" ColumnName="id_contpaq_documento" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id_documento_origen" ColumnName="id_documento_origen" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bec_event_cliente_documento">
+            <EntityTypeMapping TypeName="adEventModel.bec_event_cliente_documento">
+              <MappingFragment StoreEntitySet="bec_event_cliente_documento">
+                <ScalarProperty Name="codigo_almacen_defectuoso" ColumnName="codigo_almacen_defectuoso" />
+                <ScalarProperty Name="codigo_pago" ColumnName="codigo_pago" />
+                <ScalarProperty Name="codigo_factura" ColumnName="codigo_factura" />
+                <ScalarProperty Name="codigo_entrada" ColumnName="codigo_entrada" />
+                <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
+                <ScalarProperty Name="codigo_documento" ColumnName="codigo_documento" />
+                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="bec_event_documento_encabezado">
             <EntityTypeMapping TypeName="adEventModel.bec_event_documento_encabezado">
               <MappingFragment StoreEntitySet="bec_event_documento_encabezado">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
-                <ScalarProperty Name="id_agente" ColumnName="id_agente" />
-                <ScalarProperty Name="codigo_agente" ColumnName="codigo_agente" />
-                <ScalarProperty Name="id_contpaq_documento" ColumnName="id_contpaq_documento" />
-                <ScalarProperty Name="folio_contpaq_documento" ColumnName="folio_contpaq_documento" />
-                <ScalarProperty Name="serie_contpaq_documento" ColumnName="serie_contpaq_documento" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="unix" ColumnName="unix" />
+                <ScalarProperty Name="codigo_operador" ColumnName="codigo_operador" />
+                <ScalarProperty Name="id_operador" ColumnName="id_operador" />
+                <ScalarProperty Name="id_documento_origen" ColumnName="id_documento_origen" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="procesado" ColumnName="procesado" />
+                <ScalarProperty Name="unix" ColumnName="unix" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="serie_contpaq_documento" ColumnName="serie_contpaq_documento" />
+                <ScalarProperty Name="folio_contpaq_documento" ColumnName="folio_contpaq_documento" />
+                <ScalarProperty Name="id_contpaq_documento" ColumnName="id_contpaq_documento" />
+                <ScalarProperty Name="codigo_creador" ColumnName="codigo_creador" />
+                <ScalarProperty Name="id_creador" ColumnName="id_creador" />
+                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bec_event_documento_movimiento">
             <EntityTypeMapping TypeName="adEventModel.bec_event_documento_movimiento">
               <MappingFragment StoreEntitySet="bec_event_documento_movimiento">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="id_documento_encabezado" ColumnName="id_documento_encabezado" />
-                <ScalarProperty Name="id_movimiento_contpaq" ColumnName="id_movimiento_contpaq" />
-                <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
-                <ScalarProperty Name="cantidad_producto" ColumnName="cantidad_producto" />
-                <ScalarProperty Name="tipo" ColumnName="tipo" />
-                <ScalarProperty Name="unix" ColumnName="unix" />
+                <ScalarProperty Name="id_movimiento_contpaq_defectuoso" ColumnName="id_movimiento_contpaq_defectuoso" />
+                <ScalarProperty Name="cantidad_producto_defectuoso" ColumnName="cantidad_producto_defectuoso" />
                 <ScalarProperty Name="procesado" ColumnName="procesado" />
+                <ScalarProperty Name="unix" ColumnName="unix" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="cantidad_producto" ColumnName="cantidad_producto" />
+                <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+                <ScalarProperty Name="id_movimiento_contpaq" ColumnName="id_movimiento_contpaq" />
+                <ScalarProperty Name="id_documento_encabezado" ColumnName="id_documento_encabezado" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

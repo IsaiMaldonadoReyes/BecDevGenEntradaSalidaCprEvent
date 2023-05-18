@@ -211,5 +211,6 @@ namespace BecDevGenEntradaSalidaCprEvent
         public int CIDCUENTA { get; set; }
         public string CCLAVESAT { get; set; }
         public int CIDPRSEG08 { get; set; }
+        public int CUSAOBJIMP { get; set; }
     }
 }

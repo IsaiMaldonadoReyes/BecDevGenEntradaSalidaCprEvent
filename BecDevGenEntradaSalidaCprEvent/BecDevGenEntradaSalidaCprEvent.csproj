@@ -42,13 +42,56 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LibExcel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\LibExcel.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Stimulsoft.Base, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls.Win, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Database, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Design, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Editor, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Check, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Report.Check.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Helper, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Report.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Web, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Report.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Win, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Stimulsoft.Report.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg, Version=2.2.1.39233, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Runtime.Serialization" />
@@ -72,18 +115,6 @@
     <Compile Include="admAlmacenes.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="admCaracteristicas.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="admCaracteristicasValores.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="admClasificaciones.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="admClasificacionesValores.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="admClientes.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
@@ -99,13 +130,7 @@
     <Compile Include="admDomicilios.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="admEjercicios.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="admFoliosDigitales.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="admMonedas.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="admMovimientos.cs">
@@ -114,13 +139,14 @@
     <Compile Include="admProductos.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="admProductosDetalles.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="admProductosFotos.cs">
-      <DependentUpon>ConexionDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="admUnidadesMedidaPeso.cs">
+      <DependentUpon>ConexionDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ambiente.cs" />
+    <Compile Include="bec_event_cliente_documento.cs">
+      <DependentUpon>ConexionDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bec_event_documento_abono.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
     <Compile Include="bec_event_documento_encabezado.cs">
@@ -144,26 +170,69 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConexionDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormDevolucion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormDevolucion.Designer.cs">
+      <DependentUpon>FormDevolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPagoLiquidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPagoLiquidacion.Designer.cs">
+      <DependentUpon>FormPagoLiquidacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoLiquidaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoLiquidaciones.Designer.cs">
+      <DependentUpon>ListadoLiquidaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SDK.cs" />
+    <Compile Include="Sesion\Documento.cs" />
+    <Compile Include="FormSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSalida.Designer.cs">
+      <DependentUpon>FormSalida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sesion\LoginUsuario.cs" />
+    <Compile Include="ListadoSalidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoSalidas.Designer.cs">
+      <DependentUpon>ListadoSalidas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormDevolucion.resx">
+      <DependentUpon>FormDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPagoLiquidacion.resx">
+      <DependentUpon>FormPagoLiquidacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSalida.resx">
+      <DependentUpon>FormSalida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoLiquidaciones.resx">
+      <DependentUpon>ListadoLiquidaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoSalidas.resx">
+      <DependentUpon>ListadoSalidas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EntityDeploy Include="ConexionDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ConexionDB.Designer.cs</LastGenOutput>
@@ -186,6 +255,59 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Localization\ar.xml" />
+    <Content Include="Localization\be.xml" />
+    <Content Include="Localization\bg.xml" />
+    <Content Include="Localization\ca-ES.xml" />
+    <Content Include="Localization\cs.xml" />
+    <Content Include="Localization\de.ext.xml" />
+    <Content Include="Localization\de.xml" />
+    <Content Include="Localization\el-GR.xml" />
+    <Content Include="Localization\en-GB.xml" />
+    <Content Include="Localization\en.ext.xml" />
+    <Content Include="Localization\en.xml" />
+    <Content Include="Localization\es.xml" />
+    <Content Include="Localization\eu-ES.xml" />
+    <Content Include="Localization\fa.xml" />
+    <Content Include="Localization\fr.ext.xml" />
+    <Content Include="Localization\fr.xml" />
+    <Content Include="Localization\gl-ES.xml" />
+    <Content Include="Localization\hr.xml" />
+    <Content Include="Localization\hu.xml" />
+    <Content Include="Localization\id.xml" />
+    <Content Include="Localization\it.xml" />
+    <Content Include="Localization\ka.xml" />
+    <Content Include="Localization\Lt-sr-SP.xml" />
+    <Content Include="Localization\lt.xml" />
+    <Content Include="Localization\nb-NO.xml" />
+    <Content Include="Localization\nl.xml" />
+    <Content Include="Localization\pl.xml" />
+    <Content Include="Localization\pt-BR.xml" />
+    <Content Include="Localization\pt.xml" />
+    <Content Include="Localization\ro.xml" />
+    <Content Include="Localization\ru.ext.xml" />
+    <Content Include="Localization\ru.xml" />
+    <Content Include="Localization\sk.xml" />
+    <Content Include="Localization\sv.ext.xml" />
+    <Content Include="Localization\sv.xml" />
+    <Content Include="Localization\tr.xml" />
+    <Content Include="Localization\uk.xml" />
+    <Content Include="Localization\zh-CHS.xml" />
+    <Content Include="Localization\zh-CHT.xml" />
+    <None Include="bin\Debug\BECMA COLOR.png" />
+    <None Include="bin\Debug\img\actualizar.png" />
+    <None Include="bin\Debug\img\salida.png" />
+    <None Include="bin\Debug\img\devolucion.png" />
+    <None Include="bin\Debug\img\eliminar.png" />
+    <None Include="bin\Debug\img\completar.png" />
+    <None Include="bin\Debug\img\agregar.png" />
+    <None Include="bin\Debug\img\salida_color.png" />
+    <None Include="bin\Debug\img\salida_boton.png" />
+    <None Include="bin\Debug\img\devolucion_color.png" />
+    <None Include="bin\Debug\img\liquidar.png" />
+    <None Include="bin\Debug\img\devolucion_color2.png" />
+    <None Include="bin\Debug\img\login.png" />
+    <None Include="bin\Debug\img\abono.png" />
     <Content Include="ConexionDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ConexionDB.edmx</DependentUpon>

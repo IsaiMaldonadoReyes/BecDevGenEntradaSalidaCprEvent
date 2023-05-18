@@ -12,14 +12,14 @@ namespace BecDevGenEntradaSalidaCprEvent
     using System;
     using System.Collections.Generic;
     
-    public partial class admProductosDetalles
+    public partial class bec_event_documento_abono
     {
-        public int CIDPRODUCTO { get; set; }
-        public int CTIPOPRODUCTO { get; set; }
-        public int CIDPRODUCTOPADRE { get; set; }
-        public int CIDVALORCARACTERISTICA1 { get; set; }
-        public int CIDVALORCARACTERISTICA2 { get; set; }
-        public int CIDVALORCARACTERISTICA3 { get; set; }
-        public string CTIMESTAMP { get; set; }
+        public int id { get; set; }
+        public Nullable<int> id_documento_origen { get; set; }
+        public Nullable<System.DateTime> fecha_creacion { get; set; }
+        public Nullable<double> monto { get; set; }
+        public Nullable<int> id_contpaq_documento { get; set; }
+        public Nullable<double> unix { get; set; }
+        public Nullable<bool> procesado { get; set; }
     }
 }

@@ -22,5 +22,9 @@ namespace BecDevGenEntradaSalidaCprEvent
         public string tipo { get; set; }
         public Nullable<double> unix { get; set; }
         public Nullable<bool> procesado { get; set; }
+        public Nullable<double> cantidad_producto_defectuoso { get; set; }
+        public Nullable<int> id_movimiento_contpaq_defectuoso { get; set; }
+    
+        public virtual bec_event_documento_encabezado bec_event_documento_encabezado { get; set; }
     }
 }

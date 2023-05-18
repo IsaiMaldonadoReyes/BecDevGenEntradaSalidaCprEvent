@@ -7,25 +7,20 @@
       <Diagram DiagramId="59c7295ededf41c79546b816b50e01db" Name="Diagram1">
         <EntityTypeShape EntityType="adEventModel.admAgentes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admAlmacenes" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admCaracteristicas" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admCaracteristicasValores" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admClasificaciones" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admClasificacionesValores" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admClientes" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admConceptos" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admDocumentos" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admDocumentosModelo" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adEventModel.admDocumentosModelo" Width="2.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admDomicilios" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admEjercicios" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admFoliosDigitales" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admMonedas" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admMovimientos" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admProductos" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admProductosDetalles" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.admProductosFotos" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="adEventModel.admUnidadesMedidaPeso" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.bec_event_documento_encabezado" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="adEventModel.bec_event_documento_movimiento" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="adEventModel.bec_event_documento_abono" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="adEventModel.bec_event_cliente_documento" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="adEventModel.bec_event_documento_encabezado" Width="1.5" PointX="7.375" PointY="16" />
+        <EntityTypeShape EntityType="adEventModel.bec_event_documento_movimiento" Width="1.5" PointX="9.625" PointY="16.625" />
+        <AssociationConnector Association="adEventModel.FK_bec_event_documento_movimiento_bec_event_documento_encabezado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
