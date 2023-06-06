@@ -438,5 +438,11 @@ namespace BecDevGenEntradaSalidaCprEvent
                 }
             }
         }
+
+        private void btnRptInventarioPorAlmacen_Click(object sender, EventArgs e)
+        {
+            RptInventarioPorAlmacen rptInventarioPorAlmacen = new RptInventarioPorAlmacen();
+            rptInventarioPorAlmacen.ShowDialog();
+        }
     }
 }

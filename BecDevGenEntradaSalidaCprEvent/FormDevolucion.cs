@@ -202,9 +202,6 @@ namespace BecDevGenEntradaSalidaCprEvent
                     }
                 }
             }
-
-
-
         }
 
         private void btnDevolucionCompletar_Click(object sender, EventArgs e)
@@ -408,7 +405,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                         }
                         else
                         {
-                            serieSalida = InterpreteSDK.ToString();
+                            serieSalida = documentoRemision.codigo_cliente;
 
                             SDK.tDocumento tDocSalida = new SDK.tDocumento
                             {
@@ -480,7 +477,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                     }
                                     else
                                     {
-                                        serieEntrada = InterpreteSDK.ToString();
+                                        serieEntrada = documentoRemision.codigo_cliente;
 
                                         SDK.tDocumento tDocEntrada = new SDK.tDocumento
                                         {

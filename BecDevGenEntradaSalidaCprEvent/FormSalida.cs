@@ -23,6 +23,7 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using static BecDevGenEntradaSalidaCprEvent.SDK;
 using TextBox = System.Windows.Controls.TextBox;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BecDevGenEntradaSalidaCprEvent
 {
@@ -88,19 +89,21 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                 cbxSalidaCliente.Visible = false;
                 cbxOperador.Visible = false;
-                cbxSalidaProducto.Visible = false;
+                cbxSalidaProducto.Enabled = true;
 
-                txtSalidaCantidadProducto.Visible = false;
-                lblProducto.Visible = false;
-                lblCantidad.Visible = false;
-
-                btnSalidaCompletar.Text = "Reimprimir ticket";
+                txtSalidaCantidadProducto.Enabled = true;
+                btnSalidaAgregarProducto.Enabled = true;
                 btnSalidaCompletar.Enabled = true;
+                //lblProducto.Visible = false;
+                //lblCantidad.Visible = false;
+
+                btnSalidaBorrar.Text = "Reimprimir ticket";
+                btnSalidaBorrar.Enabled = true;
 
                 CargarDGVProductos(Documento.IdDocumento);
             }
             cbxSalidaCliente.Enabled = (Documento.IdDocumento == 0);
-            this.Text = (Documento.IdDocumento == 0 ? "Event Express | Nueva salida" : "Event Express | Detalle de salida");
+            this.Text = (Documento.IdDocumento == 0 ? "Event Express | Nueva salida" : "Event Express | Editar salida");
             CargarClientes();
             CargarOperadores();
             CargarProductos();
@@ -229,21 +232,37 @@ namespace BecDevGenEntradaSalidaCprEvent
                                                       select productoDisponible).FirstOrDefault<bec_event_documento_movimiento>();
                 if (existeSalidaDisponibleProducto != null)
                 {
-                    mensajeConfiguracion.AppendLine("\n \t❎ Existe un producto anteriormente registrado");
-                    MaterialMessageBox.Show(mensajeConfiguracion.ToString(), "⚠︎ Información incorrecta");
-                    cbxSalidaProducto.SelectedIndex = -1;
-                    return;
+                    //mensajeConfiguracion.AppendLine("\n \t❎ Existe un producto anteriormente registrado");
+                    //MaterialMessageBox.Show(mensajeConfiguracion.ToString(), "⚠︎ Información incorrecta");
+                    //cbxSalidaProducto.SelectedIndex = -1;
+                    //return;
+                    double cantidadAnterior = (double)existeSalidaDisponibleProducto.cantidad_producto;
+                    existeSalidaDisponibleProducto.cantidad_producto = cantidadAnterior + Convert.ToDouble(txtSalidaCantidadProducto.Text);
+                    adConnect.Entry(existeSalidaDisponibleProducto).State = System.Data.Entity.EntityState.Modified;
+
+                    var historiaMovimiento = new bec_event_historia_movimiento()
+                    {
+                        id_documento_encabezado = Documento.IdDocumento,
+                        id_documento_movimiento = existeSalidaDisponibleProducto.id,
+                        cantidad = Convert.ToDouble(txtSalidaCantidadProducto.Text),
+                        codigo_producto = codigoProducto,
+                        fecha = DateTime.Now
+                    };
+                    adConnect.bec_event_historia_movimiento.Add(historiaMovimiento);
                 }
-                var documentoMovimiento = new bec_event_documento_movimiento()
+                else
                 {
-                    id_documento_encabezado = Documento.IdDocumento,
-                    codigo_producto = codigoProducto,
-                    cantidad_producto = Convert.ToDouble(txtSalidaCantidadProducto.Text),
-                    tipo = "remision",
-                    unix = TiempoUnix,
-                    procesado = false,
-                };
-                adConnect.bec_event_documento_movimiento.Add(documentoMovimiento);
+                    var documentoMovimiento = new bec_event_documento_movimiento()
+                    {
+                        id_documento_encabezado = Documento.IdDocumento,
+                        codigo_producto = codigoProducto,
+                        cantidad_producto = Convert.ToDouble(txtSalidaCantidadProducto.Text),
+                        tipo = "remision",
+                        unix = TiempoUnix,
+                        procesado = false,
+                    };
+                    adConnect.bec_event_documento_movimiento.Add(documentoMovimiento);
+                }
                 adConnect.SaveChanges();
 
                 txtSalidaCantidadProducto.Text = "";
@@ -282,214 +301,277 @@ namespace BecDevGenEntradaSalidaCprEvent
         private void btnSalidaCompletar_Click(object sender, EventArgs e)
         {
             Documento.AccionDocumento = "completar";
-            if (Documento.TipoDocumento.Equals("create"))
+
+            StringBuilder MensajeErrorVentana = new StringBuilder("Verifique lo siguiente:\n\n");
+            int controlErrorSDK = 0;
+            int idDocumento = 0;
+            int idMovimiento = 0;
+            double folioDocumento = 0;
+            string mensajeError = "";
+            string serieDocumento = "";
+
+            using (adConexionDB adConnect = new adConexionDB())
             {
-                StringBuilder MensajeErrorVentana = new StringBuilder("Verifique lo siguiente:\n\n");
-                int controlErrorSDK = 0;
-                int idDocumento = 0;
-                int idMovimiento = 0;
-                double folioDocumento = 0;
-                string mensajeError = "";
-                string serieDocumento = "";
-
-                using (adConexionDB adConnect = new adConexionDB())
+                var salidaPendiente = (from salida in adConnect.bec_event_documento_encabezado
+                                       where salida.id == Documento.IdDocumento
+                                       && salida.estado == "pendiente"
+                                       //&& salida.id_contpaq_documento == null
+                                       select salida).FirstOrDefault<bec_event_documento_encabezado>();
+                controlErrorSDK = SDK.SetCurrentDirectory(CurrentDirectory);
+                if (controlErrorSDK != 0)
                 {
-                    var salidaPendiente = (from salida in adConnect.bec_event_documento_encabezado
-                                           where salida.id == Documento.IdDocumento
-                                           && salida.estado == "pendiente"
-                                           && salida.id_contpaq_documento == null
-                                           select salida).FirstOrDefault<bec_event_documento_encabezado>();
+                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+                    //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del SetCurrentDirectory");
+                }
+                controlErrorSDK = SDK.fInicioSesionSDK(Usuario, Password);
+                SDK.fInicioSesionSDKCONTPAQi("SUPERVISOR", "");
+                if (controlErrorSDK != 0)
+                {
+                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+                    //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fInicioSesionSDK");
+                }
+                controlErrorSDK = SDK.fSetNombrePAQ("CONTPAQ I Comercial");
+                if (controlErrorSDK != 0)
+                {
+                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+                    //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fSetNombrePAQ");
+                }
+                controlErrorSDK = SDK.fAbreEmpresa(Empresa);
 
-                    if (salidaPendiente != null)
+                if (controlErrorSDK != 0)
+                {
+                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+                    //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fAbreEmpresa");
+                }
+                else
+                {
+
+                    var documentoSalida = (from documento in adConnect.bec_event_cliente_documento
+                                           where documento.codigo_cliente == salidaPendiente.codigo_cliente
+                                           select documento).FirstOrDefault<bec_event_cliente_documento>();
+
+                    if (salidaPendiente.id_contpaq_documento == null)
                     {
-                        controlErrorSDK = SDK.SetCurrentDirectory(CurrentDirectory);
-                        if (controlErrorSDK != 0)
-                        {
-                            SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                            //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del SetCurrentDirectory");
-                        }
-                        controlErrorSDK = SDK.fInicioSesionSDK(Usuario, Password);
-                        SDK.fInicioSesionSDKCONTPAQi("SUPERVISOR", "");
-                        if (controlErrorSDK != 0)
-                        {
-                            SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                            //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fInicioSesionSDK");
-                        }
-                        controlErrorSDK = SDK.fSetNombrePAQ("CONTPAQ I Comercial");
-                        if (controlErrorSDK != 0)
-                        {
-                            SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                            //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fSetNombrePAQ");
-                        }
-                        controlErrorSDK = SDK.fAbreEmpresa(Empresa);
+                        controlErrorSDK = SDK.fSiguienteFolio(documentoSalida.codigo_documento, InterpreteSDK, ref folioDocumento);
 
                         if (controlErrorSDK != 0)
                         {
                             SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                            //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fAbreEmpresa");
+                            mensajeError += $"\n \t Error al crear el siguiente folio de remisión - {InterpreteSDK}";
                         }
                         else
                         {
-                            var documentoSalida = (from documento in adConnect.bec_event_cliente_documento
-                                                   where documento.codigo_cliente == salidaPendiente.codigo_cliente
-                                                   select documento).FirstOrDefault<bec_event_cliente_documento>();
+                            serieDocumento = InterpreteSDK.ToString();
 
-                            controlErrorSDK = SDK.fSiguienteFolio(documentoSalida.codigo_documento, InterpreteSDK, ref folioDocumento);
+                            SDK.tDocumento tDoc = new SDK.tDocumento
+                            {
+                                aCodConcepto = documentoSalida.codigo_documento,
+                                aCodigoCteProv = documentoSalida.codigo_cliente,
+                                aFecha = DateTime.Now.ToString("MM/dd/yyyy"),
+                                aSerie = serieDocumento,
+                                aFolio = folioDocumento,
+                                aCodigoAgente = agentes[cbxOperador.SelectedIndex].CCODIGOAGENTE,
+                            };
+
+                            controlErrorSDK = SDK.fAltaDocumento(ref idDocumento, ref tDoc);
+
+                            if (controlErrorSDK != 0)
+                            {
+                                SDK.fBuscarIdDocumento(idDocumento);
+                                SDK.fBorraDocumento();
+                                SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+
+                                mensajeError += $"\n \t Error en la creación del documento - {InterpreteSDK} ";
+                            }
+                            else
+                            {
+                                var almacenXDocumento = (from clie in adConnect.admConceptos
+                                                         join alm in adConnect.admAlmacenes on clie.CIDALMASUM equals alm.CIDALMACEN
+                                                         where clie.CCODIGOCONCEPTO == documentoSalida.codigo_documento
+                                                         select new { alm.CCODIGOALMACEN, clie.CNOMBRECONCEPTO }).FirstOrDefault();
+
+                                var movimientosSalida = (from movimientos in adConnect.bec_event_documento_movimiento
+                                                         where movimientos.id_documento_encabezado == salidaPendiente.id
+                                                         select movimientos).ToList();
+
+                                foreach (var objMovimiento in movimientosSalida)
+                                {
+                                    SDK.fBuscarIdDocumento(idDocumento);
+
+                                    SDK.tMovimiento tMov = new SDK.tMovimiento
+                                    {
+                                        aCodAlmacen = almacenXDocumento.CCODIGOALMACEN,
+                                        aCodProdSer = objMovimiento.codigo_producto,
+                                        aUnidades = Convert.ToDouble(objMovimiento.cantidad_producto),
+                                    };
+
+                                    controlErrorSDK = SDK.fAltaMovimiento(idDocumento, ref idMovimiento, ref tMov);
+
+                                    if (controlErrorSDK != 0)
+                                    {
+                                        SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+                                        mensajeError += $"\n \t Error en la creación del movimiento del documento: {serieDocumento}{folioDocumento}, código del producto: {objMovimiento.codigo_producto} - {InterpreteSDK} \n";
+
+                                        objMovimiento.procesado = false;
+                                        adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
+                                        adConnect.SaveChanges();
+                                    }
+                                    else
+                                    {
+                                        objMovimiento.procesado = true;
+                                        objMovimiento.id_movimiento_contpaq = idMovimiento;
+                                        adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
+                                        adConnect.SaveChanges();
+                                    }
+                                }
+
+                                if (!mensajeError.Equals(""))
+                                {
+                                    SDK.fBuscarIdDocumento(idDocumento);
+                                    SDK.fBorraDocumento();
+
+                                    MensajeErrorVentana.Append(mensajeError);
+                                    MaterialMessageBox.Show(MensajeErrorVentana.ToString(), "⚠︎ Error en la creación del documento");
+                                }
+                            }
+                        }
+
+                        if (mensajeError.Equals(""))
+                        {
+                            salidaPendiente.procesado = true;
+                            salidaPendiente.id_contpaq_documento = idDocumento;
+                            salidaPendiente.serie_contpaq_documento = serieDocumento;
+                            salidaPendiente.folio_contpaq_documento = folioDocumento;
+                            adConnect.Entry(salidaPendiente).State = System.Data.Entity.EntityState.Modified;
+                            adConnect.SaveChanges();
+
+                            GenerarTicketSalida(Documento.IdDocumento);
+
+                            MensajeErrorVentana.Append($"\n \t Salida completada correctamente.                                                                         ");
+                            MaterialMessageBox.Show(MensajeErrorVentana.ToString(), "✔️ Información guardada correctamente");
+
+                            ListadoSalidas formPrincipal = new ListadoSalidas();
+                            formPrincipal.CargarListado();
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        var almacenXDocumento = (from clie in adConnect.admConceptos
+                                                 join alm in adConnect.admAlmacenes on clie.CIDALMASUM equals alm.CIDALMACEN
+                                                 where clie.CCODIGOCONCEPTO == documentoSalida.codigo_documento
+                                                 select new { alm.CCODIGOALMACEN, clie.CNOMBRECONCEPTO }).FirstOrDefault();
+
+                        var movimientosSalida = (from movimientos in adConnect.bec_event_historia_movimiento
+                                                 where movimientos.id_documento_encabezado == salidaPendiente.id
+                                                 && movimientos.id_movimiento_contpaq == null
+                                                 select movimientos).ToList();
+
+                        foreach (var objMovimiento in movimientosSalida)
+                        {
+                            idDocumento = (int)salidaPendiente.id_contpaq_documento;
+
+                            SDK.fBuscarIdDocumento(idDocumento);
+
+                            SDK.tMovimiento tMov = new SDK.tMovimiento
+                            {
+                                aCodAlmacen = almacenXDocumento.CCODIGOALMACEN,
+                                aCodProdSer = objMovimiento.codigo_producto,
+                                aUnidades = Convert.ToDouble(objMovimiento.cantidad),
+                            };
+
+                            controlErrorSDK = SDK.fAltaMovimiento(idDocumento, ref idMovimiento, ref tMov);
 
                             if (controlErrorSDK != 0)
                             {
                                 SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                                mensajeError += $"\n \t Error al crear el siguiente folio de remisión - {InterpreteSDK}";
+                                mensajeError += $"\n \t Error en la creación del movimiento del documento: {serieDocumento}{folioDocumento}, código del producto: {objMovimiento.codigo_producto} - {InterpreteSDK} \n";
                             }
                             else
                             {
-                                serieDocumento = InterpreteSDK.ToString();
-
-                                SDK.tDocumento tDoc = new SDK.tDocumento
-                                {
-                                    aCodConcepto = documentoSalida.codigo_documento,
-                                    aCodigoCteProv = documentoSalida.codigo_cliente,
-                                    aFecha = DateTime.Now.ToString("MM/dd/yyyy"),
-                                    aSerie = serieDocumento,
-                                    aFolio = folioDocumento,
-                                    aCodigoAgente = agentes[cbxOperador.SelectedIndex].CCODIGOAGENTE,
-                                };
-
-                                controlErrorSDK = SDK.fAltaDocumento(ref idDocumento, ref tDoc);
-
-                                if (controlErrorSDK != 0)
-                                {
-                                    SDK.fBuscarIdDocumento(idDocumento);
-                                    SDK.fBorraDocumento();
-                                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-
-                                    mensajeError += $"\n \t Error en la creación del documento - {InterpreteSDK} ";
-                                }
-                                else
-                                {
-                                    var almacenXDocumento = (from clie in adConnect.admConceptos
-                                                             join alm in adConnect.admAlmacenes on clie.CIDALMASUM equals alm.CIDALMACEN
-                                                             where clie.CCODIGOCONCEPTO == documentoSalida.codigo_documento
-                                                             select new { alm.CCODIGOALMACEN, clie.CNOMBRECONCEPTO }).FirstOrDefault();
-
-                                    var movimientosSalida = (from movimientos in adConnect.bec_event_documento_movimiento
-                                                             where movimientos.id_documento_encabezado == salidaPendiente.id
-                                                             select movimientos).ToList();
-
-                                    foreach (var objMovimiento in movimientosSalida)
-                                    {
-                                        SDK.fBuscarIdDocumento(idDocumento);
-
-                                        SDK.tMovimiento tMov = new SDK.tMovimiento
-                                        {
-                                            aCodAlmacen = almacenXDocumento.CCODIGOALMACEN,
-                                            aCodProdSer = objMovimiento.codigo_producto,
-                                            aUnidades = Convert.ToDouble(objMovimiento.cantidad_producto),
-                                        };
-
-                                        controlErrorSDK = SDK.fAltaMovimiento(idDocumento, ref idMovimiento, ref tMov);
-
-                                        if (controlErrorSDK != 0)
-                                        {
-                                            SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                                            mensajeError += $"\n \t Error en la creación del movimiento del documento: {serieDocumento}{folioDocumento}, código del producto: {objMovimiento.codigo_producto} - {InterpreteSDK} \n";
-                                        }
-                                        else
-                                        {
-                                            objMovimiento.procesado = true;
-                                            objMovimiento.id_movimiento_contpaq = idMovimiento;
-                                            adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
-                                            adConnect.SaveChanges();
-                                        }
-                                    }
-
-                                    if (!mensajeError.Equals(""))
-                                    {
-                                        SDK.fBuscarIdDocumento(idDocumento);
-                                        SDK.fBorraDocumento();
-
-                                        MensajeErrorVentana.Append(mensajeError);
-                                        MaterialMessageBox.Show(MensajeErrorVentana.ToString(), "⚠︎ Error en la creación del documento");
-                                    }
-                                }
-                            }
-
-                            if (mensajeError.Equals(""))
-                            {
-                                salidaPendiente.procesado = true;
-                                salidaPendiente.id_contpaq_documento = idDocumento;
-                                salidaPendiente.serie_contpaq_documento = serieDocumento;
-                                salidaPendiente.folio_contpaq_documento = folioDocumento;
-                                adConnect.Entry(salidaPendiente).State = System.Data.Entity.EntityState.Modified;
+                                objMovimiento.procesado = true;
+                                objMovimiento.id_movimiento_contpaq = idMovimiento;
+                                adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
                                 adConnect.SaveChanges();
-
-                                GenerarTicketSalida(Documento.IdDocumento);
-
-                                MensajeErrorVentana.Append($"\n \t Salida completada correctamente.                                                                         ");
-                                MaterialMessageBox.Show(MensajeErrorVentana.ToString(), "✔️ Información guardada correctamente");
-
-                                ListadoSalidas formPrincipal = new ListadoSalidas();
-                                formPrincipal.CargarListado();
-                                this.Close();
                             }
+                        }
 
-                            SDK.fCierraEmpresa();
-                            SDK.fTerminaSDK();
+                        if (mensajeError.Equals(""))
+                        {
+                            GenerarTicketSalida(Documento.IdDocumento);
+
+                            MensajeErrorVentana.Append($"\n \t Salida actualizada correctamente.                                                                         ");
+                            MaterialMessageBox.Show(MensajeErrorVentana.ToString(), "✔️ Información guardada correctamente");
+
+                            ListadoSalidas formPrincipal = new ListadoSalidas();
+                            formPrincipal.CargarListado();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MensajeErrorVentana.Append($"\n \t {mensajeError}");
+                            MaterialMessageBox.Show(MensajeErrorVentana.ToString(), "❎ Información incorrecta");
                         }
                     }
-
                 }
-            }
-            else
-            {
-                GenerarTicketSalida(Documento.IdDocumento);
 
-                ListadoSalidas formPrincipal = new ListadoSalidas();
-                formPrincipal.CargarListado();
-                this.Close();
+                SDK.fCierraEmpresa();
+                SDK.fTerminaSDK();
             }
+
         }
 
         private void GenerarTicketSalida(int idSalida)
         {
-            string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            SDK.SetCurrentDirectory(LocalDirectory);
+            try
+            {
+                string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                SDK.SetCurrentDirectory(LocalDirectory);
 
-            StiReport mrt = new StiReport();
-            Stimulsoft.Base.StiLicense.Key = @"6vJhGtLLLz2GNviWmUTrhSqnOItdDwjBylQzQcAOiHkpNBNlI/1rz4ZIh+PJP5PlDY/b4HIU9O1e2oNddG4xhdP1Uw" +
-                                            "vn4GQ7LiDcUOP1HTGjvHLwklwbkdorFBx+rO4KOY1ssR9fpR9mxDlbjXy/XECx7yyvN9bNY9qLh7Wd0Vk8HMilx7u7" +
-                                            "0tHOhY5Kfgr8G/6n4fwsw0ZuOfWUiMdHqJV5PDGBFByN12Jkebffil+ybmVpVjtCoEJeDXikMKUNE6YMul5UxoYqvO" +
-                                            "05nCRTmFQzrXq+CZiA/U6S+r3KjsNNnVFr651oRgr1kinasjsgqlTpkKwK324TFhOowTNtMGy83nFn2/8wl3ZSkTcZ" +
-                                            "FgSUPpcGZiQ4eVbzqx38FXTy2hwjsJ4/m6gPvpCV0ph3C9lhAr2A0AnRTpCIjHFy5CpHPC31u/trfvm3r41sKKfxiH" +
-                                            "TmjKyp+M2ke67s6b1DC0jEsUaNOm00YzFl+YAnDDdbsvBQQUnF9mSNxpsxfQcqV3sufAAf80H5DvKJ5oo+3p3BWGnH" +
-                                            "X3Ix+cK/Ymh6cj/89F+Q5mPxOhizMVgl7RLS";
+                StiReport mrt = new StiReport();
+                Stimulsoft.Base.StiLicense.Key = @"6vJhGtLLLz2GNviWmUTrhSqnOItdDwjBylQzQcAOiHkpNBNlI/1rz4ZIh+PJP5PlDY/b4HIU9O1e2oNddG4xhdP1Uw" +
+                                                "vn4GQ7LiDcUOP1HTGjvHLwklwbkdorFBx+rO4KOY1ssR9fpR9mxDlbjXy/XECx7yyvN9bNY9qLh7Wd0Vk8HMilx7u7" +
+                                                "0tHOhY5Kfgr8G/6n4fwsw0ZuOfWUiMdHqJV5PDGBFByN12Jkebffil+ybmVpVjtCoEJeDXikMKUNE6YMul5UxoYqvO" +
+                                                "05nCRTmFQzrXq+CZiA/U6S+r3KjsNNnVFr651oRgr1kinasjsgqlTpkKwK324TFhOowTNtMGy83nFn2/8wl3ZSkTcZ" +
+                                                "FgSUPpcGZiQ4eVbzqx38FXTy2hwjsJ4/m6gPvpCV0ph3C9lhAr2A0AnRTpCIjHFy5CpHPC31u/trfvm3r41sKKfxiH" +
+                                                "TmjKyp+M2ke67s6b1DC0jEsUaNOm00YzFl+YAnDDdbsvBQQUnF9mSNxpsxfQcqV3sufAAf80H5DvKJ5oo+3p3BWGnH" +
+                                                "X3Ix+cK/Ymh6cj/89F+Q5mPxOhizMVgl7RLS";
 
-            mrt.Load(LocalDirectory + "ReporteSalidas.mrt");
-            mrt.ReportName = "ReporteSalidas.mrt";
+                mrt.Load(LocalDirectory + "ReporteSalidas.mrt");
+                mrt.ReportName = "ReporteSalidas.mrt";
 
-            addVar("vIdAlmacen", idSalida.ToString());
-            mrt.Dictionary.Variables = variable;
+                addVar("vIdAlmacen", idSalida.ToString());
+                mrt.Dictionary.Variables = variable;
 
-            var sqlDB = new StiSqlDatabase("Zeus", "", $"Data Source={Server}\\{Instance} ;Initial Catalog={Database};Integrated Security=False;Persist Security Info=True;User ID={User};Password={PasswordDB}");
+                var sqlDB = new StiSqlDatabase("Zeus", "", $"Data Source={Server}\\{Instance} ;Initial Catalog={Database};Integrated Security=False;Persist Security Info=True;User ID={User};Password={PasswordDB}");
 
-            mrt.Dictionary.Databases.Clear();
+                mrt.Dictionary.Databases.Clear();
 
-            mrt.Dictionary.Databases.Add(sqlDB);
-            mrt.Dictionary.Synchronize();
-            mrt.RenderWithWpf();
-            mrt.ExportDocument(StiExportFormat.Pdf, $"{mdoc}\\{idSalida}.pdf");
+                mrt.Dictionary.Databases.Add(sqlDB);
+                mrt.Dictionary.Synchronize();
+                mrt.RenderWithWpf();
+                mrt.ExportDocument(StiExportFormat.Pdf, $"{mdoc}\\{idSalida}.pdf");
 
-            string pdfPath = Path.Combine(Application.StartupPath, $"{mdoc}\\{idSalida}.pdf");
-            Process.Start(pdfPath);
+                string pdfPath = Path.Combine(Application.StartupPath, $"{mdoc}\\{idSalida}.pdf");
+                Process.Start(pdfPath);
+            }
+            catch (IOException)
+            {
+                MaterialMessageBox.Show($"El formato de PDF se encuentra abierto, por favor cierrelo y vuelva a intentarlo.                                                                                            ", "⚠︎ Error al abrir el PDF6");
+            }
         }
 
         private void btnSalidaBorrar_Click(object sender, EventArgs e)
         {
             Documento.AccionDocumento = "completar";
+            ListadoSalidas formPrincipal = new ListadoSalidas();
 
             if (Documento.TipoDocumento != "create")
             {
-                MaterialMessageBox.Show("\n \t❎ No se puede eliminar una salida pendiente", "⚠︎ Acción denegada");
+                GenerarTicketSalida(Documento.IdDocumento);
+                formPrincipal.CargarListado();
+                this.Close();
+
                 return;
             }
 
@@ -505,7 +587,6 @@ namespace BecDevGenEntradaSalidaCprEvent
 
             MaterialMessageBox.Show($"La salida ha sido eliminada correctamente.                                                                                            ", "✔️ Información eliminada correctamente");
 
-            ListadoSalidas formPrincipal = new ListadoSalidas();
             formPrincipal.CargarListado();
             this.Close();
         }

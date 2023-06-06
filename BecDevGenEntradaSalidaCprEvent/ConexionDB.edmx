@@ -861,6 +861,19 @@
           <Property Name="cantidad_producto_defectuoso" Type="float" />
           <Property Name="id_movimiento_contpaq_defectuoso" Type="int" />
         </EntityType>
+        <EntityType Name="bec_event_historia_movimiento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_documento_encabezado" Type="int" />
+          <Property Name="id_documento_movimiento" Type="int" />
+          <Property Name="cantidad" Type="float" />
+          <Property Name="codigo_producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="procesado" Type="bit" />
+          <Property Name="id_movimiento_contpaq" Type="int" />
+        </EntityType>
         <Association Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
           <End Role="bec_event_documento_encabezado" Type="Self.bec_event_documento_encabezado" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -891,6 +904,7 @@
           <EntitySet Name="bec_event_documento_abono" EntityType="Self.bec_event_documento_abono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bec_event_documento_encabezado" EntityType="Self.bec_event_documento_encabezado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bec_event_documento_movimiento" EntityType="Self.bec_event_documento_movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bec_event_historia_movimiento" EntityType="Self.bec_event_historia_movimiento" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado" Association="Self.FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
             <End Role="bec_event_documento_encabezado" EntitySet="bec_event_documento_encabezado" />
             <End Role="bec_event_documento_movimiento" EntitySet="bec_event_documento_movimiento" />
@@ -1715,6 +1729,7 @@
             <End Role="bec_event_documento_encabezado" EntitySet="bec_event_documento_encabezado" />
             <End Role="bec_event_documento_movimiento" EntitySet="bec_event_documento_movimiento" />
           </AssociationSet>
+          <EntitySet Name="bec_event_historia_movimiento" EntityType="adEventModel.bec_event_historia_movimiento" />
         </EntityContainer>
         <EntityType Name="bec_event_documento_abono">
           <Key>
@@ -1793,6 +1808,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="bec_event_historia_movimiento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_documento_encabezado" Type="Int32" />
+          <Property Name="id_documento_movimiento" Type="Int32" />
+          <Property Name="cantidad" Type="Double" />
+          <Property Name="codigo_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="procesado" Type="Boolean" />
+          <Property Name="id_movimiento_contpaq" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2665,6 +2693,20 @@
                 <ScalarProperty Name="cantidad_producto" ColumnName="cantidad_producto" />
                 <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
                 <ScalarProperty Name="id_movimiento_contpaq" ColumnName="id_movimiento_contpaq" />
+                <ScalarProperty Name="id_documento_encabezado" ColumnName="id_documento_encabezado" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bec_event_historia_movimiento">
+            <EntityTypeMapping TypeName="adEventModel.bec_event_historia_movimiento">
+              <MappingFragment StoreEntitySet="bec_event_historia_movimiento">
+                <ScalarProperty Name="id_movimiento_contpaq" ColumnName="id_movimiento_contpaq" />
+                <ScalarProperty Name="procesado" ColumnName="procesado" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_documento_movimiento" ColumnName="id_documento_movimiento" />
                 <ScalarProperty Name="id_documento_encabezado" ColumnName="id_documento_encabezado" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

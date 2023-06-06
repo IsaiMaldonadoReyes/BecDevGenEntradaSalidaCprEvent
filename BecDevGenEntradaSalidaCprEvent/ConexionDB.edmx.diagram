@@ -21,6 +21,7 @@
         <EntityTypeShape EntityType="adEventModel.bec_event_documento_encabezado" Width="1.5" PointX="7.375" PointY="16" />
         <EntityTypeShape EntityType="adEventModel.bec_event_documento_movimiento" Width="1.5" PointX="9.625" PointY="16.625" />
         <AssociationConnector Association="adEventModel.FK_bec_event_documento_movimiento_bec_event_documento_encabezado" />
+        <EntityTypeShape EntityType="adEventModel.bec_event_historia_movimiento" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

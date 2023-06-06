@@ -48,6 +48,10 @@
     <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Stimulsoft.Base, Version=2017.2.4.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
@@ -89,7 +93,9 @@
     <Reference Include="Svg, Version=2.2.1.39233, Culture=neutral, PublicKeyToken=12a0bac221edeae2, processorArchitecture=MSIL">
       <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\Svg.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -155,6 +161,9 @@
     <Compile Include="bec_event_documento_movimiento.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="bec_event_historia_movimiento.cs">
+      <DependentUpon>ConexionDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ConexionDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,6 +196,18 @@
     </Compile>
     <Compile Include="ListadoLiquidaciones.Designer.cs">
       <DependentUpon>ListadoLiquidaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInventarioPorAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RptInventarioPorAlmacen.Designer.cs">
+      <DependentUpon>RptInventarioPorAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptInventarioPorRuta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RptInventarioPorRuta.Designer.cs">
+      <DependentUpon>RptInventarioPorRuta.cs</DependentUpon>
     </Compile>
     <Compile Include="SDK.cs" />
     <Compile Include="Sesion\Documento.cs" />
@@ -232,6 +253,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInventarioPorAlmacen.resx">
+      <DependentUpon>RptInventarioPorAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptInventarioPorRuta.resx">
+      <DependentUpon>RptInventarioPorRuta.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="ConexionDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
