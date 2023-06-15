@@ -16,7 +16,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BecDevGenEntradaSalidaCprEvent
 {
-    public partial class RptInventarioPorRuta : MaterialForm
+    public partial class RptHistoricoMovimientosPorRuta : MaterialForm
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
 
@@ -26,15 +26,14 @@ namespace BecDevGenEntradaSalidaCprEvent
         {
             public string cedis { get; set; }
             public string ruta { get; set; }
-            public DateTime fecha { get; set; }
-            public string codigo { get; set; }
-            public string descripcion { get; set; }
-            public double inventarioTransito { get; set; }
-            public double inventarioDevolucion { get; set; }
-            public double inventarioAveriado { get; set; }
+            public string codigoProducto { get; set; }
+            public string nombreProducto{ get; set; }
+            public double salidas { get; set; }
+            public double entradas { get; set; }
+            public double averiado { get; set; }
         }
 
-        public RptInventarioPorRuta()
+        public RptHistoricoMovimientosPorRuta()
         {
             InitializeComponent();
 
@@ -50,7 +49,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                 MaterialSkin.TextShade.WHITE);
         }
 
-        private void RptInventarioPorRuta_Load(object sender, EventArgs e)
+        private void RptHistoricoMovimientosPorRuta_Load(object sender, EventArgs e)
         {
             cargarAlmacenes(cbxAlmacen);
         }
@@ -72,7 +71,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             object misValue = Missing.Value;
             StringBuilder mensaje = new StringBuilder("Verifica lo siguiente:\n\n");
             string camposVacios = "";
-            string nombreReporte = "InventarioPorRuta";
+            string nombreReporte = "HistoricoMovimientosPorRuta";
             string tipoMensajeDevuelto = "";
             int almacen = almacenes[cbxAlmacen.SelectedIndex].CIDALMACEN;
 
@@ -130,7 +129,7 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                             progressBar1.Value = 0;
                             mensaje.AppendFormat("No se encontraron registros con coincidencia de los filtros seleccionados.                            \nPor favor verificque que existan registros con estos atributos y vuelva a intentarlo.");
-                            MaterialMessageBox.Show(mensaje.ToString(), "⚠︎ No existen registros disponibles");
+                            MaterialMessageBox.Show(mensaje.ToString(), "❎ Ha ocurrido un error");
 
 
 
@@ -183,12 +182,12 @@ namespace BecDevGenEntradaSalidaCprEvent
             string color2 = "#00B050";
 
             xlHoja = (Excel.Worksheet)xlLibro.Worksheets.get_Item(1);
-            xlHoja.Name = "Inventario por ruta";
+            xlHoja.Name = "HistoricoMovimientosPorRuta";
             xlHoja.Activate();
 
             MostrarEncabezadoPrincipal(xlHoja);
 
-            xlColumna = 8;
+            xlColumna = 6;
             xlFila = 5;
             alineacionHorizontal = Excel.XlHAlign.xlHAlignCenter;
             alineacionVertical = Excel.XlVAlign.xlVAlignCenter;
@@ -198,22 +197,18 @@ namespace BecDevGenEntradaSalidaCprEvent
             /** Formato de las columnas */
             xlHoja.get_Range("A:A").EntireColumn.NumberFormat = "@";
             xlHoja.get_Range("B:B").EntireColumn.NumberFormat = "@";
-            xlHoja.get_Range("C:C").EntireColumn.NumberFormat = "DD/MM/YYYY";
-            xlHoja.get_Range("D:D").EntireColumn.NumberFormat = "@";
-            xlHoja.get_Range("E:E").EntireColumn.NumberFormat = "@";
-            xlHoja.get_Range("F:H").EntireColumn.NumberFormat = "0.00";
+            xlHoja.get_Range("C:C").EntireColumn.NumberFormat = "@";
+            xlHoja.get_Range("D:F").EntireColumn.NumberFormat = "0.00";
 
-            setEstiloFila(xlHoja, "A" + xlFila, "H" + xlFila, "#1B223A", "", "#C8AA3C", 10, true, true, alineacionHorizontal, alineacionVertical);
+            setEstiloFila(xlHoja, "A" + xlFila, "F" + xlFila, "#1B223A", "", "#C8AA3C", 10, true, true, alineacionHorizontal, alineacionVertical);
 
             /** Nombre de las columnas */
-            xlHoja.Cells[xlFila, "A"] = "CEDIS";
-            xlHoja.Cells[xlFila, "B"] = "RUTA";
-            xlHoja.Cells[xlFila, "C"] = "FECHA";
-            xlHoja.Cells[xlFila, "D"] = "CÓDIGO";
-            xlHoja.Cells[xlFila, "E"] = "DESCRIPCIÓN";
-            xlHoja.Cells[xlFila, "F"] = "TRANSITO";
-            xlHoja.Cells[xlFila, "G"] = "DEVOLUCIÓN";
-            xlHoja.Cells[xlFila, "H"] = "DAÑADO";
+            xlHoja.Cells[xlFila, "A"] = "RUTA";
+            xlHoja.Cells[xlFila, "B"] = "CÓDIGO";
+            xlHoja.Cells[xlFila, "C"] = "DESCRIPCIÓN";
+            xlHoja.Cells[xlFila, "D"] = "SALIDAS";
+            xlHoja.Cells[xlFila, "E"] = "ENTRADAS";
+            xlHoja.Cells[xlFila, "F"] = "AVERIADO";
 
             /** Fijar fila */
             xlHoja.Application.ActiveWindow.SplitRow = xlFila;
@@ -237,14 +232,12 @@ namespace BecDevGenEntradaSalidaCprEvent
                     Inventario inventario = detalle[i];
 
 
-                    arrayDetalle[i, 0] = inventario.cedis;
-                    arrayDetalle[i, 1] = inventario.ruta;
-                    arrayDetalle[i, 2] = inventario.fecha;
-                    arrayDetalle[i, 3] = inventario.codigo;
-                    arrayDetalle[i, 4] = inventario.descripcion;
-                    arrayDetalle[i, 5] = inventario.inventarioTransito;
-                    arrayDetalle[i, 6] = inventario.inventarioDevolucion;
-                    arrayDetalle[i, 7] = inventario.inventarioAveriado;
+                    arrayDetalle[i, 0] = inventario.ruta;
+                    arrayDetalle[i, 1] = inventario.codigoProducto;
+                    arrayDetalle[i, 2] = inventario.nombreProducto;
+                    arrayDetalle[i, 3] = inventario.salidas;
+                    arrayDetalle[i, 4] = inventario.entradas;
+                    arrayDetalle[i, 5] = inventario.averiado;
 
                     xlFila++;
                 }
@@ -266,11 +259,11 @@ namespace BecDevGenEntradaSalidaCprEvent
                 matrizFila = xlFila;
                 xlFila = xlFila + 2;
 
-                xlHoja.get_Range("A" + xlFila, "E" + xlFila).Merge(true);
+                xlHoja.get_Range("A" + xlFila, "C" + xlFila).Merge(true);
                 xlHoja.Cells[xlFila, "A"] = "TOTAL: ";
+                xlHoja.Cells[xlFila, "D"].FormulaLocal = string.Format("=SUMA(D6:" + "D" + matrizFila);
+                xlHoja.Cells[xlFila, "E"].FormulaLocal = string.Format("=SUMA(E6:" + "E" + matrizFila);
                 xlHoja.Cells[xlFila, "F"].FormulaLocal = string.Format("=SUMA(F6:" + "F" + matrizFila);
-                xlHoja.Cells[xlFila, "G"].FormulaLocal = string.Format("=SUMA(G6:" + "G" + matrizFila);
-                xlHoja.Cells[xlFila, "H"].FormulaLocal = string.Format("=SUMA(H6:" + "H" + matrizFila);
 
                 /** Ancho de las columnas */
                 xlHoja.get_Range("A:H").EntireColumn.AutoFit();
@@ -316,7 +309,7 @@ namespace BecDevGenEntradaSalidaCprEvent
 
             setEstiloFila(xlHoja, "A2", "G2", "", "", "#1E233A", 10, true, true, alineacionHorizontal, alineacionVertical);
             xlHoja.get_Range("A2", "G2").Merge(true);
-            xlHoja.Cells[2, 1] = "Inventario por ruta";
+            xlHoja.Cells[2, 1] = "Histórico de movimientos por ruta";
 
             setEstiloFila(xlHoja, "A3", "G3", "", "", "#AEAAAA", 8, false, true, alineacionHorizontal, alineacionVertical);
             xlHoja.get_Range("A3", "G3").Merge(true);
@@ -380,53 +373,70 @@ namespace BecDevGenEntradaSalidaCprEvent
                 SET @fechaInicio = '{fechaInicio}';
                 SET @fechaFin = '{fechaFin}';
 
-                SELECT  almacen.CCODIGOALMACEN			AS cedis
-	                    , becEncabezado.codigo_cliente	AS ruta
-	                    , becEncabezado.fecha_creacion	AS fecha
-	                    , producto.CCODIGOPRODUCTO		AS codigo
-	                    , producto.CNOMBREPRODUCTO		AS descripcion
-	                    , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto)
-		                            FROM    bec_event_documento_encabezado AS becEncabezadoTr 
-		                                    INNER JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
-		                            WHERE   becEncabezadoTr.tipo = 'remision' 
-		                                    AND becEncabezadoTr.estado = 'pendiente'
-		                                    AND becMovimientoTr.procesado = 1
-		                                    AND becEncabezadoTr.id = becEncabezado.id
-		                                    AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
-		                ), 0) AS inventarioTransito
-	                    , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto)
-		                            FROM    bec_event_documento_encabezado AS becEncabezadoTr 
-		                            INNER   JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
-		                            WHERE   becEncabezadoTr.tipo = 'entrada' 
-		                                    AND becMovimientoTr.procesado = 1
-		                                    AND becEncabezadoTr.id_documento_origen = becEncabezado.id
-		                                    AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
-		                ), 0) AS inventarioDevolucion	
+                WITH    MovimientosCTE AS (
+                            SELECT  almacen.CCODIGOALMACEN			AS cedis
+	                                , becEncabezado.codigo_cliente	AS ruta
+	                                , producto.CCODIGOPRODUCTO		AS codigoProducto
+	                                , producto.CNOMBREPRODUCTO		AS nombreProducto
+	                                , ISNULL((  SELECT  becMovimientoTr.cantidad_producto
+		                                        FROM    bec_event_documento_encabezado AS becEncabezadoTr 
+		                                                LEFT JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado 
+			                                                AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
+		                                        WHERE   becEncabezadoTr.tipo = 'remision' 
+			                                            AND becEncabezadoTr.estado = 'pendiente'
+			                                            AND becMovimientoTr.procesado = 1
+			                                            AND becEncabezadoTr.id = becEncabezado.id
+			                                            AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
+		                            ), 0) AS salidas
+	                                , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto)
+		                                        FROM    bec_event_documento_encabezado AS becEncabezadoTr 
+		                                                INNER JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado 
+			                                                AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
+		                                        WHERE   becEncabezadoTr.tipo = 'entrada' 
+		                                                AND becMovimientoTr.procesado = 1
+		                                                AND becEncabezadoTr.id_documento_origen = becEncabezado.id
+		                                                AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
+		                            ), 0) AS devolucion	
+	                                , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto_defectuoso)
+		                                        FROM    bec_event_documento_encabezado AS becEncabezadoTr 
+		                                                INNER JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado 
+			                                                AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
+		                                        WHERE   becEncabezadoTr.tipo = 'entrada' 
+		                                                AND becMovimientoTr.procesado = 1
+		                                                AND becEncabezadoTr.id_documento_origen = becEncabezado.id
+		                                                AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
+		                            ), 0) AS averiado	
+                            FROM    admConceptos AS concepto
+                                    INNER JOIN admAlmacenes AS almacen ON concepto.CIDALMASUM = almacen.CIDALMACEN
+                                    INNER JOIN bec_event_cliente_documento AS becClienteDocumento ON concepto.CCODIGOCONCEPTO = becClienteDocumento.codigo_documento
+                                    INNER JOIN bec_event_documento_encabezado AS becEncabezado ON becClienteDocumento.codigo_cliente = becEncabezado.codigo_cliente
+                                    INNER JOIN bec_event_documento_movimiento AS becMovimiento ON becEncabezado.id = becMovimiento.id_documento_encabezado
+                                    INNER JOIN admProductos as producto ON becMovimiento.codigo_producto = producto.CCODIGOPRODUCTO
 
-	                    , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto_defectuoso)
-		                            FROM    bec_event_documento_encabezado AS becEncabezadoTr 
-		                                    INNER JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
-		                            WHERE   becEncabezadoTr.tipo = 'entrada' 
-		                                    AND becMovimientoTr.procesado = 1
-		                                    AND becEncabezadoTr.id_documento_origen = becEncabezado.id
-		                                    AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
-		                ), 0) AS inventarioAveriado
-	
-                FROM    admConceptos AS concepto
-                        INNER JOIN admAlmacenes AS almacen ON concepto.CIDALMASUM = almacen.CIDALMACEN
-                        INNER JOIN bec_event_cliente_documento AS becClienteDocumento ON concepto.CCODIGOCONCEPTO = becClienteDocumento.codigo_documento
-                        INNER JOIN bec_event_documento_encabezado AS becEncabezado ON becClienteDocumento.codigo_cliente = becEncabezado.codigo_cliente
-                        INNER JOIN bec_event_documento_movimiento AS becMovimiento ON becEncabezado.id = becMovimiento.id_documento_encabezado
-                        INNER JOIN admProductos as producto ON becMovimiento.codigo_producto = producto.CCODIGOPRODUCTO
-                WHERE   concepto.CIDDOCUMENTODE = 3
-	                    AND producto.CTIPOPRODUCTO = 1		
-	                    AND becEncabezado.tipo = 'remision'
-	                    AND almacen.CIDALMACEN = @idAlmacen
-	                    AND CONVERT(date, becEncabezado.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
+                            WHERE   concepto.CIDDOCUMENTODE = 3
+	                                AND producto.CTIPOPRODUCTO = 1		
+	                                AND becEncabezado.tipo = 'remision'
+	                                AND almacen.CIDALMACEN = @idAlmacen
+	                                AND CONVERT(date, becEncabezado.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
+
+                )
+
+                SELECT  movCte.cedis
+	                    , movCte.ruta
+	                    , movCte.codigoProducto
+	                    , movCte.nombreProducto
+	                    , SUM(movCte.salidas) AS salidas
+	                    , SUM(movCte.devolucion) AS entradas
+	                    , SUM(movCte.averiado) AS averiado
+                FROM    MovimientosCTE AS movCte
+                GROUP BY 
+	                    movCte.cedis			
+	                    , movCte.ruta
+	                    , movCte.codigoProducto
+	                    , movCte.nombreProducto
                 ORDER BY 
-	                    becEncabezado.codigo_cliente
-	                    , becEncabezado.fecha_creacion
-	                    , producto.CCODIGOPRODUCTO
+	                    movCte.ruta
+	                    , movCte.codigoProducto
                 ";
 
                 List<Inventario> inventarioDetalle = conexion.Database.SqlQuery<Inventario>(query).ToList();

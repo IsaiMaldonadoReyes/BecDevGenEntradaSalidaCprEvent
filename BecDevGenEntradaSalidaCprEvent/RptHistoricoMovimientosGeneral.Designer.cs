@@ -1,7 +1,7 @@
 ﻿
 namespace BecDevGenEntradaSalidaCprEvent
 {
-    partial class RptInventarioPorAlmacen
+    partial class RptHistoricoMovimientosGeneral
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@ namespace BecDevGenEntradaSalidaCprEvent
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,19 +44,6 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // materialCard1
-            // 
-            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Depth = 0;
-            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(356, 205);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
-            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(8, 8);
-            this.materialCard1.TabIndex = 0;
-            // 
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -71,7 +57,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard2.Size = new System.Drawing.Size(394, 333);
-            this.materialCard2.TabIndex = 1;
+            this.materialCard2.TabIndex = 3;
             // 
             // tableLayoutPanel1
             // 
@@ -175,7 +161,6 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.dtpFechaFinal.Name = "dtpFechaFinal";
             this.dtpFechaFinal.Size = new System.Drawing.Size(260, 20);
             this.dtpFechaFinal.TabIndex = 6;
-            this.dtpFechaFinal.ValueChanged += new System.EventHandler(this.dtpFechaFinal_ValueChanged);
             // 
             // btnEjecutarReporte
             // 
@@ -208,17 +193,16 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.progressBar1.Size = new System.Drawing.Size(360, 9);
             this.progressBar1.TabIndex = 9;
             // 
-            // RptInventarioPorAlmacen
+            // RptHistoricoMovimientosGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 400);
             this.Controls.Add(this.materialCard2);
-            this.Controls.Add(this.materialCard1);
-            this.Name = "RptInventarioPorAlmacen";
+            this.Name = "RptHistoricoMovimientosGeneral";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Inventario por almacén";
-            this.Load += new System.EventHandler(this.RptInventarioPorAlmacen_Load);
+            this.Text = "Histórico de movimientos general";
+            this.Load += new System.EventHandler(this.RptHistoricoMovimientosGeneral_Load);
             this.materialCard2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -228,7 +212,6 @@ namespace BecDevGenEntradaSalidaCprEvent
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;

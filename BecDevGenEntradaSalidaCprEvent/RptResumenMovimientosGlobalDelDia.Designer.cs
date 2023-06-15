@@ -1,7 +1,7 @@
 ﻿
 namespace BecDevGenEntradaSalidaCprEvent
 {
-    partial class RptInventarioPorAlmacen
+    partial class RptResumenMovimientosGlobalDelDia
     {
         /// <summary>
         /// Required designer variable.
@@ -29,34 +29,23 @@ namespace BecDevGenEntradaSalidaCprEvent
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            PresentationControls.CheckBoxProperties checkBoxProperties1 = new PresentationControls.CheckBoxProperties();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbxAlmacen = new System.Windows.Forms.ComboBox();
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.btnEjecutarReporte = new MaterialSkin.Controls.MaterialButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbxTipoMovimiento = new System.Windows.Forms.ComboBox();
+            this.cbxAlmacenes = new PresentationControls.CheckBoxComboBox();
             this.materialCard2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // materialCard1
-            // 
-            this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Depth = 0;
-            this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(356, 205);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
-            this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(8, 8);
-            this.materialCard1.TabIndex = 0;
             // 
             // materialCard2
             // 
@@ -70,8 +59,8 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(394, 333);
-            this.materialCard2.TabIndex = 1;
+            this.materialCard2.Size = new System.Drawing.Size(394, 383);
+            this.materialCard2.TabIndex = 3;
             // 
             // tableLayoutPanel1
             // 
@@ -82,25 +71,29 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.cbxAlmacen, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.dtpFechaInicial, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.dtpFechaFinal, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.btnEjecutarReporte, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnEjecutarReporte, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cbxTipoMovimiento, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cbxAlmacenes, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(14, 14);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(366, 305);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(366, 355);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -149,15 +142,6 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.label4.TabIndex = 3;
             this.label4.Text = "Fecha final *";
             // 
-            // cbxAlmacen
-            // 
-            this.cbxAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxAlmacen.FormattingEnabled = true;
-            this.cbxAlmacen.Location = new System.Drawing.Point(103, 53);
-            this.cbxAlmacen.Name = "cbxAlmacen";
-            this.cbxAlmacen.Size = new System.Drawing.Size(260, 21);
-            this.cbxAlmacen.TabIndex = 4;
-            // 
             // dtpFechaInicial
             // 
             this.dtpFechaInicial.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -175,7 +159,6 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.dtpFechaFinal.Name = "dtpFechaFinal";
             this.dtpFechaFinal.Size = new System.Drawing.Size(260, 20);
             this.dtpFechaFinal.TabIndex = 6;
-            this.dtpFechaFinal.ValueChanged += new System.EventHandler(this.dtpFechaFinal_ValueChanged);
             // 
             // btnEjecutarReporte
             // 
@@ -186,7 +169,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.btnEjecutarReporte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEjecutarReporte.HighEmphasis = true;
             this.btnEjecutarReporte.Icon = null;
-            this.btnEjecutarReporte.Location = new System.Drawing.Point(4, 271);
+            this.btnEjecutarReporte.Location = new System.Drawing.Point(4, 321);
             this.btnEjecutarReporte.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnEjecutarReporte.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEjecutarReporte.Name = "btnEjecutarReporte";
@@ -203,22 +186,54 @@ namespace BecDevGenEntradaSalidaCprEvent
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.progressBar1, 2);
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(3, 233);
+            this.progressBar1.Location = new System.Drawing.Point(3, 293);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(360, 9);
             this.progressBar1.TabIndex = 9;
             // 
-            // RptInventarioPorAlmacen
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 230);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 26);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Tipo de movimientos *";
+            // 
+            // cbxTipoMovimiento
+            // 
+            this.cbxTipoMovimiento.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxTipoMovimiento.FormattingEnabled = true;
+            this.cbxTipoMovimiento.Items.AddRange(new object[] {
+            "Devoluciones",
+            "Salidas"});
+            this.cbxTipoMovimiento.Location = new System.Drawing.Point(103, 233);
+            this.cbxTipoMovimiento.Name = "cbxTipoMovimiento";
+            this.cbxTipoMovimiento.Size = new System.Drawing.Size(260, 21);
+            this.cbxTipoMovimiento.TabIndex = 12;
+            // 
+            // cbxAlmacenes
+            // 
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cbxAlmacenes.CheckBoxProperties = checkBoxProperties1;
+            this.cbxAlmacenes.DisplayMemberSingleItem = "";
+            this.cbxAlmacenes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxAlmacenes.FormattingEnabled = true;
+            this.cbxAlmacenes.Location = new System.Drawing.Point(103, 53);
+            this.cbxAlmacenes.Name = "cbxAlmacenes";
+            this.cbxAlmacenes.Size = new System.Drawing.Size(260, 21);
+            this.cbxAlmacenes.TabIndex = 13;
+            // 
+            // RptResumenMovimientosGlobalDelDia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 400);
+            this.ClientSize = new System.Drawing.Size(400, 450);
             this.Controls.Add(this.materialCard2);
-            this.Controls.Add(this.materialCard1);
-            this.Name = "RptInventarioPorAlmacen";
+            this.Name = "RptResumenMovimientosGlobalDelDia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Inventario por almacén";
-            this.Load += new System.EventHandler(this.RptInventarioPorAlmacen_Load);
+            this.Text = "Resumen de movimientos global del día";
+            this.Load += new System.EventHandler(this.RptResumenMovimientosGlobalDelDia_Load);
             this.materialCard2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -228,17 +243,19 @@ namespace BecDevGenEntradaSalidaCprEvent
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialCard materialCard1;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbxAlmacen;
         private System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
         private MaterialSkin.Controls.MaterialButton btnEjecutarReporte;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbxTipoMovimiento;
+        private PresentationControls.CheckBoxComboBox checkBoxComboBox1;
+        private PresentationControls.CheckBoxComboBox cbxAlmacenes;
     }
 }

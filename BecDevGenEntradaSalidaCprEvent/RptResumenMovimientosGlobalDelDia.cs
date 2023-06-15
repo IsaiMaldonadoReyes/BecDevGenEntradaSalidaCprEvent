@@ -14,9 +14,11 @@ using MaterialSkin.Controls;
 using Microsoft.Office.Interop.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
 
+using PresentationControls;
+
 namespace BecDevGenEntradaSalidaCprEvent
 {
-    public partial class RptInventarioPorRuta : MaterialForm
+    public partial class RptResumenMovimientosGlobalDelDia : MaterialForm
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
 
@@ -25,16 +27,13 @@ namespace BecDevGenEntradaSalidaCprEvent
         public class Inventario
         {
             public string cedis { get; set; }
-            public string ruta { get; set; }
-            public DateTime fecha { get; set; }
-            public string codigo { get; set; }
-            public string descripcion { get; set; }
-            public double inventarioTransito { get; set; }
-            public double inventarioDevolucion { get; set; }
-            public double inventarioAveriado { get; set; }
+            public string codigoProducto { get; set; }
+            public string nombreProducto { get; set; }
+            public double cantidad { get; set; }
+            public double averiado { get; set; }
         }
 
-        public RptInventarioPorRuta()
+        public RptResumenMovimientosGlobalDelDia()
         {
             InitializeComponent();
 
@@ -50,9 +49,9 @@ namespace BecDevGenEntradaSalidaCprEvent
                 MaterialSkin.TextShade.WHITE);
         }
 
-        private void RptInventarioPorRuta_Load(object sender, EventArgs e)
+        private void RptResumenMovimientosGlobalDelDia_Load(object sender, EventArgs e)
         {
-            cargarAlmacenes(cbxAlmacen);
+            cargarAlmacenes();
         }
 
         private void btnEjecutarReporte_Click(object sender, EventArgs e)
@@ -72,14 +71,34 @@ namespace BecDevGenEntradaSalidaCprEvent
             object misValue = Missing.Value;
             StringBuilder mensaje = new StringBuilder("Verifica lo siguiente:\n\n");
             string camposVacios = "";
-            string nombreReporte = "InventarioPorRuta";
+            string nombreReporte = "ResumenMovimientosGlobalDelDia";
             string tipoMensajeDevuelto = "";
-            int almacen = almacenes[cbxAlmacen.SelectedIndex].CIDALMACEN;
+            List<admAlmacenes> almacenesSeleccionados = new List<admAlmacenes>();
+            string tipoMovimiento = cbxTipoMovimiento.SelectedItem.ToString();
 
-
-            if (cbxAlmacen.SelectedIndex < 0)
+            for (var i = 0; i < cbxAlmacenes.CheckBoxItems.Count; i++)
             {
-                camposVacios += "\n \t❎ Almacén";
+                CheckBoxComboBoxItem item = cbxAlmacenes.CheckBoxItems[i];
+
+                if (item.Checked)
+                {
+                    admAlmacenes almacen = new admAlmacenes();
+
+                    almacen.CIDALMACEN = this.almacenes[i].CIDALMACEN;
+                    almacen.CNOMBREALMACEN = this.almacenes[i].CNOMBREALMACEN;
+
+                    almacenesSeleccionados.Add(almacen);
+                }
+            }
+
+
+            if (almacenesSeleccionados.Count < 0)
+            {
+                camposVacios += "\n \t❎ Almacenes";
+            }
+            if (cbxTipoMovimiento.SelectedIndex < 0)
+            {
+                camposVacios += "\n \t❎ Tipo de movimiento";
             }
 
             if (camposVacios.Equals(""))
@@ -88,28 +107,23 @@ namespace BecDevGenEntradaSalidaCprEvent
                 {
                     xlLibro = xlApp.Workbooks.Add(misValue);
 
-                    tipoMensajeDevuelto = CrearRptInventarioPorAlmacen(xlApp, xlLibro, misValue, almacen, fechaInicial, fechaFinal);
+                    tipoMensajeDevuelto = crearRpt(xlApp, xlLibro, misValue, almacenesSeleccionados, fechaInicial, fechaFinal, tipoMovimiento);
 
                     switch (tipoMensajeDevuelto)
                     {
                         case "correcto":
                             try
                             {
-
                                 progressBar1.PerformStep();
                                 xlApp.DisplayAlerts = false;
                                 xlApp.Visible = false;
                                 string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                                 xlLibro.SaveAs(mdoc + "\\" + nombreReporte + DateTime.Now.ToString("yyyy-MM-dd_HHmm") + ".xlsx", Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
 
-
                                 xlLibro.Close(true, misValue, misValue);
                                 xlApp.Quit();
                                 Marshal.ReleaseComObject(xlLibro);
                                 Marshal.ReleaseComObject(xlApp);
-
-
-
 
                                 mensaje.AppendFormat($"Archivo creado en la siguiente ruta: \n\n\n{mdoc}\\{nombreReporte}_{DateTime.Now.ToString("yyyy-MM-dd_HHmm")}.xlsx");
                                 MaterialMessageBox.Show(mensaje.ToString(), "✔️ Reporte creado correctamente");
@@ -130,9 +144,7 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                             progressBar1.Value = 0;
                             mensaje.AppendFormat("No se encontraron registros con coincidencia de los filtros seleccionados.                            \nPor favor verificque que existan registros con estos atributos y vuelva a intentarlo.");
-                            MaterialMessageBox.Show(mensaje.ToString(), "⚠︎ No existen registros disponibles");
-
-
+                            MaterialMessageBox.Show(mensaje.ToString(), "❎ Ha ocurrido un error");
 
                             break;
                     }
@@ -151,10 +163,9 @@ namespace BecDevGenEntradaSalidaCprEvent
                 progressBar1.Value = 0;
             }
 
-
         }
 
-        public string CrearRptInventarioPorAlmacen(Excel.Application xlApp, Excel.Workbook xlLibro, object misValue, int idAlmacen, DateTime fechaInicial, DateTime fechaFinal)
+        public string crearRpt(Excel.Application xlApp, Excel.Workbook xlLibro, object misValue, List<admAlmacenes> almacenesSeleccionados, DateTime fechaInicial, DateTime fechaFinal, string tipoMovimiento)
         {
 
             string tipoMensaje = "";
@@ -183,12 +194,12 @@ namespace BecDevGenEntradaSalidaCprEvent
             string color2 = "#00B050";
 
             xlHoja = (Excel.Worksheet)xlLibro.Worksheets.get_Item(1);
-            xlHoja.Name = "Inventario por ruta";
+            xlHoja.Name = tipoMovimiento.Equals("Salidas") ? "Salidas" : "Devoluciones";
             xlHoja.Activate();
 
-            MostrarEncabezadoPrincipal(xlHoja);
+            mostrarEncabezadoPrincipal(xlHoja);
 
-            xlColumna = 8;
+            xlColumna = 5;
             xlFila = 5;
             alineacionHorizontal = Excel.XlHAlign.xlHAlignCenter;
             alineacionVertical = Excel.XlVAlign.xlVAlignCenter;
@@ -196,30 +207,23 @@ namespace BecDevGenEntradaSalidaCprEvent
 
 
             /** Formato de las columnas */
-            xlHoja.get_Range("A:A").EntireColumn.NumberFormat = "@";
-            xlHoja.get_Range("B:B").EntireColumn.NumberFormat = "@";
-            xlHoja.get_Range("C:C").EntireColumn.NumberFormat = "DD/MM/YYYY";
-            xlHoja.get_Range("D:D").EntireColumn.NumberFormat = "@";
-            xlHoja.get_Range("E:E").EntireColumn.NumberFormat = "@";
-            xlHoja.get_Range("F:H").EntireColumn.NumberFormat = "0.00";
+            xlHoja.get_Range("A:C").EntireColumn.NumberFormat = "@";
+            xlHoja.get_Range("D:E").EntireColumn.NumberFormat = "0.00";
 
-            setEstiloFila(xlHoja, "A" + xlFila, "H" + xlFila, "#1B223A", "", "#C8AA3C", 10, true, true, alineacionHorizontal, alineacionVertical);
+            setEstiloFila(xlHoja, "A" + xlFila, "E" + xlFila, "#1B223A", "", "#C8AA3C", 10, true, true, alineacionHorizontal, alineacionVertical);
 
             /** Nombre de las columnas */
             xlHoja.Cells[xlFila, "A"] = "CEDIS";
-            xlHoja.Cells[xlFila, "B"] = "RUTA";
-            xlHoja.Cells[xlFila, "C"] = "FECHA";
-            xlHoja.Cells[xlFila, "D"] = "CÓDIGO";
-            xlHoja.Cells[xlFila, "E"] = "DESCRIPCIÓN";
-            xlHoja.Cells[xlFila, "F"] = "TRANSITO";
-            xlHoja.Cells[xlFila, "G"] = "DEVOLUCIÓN";
-            xlHoja.Cells[xlFila, "H"] = "DAÑADO";
+            xlHoja.Cells[xlFila, "B"] = "CÓDIGO";
+            xlHoja.Cells[xlFila, "C"] = "NOMBRE";
+            xlHoja.Cells[xlFila, "D"] = "CANTIDAD";
+            xlHoja.Cells[xlFila, "E"] = "DAÑADO";
 
             /** Fijar fila */
             xlHoja.Application.ActiveWindow.SplitRow = xlFila;
             xlHoja.Application.ActiveWindow.FreezePanes = true;
 
-            detalle = obtenerDetalle(idAlmacen, fechaInicial, fechaFinal);
+            detalle = obtenerDetalle(almacenesSeleccionados, fechaInicial, fechaFinal, tipoMovimiento);
 
             if (detalle.Count > 0)
             {
@@ -233,18 +237,13 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                 for (var i = 0; i < detalle.Count; i++)
                 {
-
                     Inventario inventario = detalle[i];
 
-
                     arrayDetalle[i, 0] = inventario.cedis;
-                    arrayDetalle[i, 1] = inventario.ruta;
-                    arrayDetalle[i, 2] = inventario.fecha;
-                    arrayDetalle[i, 3] = inventario.codigo;
-                    arrayDetalle[i, 4] = inventario.descripcion;
-                    arrayDetalle[i, 5] = inventario.inventarioTransito;
-                    arrayDetalle[i, 6] = inventario.inventarioDevolucion;
-                    arrayDetalle[i, 7] = inventario.inventarioAveriado;
+                    arrayDetalle[i, 1] = inventario.codigoProducto;
+                    arrayDetalle[i, 2] = inventario.nombreProducto;
+                    arrayDetalle[i, 3] = inventario.cantidad;
+                    arrayDetalle[i, 4] = inventario.averiado;
 
                     xlFila++;
                 }
@@ -266,11 +265,10 @@ namespace BecDevGenEntradaSalidaCprEvent
                 matrizFila = xlFila;
                 xlFila = xlFila + 2;
 
-                xlHoja.get_Range("A" + xlFila, "E" + xlFila).Merge(true);
+                xlHoja.get_Range("A" + xlFila, "C" + xlFila).Merge(true);
                 xlHoja.Cells[xlFila, "A"] = "TOTAL: ";
-                xlHoja.Cells[xlFila, "F"].FormulaLocal = string.Format("=SUMA(F6:" + "F" + matrizFila);
-                xlHoja.Cells[xlFila, "G"].FormulaLocal = string.Format("=SUMA(G6:" + "G" + matrizFila);
-                xlHoja.Cells[xlFila, "H"].FormulaLocal = string.Format("=SUMA(H6:" + "H" + matrizFila);
+                xlHoja.Cells[xlFila, "D"].FormulaLocal = string.Format("=SUMA(D6:" + "D" + matrizFila);
+                xlHoja.Cells[xlFila, "E"].FormulaLocal = string.Format("=SUMA(E6:" + "E" + matrizFila);
 
                 /** Ancho de las columnas */
                 xlHoja.get_Range("A:H").EntireColumn.AutoFit();
@@ -301,7 +299,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             return tipoMensaje;
         }
 
-        public void MostrarEncabezadoPrincipal(Excel.Worksheet xlHoja)
+        public void mostrarEncabezadoPrincipal(Excel.Worksheet xlHoja)
         {
             Excel.XlHAlign alineacionHorizontal;
             Excel.XlVAlign alineacionVertical;
@@ -316,7 +314,7 @@ namespace BecDevGenEntradaSalidaCprEvent
 
             setEstiloFila(xlHoja, "A2", "G2", "", "", "#1E233A", 10, true, true, alineacionHorizontal, alineacionVertical);
             xlHoja.get_Range("A2", "G2").Merge(true);
-            xlHoja.Cells[2, 1] = "Inventario por ruta";
+            xlHoja.Cells[2, 1] = "Resumen de movimientos global del día";
 
             setEstiloFila(xlHoja, "A3", "G3", "", "", "#AEAAAA", 8, false, true, alineacionHorizontal, alineacionVertical);
             xlHoja.get_Range("A3", "G3").Merge(true);
@@ -361,7 +359,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             range.VerticalAlignment = textAlignV;
         }
 
-        public List<Inventario> obtenerDetalle(int idAlmacen, DateTime fechaInicial, DateTime fechaFinal)
+        public List<Inventario> obtenerDetalle(List<admAlmacenes> almacenesSeleccionados, DateTime fechaInicial, DateTime fechaFinal, string tipoMovimiento)
         {
 
             using (adConexionDB conexion = new adConexionDB())
@@ -369,49 +367,47 @@ namespace BecDevGenEntradaSalidaCprEvent
                 string fechaInicio = fechaInicial.ToString("yyyy-MM-dd");
                 string fechaFin = fechaFinal.ToString("yyyy-MM-dd");
                 string query = "";
-                int mes = fechaInicial.Month - 1;
+                string queryWhere = "";
+                int[] idAlmacenesSeleccionados = new int[almacenesSeleccionados.Count];
+                
+
+                for (var i = 0; i < almacenesSeleccionados.Count; i++)
+                {
+                    admAlmacenes almacen = almacenesSeleccionados[i];
+
+                    idAlmacenesSeleccionados[i] = almacen.CIDALMACEN;
+                }
+
+                string[] numberStrings = Array.ConvertAll(idAlmacenesSeleccionados, x => x.ToString());
+
+                string numbersAsString = string.Join(", ", numberStrings);
+
+                if (tipoMovimiento.Equals("Devoluciones"))
+                {
+                    queryWhere += $@"
+                    AND becMovimiento.procesado = 1
+	                AND becEncabezado.tipo = 'entrada'
+                    ";
+                } else if (tipoMovimiento.Equals("Salidas"))
+                {
+                    queryWhere += $@"
+                    AND becEncabezado.tipo = 'remision'
+	                AND becEncabezado.estado = 'pendiente'
+                    ";
+                }
+
                 query += $@"
-                DECLARE @idAlmacen INT;
                 DECLARE @fechaInicio DATETIME;
                 DECLARE @fechaFin DATETIME;
 
-
-                SET @idAlmacen = {idAlmacen};
                 SET @fechaInicio = '{fechaInicio}';
                 SET @fechaFin = '{fechaFin}';
 
                 SELECT  almacen.CCODIGOALMACEN			AS cedis
-	                    , becEncabezado.codigo_cliente	AS ruta
-	                    , becEncabezado.fecha_creacion	AS fecha
-	                    , producto.CCODIGOPRODUCTO		AS codigo
-	                    , producto.CNOMBREPRODUCTO		AS descripcion
-	                    , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto)
-		                            FROM    bec_event_documento_encabezado AS becEncabezadoTr 
-		                                    INNER JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
-		                            WHERE   becEncabezadoTr.tipo = 'remision' 
-		                                    AND becEncabezadoTr.estado = 'pendiente'
-		                                    AND becMovimientoTr.procesado = 1
-		                                    AND becEncabezadoTr.id = becEncabezado.id
-		                                    AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
-		                ), 0) AS inventarioTransito
-	                    , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto)
-		                            FROM    bec_event_documento_encabezado AS becEncabezadoTr 
-		                            INNER   JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
-		                            WHERE   becEncabezadoTr.tipo = 'entrada' 
-		                                    AND becMovimientoTr.procesado = 1
-		                                    AND becEncabezadoTr.id_documento_origen = becEncabezado.id
-		                                    AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
-		                ), 0) AS inventarioDevolucion	
-
-	                    , ISNULL((  SELECT  SUM(becMovimientoTr.cantidad_producto_defectuoso)
-		                            FROM    bec_event_documento_encabezado AS becEncabezadoTr 
-		                                    INNER JOIN bec_event_documento_movimiento AS becMovimientoTr ON becEncabezadoTr.id = becMovimientoTr.id_documento_encabezado AND becMovimientoTr.codigo_producto = producto.CCODIGOPRODUCTO 
-		                            WHERE   becEncabezadoTr.tipo = 'entrada' 
-		                                    AND becMovimientoTr.procesado = 1
-		                                    AND becEncabezadoTr.id_documento_origen = becEncabezado.id
-		                                    AND CONVERT(date, becEncabezadoTr.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
-		                ), 0) AS inventarioAveriado
-	
+                        , producto.CCODIGOPRODUCTO		AS codigoProducto
+	                    , producto.CNOMBREPRODUCTO		AS nombreProducto
+	                    , ISNULL(SUM (becMovimiento.cantidad_producto), 0) AS cantidad
+	                    , ISNULL(SUM (becMovimiento.cantidad_producto_defectuoso), 0) AS averiado
                 FROM    admConceptos AS concepto
                         INNER JOIN admAlmacenes AS almacen ON concepto.CIDALMASUM = almacen.CIDALMACEN
                         INNER JOIN bec_event_cliente_documento AS becClienteDocumento ON concepto.CCODIGOCONCEPTO = becClienteDocumento.codigo_documento
@@ -419,25 +415,26 @@ namespace BecDevGenEntradaSalidaCprEvent
                         INNER JOIN bec_event_documento_movimiento AS becMovimiento ON becEncabezado.id = becMovimiento.id_documento_encabezado
                         INNER JOIN admProductos as producto ON becMovimiento.codigo_producto = producto.CCODIGOPRODUCTO
                 WHERE   concepto.CIDDOCUMENTODE = 3
-	                    AND producto.CTIPOPRODUCTO = 1		
-	                    AND becEncabezado.tipo = 'remision'
-	                    AND almacen.CIDALMACEN = @idAlmacen
+	                    AND producto.CTIPOPRODUCTO = 1
+	                    {queryWhere}
+	                    AND almacen.CIDALMACEN IN ({numbersAsString})
 	                    AND CONVERT(date, becEncabezado.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
-                ORDER BY 
-	                    becEncabezado.codigo_cliente
-	                    , becEncabezado.fecha_creacion
+                GROUP BY 
+	                    almacen.CCODIGOALMACEN
 	                    , producto.CCODIGOPRODUCTO
+	                    , producto.CNOMBREPRODUCTO
+	
+                ORDER BY 
+                        producto.CCODIGOPRODUCTO
                 ";
 
                 List<Inventario> inventarioDetalle = conexion.Database.SqlQuery<Inventario>(query).ToList();
 
-
                 return inventarioDetalle;
-
             }
         }
 
-        public void cargarAlmacenes(ComboBox combo)
+        public void cargarAlmacenes()
         {
             using (adConexionDB conexion = new adConexionDB())
             {
@@ -462,7 +459,7 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                 foreach (admAlmacenes almacen in almacenes)
                 {
-                    combo.Items.Add(almacen.CIDALMACEN + " | " + almacen.CNOMBREALMACEN);
+                    cbxAlmacenes.Items.Add(almacen.CIDALMACEN + " | " + almacen.CNOMBREALMACEN);
                 }
             }
         }
@@ -476,7 +473,5 @@ namespace BecDevGenEntradaSalidaCprEvent
                 MaterialMessageBox.Show(mensaje.ToString(), "❎ Rango de fechas incorrecto");
             }
         }
-
-
     }
 }

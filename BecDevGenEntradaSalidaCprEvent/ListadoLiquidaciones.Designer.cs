@@ -41,6 +41,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -92,15 +93,14 @@
             this.btnRptInventarioPorRuta = new MaterialSkin.Controls.MaterialButton();
             this.btnRptHistoricoMovimientosGeneral = new MaterialSkin.Controls.MaterialButton();
             this.btnRptHistoricoMovimientosPorRuta = new MaterialSkin.Controls.MaterialButton();
-            this.btnRptResumenMovimientosDevoluciones = new MaterialSkin.Controls.MaterialButton();
-            this.btnRptResumenMovimientosSalidas = new MaterialSkin.Controls.MaterialButton();
+            this.btnRptResumenMovimientosGlobalDelDia = new MaterialSkin.Controls.MaterialButton();
+            this.btnRptResumenMovimientosDetalladoPorRuta = new MaterialSkin.Controls.MaterialButton();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRptResumenMovimientosDetallado = new MaterialSkin.Controls.MaterialButton();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
             btnSalidaActualizar = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -878,10 +878,8 @@
             this.tableLayoutPanel5.Controls.Add(this.btnRptInventarioPorRuta, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.btnRptHistoricoMovimientosGeneral, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.btnRptHistoricoMovimientosPorRuta, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.btnRptResumenMovimientosDevoluciones, 1, 4);
-            this.tableLayoutPanel5.Controls.Add(this.btnRptResumenMovimientosSalidas, 1, 5);
-            this.tableLayoutPanel5.Controls.Add(this.btnRptResumenMovimientosDetallado, 1, 6);
-            this.tableLayoutPanel5.Controls.Add(this.progressBar1, 0, 7);
+            this.tableLayoutPanel5.Controls.Add(this.btnRptResumenMovimientosGlobalDelDia, 1, 4);
+            this.tableLayoutPanel5.Controls.Add(this.btnRptResumenMovimientosDetalladoPorRuta, 1, 5);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(14, 14);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -938,6 +936,7 @@
             this.btnRptInventarioPorRuta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnRptInventarioPorRuta.UseAccentColor = false;
             this.btnRptInventarioPorRuta.UseVisualStyleBackColor = true;
+            this.btnRptInventarioPorRuta.Click += new System.EventHandler(this.btnRptInventarioPorRuta_Click);
             // 
             // btnRptHistoricoMovimientosGeneral
             // 
@@ -958,6 +957,7 @@
             this.btnRptHistoricoMovimientosGeneral.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnRptHistoricoMovimientosGeneral.UseAccentColor = false;
             this.btnRptHistoricoMovimientosGeneral.UseVisualStyleBackColor = true;
+            this.btnRptHistoricoMovimientosGeneral.Click += new System.EventHandler(this.btnRptHistoricoMovimientosGeneral_Click);
             // 
             // btnRptHistoricoMovimientosPorRuta
             // 
@@ -978,46 +978,49 @@
             this.btnRptHistoricoMovimientosPorRuta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnRptHistoricoMovimientosPorRuta.UseAccentColor = false;
             this.btnRptHistoricoMovimientosPorRuta.UseVisualStyleBackColor = true;
+            this.btnRptHistoricoMovimientosPorRuta.Click += new System.EventHandler(this.btnRptHistoricoMovimientosPorRuta_Click);
             // 
-            // btnRptResumenMovimientosDevoluciones
+            // btnRptResumenMovimientosGlobalDelDia
             // 
-            this.btnRptResumenMovimientosDevoluciones.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRptResumenMovimientosDevoluciones.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnRptResumenMovimientosDevoluciones.Depth = 0;
-            this.btnRptResumenMovimientosDevoluciones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRptResumenMovimientosDevoluciones.HighEmphasis = true;
-            this.btnRptResumenMovimientosDevoluciones.Icon = null;
-            this.btnRptResumenMovimientosDevoluciones.Location = new System.Drawing.Point(200, 246);
-            this.btnRptResumenMovimientosDevoluciones.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnRptResumenMovimientosDevoluciones.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnRptResumenMovimientosDevoluciones.Name = "btnRptResumenMovimientosDevoluciones";
-            this.btnRptResumenMovimientosDevoluciones.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptResumenMovimientosDevoluciones.Size = new System.Drawing.Size(342, 48);
-            this.btnRptResumenMovimientosDevoluciones.TabIndex = 4;
-            this.btnRptResumenMovimientosDevoluciones.Text = "Resumen de movimientos (Devoluciones)";
-            this.btnRptResumenMovimientosDevoluciones.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnRptResumenMovimientosDevoluciones.UseAccentColor = false;
-            this.btnRptResumenMovimientosDevoluciones.UseVisualStyleBackColor = true;
+            this.btnRptResumenMovimientosGlobalDelDia.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRptResumenMovimientosGlobalDelDia.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnRptResumenMovimientosGlobalDelDia.Depth = 0;
+            this.btnRptResumenMovimientosGlobalDelDia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRptResumenMovimientosGlobalDelDia.HighEmphasis = true;
+            this.btnRptResumenMovimientosGlobalDelDia.Icon = null;
+            this.btnRptResumenMovimientosGlobalDelDia.Location = new System.Drawing.Point(200, 246);
+            this.btnRptResumenMovimientosGlobalDelDia.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptResumenMovimientosGlobalDelDia.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRptResumenMovimientosGlobalDelDia.Name = "btnRptResumenMovimientosGlobalDelDia";
+            this.btnRptResumenMovimientosGlobalDelDia.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnRptResumenMovimientosGlobalDelDia.Size = new System.Drawing.Size(342, 48);
+            this.btnRptResumenMovimientosGlobalDelDia.TabIndex = 4;
+            this.btnRptResumenMovimientosGlobalDelDia.Text = "Resumen de movimientos global del día";
+            this.btnRptResumenMovimientosGlobalDelDia.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnRptResumenMovimientosGlobalDelDia.UseAccentColor = false;
+            this.btnRptResumenMovimientosGlobalDelDia.UseVisualStyleBackColor = true;
+            this.btnRptResumenMovimientosGlobalDelDia.Click += new System.EventHandler(this.btnRptResumenMovimientosGlobalDelDia_Click);
             // 
-            // btnRptResumenMovimientosSalidas
+            // btnRptResumenMovimientosDetalladoPorRuta
             // 
-            this.btnRptResumenMovimientosSalidas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRptResumenMovimientosSalidas.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnRptResumenMovimientosSalidas.Depth = 0;
-            this.btnRptResumenMovimientosSalidas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRptResumenMovimientosSalidas.HighEmphasis = true;
-            this.btnRptResumenMovimientosSalidas.Icon = null;
-            this.btnRptResumenMovimientosSalidas.Location = new System.Drawing.Point(200, 306);
-            this.btnRptResumenMovimientosSalidas.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnRptResumenMovimientosSalidas.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnRptResumenMovimientosSalidas.Name = "btnRptResumenMovimientosSalidas";
-            this.btnRptResumenMovimientosSalidas.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptResumenMovimientosSalidas.Size = new System.Drawing.Size(342, 48);
-            this.btnRptResumenMovimientosSalidas.TabIndex = 5;
-            this.btnRptResumenMovimientosSalidas.Text = "Resumen de movimientos (Salidas)";
-            this.btnRptResumenMovimientosSalidas.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnRptResumenMovimientosSalidas.UseAccentColor = false;
-            this.btnRptResumenMovimientosSalidas.UseVisualStyleBackColor = true;
+            this.btnRptResumenMovimientosDetalladoPorRuta.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Depth = 0;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRptResumenMovimientosDetalladoPorRuta.HighEmphasis = true;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Icon = null;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Location = new System.Drawing.Point(200, 306);
+            this.btnRptResumenMovimientosDetalladoPorRuta.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptResumenMovimientosDetalladoPorRuta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Name = "btnRptResumenMovimientosDetalladoPorRuta";
+            this.btnRptResumenMovimientosDetalladoPorRuta.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Size = new System.Drawing.Size(342, 48);
+            this.btnRptResumenMovimientosDetalladoPorRuta.TabIndex = 6;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Text = "Resumen de movimientos detallado por ruta";
+            this.btnRptResumenMovimientosDetalladoPorRuta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnRptResumenMovimientosDetalladoPorRuta.UseAccentColor = false;
+            this.btnRptResumenMovimientosDetalladoPorRuta.UseVisualStyleBackColor = true;
+            this.btnRptResumenMovimientosDetalladoPorRuta.Click += new System.EventHandler(this.btnRptResumenMovimientosDetalladoPorRuta_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -1086,34 +1089,23 @@
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
-            // btnRptResumenMovimientosDetallado
+            // dataGridViewImageColumn4
             // 
-            this.btnRptResumenMovimientosDetallado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnRptResumenMovimientosDetallado.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnRptResumenMovimientosDetallado.Depth = 0;
-            this.btnRptResumenMovimientosDetallado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRptResumenMovimientosDetallado.HighEmphasis = true;
-            this.btnRptResumenMovimientosDetallado.Icon = null;
-            this.btnRptResumenMovimientosDetallado.Location = new System.Drawing.Point(200, 366);
-            this.btnRptResumenMovimientosDetallado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnRptResumenMovimientosDetallado.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnRptResumenMovimientosDetallado.Name = "btnRptResumenMovimientosDetallado";
-            this.btnRptResumenMovimientosDetallado.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptResumenMovimientosDetallado.Size = new System.Drawing.Size(342, 48);
-            this.btnRptResumenMovimientosDetallado.TabIndex = 6;
-            this.btnRptResumenMovimientosDetallado.Text = "Resumen de movimientos detallado por ruta";
-            this.btnRptResumenMovimientosDetallado.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnRptResumenMovimientosDetallado.UseAccentColor = false;
-            this.btnRptResumenMovimientosDetallado.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.tableLayoutPanel5.SetColumnSpan(this.progressBar1, 3);
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(3, 423);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(736, 9);
-            this.progressBar1.TabIndex = 7;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle11.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle11.NullValue")));
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(10);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
+            this.dataGridViewImageColumn4.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewImageColumn4.FillWeight = 10F;
+            this.dataGridViewImageColumn4.HeaderText = "Abono";
+            this.dataGridViewImageColumn4.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn4.Image")));
+            this.dataGridViewImageColumn4.MinimumWidth = 30;
+            this.dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
+            this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn4.ToolTipText = "Abono";
+            this.dataGridViewImageColumn4.Width = 30;
             // 
             // ListadoLiquidaciones
             // 
@@ -1210,9 +1202,8 @@
         private MaterialSkin.Controls.MaterialButton btnRptInventarioPorRuta;
         private MaterialSkin.Controls.MaterialButton btnRptHistoricoMovimientosGeneral;
         private MaterialSkin.Controls.MaterialButton btnRptHistoricoMovimientosPorRuta;
-        private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosDevoluciones;
-        private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosSalidas;
-        private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosDetallado;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosGlobalDelDia;
+        private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosDetalladoPorRuta;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
     }
 }

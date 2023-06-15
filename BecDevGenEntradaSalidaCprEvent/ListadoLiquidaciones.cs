@@ -444,5 +444,35 @@ namespace BecDevGenEntradaSalidaCprEvent
             RptInventarioPorAlmacen rptInventarioPorAlmacen = new RptInventarioPorAlmacen();
             rptInventarioPorAlmacen.ShowDialog();
         }
+
+        private void btnRptInventarioPorRuta_Click(object sender, EventArgs e)
+        {
+            RptInventarioPorRuta rptInventarioPorRuta = new RptInventarioPorRuta();
+            rptInventarioPorRuta.ShowDialog();
+        }
+
+        private void btnRptHistoricoMovimientosGeneral_Click(object sender, EventArgs e)
+        {
+            RptHistoricoMovimientosGeneral rptHistoricoMovimientosGeneral = new RptHistoricoMovimientosGeneral();
+            rptHistoricoMovimientosGeneral.ShowDialog();
+        }
+
+        private void btnRptHistoricoMovimientosPorRuta_Click(object sender, EventArgs e)
+        {
+            RptHistoricoMovimientosPorRuta rptHistoricoMovimientosPorRuta = new RptHistoricoMovimientosPorRuta();
+            rptHistoricoMovimientosPorRuta.ShowDialog();
+        }
+
+        private void btnRptResumenMovimientosGlobalDelDia_Click(object sender, EventArgs e)
+        {
+            RptResumenMovimientosGlobalDelDia rptResumenMovimientosGlobalDelDia = new RptResumenMovimientosGlobalDelDia();
+            rptResumenMovimientosGlobalDelDia.ShowDialog();
+        }
+
+        private void btnRptResumenMovimientosDetalladoPorRuta_Click(object sender, EventArgs e)
+        {
+            RptResumenMovimientosDetalladoPorRuta rptResumenMovimientosDetalladoPorRuta = new RptResumenMovimientosDetalladoPorRuta();
+            rptResumenMovimientosDetalladoPorRuta.ShowDialog();
+        }
     }
 }

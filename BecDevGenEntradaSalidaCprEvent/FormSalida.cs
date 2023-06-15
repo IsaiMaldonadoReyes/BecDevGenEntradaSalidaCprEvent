@@ -422,6 +422,10 @@ namespace BecDevGenEntradaSalidaCprEvent
                                         objMovimiento.id_movimiento_contpaq = idMovimiento;
                                         adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
                                         adConnect.SaveChanges();
+
+                                        string actualizarMovimientosHistoria = $"UPDATE bec_event_historia_movimiento SET procesado = 1,  id_movimiento_contpaq = {idMovimiento} WHERE id_documento_movimiento = {objMovimiento.id} ";
+                                        adConnect.Database.ExecuteSqlCommand(actualizarMovimientosHistoria);
+
                                     }
                                 }
 
@@ -462,10 +466,12 @@ namespace BecDevGenEntradaSalidaCprEvent
                                                  where clie.CCODIGOCONCEPTO == documentoSalida.codigo_documento
                                                  select new { alm.CCODIGOALMACEN, clie.CNOMBRECONCEPTO }).FirstOrDefault();
 
-                        var movimientosSalida = (from movimientos in adConnect.bec_event_historia_movimiento
-                                                 where movimientos.id_documento_encabezado == salidaPendiente.id
+
+                        var movimientosSalida = (from movimientos in adConnect.bec_event_documento_movimiento
+                                                 where movimientos.id_documento_encabezado == Documento.IdDocumento
                                                  && movimientos.id_movimiento_contpaq == null
                                                  select movimientos).ToList();
+
 
                         foreach (var objMovimiento in movimientosSalida)
                         {
@@ -477,7 +483,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                             {
                                 aCodAlmacen = almacenXDocumento.CCODIGOALMACEN,
                                 aCodProdSer = objMovimiento.codigo_producto,
-                                aUnidades = Convert.ToDouble(objMovimiento.cantidad),
+                                aUnidades = Convert.ToDouble(objMovimiento.cantidad_producto),
                             };
 
                             controlErrorSDK = SDK.fAltaMovimiento(idDocumento, ref idMovimiento, ref tMov);
@@ -493,6 +499,91 @@ namespace BecDevGenEntradaSalidaCprEvent
                                 objMovimiento.id_movimiento_contpaq = idMovimiento;
                                 adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
                                 adConnect.SaveChanges();
+                            }
+                        }
+
+                        var movimientosSalidaHistoria = (from movimientos in adConnect.bec_event_historia_movimiento
+                                                         where movimientos.id_documento_encabezado == salidaPendiente.id
+                                                         && movimientos.id_movimiento_contpaq == null
+                                                         select movimientos).ToList();
+
+
+                        foreach (var objMovimiento in movimientosSalidaHistoria)
+                        {
+                            idDocumento = (int)salidaPendiente.id_contpaq_documento;
+
+                            var movimientosOrigen = (from movimientos in adConnect.bec_event_documento_movimiento
+                                                     where movimientos.id == objMovimiento.id_documento_movimiento
+                                                     select movimientos).FirstOrDefault();
+                            SDK.fBuscarIdDocumento(idDocumento);
+                            if (movimientosOrigen != null)
+                            {
+                                if (movimientosOrigen.id_movimiento_contpaq == null)
+                                {
+                                    SDK.tMovimiento tMov = new SDK.tMovimiento
+                                    {
+                                        aCodAlmacen = almacenXDocumento.CCODIGOALMACEN,
+                                        aCodProdSer = objMovimiento.codigo_producto,
+                                        aUnidades = Convert.ToDouble(objMovimiento.cantidad),
+                                    };
+
+                                    controlErrorSDK = SDK.fAltaMovimiento(idDocumento, ref idMovimiento, ref tMov);
+
+                                    if (controlErrorSDK != 0)
+                                    {
+                                        SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+                                        mensajeError += $"\n \t Error en la creación del movimiento del documento: {serieDocumento}{folioDocumento}, código del producto: {objMovimiento.codigo_producto} - {InterpreteSDK} \n";
+                                    }
+                                    else
+                                    {
+                                        movimientosOrigen.id_movimiento_contpaq = idMovimiento;
+                                        movimientosOrigen.procesado = true;
+                                        adConnect.Entry(movimientosOrigen).State = System.Data.Entity.EntityState.Modified;
+
+                                        objMovimiento.procesado = true;
+                                        objMovimiento.id_movimiento_contpaq = idMovimiento;
+                                        adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
+                                        adConnect.SaveChanges();
+                                    }
+                                }
+                                else
+                                {
+
+                                    SDK.fBuscarIdMovimiento(Convert.ToInt32(movimientosOrigen.id_movimiento_contpaq));
+                                    SDK.fEditarMovimiento();
+                                    SDK.fSetDatoMovimiento("CUNIDADESCAPTURADAS", movimientosOrigen.cantidad_producto.ToString());
+                                    SDK.fGuardaMovimiento();
+
+                                    objMovimiento.procesado = true;
+                                    objMovimiento.id_movimiento_contpaq = movimientosOrigen.id_movimiento_contpaq;
+                                    adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
+                                    adConnect.SaveChanges();
+                                }
+                            }
+                            else
+                            {
+
+                                SDK.tMovimiento tMov = new SDK.tMovimiento
+                                {
+                                    aCodAlmacen = almacenXDocumento.CCODIGOALMACEN,
+                                    aCodProdSer = objMovimiento.codigo_producto,
+                                    aUnidades = Convert.ToDouble(objMovimiento.cantidad),
+                                };
+
+                                controlErrorSDK = SDK.fAltaMovimiento(idDocumento, ref idMovimiento, ref tMov);
+
+                                if (controlErrorSDK != 0)
+                                {
+                                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
+                                    mensajeError += $"\n \t Error en la creación del movimiento del documento: {serieDocumento}{folioDocumento}, código del producto: {objMovimiento.codigo_producto} - {InterpreteSDK} \n";
+                                }
+                                else
+                                {
+                                    objMovimiento.procesado = true;
+                                    objMovimiento.id_movimiento_contpaq = idMovimiento;
+                                    adConnect.Entry(objMovimiento).State = System.Data.Entity.EntityState.Modified;
+                                    adConnect.SaveChanges();
+                                }
                             }
                         }
 

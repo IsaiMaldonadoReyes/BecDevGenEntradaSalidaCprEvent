@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CheckBoxComboBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CheckBoxComboBox\bin\Debug\CheckBoxComboBox.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -197,6 +201,18 @@
     <Compile Include="ListadoLiquidaciones.Designer.cs">
       <DependentUpon>ListadoLiquidaciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptHistoricoMovimientosGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RptHistoricoMovimientosGeneral.Designer.cs">
+      <DependentUpon>RptHistoricoMovimientosGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptHistoricoMovimientosPorRuta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RptHistoricoMovimientosPorRuta.Designer.cs">
+      <DependentUpon>RptHistoricoMovimientosPorRuta.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptInventarioPorAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +224,18 @@
     </Compile>
     <Compile Include="RptInventarioPorRuta.Designer.cs">
       <DependentUpon>RptInventarioPorRuta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptResumenMovimientosDetalladoPorRuta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RptResumenMovimientosDetalladoPorRuta.Designer.cs">
+      <DependentUpon>RptResumenMovimientosDetalladoPorRuta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptResumenMovimientosGlobalDelDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RptResumenMovimientosGlobalDelDia.Designer.cs">
+      <DependentUpon>RptResumenMovimientosGlobalDelDia.cs</DependentUpon>
     </Compile>
     <Compile Include="SDK.cs" />
     <Compile Include="Sesion\Documento.cs" />
@@ -254,11 +282,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RptHistoricoMovimientosGeneral.resx">
+      <DependentUpon>RptHistoricoMovimientosGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptHistoricoMovimientosPorRuta.resx">
+      <DependentUpon>RptHistoricoMovimientosPorRuta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptInventarioPorAlmacen.resx">
       <DependentUpon>RptInventarioPorAlmacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RptInventarioPorRuta.resx">
       <DependentUpon>RptInventarioPorRuta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptResumenMovimientosDetalladoPorRuta.resx">
+      <DependentUpon>RptResumenMovimientosDetalladoPorRuta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptResumenMovimientosGlobalDelDia.resx">
+      <DependentUpon>RptResumenMovimientosGlobalDelDia.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="ConexionDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
