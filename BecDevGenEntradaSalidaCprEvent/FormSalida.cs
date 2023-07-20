@@ -324,7 +324,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del SetCurrentDirectory");
                 }
                 controlErrorSDK = SDK.fInicioSesionSDK(Usuario, Password);
-                SDK.fInicioSesionSDKCONTPAQi("SUPERVISOR", "");
+//                SDK.fInicioSesionSDKCONTPAQi("SUPERVISOR", "");
                 if (controlErrorSDK != 0)
                 {
                     SDK.fError(controlErrorSDK, InterpreteSDK, 255);

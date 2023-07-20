@@ -429,14 +429,24 @@ namespace BecDevGenEntradaSalidaCprEvent
                             {
                                 foreach (var objMovimientoSalida in existenSalidas)
                                 {
+                                    var almacenXSalida = (from mvSalida in adConnect.bec_event_documento_movimiento
+                                                          join hdSalida in adConnect.bec_event_documento_encabezado on mvSalida.id_documento_encabezado equals hdSalida.id
 
-                                    var almacenXSalida = (from mov in adConnect.admMovimientos
-                                                          join pro in adConnect.admProductos on mov.CIDPRODUCTO equals pro.CIDPRODUCTO
-                                                          join alm in adConnect.admAlmacenes on mov.CIDALMACEN equals alm.CIDALMACEN
-                                                          join remision in adConnect.bec_event_documento_movimiento on mov.CIDMOVTOOWNER equals remision.id_movimiento_contpaq
-                                                          where pro.CCODIGOPRODUCTO == objMovimientoSalida.codigo_producto
-                                                          && remision.tipo == "remision"
-                                                          select new { alm.CCODIGOALMACEN, mov.CUNIDADESCAPTURADAS }).FirstOrDefault();
+                                                          join hdRemision in adConnect.bec_event_documento_encabezado on hdSalida.id_documento_origen equals hdRemision.id
+                                                          join mvRemision in adConnect.bec_event_documento_movimiento on hdRemision.id equals mvRemision.id_documento_encabezado
+
+                                                          join movComercial in adConnect.admMovimientos on mvRemision.id_movimiento_contpaq equals movComercial.CIDMOVTOOWNER
+                                                          join proComercial in adConnect.admProductos on movComercial.CIDPRODUCTO equals proComercial.CIDPRODUCTO
+                                                          join almComercial in adConnect.admAlmacenes on movComercial.CIDALMACEN equals almComercial.CIDALMACEN
+                                                          where mvSalida.codigo_producto == objMovimientoSalida.codigo_producto
+                                                          && mvRemision.codigo_producto == objMovimientoSalida.codigo_producto
+                                                          && hdSalida.tipo == "salida"
+                                                          && hdRemision.tipo == "remision"
+                                                          && mvSalida.tipo == "salida"
+                                                          && mvRemision.tipo == "remision"
+                                                          && mvSalida.id == objMovimientoSalida.id
+
+                                                          select new { almComercial.CCODIGOALMACEN}).FirstOrDefault();
 
                                     SDK.fBuscarIdDocumento(idDocumentoSalida);
 
@@ -528,13 +538,26 @@ namespace BecDevGenEntradaSalidaCprEvent
                                                 }
                                                 if (objMovimientoEntrada.cantidad_producto > 0)
                                                 {
-                                                    var almacenXEntrada = (from mov in adConnect.admMovimientos
-                                                                           join pro in adConnect.admProductos on mov.CIDPRODUCTO equals pro.CIDPRODUCTO
-                                                                           join alm in adConnect.admAlmacenes on mov.CIDALMACEN equals alm.CIDALMACEN
-                                                                           join remision in adConnect.bec_event_documento_movimiento on mov.CIDMOVIMIENTO equals remision.id_movimiento_contpaq
-                                                                           where pro.CCODIGOPRODUCTO == objMovimientoEntrada.codigo_producto
-                                                                           && remision.tipo == "remision"
-                                                                           select new { alm.CCODIGOALMACEN, mov.CUNIDADESCAPTURADAS }).FirstOrDefault();
+
+                                                    var almacenXEntrada = (from mvSalida in adConnect.bec_event_documento_movimiento
+                                                                          join hdSalida in adConnect.bec_event_documento_encabezado on mvSalida.id_documento_encabezado equals hdSalida.id
+
+                                                                          join hdRemision in adConnect.bec_event_documento_encabezado on hdSalida.id_documento_origen equals hdRemision.id
+                                                                          join mvRemision in adConnect.bec_event_documento_movimiento on hdRemision.id equals mvRemision.id_documento_encabezado
+
+                                                                          join movComercial in adConnect.admMovimientos on mvRemision.id_movimiento_contpaq equals movComercial.CIDMOVTOOWNER
+                                                                          join proComercial in adConnect.admProductos on movComercial.CIDPRODUCTO equals proComercial.CIDPRODUCTO
+                                                                          join almComercial in adConnect.admAlmacenes on movComercial.CIDALMACEN equals almComercial.CIDALMACEN
+                                                                          where mvSalida.codigo_producto == objMovimientoEntrada.codigo_producto
+                                                                          && mvRemision.codigo_producto == objMovimientoEntrada.codigo_producto
+                                                                          && hdSalida.tipo == "entrada"
+                                                                          && hdRemision.tipo == "remision"
+                                                                          && mvSalida.tipo == "entrada"
+                                                                          && mvRemision.tipo == "remision"
+                                                                          && mvSalida.id == objMovimientoEntrada.id
+
+                                                                          select new { almComercial.CCODIGOALMACEN }).FirstOrDefault();
+
 
                                                     SDK.tMovimiento tMovEntrada = new SDK.tMovimiento
                                                     {
@@ -658,7 +681,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                     string updateEncabezadoRemision = $" UPDATE bec_event_documento_encabezado SET estado = 'terminada' WHERE id = {idRemisionOrigen}";
                                     adConnect.Database.ExecuteSqlCommand(updateEncabezadoRemision);
 
-                                    mensaje.AppendFormat($"Liquidación completada correctamente. \n\n");
+                                    mensaje.AppendFormat($"Liquidación completada correctamente. \n\n"); 
                                     MaterialMessageBox.Show(mensaje.ToString(), "✔️ Liquidación creada correctamente.                                             ");
 
                                     ListadoSalidas formPrincipal = new ListadoSalidas();
