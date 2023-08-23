@@ -37,9 +37,9 @@ namespace BecDevGenEntradaSalidaCprEvent
         public virtual DbSet<admProductos> admProductos { get; set; }
         public virtual DbSet<admUnidadesMedidaPeso> admUnidadesMedidaPeso { get; set; }
         public virtual DbSet<bec_event_documento_abono> bec_event_documento_abono { get; set; }
-        public virtual DbSet<bec_event_cliente_documento> bec_event_cliente_documento { get; set; }
         public virtual DbSet<bec_event_documento_encabezado> bec_event_documento_encabezado { get; set; }
         public virtual DbSet<bec_event_documento_movimiento> bec_event_documento_movimiento { get; set; }
         public virtual DbSet<bec_event_historia_movimiento> bec_event_historia_movimiento { get; set; }
+        public virtual DbSet<bec_event_cliente_documento> bec_event_cliente_documento { get; set; }
     }
 }

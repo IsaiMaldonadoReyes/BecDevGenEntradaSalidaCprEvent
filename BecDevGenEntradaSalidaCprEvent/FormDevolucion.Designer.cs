@@ -44,7 +44,6 @@
             this.btnDevolucionCompletar = new System.Windows.Forms.Button();
             this.lblDevolucionCliente = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider4 = new MaterialSkin.Controls.MaterialDivider();
-            this.lblDevolucionOperador = new MaterialSkin.Controls.MaterialLabel();
             this.lblDevolucionAgente = new MaterialSkin.Controls.MaterialLabel();
             this.dgvDevolucionListaProducto = new System.Windows.Forms.DataGridView();
             this.id_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +51,7 @@
             this.producto_cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.producto_cantidad_devolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.producto_cantidad_extra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblDevolucionOperador = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -109,7 +109,7 @@
             this.tableLayoutPanel2.Controls.Add(this.lblDevolucionAgente, 0, 4);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 11;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
@@ -162,7 +162,7 @@
             this.materialDivider1.Depth = 0;
             this.materialDivider1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialDivider1.Location = new System.Drawing.Point(4, 78);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.materialDivider1.Margin = new System.Windows.Forms.Padding(4);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
             this.materialDivider1.Size = new System.Drawing.Size(384, 4);
@@ -175,7 +175,7 @@
             this.materialDivider2.Depth = 0;
             this.materialDivider2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialDivider2.Location = new System.Drawing.Point(4, 164);
-            this.materialDivider2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.materialDivider2.Margin = new System.Windows.Forms.Padding(4);
             this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider2.Name = "materialDivider2";
             this.materialDivider2.Size = new System.Drawing.Size(384, 4);
@@ -188,7 +188,7 @@
             this.materialDivider3.Depth = 0;
             this.materialDivider3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialDivider3.Location = new System.Drawing.Point(4, 250);
-            this.materialDivider3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.materialDivider3.Margin = new System.Windows.Forms.Padding(4);
             this.materialDivider3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider3.Name = "materialDivider3";
             this.materialDivider3.Size = new System.Drawing.Size(384, 4);
@@ -204,7 +204,7 @@
             this.tableLayoutPanel3.Controls.Add(this.btnDevolucionCompletar, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 535);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -250,27 +250,12 @@
             this.materialDivider4.Depth = 0;
             this.materialDivider4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialDivider4.Location = new System.Drawing.Point(4, 336);
-            this.materialDivider4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.materialDivider4.Margin = new System.Windows.Forms.Padding(4);
             this.materialDivider4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider4.Name = "materialDivider4";
             this.materialDivider4.Size = new System.Drawing.Size(384, 4);
             this.materialDivider4.TabIndex = 9;
             this.materialDivider4.Text = "materialDivider4";
-            // 
-            // lblDevolucionOperador
-            // 
-            this.lblDevolucionOperador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDevolucionOperador.AutoSize = true;
-            this.lblDevolucionOperador.Depth = 0;
-            this.lblDevolucionOperador.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.lblDevolucionOperador.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.lblDevolucionOperador.Location = new System.Drawing.Point(4, 366);
-            this.lblDevolucionOperador.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDevolucionOperador.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblDevolucionOperador.Name = "lblDevolucionOperador";
-            this.lblDevolucionOperador.Size = new System.Drawing.Size(384, 29);
-            this.lblDevolucionOperador.TabIndex = 10;
-            this.lblDevolucionOperador.Text = "Operador";
             // 
             // lblDevolucionAgente
             // 
@@ -330,6 +315,7 @@
             this.dgvDevolucionListaProducto.Name = "dgvDevolucionListaProducto";
             this.dgvDevolucionListaProducto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvDevolucionListaProducto.RowHeadersVisible = false;
+            this.dgvDevolucionListaProducto.RowHeadersWidth = 51;
             this.dgvDevolucionListaProducto.RowTemplate.Height = 60;
             this.dgvDevolucionListaProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDevolucionListaProducto.Size = new System.Drawing.Size(822, 621);
@@ -340,6 +326,7 @@
             // id_salida
             // 
             this.id_salida.HeaderText = "ID";
+            this.id_salida.MinimumWidth = 6;
             this.id_salida.Name = "id_salida";
             this.id_salida.ReadOnly = true;
             this.id_salida.Visible = false;
@@ -347,24 +334,44 @@
             // producto_codigo
             // 
             this.producto_codigo.HeaderText = "Producto";
+            this.producto_codigo.MinimumWidth = 6;
             this.producto_codigo.Name = "producto_codigo";
             this.producto_codigo.ReadOnly = true;
             // 
             // producto_cantidad
             // 
             this.producto_cantidad.HeaderText = "Cantidad salida";
+            this.producto_cantidad.MinimumWidth = 6;
             this.producto_cantidad.Name = "producto_cantidad";
             this.producto_cantidad.ReadOnly = true;
             // 
             // producto_cantidad_devolucion
             // 
             this.producto_cantidad_devolucion.HeaderText = "Devolución";
+            this.producto_cantidad_devolucion.MinimumWidth = 6;
             this.producto_cantidad_devolucion.Name = "producto_cantidad_devolucion";
             // 
             // producto_cantidad_extra
             // 
             this.producto_cantidad_extra.HeaderText = "Producto dañado";
+            this.producto_cantidad_extra.MinimumWidth = 6;
             this.producto_cantidad_extra.Name = "producto_cantidad_extra";
+            // 
+            // lblDevolucionOperador
+            // 
+            this.lblDevolucionOperador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDevolucionOperador.AutoSize = true;
+            this.lblDevolucionOperador.Depth = 0;
+            this.lblDevolucionOperador.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblDevolucionOperador.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.lblDevolucionOperador.Location = new System.Drawing.Point(4, 366);
+            this.lblDevolucionOperador.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDevolucionOperador.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblDevolucionOperador.Name = "lblDevolucionOperador";
+            this.lblDevolucionOperador.Size = new System.Drawing.Size(384, 29);
+            this.lblDevolucionOperador.TabIndex = 10;
+            this.lblDevolucionOperador.Text = "Operador";
+            this.lblDevolucionOperador.Visible = false;
             // 
             // FormDevolucion
             // 
@@ -405,11 +412,11 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider3;
         private System.Windows.Forms.Button btnDevolucionCompletar;
         private MaterialSkin.Controls.MaterialDivider materialDivider4;
-        private MaterialSkin.Controls.MaterialLabel lblDevolucionOperador;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_salida;
         private System.Windows.Forms.DataGridViewTextBoxColumn producto_codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn producto_cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn producto_cantidad_devolucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn producto_cantidad_extra;
+        private MaterialSkin.Controls.MaterialLabel lblDevolucionOperador;
     }
 }

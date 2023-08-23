@@ -1,0 +1,8 @@
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\bin\Debug\CheckBoxComboBox.dll
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\bin\Debug\CheckBoxComboBox.pdb
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\obj\Debug\CheckBoxComboBox.csproj.AssemblyReference.cache
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\obj\Debug\PresentationControls.PopupComboBox.resources
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\obj\Debug\CheckBoxComboBox.csproj.GenerateResource.cache
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\obj\Debug\CheckBoxComboBox.csproj.CoreCompileInputs.cache
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\obj\Debug\CheckBoxComboBox.dll
+C:\Users\isai_\source\repos\BecDevGenEntradaSalidaCprEvent\CheckBoxComboBox\obj\Debug\CheckBoxComboBox.pdb

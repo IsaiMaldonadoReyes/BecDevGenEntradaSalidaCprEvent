@@ -34,26 +34,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvListado = new System.Windows.Forms.DataGridView();
-            this.id_documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_operador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pendiente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.abono_accion = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lblUsuarioLogeado = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -86,6 +78,8 @@
             this.cbxRuta = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.cbxAlmacenDefectuoso = new MaterialSkin.Controls.MaterialComboBox();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.cbxAgente = new MaterialSkin.Controls.MaterialComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -101,6 +95,13 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.id_documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida_documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pendiente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.abono_accion = new System.Windows.Forms.DataGridViewImageColumn();
             btnSalidaActualizar = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -127,10 +128,10 @@
             btnSalidaActualizar.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnSalidaActualizar.ForeColor = System.Drawing.Color.White;
             btnSalidaActualizar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalidaActualizar.Image")));
-            btnSalidaActualizar.Location = new System.Drawing.Point(195, 0);
+            btnSalidaActualizar.Location = new System.Drawing.Point(260, 0);
             btnSalidaActualizar.Margin = new System.Windows.Forms.Padding(0);
             btnSalidaActualizar.Name = "btnSalidaActualizar";
-            btnSalidaActualizar.Size = new System.Drawing.Size(200, 76);
+            btnSalidaActualizar.Size = new System.Drawing.Size(267, 94);
             btnSalidaActualizar.TabIndex = 5;
             btnSalidaActualizar.Text = "ACTUALIZAR";
             btnSalidaActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -141,11 +142,11 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.materialCard1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 26);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(776, 497);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
+            this.tabPage1.Size = new System.Drawing.Size(1037, 615);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Liquidaciones";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -159,12 +160,12 @@
             this.materialCard1.Depth = 0;
             this.materialCard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(4, 4);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
+            this.materialCard1.Location = new System.Drawing.Point(5, 5);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(20);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(15, 16, 15, 16);
-            this.materialCard1.Size = new System.Drawing.Size(768, 489);
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(20);
+            this.materialCard1.Size = new System.Drawing.Size(1027, 605);
             this.materialCard1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -176,15 +177,15 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblUsuarioLogeado, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 16);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(738, 457);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(987, 565);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgvListado
@@ -213,7 +214,6 @@
             this.id_documento,
             this.salida_fecha,
             this.salida_cliente,
-            this.salida_operador,
             this.salida_documento,
             this.total,
             this.pendiente,
@@ -231,108 +231,33 @@
             this.dgvListado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListado.EnableHeadersVisualStyles = false;
             this.dgvListado.GridColor = System.Drawing.Color.LightGray;
-            this.dgvListado.Location = new System.Drawing.Point(6, 86);
-            this.dgvListado.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvListado.Location = new System.Drawing.Point(8, 105);
+            this.dgvListado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvListado.Name = "dgvListado";
             this.dgvListado.RowHeadersVisible = false;
             this.dgvListado.RowHeadersWidth = 51;
             this.dgvListado.RowTemplate.Height = 60;
             this.dgvListado.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvListado.Size = new System.Drawing.Size(726, 365);
+            this.dgvListado.Size = new System.Drawing.Size(971, 453);
             this.dgvListado.TabIndex = 0;
             this.dgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalidaListadoSalidas_CellContentClick);
             this.dgvListado.SizeChanged += new System.EventHandler(this.dgvSalidaListadoSalidas_SizeChanged);
-            // 
-            // id_documento
-            // 
-            this.id_documento.FillWeight = 20.30457F;
-            this.id_documento.HeaderText = "ID";
-            this.id_documento.MinimumWidth = 6;
-            this.id_documento.Name = "id_documento";
-            this.id_documento.ReadOnly = true;
-            this.id_documento.Visible = false;
-            // 
-            // salida_fecha
-            // 
-            this.salida_fecha.FillWeight = 10F;
-            this.salida_fecha.HeaderText = "Fecha";
-            this.salida_fecha.MinimumWidth = 100;
-            this.salida_fecha.Name = "salida_fecha";
-            this.salida_fecha.ReadOnly = true;
-            // 
-            // salida_cliente
-            // 
-            this.salida_cliente.FillWeight = 20F;
-            this.salida_cliente.HeaderText = "Ruta";
-            this.salida_cliente.MinimumWidth = 100;
-            this.salida_cliente.Name = "salida_cliente";
-            this.salida_cliente.ReadOnly = true;
-            // 
-            // salida_operador
-            // 
-            this.salida_operador.FillWeight = 30F;
-            this.salida_operador.HeaderText = "Operador";
-            this.salida_operador.MinimumWidth = 200;
-            this.salida_operador.Name = "salida_operador";
-            this.salida_operador.ReadOnly = true;
-            // 
-            // salida_documento
-            // 
-            this.salida_documento.FillWeight = 10F;
-            this.salida_documento.HeaderText = "Documento";
-            this.salida_documento.MinimumWidth = 100;
-            this.salida_documento.Name = "salida_documento";
-            this.salida_documento.ReadOnly = true;
-            this.salida_documento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // total
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.total.DefaultCellStyle = dataGridViewCellStyle3;
-            this.total.HeaderText = "Total";
-            this.total.MinimumWidth = 100;
-            this.total.Name = "total";
-            // 
-            // pendiente
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.pendiente.DefaultCellStyle = dataGridViewCellStyle4;
-            this.pendiente.HeaderText = "Pendiente";
-            this.pendiente.MinimumWidth = 100;
-            this.pendiente.Name = "pendiente";
-            // 
-            // abono_accion
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(10);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
-            this.abono_accion.DefaultCellStyle = dataGridViewCellStyle5;
-            this.abono_accion.FillWeight = 10F;
-            this.abono_accion.HeaderText = "Abono";
-            this.abono_accion.Image = ((System.Drawing.Image)(resources.GetObject("abono_accion.Image")));
-            this.abono_accion.MinimumWidth = 30;
-            this.abono_accion.Name = "abono_accion";
-            this.abono_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.abono_accion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.abono_accion.ToolTipText = "Abono";
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 267F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 267F));
             this.tableLayoutPanel3.Controls.Add(btnSalidaActualizar, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(337, 6);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(452, 7);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(395, 76);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(527, 94);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
             // lblUsuarioLogeado
@@ -342,10 +267,11 @@
             this.lblUsuarioLogeado.Depth = 0;
             this.lblUsuarioLogeado.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblUsuarioLogeado.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.lblUsuarioLogeado.Location = new System.Drawing.Point(7, 29);
+            this.lblUsuarioLogeado.Location = new System.Drawing.Point(9, 39);
+            this.lblUsuarioLogeado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuarioLogeado.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblUsuarioLogeado.Name = "lblUsuarioLogeado";
-            this.lblUsuarioLogeado.Size = new System.Drawing.Size(325, 29);
+            this.lblUsuarioLogeado.Size = new System.Drawing.Size(436, 29);
             this.lblUsuarioLogeado.TabIndex = 3;
             this.lblUsuarioLogeado.Text = "Usuario Logeado";
             this.lblUsuarioLogeado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -353,17 +279,17 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 16);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(20, 20);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 457F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(738, 457);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 565F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(987, 565);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // materialTabControl1
@@ -373,24 +299,24 @@
             this.materialTabControl1.Controls.Add(this.tabPage3);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialTabControl1.Location = new System.Drawing.Point(8, 65);
-            this.materialTabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.materialTabControl1.Location = new System.Drawing.Point(11, 80);
+            this.materialTabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Multiline = true;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.Padding = new System.Drawing.Point(10, 5);
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(784, 527);
+            this.materialTabControl1.Size = new System.Drawing.Size(1045, 648);
             this.materialTabControl1.TabIndex = 0;
             this.materialTabControl1.SelectedIndexChanged += new System.EventHandler(this.materialTabControl1_SelectedIndexChanged);
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.materialCard2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(776, 497);
+            this.tabPage2.Size = new System.Drawing.Size(1037, 615);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Configuración";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -403,11 +329,11 @@
             this.materialCard2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard2.Location = new System.Drawing.Point(0, 0);
-            this.materialCard2.Margin = new System.Windows.Forms.Padding(10, 11, 10, 11);
+            this.materialCard2.Margin = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
-            this.materialCard2.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
-            this.materialCard2.Size = new System.Drawing.Size(776, 497);
+            this.materialCard2.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
+            this.materialCard2.Size = new System.Drawing.Size(1037, 615);
             this.materialCard2.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -431,23 +357,26 @@
             this.tableLayoutPanel4.Controls.Add(this.cbxRuta, 1, 5);
             this.tableLayoutPanel4.Controls.Add(this.materialLabel2, 0, 6);
             this.tableLayoutPanel4.Controls.Add(this.cbxAlmacenDefectuoso, 0, 7);
+            this.tableLayoutPanel4.Controls.Add(this.materialLabel3, 1, 6);
+            this.tableLayoutPanel4.Controls.Add(this.cbxAgente, 1, 7);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 11);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(13, 14);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 12;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.53846F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(756, 475);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1011, 587);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // materialLabel4
@@ -457,10 +386,11 @@
             this.materialLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel4.Location = new System.Drawing.Point(3, 0);
+            this.materialLabel4.Location = new System.Drawing.Point(4, 0);
+            this.materialLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(372, 24);
+            this.materialLabel4.Size = new System.Drawing.Size(497, 30);
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Documento remisión";
             this.materialLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -480,11 +410,12 @@
             this.cbxDocumentoRemision.FormattingEnabled = true;
             this.cbxDocumentoRemision.IntegralHeight = false;
             this.cbxDocumentoRemision.ItemHeight = 43;
-            this.cbxDocumentoRemision.Location = new System.Drawing.Point(3, 27);
+            this.cbxDocumentoRemision.Location = new System.Drawing.Point(4, 34);
+            this.cbxDocumentoRemision.Margin = new System.Windows.Forms.Padding(4);
             this.cbxDocumentoRemision.MaxDropDownItems = 4;
             this.cbxDocumentoRemision.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxDocumentoRemision.Name = "cbxDocumentoRemision";
-            this.cbxDocumentoRemision.Size = new System.Drawing.Size(372, 49);
+            this.cbxDocumentoRemision.Size = new System.Drawing.Size(497, 49);
             this.cbxDocumentoRemision.StartIndex = 0;
             this.cbxDocumentoRemision.TabIndex = 1;
             // 
@@ -517,12 +448,13 @@
             this.dgvDocumentos.ContextMenuStrip = this.contextMenuStrip2;
             this.dgvDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDocumentos.EnableHeadersVisualStyles = false;
-            this.dgvDocumentos.Location = new System.Drawing.Point(3, 365);
+            this.dgvDocumentos.Location = new System.Drawing.Point(4, 449);
+            this.dgvDocumentos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDocumentos.Name = "dgvDocumentos";
             this.dgvDocumentos.RowHeadersVisible = false;
             this.dgvDocumentos.RowHeadersWidth = 51;
             this.dgvDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDocumentos.Size = new System.Drawing.Size(750, 107);
+            this.dgvDocumentos.Size = new System.Drawing.Size(1003, 134);
             this.dgvDocumentos.TabIndex = 4;
             this.dgvDocumentos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvDocumentos_MouseDown);
             // 
@@ -536,6 +468,7 @@
             // Ruta
             // 
             this.Ruta.HeaderText = "Ruta";
+            this.Ruta.MinimumWidth = 6;
             this.Ruta.Name = "Ruta";
             // 
             // dataGridViewTextBoxColumn2
@@ -570,15 +503,16 @@
             // 
             // contextMenuStrip2
             // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eliminarToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(118, 26);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(133, 28);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -592,12 +526,12 @@
             this.btnGuardarDocumento.HighEmphasis = true;
             this.btnGuardarDocumento.Icon = null;
             this.btnGuardarDocumento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnGuardarDocumento.Location = new System.Drawing.Point(4, 340);
-            this.btnGuardarDocumento.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnGuardarDocumento.Location = new System.Drawing.Point(5, 418);
+            this.btnGuardarDocumento.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnGuardarDocumento.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGuardarDocumento.Name = "btnGuardarDocumento";
             this.btnGuardarDocumento.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnGuardarDocumento.Size = new System.Drawing.Size(748, 16);
+            this.btnGuardarDocumento.Size = new System.Drawing.Size(1001, 20);
             this.btnGuardarDocumento.TabIndex = 5;
             this.btnGuardarDocumento.Text = "Guardar";
             this.btnGuardarDocumento.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -612,11 +546,10 @@
             this.materialLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel8.Location = new System.Drawing.Point(2, 73);
-            this.materialLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel8.Location = new System.Drawing.Point(3, 90);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(374, 24);
+            this.materialLabel8.Size = new System.Drawing.Size(499, 30);
             this.materialLabel8.TabIndex = 6;
             this.materialLabel8.Text = "Documento salida";
             this.materialLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -636,12 +569,12 @@
             this.cbxDocumentoSalida.FormattingEnabled = true;
             this.cbxDocumentoSalida.IntegralHeight = false;
             this.cbxDocumentoSalida.ItemHeight = 43;
-            this.cbxDocumentoSalida.Location = new System.Drawing.Point(2, 99);
-            this.cbxDocumentoSalida.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxDocumentoSalida.Location = new System.Drawing.Point(3, 122);
+            this.cbxDocumentoSalida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxDocumentoSalida.MaxDropDownItems = 4;
             this.cbxDocumentoSalida.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxDocumentoSalida.Name = "cbxDocumentoSalida";
-            this.cbxDocumentoSalida.Size = new System.Drawing.Size(374, 49);
+            this.cbxDocumentoSalida.Size = new System.Drawing.Size(499, 49);
             this.cbxDocumentoSalida.StartIndex = 0;
             this.cbxDocumentoSalida.TabIndex = 7;
             // 
@@ -652,11 +585,10 @@
             this.materialLabel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialLabel9.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel9.Location = new System.Drawing.Point(380, 0);
-            this.materialLabel9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel9.Location = new System.Drawing.Point(508, 0);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(374, 24);
+            this.materialLabel9.Size = new System.Drawing.Size(500, 30);
             this.materialLabel9.TabIndex = 8;
             this.materialLabel9.Text = "Documento factura";
             this.materialLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -676,12 +608,12 @@
             this.cbxDocumentoFactura.FormattingEnabled = true;
             this.cbxDocumentoFactura.IntegralHeight = false;
             this.cbxDocumentoFactura.ItemHeight = 43;
-            this.cbxDocumentoFactura.Location = new System.Drawing.Point(380, 26);
-            this.cbxDocumentoFactura.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxDocumentoFactura.Location = new System.Drawing.Point(508, 32);
+            this.cbxDocumentoFactura.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxDocumentoFactura.MaxDropDownItems = 4;
             this.cbxDocumentoFactura.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxDocumentoFactura.Name = "cbxDocumentoFactura";
-            this.cbxDocumentoFactura.Size = new System.Drawing.Size(374, 49);
+            this.cbxDocumentoFactura.Size = new System.Drawing.Size(500, 49);
             this.cbxDocumentoFactura.StartIndex = 0;
             this.cbxDocumentoFactura.TabIndex = 9;
             // 
@@ -692,11 +624,10 @@
             this.materialLabel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialLabel11.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel11.Location = new System.Drawing.Point(380, 73);
-            this.materialLabel11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel11.Location = new System.Drawing.Point(508, 90);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(374, 24);
+            this.materialLabel11.Size = new System.Drawing.Size(500, 30);
             this.materialLabel11.TabIndex = 10;
             this.materialLabel11.Text = "Documento entrada";
             this.materialLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -716,12 +647,12 @@
             this.cbxDocumentoEntrada.FormattingEnabled = true;
             this.cbxDocumentoEntrada.IntegralHeight = false;
             this.cbxDocumentoEntrada.ItemHeight = 43;
-            this.cbxDocumentoEntrada.Location = new System.Drawing.Point(380, 99);
-            this.cbxDocumentoEntrada.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxDocumentoEntrada.Location = new System.Drawing.Point(508, 122);
+            this.cbxDocumentoEntrada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxDocumentoEntrada.MaxDropDownItems = 4;
             this.cbxDocumentoEntrada.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxDocumentoEntrada.Name = "cbxDocumentoEntrada";
-            this.cbxDocumentoEntrada.Size = new System.Drawing.Size(374, 49);
+            this.cbxDocumentoEntrada.Size = new System.Drawing.Size(500, 49);
             this.cbxDocumentoEntrada.StartIndex = 0;
             this.cbxDocumentoEntrada.TabIndex = 11;
             // 
@@ -732,10 +663,11 @@
             this.materialLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel5.Location = new System.Drawing.Point(381, 146);
+            this.materialLabel5.Location = new System.Drawing.Point(509, 180);
+            this.materialLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(372, 24);
+            this.materialLabel5.Size = new System.Drawing.Size(498, 30);
             this.materialLabel5.TabIndex = 2;
             this.materialLabel5.Text = "Ruta";
             this.materialLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -746,11 +678,10 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(2, 146);
-            this.materialLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel1.Location = new System.Drawing.Point(3, 180);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(374, 24);
+            this.materialLabel1.Size = new System.Drawing.Size(499, 30);
             this.materialLabel1.TabIndex = 12;
             this.materialLabel1.Text = "Documento pago";
             this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -770,12 +701,12 @@
             this.cbxDocumentoPago.FormattingEnabled = true;
             this.cbxDocumentoPago.IntegralHeight = false;
             this.cbxDocumentoPago.ItemHeight = 43;
-            this.cbxDocumentoPago.Location = new System.Drawing.Point(2, 172);
-            this.cbxDocumentoPago.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxDocumentoPago.Location = new System.Drawing.Point(3, 212);
+            this.cbxDocumentoPago.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxDocumentoPago.MaxDropDownItems = 4;
             this.cbxDocumentoPago.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxDocumentoPago.Name = "cbxDocumentoPago";
-            this.cbxDocumentoPago.Size = new System.Drawing.Size(374, 49);
+            this.cbxDocumentoPago.Size = new System.Drawing.Size(499, 49);
             this.cbxDocumentoPago.StartIndex = 0;
             this.cbxDocumentoPago.TabIndex = 13;
             // 
@@ -794,12 +725,12 @@
             this.cbxRuta.FormattingEnabled = true;
             this.cbxRuta.IntegralHeight = false;
             this.cbxRuta.ItemHeight = 43;
-            this.cbxRuta.Location = new System.Drawing.Point(380, 172);
-            this.cbxRuta.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxRuta.Location = new System.Drawing.Point(508, 212);
+            this.cbxRuta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxRuta.MaxDropDownItems = 4;
             this.cbxRuta.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxRuta.Name = "cbxRuta";
-            this.cbxRuta.Size = new System.Drawing.Size(374, 49);
+            this.cbxRuta.Size = new System.Drawing.Size(500, 49);
             this.cbxRuta.StartIndex = 0;
             this.cbxRuta.TabIndex = 14;
             // 
@@ -809,11 +740,10 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(2, 219);
-            this.materialLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.materialLabel2.Location = new System.Drawing.Point(3, 270);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(374, 24);
+            this.materialLabel2.Size = new System.Drawing.Size(499, 30);
             this.materialLabel2.TabIndex = 15;
             this.materialLabel2.Text = "Almacén defectuoso";
             this.materialLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -833,22 +763,58 @@
             this.cbxAlmacenDefectuoso.FormattingEnabled = true;
             this.cbxAlmacenDefectuoso.IntegralHeight = false;
             this.cbxAlmacenDefectuoso.ItemHeight = 43;
-            this.cbxAlmacenDefectuoso.Location = new System.Drawing.Point(2, 245);
-            this.cbxAlmacenDefectuoso.Margin = new System.Windows.Forms.Padding(2);
+            this.cbxAlmacenDefectuoso.Location = new System.Drawing.Point(3, 302);
+            this.cbxAlmacenDefectuoso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxAlmacenDefectuoso.MaxDropDownItems = 4;
             this.cbxAlmacenDefectuoso.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxAlmacenDefectuoso.Name = "cbxAlmacenDefectuoso";
-            this.cbxAlmacenDefectuoso.Size = new System.Drawing.Size(374, 49);
+            this.cbxAlmacenDefectuoso.Size = new System.Drawing.Size(499, 49);
             this.cbxAlmacenDefectuoso.StartIndex = 0;
             this.cbxAlmacenDefectuoso.TabIndex = 16;
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.Location = new System.Drawing.Point(508, 270);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(104, 19);
+            this.materialLabel3.TabIndex = 17;
+            this.materialLabel3.Text = "Agente acceso";
+            // 
+            // cbxAgente
+            // 
+            this.cbxAgente.AutoResize = false;
+            this.cbxAgente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbxAgente.Depth = 0;
+            this.cbxAgente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxAgente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbxAgente.DropDownHeight = 174;
+            this.cbxAgente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxAgente.DropDownWidth = 121;
+            this.cbxAgente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cbxAgente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cbxAgente.FormattingEnabled = true;
+            this.cbxAgente.IntegralHeight = false;
+            this.cbxAgente.ItemHeight = 43;
+            this.cbxAgente.Location = new System.Drawing.Point(508, 303);
+            this.cbxAgente.MaxDropDownItems = 4;
+            this.cbxAgente.MouseState = MaterialSkin.MouseState.OUT;
+            this.cbxAgente.Name = "cbxAgente";
+            this.cbxAgente.Size = new System.Drawing.Size(500, 49);
+            this.cbxAgente.StartIndex = 0;
+            this.cbxAgente.TabIndex = 18;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.materialCard3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(776, 497);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Size = new System.Drawing.Size(1037, 615);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reportes";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -860,19 +826,19 @@
             this.materialCard3.Depth = 0;
             this.materialCard3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard3.Location = new System.Drawing.Point(3, 3);
-            this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard3.Location = new System.Drawing.Point(4, 4);
+            this.materialCard3.Margin = new System.Windows.Forms.Padding(19, 17, 19, 17);
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
-            this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(770, 491);
+            this.materialCard3.Padding = new System.Windows.Forms.Padding(19, 17, 19, 17);
+            this.materialCard3.Size = new System.Drawing.Size(1029, 607);
             this.materialCard3.TabIndex = 0;
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 467F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.btnRptInventarioPorAlmacen, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnRptInventarioPorRuta, 1, 1);
@@ -881,19 +847,20 @@
             this.tableLayoutPanel5.Controls.Add(this.btnRptResumenMovimientosGlobalDelDia, 1, 4);
             this.tableLayoutPanel5.Controls.Add(this.btnRptResumenMovimientosDetalladoPorRuta, 1, 5);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(14, 14);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(19, 17);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 9;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(742, 463);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(991, 573);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // btnRptInventarioPorAlmacen
@@ -904,12 +871,12 @@
             this.btnRptInventarioPorAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRptInventarioPorAlmacen.HighEmphasis = true;
             this.btnRptInventarioPorAlmacen.Icon = null;
-            this.btnRptInventarioPorAlmacen.Location = new System.Drawing.Point(200, 6);
-            this.btnRptInventarioPorAlmacen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptInventarioPorAlmacen.Location = new System.Drawing.Point(267, 7);
+            this.btnRptInventarioPorAlmacen.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnRptInventarioPorAlmacen.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRptInventarioPorAlmacen.Name = "btnRptInventarioPorAlmacen";
             this.btnRptInventarioPorAlmacen.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptInventarioPorAlmacen.Size = new System.Drawing.Size(342, 48);
+            this.btnRptInventarioPorAlmacen.Size = new System.Drawing.Size(457, 60);
             this.btnRptInventarioPorAlmacen.TabIndex = 0;
             this.btnRptInventarioPorAlmacen.Text = "Inventario por almacén";
             this.btnRptInventarioPorAlmacen.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -925,12 +892,12 @@
             this.btnRptInventarioPorRuta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRptInventarioPorRuta.HighEmphasis = true;
             this.btnRptInventarioPorRuta.Icon = null;
-            this.btnRptInventarioPorRuta.Location = new System.Drawing.Point(200, 66);
-            this.btnRptInventarioPorRuta.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptInventarioPorRuta.Location = new System.Drawing.Point(267, 81);
+            this.btnRptInventarioPorRuta.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnRptInventarioPorRuta.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRptInventarioPorRuta.Name = "btnRptInventarioPorRuta";
             this.btnRptInventarioPorRuta.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptInventarioPorRuta.Size = new System.Drawing.Size(342, 48);
+            this.btnRptInventarioPorRuta.Size = new System.Drawing.Size(457, 60);
             this.btnRptInventarioPorRuta.TabIndex = 1;
             this.btnRptInventarioPorRuta.Text = "Inventario por ruta";
             this.btnRptInventarioPorRuta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -946,12 +913,12 @@
             this.btnRptHistoricoMovimientosGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRptHistoricoMovimientosGeneral.HighEmphasis = true;
             this.btnRptHistoricoMovimientosGeneral.Icon = null;
-            this.btnRptHistoricoMovimientosGeneral.Location = new System.Drawing.Point(200, 126);
-            this.btnRptHistoricoMovimientosGeneral.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptHistoricoMovimientosGeneral.Location = new System.Drawing.Point(267, 155);
+            this.btnRptHistoricoMovimientosGeneral.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnRptHistoricoMovimientosGeneral.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRptHistoricoMovimientosGeneral.Name = "btnRptHistoricoMovimientosGeneral";
             this.btnRptHistoricoMovimientosGeneral.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptHistoricoMovimientosGeneral.Size = new System.Drawing.Size(342, 48);
+            this.btnRptHistoricoMovimientosGeneral.Size = new System.Drawing.Size(457, 60);
             this.btnRptHistoricoMovimientosGeneral.TabIndex = 2;
             this.btnRptHistoricoMovimientosGeneral.Text = "Histórico de movimientos general";
             this.btnRptHistoricoMovimientosGeneral.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -967,12 +934,12 @@
             this.btnRptHistoricoMovimientosPorRuta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRptHistoricoMovimientosPorRuta.HighEmphasis = true;
             this.btnRptHistoricoMovimientosPorRuta.Icon = null;
-            this.btnRptHistoricoMovimientosPorRuta.Location = new System.Drawing.Point(200, 186);
-            this.btnRptHistoricoMovimientosPorRuta.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptHistoricoMovimientosPorRuta.Location = new System.Drawing.Point(267, 229);
+            this.btnRptHistoricoMovimientosPorRuta.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnRptHistoricoMovimientosPorRuta.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRptHistoricoMovimientosPorRuta.Name = "btnRptHistoricoMovimientosPorRuta";
             this.btnRptHistoricoMovimientosPorRuta.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptHistoricoMovimientosPorRuta.Size = new System.Drawing.Size(342, 48);
+            this.btnRptHistoricoMovimientosPorRuta.Size = new System.Drawing.Size(457, 60);
             this.btnRptHistoricoMovimientosPorRuta.TabIndex = 3;
             this.btnRptHistoricoMovimientosPorRuta.Text = "Histórico de movimientos por ruta";
             this.btnRptHistoricoMovimientosPorRuta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -988,12 +955,12 @@
             this.btnRptResumenMovimientosGlobalDelDia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRptResumenMovimientosGlobalDelDia.HighEmphasis = true;
             this.btnRptResumenMovimientosGlobalDelDia.Icon = null;
-            this.btnRptResumenMovimientosGlobalDelDia.Location = new System.Drawing.Point(200, 246);
-            this.btnRptResumenMovimientosGlobalDelDia.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptResumenMovimientosGlobalDelDia.Location = new System.Drawing.Point(267, 303);
+            this.btnRptResumenMovimientosGlobalDelDia.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnRptResumenMovimientosGlobalDelDia.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRptResumenMovimientosGlobalDelDia.Name = "btnRptResumenMovimientosGlobalDelDia";
             this.btnRptResumenMovimientosGlobalDelDia.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptResumenMovimientosGlobalDelDia.Size = new System.Drawing.Size(342, 48);
+            this.btnRptResumenMovimientosGlobalDelDia.Size = new System.Drawing.Size(457, 60);
             this.btnRptResumenMovimientosGlobalDelDia.TabIndex = 4;
             this.btnRptResumenMovimientosGlobalDelDia.Text = "Resumen de movimientos global del día";
             this.btnRptResumenMovimientosGlobalDelDia.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1009,12 +976,12 @@
             this.btnRptResumenMovimientosDetalladoPorRuta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRptResumenMovimientosDetalladoPorRuta.HighEmphasis = true;
             this.btnRptResumenMovimientosDetalladoPorRuta.Icon = null;
-            this.btnRptResumenMovimientosDetalladoPorRuta.Location = new System.Drawing.Point(200, 306);
-            this.btnRptResumenMovimientosDetalladoPorRuta.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRptResumenMovimientosDetalladoPorRuta.Location = new System.Drawing.Point(267, 377);
+            this.btnRptResumenMovimientosDetalladoPorRuta.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnRptResumenMovimientosDetalladoPorRuta.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnRptResumenMovimientosDetalladoPorRuta.Name = "btnRptResumenMovimientosDetalladoPorRuta";
             this.btnRptResumenMovimientosDetalladoPorRuta.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRptResumenMovimientosDetalladoPorRuta.Size = new System.Drawing.Size(342, 48);
+            this.btnRptResumenMovimientosDetalladoPorRuta.Size = new System.Drawing.Size(457, 60);
             this.btnRptResumenMovimientosDetalladoPorRuta.TabIndex = 6;
             this.btnRptResumenMovimientosDetalladoPorRuta.Text = "Resumen de movimientos detallado por ruta";
             this.btnRptResumenMovimientosDetalladoPorRuta.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1077,15 +1044,16 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modificarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 28);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
@@ -1107,18 +1075,85 @@
             this.dataGridViewImageColumn4.ToolTipText = "Abono";
             this.dataGridViewImageColumn4.Width = 30;
             // 
+            // id_documento
+            // 
+            this.id_documento.FillWeight = 20.30457F;
+            this.id_documento.HeaderText = "ID";
+            this.id_documento.MinimumWidth = 6;
+            this.id_documento.Name = "id_documento";
+            this.id_documento.ReadOnly = true;
+            this.id_documento.Visible = false;
+            // 
+            // salida_fecha
+            // 
+            this.salida_fecha.FillWeight = 10F;
+            this.salida_fecha.HeaderText = "Fecha";
+            this.salida_fecha.MinimumWidth = 100;
+            this.salida_fecha.Name = "salida_fecha";
+            this.salida_fecha.ReadOnly = true;
+            // 
+            // salida_cliente
+            // 
+            this.salida_cliente.FillWeight = 20F;
+            this.salida_cliente.HeaderText = "Ruta";
+            this.salida_cliente.MinimumWidth = 100;
+            this.salida_cliente.Name = "salida_cliente";
+            this.salida_cliente.ReadOnly = true;
+            // 
+            // salida_documento
+            // 
+            this.salida_documento.FillWeight = 10F;
+            this.salida_documento.HeaderText = "Documento";
+            this.salida_documento.MinimumWidth = 100;
+            this.salida_documento.Name = "salida_documento";
+            this.salida_documento.ReadOnly = true;
+            this.salida_documento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // total
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.total.DefaultCellStyle = dataGridViewCellStyle3;
+            this.total.HeaderText = "Total";
+            this.total.MinimumWidth = 100;
+            this.total.Name = "total";
+            // 
+            // pendiente
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.pendiente.DefaultCellStyle = dataGridViewCellStyle4;
+            this.pendiente.HeaderText = "Pendiente";
+            this.pendiente.MinimumWidth = 100;
+            this.pendiente.Name = "pendiente";
+            // 
+            // abono_accion
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(10);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
+            this.abono_accion.DefaultCellStyle = dataGridViewCellStyle5;
+            this.abono_accion.FillWeight = 10F;
+            this.abono_accion.HeaderText = "Abono";
+            this.abono_accion.Image = ((System.Drawing.Image)(resources.GetObject("abono_accion.Image")));
+            this.abono_accion.MinimumWidth = 30;
+            this.abono_accion.Name = "abono_accion";
+            this.abono_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.abono_accion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.abono_accion.ToolTipText = "Abono";
+            // 
             // ListadoLiquidaciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.materialTabControl1);
             this.DrawerTabControl = this.materialTabControl1;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ListadoLiquidaciones";
-            this.Padding = new System.Windows.Forms.Padding(8, 65, 8, 8);
+            this.Padding = new System.Windows.Forms.Padding(11, 80, 11, 10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Event Express | Listado de liquidaciones";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1187,14 +1222,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_documento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salida_fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salida_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salida_operador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salida_documento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pendiente;
-        private System.Windows.Forms.DataGridViewImageColumn abono_accion;
         private System.Windows.Forms.TabPage tabPage3;
         private MaterialSkin.Controls.MaterialCard materialCard3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -1205,5 +1232,14 @@
         private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosGlobalDelDia;
         private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosDetalladoPorRuta;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialComboBox cbxAgente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salida_fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salida_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salida_documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pendiente;
+        private System.Windows.Forms.DataGridViewImageColumn abono_accion;
     }
 }

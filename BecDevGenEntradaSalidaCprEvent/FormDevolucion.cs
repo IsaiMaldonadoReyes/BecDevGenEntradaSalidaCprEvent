@@ -59,7 +59,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             lblDevolucionDocumento.Text = $"Documento: {salida.serie_contpaq_documento}{salida.folio_contpaq_documento}";
             lblDevolucionAgente.Text = $"Agente: {salida.CNOMBREAGENTECREADOR}";
             lblDevolucionCliente.Text = $"Ruta: {salida.codigo_cliente}";
-            lblDevolucionOperador.Text = $"Operador: {salida.CNOMBREAGENTE}";
+            //lblDevolucionOperador.Text = $"Operador: {salida.CNOMBREAGENTE}";
         }
 
         private InformacionFactura ObtenerInformacionFactura(int idDocumento)
@@ -67,7 +67,6 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB adConnect = new adConexionDB())
             {
                 var salida = (from remision in adConnect.bec_event_documento_encabezado
-                              join operador in adConnect.admAgentes on remision.id_operador equals operador.CIDAGENTE
                               join creador in adConnect.admAgentes on remision.id_creador equals creador.CIDAGENTE
                               where remision.tipo == "remision"
                               && remision.id == idDocumento
@@ -78,7 +77,6 @@ namespace BecDevGenEntradaSalidaCprEvent
                                   folio_contpaq_documento = (int)remision.folio_contpaq_documento,
                                   codigo_creador = remision.codigo_creador,
                                   codigo_cliente = remision.codigo_cliente,
-                                  CNOMBREAGENTE = operador.CNOMBREAGENTE,
                                   CNOMBREAGENTECREADOR = creador.CNOMBREAGENTE
                               }).FirstOrDefault();
 

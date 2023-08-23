@@ -24,6 +24,7 @@ namespace BecDevGenEntradaSalidaCprEvent
         StiVariablesCollection variable = new StiVariablesCollection();
 
         public List<admClientes> clientes;
+        public List<admAgentes> agentes;
         public List<admAlmacenes> almacenes;
         public List<admConceptos> remisiones;
         public List<admConceptos> entradas;
@@ -76,8 +77,23 @@ namespace BecDevGenEntradaSalidaCprEvent
             CargarConceptosEntrada(cbxDocumentoEntrada, 32);
             CargarConceptosSalida(cbxDocumentoSalida, 33);
             CargarConceptosPago(cbxDocumentoPago, 12);
+            CargarAgentes(cbxAgente);
 
             CargarDGV();
+        }
+
+        public void CargarAgentes(ComboBox combo)
+        {
+            using (adConexionDB ObjCompac = new adConexionDB())
+            {
+                agentes = (from cliente in ObjCompac.admAgentes
+                            orderby cliente.CCODIGOAGENTE ascending
+                            select cliente).ToList();
+                foreach (var objLista in clientes)
+                {
+                    combo.Items.Add(objLista.CCODIGOCLIENTE);
+                }
+            }
         }
 
         public void CargarClientes(ComboBox combo)
@@ -212,7 +228,6 @@ namespace BecDevGenEntradaSalidaCprEvent
                                     salidas.codigo_cliente,
                                     salidas.serie_contpaq_documento,
                                     salidas.folio_contpaq_documento,
-                                    salidas.codigo_operador,
                                     factura.CTOTAL,
                                     factura.CPENDIENTE
                                 }).ToList();
@@ -225,10 +240,9 @@ namespace BecDevGenEntradaSalidaCprEvent
                     newRow.Cells[0].Value = objLista.id;
                     newRow.Cells[1].Value = Convert.ToDateTime(objLista.fecha_creacion).ToString("dd-MM-yyyy HH:mm");
                     newRow.Cells[2].Value = objLista.codigo_cliente;
-                    newRow.Cells[3].Value = objLista.codigo_operador;
-                    newRow.Cells[4].Value = objLista.serie_contpaq_documento + objLista.folio_contpaq_documento;
-                    newRow.Cells[5].Value = objLista.CTOTAL.ToString("C2");
-                    newRow.Cells[6].Value = objLista.CPENDIENTE.ToString("C2");
+                    newRow.Cells[3].Value = objLista.serie_contpaq_documento + objLista.folio_contpaq_documento;
+                    newRow.Cells[4].Value = objLista.CTOTAL.ToString("C2");
+                    newRow.Cells[5].Value = objLista.CPENDIENTE.ToString("C2");
                     dgvListado.Rows.Add(newRow);
                 }
             }
@@ -270,11 +284,10 @@ namespace BecDevGenEntradaSalidaCprEvent
         {
             dgvListado.Columns[1].Width = (int)(dgvListado.Width * 0.1);
             dgvListado.Columns[2].Width = (int)(dgvListado.Width * 0.2);
-            dgvListado.Columns[3].Width = (int)(dgvListado.Width * 0.30);
+            dgvListado.Columns[3].Width = (int)(dgvListado.Width * 0.1);
             dgvListado.Columns[4].Width = (int)(dgvListado.Width * 0.1);
             dgvListado.Columns[5].Width = (int)(dgvListado.Width * 0.1);
-            dgvListado.Columns[6].Width = (int)(dgvListado.Width * 0.1);
-            dgvListado.Columns[7].Width = 100;
+            dgvListado.Columns[6].Width = 100;
 
         }
 
@@ -353,6 +366,10 @@ namespace BecDevGenEntradaSalidaCprEvent
             {
                 mensajeConfiguracion.AppendLine("\n \t❎ Seleccionar el almacén ");
             }
+            if (cbxAgente.SelectedIndex < 0)
+            {
+                mensajeConfiguracion.AppendLine("\n \t❎ Seleccionar el agente ");
+            }
 
             if (mensajeConfiguracion.Length > 28) // Si hay errores
             {
@@ -370,6 +387,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                 string pago = pagos[cbxDocumentoPago.SelectedIndex].CCODIGOCONCEPTO;
                 string ruta = clientes[cbxRuta.SelectedIndex].CCODIGOCLIENTE;
                 string almacen = almacenes[cbxAlmacenDefectuoso.SelectedIndex].CCODIGOALMACEN;
+                string agente = agentes[cbxAgente.SelectedIndex].CCODIGOAGENTE;
 
                 var existeAfiliacion = (from cliente in ObjCompac.bec_event_cliente_documento
                                         where cliente.codigo_cliente == ruta
@@ -391,7 +409,8 @@ namespace BecDevGenEntradaSalidaCprEvent
                         codigo_factura = factura,
                         codigo_pago = pago,
                         codigo_almacen_defectuoso = almacen,
-                        codigo_cliente = ruta
+                        codigo_cliente = ruta,
+                        codigo_agente = agente
                     };
                     ObjCompac.bec_event_cliente_documento.Add(afiliacion);
                     ObjCompac.SaveChanges();

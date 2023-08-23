@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="adEventModelStoreContainer" CdmEntityContainer="adConexionDB">
+    <EntitySetMapping Name="admAgentes">
+      <EntityTypeMapping TypeName="adEventModel.admAgentes">
+        <MappingFragment StoreEntitySet="admAgentes">
+          <ScalarProperty Name="CIDAGENTE" ColumnName="CIDAGENTE" />
+          <ScalarProperty Name="CCODIGOAGENTE" ColumnName="CCODIGOAGENTE" />
+          <ScalarProperty Name="CNOMBREAGENTE" ColumnName="CNOMBREAGENTE" />
+          <ScalarProperty Name="CFECHAALTAAGENTE" ColumnName="CFECHAALTAAGENTE" />
+          <ScalarProperty Name="CTIPOAGENTE" ColumnName="CTIPOAGENTE" />
+          <ScalarProperty Name="CCOMISIONVENTAAGENTE" ColumnName="CCOMISIONVENTAAGENTE" />
+          <ScalarProperty Name="CCOMISIONCOBROAGENTE" ColumnName="CCOMISIONCOBROAGENTE" />
+          <ScalarProperty Name="CIDCLIENTE" ColumnName="CIDCLIENTE" />
+          <ScalarProperty Name="CIDPROVEEDOR" ColumnName="CIDPROVEEDOR" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION1" ColumnName="CIDVALORCLASIFICACION1" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION2" ColumnName="CIDVALORCLASIFICACION2" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION3" ColumnName="CIDVALORCLASIFICACION3" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION4" ColumnName="CIDVALORCLASIFICACION4" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION5" ColumnName="CIDVALORCLASIFICACION5" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION6" ColumnName="CIDVALORCLASIFICACION6" />
+          <ScalarProperty Name="CSEGCONTAGENTE" ColumnName="CSEGCONTAGENTE" />
+          <ScalarProperty Name="CTEXTOEXTRA1" ColumnName="CTEXTOEXTRA1" />
+          <ScalarProperty Name="CTEXTOEXTRA2" ColumnName="CTEXTOEXTRA2" />
+          <ScalarProperty Name="CTEXTOEXTRA3" ColumnName="CTEXTOEXTRA3" />
+          <ScalarProperty Name="CFECHAEXTRA" ColumnName="CFECHAEXTRA" />
+          <ScalarProperty Name="CIMPORTEEXTRA1" ColumnName="CIMPORTEEXTRA1" />
+          <ScalarProperty Name="CIMPORTEEXTRA2" ColumnName="CIMPORTEEXTRA2" />
+          <ScalarProperty Name="CIMPORTEEXTRA3" ColumnName="CIMPORTEEXTRA3" />
+          <ScalarProperty Name="CIMPORTEEXTRA4" ColumnName="CIMPORTEEXTRA4" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CSCAGENTE2" ColumnName="CSCAGENTE2" />
+          <ScalarProperty Name="CSCAGENTE3" ColumnName="CSCAGENTE3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admAlmacenes">
+      <EntityTypeMapping TypeName="adEventModel.admAlmacenes">
+        <MappingFragment StoreEntitySet="admAlmacenes">
+          <ScalarProperty Name="CIDALMACEN" ColumnName="CIDALMACEN" />
+          <ScalarProperty Name="CCODIGOALMACEN" ColumnName="CCODIGOALMACEN" />
+          <ScalarProperty Name="CNOMBREALMACEN" ColumnName="CNOMBREALMACEN" />
+          <ScalarProperty Name="CFECHAALTAALMACEN" ColumnName="CFECHAALTAALMACEN" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION1" ColumnName="CIDVALORCLASIFICACION1" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION2" ColumnName="CIDVALORCLASIFICACION2" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION3" ColumnName="CIDVALORCLASIFICACION3" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION4" ColumnName="CIDVALORCLASIFICACION4" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION5" ColumnName="CIDVALORCLASIFICACION5" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION6" ColumnName="CIDVALORCLASIFICACION6" />
+          <ScalarProperty Name="CSEGCONTALMACEN" ColumnName="CSEGCONTALMACEN" />
+          <ScalarProperty Name="CTEXTOEXTRA1" ColumnName="CTEXTOEXTRA1" />
+          <ScalarProperty Name="CTEXTOEXTRA2" ColumnName="CTEXTOEXTRA2" />
+          <ScalarProperty Name="CTEXTOEXTRA3" ColumnName="CTEXTOEXTRA3" />
+          <ScalarProperty Name="CFECHAEXTRA" ColumnName="CFECHAEXTRA" />
+          <ScalarProperty Name="CIMPORTEEXTRA1" ColumnName="CIMPORTEEXTRA1" />
+          <ScalarProperty Name="CIMPORTEEXTRA2" ColumnName="CIMPORTEEXTRA2" />
+          <ScalarProperty Name="CIMPORTEEXTRA3" ColumnName="CIMPORTEEXTRA3" />
+          <ScalarProperty Name="CIMPORTEEXTRA4" ColumnName="CIMPORTEEXTRA4" />
+          <ScalarProperty Name="CBANDOMICILIO" ColumnName="CBANDOMICILIO" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CSCALMAC2" ColumnName="CSCALMAC2" />
+          <ScalarProperty Name="CSCALMAC3" ColumnName="CSCALMAC3" />
+          <ScalarProperty Name="CSISTORIG" ColumnName="CSISTORIG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admClientes">
+      <EntityTypeMapping TypeName="adEventModel.admClientes">
+        <MappingFragment StoreEntitySet="admClientes">
+          <ScalarProperty Name="CIDCLIENTEPROVEEDOR" ColumnName="CIDCLIENTEPROVEEDOR" />
+          <ScalarProperty Name="CCODIGOCLIENTE" ColumnName="CCODIGOCLIENTE" />
+          <ScalarProperty Name="CRAZONSOCIAL" ColumnName="CRAZONSOCIAL" />
+          <ScalarProperty Name="CFECHAALTA" ColumnName="CFECHAALTA" />
+          <ScalarProperty Name="CRFC" ColumnName="CRFC" />
+          <ScalarProperty Name="CCURP" ColumnName="CCURP" />
+          <ScalarProperty Name="CDENCOMERCIAL" ColumnName="CDENCOMERCIAL" />
+          <ScalarProperty Name="CREPLEGAL" ColumnName="CREPLEGAL" />
+          <ScalarProperty Name="CIDMONEDA" ColumnName="CIDMONEDA" />
+          <ScalarProperty Name="CLISTAPRECIOCLIENTE" ColumnName="CLISTAPRECIOCLIENTE" />
+          <ScalarProperty Name="CDESCUENTODOCTO" ColumnName="CDESCUENTODOCTO" />
+          <ScalarProperty Name="CDESCUENTOMOVTO" ColumnName="CDESCUENTOMOVTO" />
+          <ScalarProperty Name="CBANVENTACREDITO" ColumnName="CBANVENTACREDITO" />
+          <ScalarProperty Name="CIDVALORCLASIFCLIENTE1" ColumnName="CIDVALORCLASIFCLIENTE1" />
+          <ScalarProperty Name="CIDVALORCLASIFCLIENTE2" ColumnName="CIDVALORCLASIFCLIENTE2" />
+          <ScalarProperty Name="CIDVALORCLASIFCLIENTE3" ColumnName="CIDVALORCLASIFCLIENTE3" />
+          <ScalarProperty Name="CIDVALORCLASIFCLIENTE4" ColumnName="CIDVALORCLASIFCLIENTE4" />
+          <ScalarProperty Name="CIDVALORCLASIFCLIENTE5" ColumnName="CIDVALORCLASIFCLIENTE5" />
+          <ScalarProperty Name="CIDVALORCLASIFCLIENTE6" ColumnName="CIDVALORCLASIFCLIENTE6" />
+          <ScalarProperty Name="CTIPOCLIENTE" ColumnName="CTIPOCLIENTE" />
+          <ScalarProperty Name="CESTATUS" ColumnName="CESTATUS" />
+          <ScalarProperty Name="CFECHABAJA" ColumnName="CFECHABAJA" />
+          <ScalarProperty Name="CFECHAULTIMAREVISION" ColumnName="CFECHAULTIMAREVISION" />
+          <ScalarProperty Name="CLIMITECREDITOCLIENTE" ColumnName="CLIMITECREDITOCLIENTE" />
+          <ScalarProperty Name="CDIASCREDITOCLIENTE" ColumnName="CDIASCREDITOCLIENTE" />
+          <ScalarProperty Name="CBANEXCEDERCREDITO" ColumnName="CBANEXCEDERCREDITO" />
+          <ScalarProperty Name="CDESCUENTOPRONTOPAGO" ColumnName="CDESCUENTOPRONTOPAGO" />
+          <ScalarProperty Name="CDIASPRONTOPAGO" ColumnName="CDIASPRONTOPAGO" />
+          <ScalarProperty Name="CINTERESMORATORIO" ColumnName="CINTERESMORATORIO" />
+          <ScalarProperty Name="CDIAPAGO" ColumnName="CDIAPAGO" />
+          <ScalarProperty Name="CDIASREVISION" ColumnName="CDIASREVISION" />
+          <ScalarProperty Name="CMENSAJERIA" ColumnName="CMENSAJERIA" />
+          <ScalarProperty Name="CCUENTAMENSAJERIA" ColumnName="CCUENTAMENSAJERIA" />
+          <ScalarProperty Name="CDIASEMBARQUECLIENTE" ColumnName="CDIASEMBARQUECLIENTE" />
+          <ScalarProperty Name="CIDALMACEN" ColumnName="CIDALMACEN" />
+          <ScalarProperty Name="CIDAGENTEVENTA" ColumnName="CIDAGENTEVENTA" />
+          <ScalarProperty Name="CIDAGENTECOBRO" ColumnName="CIDAGENTECOBRO" />
+          <ScalarProperty Name="CRESTRICCIONAGENTE" ColumnName="CRESTRICCIONAGENTE" />
+          <ScalarProperty Name="CIMPUESTO1" ColumnName="CIMPUESTO1" />
+          <ScalarProperty Name="CIMPUESTO2" ColumnName="CIMPUESTO2" />
+          <ScalarProperty Name="CIMPUESTO3" ColumnName="CIMPUESTO3" />
+          <ScalarProperty Name="CRETENCIONCLIENTE1" ColumnName="CRETENCIONCLIENTE1" />
+          <ScalarProperty Name="CRETENCIONCLIENTE2" ColumnName="CRETENCIONCLIENTE2" />
+          <ScalarProperty Name="CIDVALORCLASIFPROVEEDOR1" ColumnName="CIDVALORCLASIFPROVEEDOR1" />
+          <ScalarProperty Name="CIDVALORCLASIFPROVEEDOR2" ColumnName="CIDVALORCLASIFPROVEEDOR2" />
+          <ScalarProperty Name="CIDVALORCLASIFPROVEEDOR3" ColumnName="CIDVALORCLASIFPROVEEDOR3" />
+          <ScalarProperty Name="CIDVALORCLASIFPROVEEDOR4" ColumnName="CIDVALORCLASIFPROVEEDOR4" />
+          <ScalarProperty Name="CIDVALORCLASIFPROVEEDOR5" ColumnName="CIDVALORCLASIFPROVEEDOR5" />
+          <ScalarProperty Name="CIDVALORCLASIFPROVEEDOR6" ColumnName="CIDVALORCLASIFPROVEEDOR6" />
+          <ScalarProperty Name="CLIMITECREDITOPROVEEDOR" ColumnName="CLIMITECREDITOPROVEEDOR" />
+          <ScalarProperty Name="CDIASCREDITOPROVEEDOR" ColumnName="CDIASCREDITOPROVEEDOR" />
+          <ScalarProperty Name="CTIEMPOENTREGA" ColumnName="CTIEMPOENTREGA" />
+          <ScalarProperty Name="CDIASEMBARQUEPROVEEDOR" ColumnName="CDIASEMBARQUEPROVEEDOR" />
+          <ScalarProperty Name="CIMPUESTOPROVEEDOR1" ColumnName="CIMPUESTOPROVEEDOR1" />
+          <ScalarProperty Name="CIMPUESTOPROVEEDOR2" ColumnName="CIMPUESTOPROVEEDOR2" />
+          <ScalarProperty Name="CIMPUESTOPROVEEDOR3" ColumnName="CIMPUESTOPROVEEDOR3" />
+          <ScalarProperty Name="CRETENCIONPROVEEDOR1" ColumnName="CRETENCIONPROVEEDOR1" />
+          <ScalarProperty Name="CRETENCIONPROVEEDOR2" ColumnName="CRETENCIONPROVEEDOR2" />
+          <ScalarProperty Name="CBANINTERESMORATORIO" ColumnName="CBANINTERESMORATORIO" />
+          <ScalarProperty Name="CCOMVENTAEXCEPCLIENTE" ColumnName="CCOMVENTAEXCEPCLIENTE" />
+          <ScalarProperty Name="CCOMCOBROEXCEPCLIENTE" ColumnName="CCOMCOBROEXCEPCLIENTE" />
+          <ScalarProperty Name="CBANPRODUCTOCONSIGNACION" ColumnName="CBANPRODUCTOCONSIGNACION" />
+          <ScalarProperty Name="CSEGCONTCLIENTE1" ColumnName="CSEGCONTCLIENTE1" />
+          <ScalarProperty Name="CSEGCONTCLIENTE2" ColumnName="CSEGCONTCLIENTE2" />
+          <ScalarProperty Name="CSEGCONTCLIENTE3" ColumnName="CSEGCONTCLIENTE3" />
+          <ScalarProperty Name="CSEGCONTCLIENTE4" ColumnName="CSEGCONTCLIENTE4" />
+          <ScalarProperty Name="CSEGCONTCLIENTE5" ColumnName="CSEGCONTCLIENTE5" />
+          <ScalarProperty Name="CSEGCONTCLIENTE6" ColumnName="CSEGCONTCLIENTE6" />
+          <ScalarProperty Name="CSEGCONTCLIENTE7" ColumnName="CSEGCONTCLIENTE7" />
+          <ScalarProperty Name="CSEGCONTPROVEEDOR1" ColumnName="CSEGCONTPROVEEDOR1" />
+          <ScalarProperty Name="CSEGCONTPROVEEDOR2" ColumnName="CSEGCONTPROVEEDOR2" />
+          <ScalarProperty Name="CSEGCONTPROVEEDOR3" ColumnName="CSEGCONTPROVEEDOR3" />
+          <ScalarProperty Name="CSEGCONTPROVEEDOR4" ColumnName="CSEGCONTPROVEEDOR4" />
+          <ScalarProperty Name="CSEGCONTPROVEEDOR5" ColumnName="CSEGCONTPROVEEDOR5" />
+          <ScalarProperty Name="CSEGCONTPROVEEDOR6" ColumnName="CSEGCONTPROVEEDOR6" />
+          <ScalarProperty Name="CSEGCONTPROVEEDOR7" ColumnName="CSEGCONTPROVEEDOR7" />
+          <ScalarProperty Name="CTEXTOEXTRA1" ColumnName="CTEXTOEXTRA1" />
+          <ScalarProperty Name="CTEXTOEXTRA2" ColumnName="CTEXTOEXTRA2" />
+          <ScalarProperty Name="CTEXTOEXTRA3" ColumnName="CTEXTOEXTRA3" />
+          <ScalarProperty Name="CFECHAEXTRA" ColumnName="CFECHAEXTRA" />
+          <ScalarProperty Name="CIMPORTEEXTRA1" ColumnName="CIMPORTEEXTRA1" />
+          <ScalarProperty Name="CIMPORTEEXTRA2" ColumnName="CIMPORTEEXTRA2" />
+          <ScalarProperty Name="CIMPORTEEXTRA3" ColumnName="CIMPORTEEXTRA3" />
+          <ScalarProperty Name="CIMPORTEEXTRA4" ColumnName="CIMPORTEEXTRA4" />
+          <ScalarProperty Name="CBANDOMICILIO" ColumnName="CBANDOMICILIO" />
+          <ScalarProperty Name="CBANCREDITOYCOBRANZA" ColumnName="CBANCREDITOYCOBRANZA" />
+          <ScalarProperty Name="CBANENVIO" ColumnName="CBANENVIO" />
+          <ScalarProperty Name="CBANAGENTE" ColumnName="CBANAGENTE" />
+          <ScalarProperty Name="CBANIMPUESTO" ColumnName="CBANIMPUESTO" />
+          <ScalarProperty Name="CBANPRECIO" ColumnName="CBANPRECIO" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CFACTERC01" ColumnName="CFACTERC01" />
+          <ScalarProperty Name="CCOMVENTA" ColumnName="CCOMVENTA" />
+          <ScalarProperty Name="CCOMCOBRO" ColumnName="CCOMCOBRO" />
+          <ScalarProperty Name="CIDMONEDA2" ColumnName="CIDMONEDA2" />
+          <ScalarProperty Name="CEMAIL1" ColumnName="CEMAIL1" />
+          <ScalarProperty Name="CEMAIL2" ColumnName="CEMAIL2" />
+          <ScalarProperty Name="CEMAIL3" ColumnName="CEMAIL3" />
+          <ScalarProperty Name="CTIPOENTRE" ColumnName="CTIPOENTRE" />
+          <ScalarProperty Name="CCONCTEEMA" ColumnName="CCONCTEEMA" />
+          <ScalarProperty Name="CFTOADDEND" ColumnName="CFTOADDEND" />
+          <ScalarProperty Name="CIDCERTCTE" ColumnName="CIDCERTCTE" />
+          <ScalarProperty Name="CENCRIPENT" ColumnName="CENCRIPENT" />
+          <ScalarProperty Name="CBANCFD" ColumnName="CBANCFD" />
+          <ScalarProperty Name="CTEXTOEXTRA4" ColumnName="CTEXTOEXTRA4" />
+          <ScalarProperty Name="CTEXTOEXTRA5" ColumnName="CTEXTOEXTRA5" />
+          <ScalarProperty Name="CIMPORTEEXTRA5" ColumnName="CIMPORTEEXTRA5" />
+          <ScalarProperty Name="CIDADDENDA" ColumnName="CIDADDENDA" />
+          <ScalarProperty Name="CCODPROVCO" ColumnName="CCODPROVCO" />
+          <ScalarProperty Name="CENVACUSE" ColumnName="CENVACUSE" />
+          <ScalarProperty Name="CCON1NOM" ColumnName="CCON1NOM" />
+          <ScalarProperty Name="CCON1TEL" ColumnName="CCON1TEL" />
+          <ScalarProperty Name="CQUITABLAN" ColumnName="CQUITABLAN" />
+          <ScalarProperty Name="CFMTOENTRE" ColumnName="CFMTOENTRE" />
+          <ScalarProperty Name="CIDCOMPLEM" ColumnName="CIDCOMPLEM" />
+          <ScalarProperty Name="CDESGLOSAI2" ColumnName="CDESGLOSAI2" />
+          <ScalarProperty Name="CLIMDOCTOS" ColumnName="CLIMDOCTOS" />
+          <ScalarProperty Name="CSITIOFTP" ColumnName="CSITIOFTP" />
+          <ScalarProperty Name="CUSRFTP" ColumnName="CUSRFTP" />
+          <ScalarProperty Name="CMETODOPAG" ColumnName="CMETODOPAG" />
+          <ScalarProperty Name="CNUMCTAPAG" ColumnName="CNUMCTAPAG" />
+          <ScalarProperty Name="CIDCUENTA" ColumnName="CIDCUENTA" />
+          <ScalarProperty Name="CUSOCFDI" ColumnName="CUSOCFDI" />
+          <ScalarProperty Name="CREGIMFISC" ColumnName="CREGIMFISC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admConceptos">
+      <EntityTypeMapping TypeName="adEventModel.admConceptos">
+        <MappingFragment StoreEntitySet="admConceptos">
+          <ScalarProperty Name="CUSAOBJIMP" ColumnName="CUSAOBJIMP" />
+          <ScalarProperty Name="CIDCONCEPTODOCUMENTO" ColumnName="CIDCONCEPTODOCUMENTO" />
+          <ScalarProperty Name="CCODIGOCONCEPTO" ColumnName="CCODIGOCONCEPTO" />
+          <ScalarProperty Name="CNOMBRECONCEPTO" ColumnName="CNOMBRECONCEPTO" />
+          <ScalarProperty Name="CIDDOCUMENTODE" ColumnName="CIDDOCUMENTODE" />
+          <ScalarProperty Name="CNATURALEZA" ColumnName="CNATURALEZA" />
+          <ScalarProperty Name="CDOCTOACREDITO" ColumnName="CDOCTOACREDITO" />
+          <ScalarProperty Name="CTIPOFOLIO" ColumnName="CTIPOFOLIO" />
+          <ScalarProperty Name="CMAXIMOMOVTOS" ColumnName="CMAXIMOMOVTOS" />
+          <ScalarProperty Name="CCREACLIENTE" ColumnName="CCREACLIENTE" />
+          <ScalarProperty Name="CSUMARPROMOCIONES" ColumnName="CSUMARPROMOCIONES" />
+          <ScalarProperty Name="CFORMAPREIMPRESA" ColumnName="CFORMAPREIMPRESA" />
+          <ScalarProperty Name="CORDENCALCULO" ColumnName="CORDENCALCULO" />
+          <ScalarProperty Name="CUSANOMBRECTEPROV" ColumnName="CUSANOMBRECTEPROV" />
+          <ScalarProperty Name="CUSARFC" ColumnName="CUSARFC" />
+          <ScalarProperty Name="CUSAFECHAVENCIMIENTO" ColumnName="CUSAFECHAVENCIMIENTO" />
+          <ScalarProperty Name="CUSAFECHAENTREGARECEPCION" ColumnName="CUSAFECHAENTREGARECEPCION" />
+          <ScalarProperty Name="CUSAMONEDA" ColumnName="CUSAMONEDA" />
+          <ScalarProperty Name="CUSATIPOCAMBIO" ColumnName="CUSATIPOCAMBIO" />
+          <ScalarProperty Name="CUSACODIGOAGENTE" ColumnName="CUSACODIGOAGENTE" />
+          <ScalarProperty Name="CUSANOMBREAGENTE" ColumnName="CUSANOMBREAGENTE" />
+          <ScalarProperty Name="CUSADIRECCION" ColumnName="CUSADIRECCION" />
+          <ScalarProperty Name="CUSAREFERENCIA" ColumnName="CUSAREFERENCIA" />
+          <ScalarProperty Name="CSERIEPOROMISION" ColumnName="CSERIEPOROMISION" />
+          <ScalarProperty Name="CANCHOCODIGOPRODUCTO" ColumnName="CANCHOCODIGOPRODUCTO" />
+          <ScalarProperty Name="CUSANOMBREPRODUCTO" ColumnName="CUSANOMBREPRODUCTO" />
+          <ScalarProperty Name="CANCHONOMBREPRODUCTO" ColumnName="CANCHONOMBREPRODUCTO" />
+          <ScalarProperty Name="CUSAALMACEN" ColumnName="CUSAALMACEN" />
+          <ScalarProperty Name="CANCHOCODIGOALMACEN" ColumnName="CANCHOCODIGOALMACEN" />
+          <ScalarProperty Name="CANCHOIMPORTES" ColumnName="CANCHOIMPORTES" />
+          <ScalarProperty Name="CANCHOPORCENTAJES" ColumnName="CANCHOPORCENTAJES" />
+          <ScalarProperty Name="CANCHOUNIDADPESOMEDIDA" ColumnName="CANCHOUNIDADPESOMEDIDA" />
+          <ScalarProperty Name="CUSAPRECIO" ColumnName="CUSAPRECIO" />
+          <ScalarProperty Name="CIDFORMULAPRECIO" ColumnName="CIDFORMULAPRECIO" />
+          <ScalarProperty Name="CUSACOSTOCAPTURADO" ColumnName="CUSACOSTOCAPTURADO" />
+          <ScalarProperty Name="CIDFORMULACOSTOCAPTURADO" ColumnName="CIDFORMULACOSTOCAPTURADO" />
+          <ScalarProperty Name="CUSAEXISTENCIA" ColumnName="CUSAEXISTENCIA" />
+          <ScalarProperty Name="CUSANETO" ColumnName="CUSANETO" />
+          <ScalarProperty Name="CIDFORMULANETO" ColumnName="CIDFORMULANETO" />
+          <ScalarProperty Name="CUSAPORCENTAJEIMPUESTO1" ColumnName="CUSAPORCENTAJEIMPUESTO1" />
+          <ScalarProperty Name="CIDFORMULAPORCIMPUESTO1" ColumnName="CIDFORMULAPORCIMPUESTO1" />
+          <ScalarProperty Name="CUSAIMPUESTO1" ColumnName="CUSAIMPUESTO1" />
+          <ScalarProperty Name="CIDFORMULAIMPUESTO1" ColumnName="CIDFORMULAIMPUESTO1" />
+          <ScalarProperty Name="CUSAPORCENTAJEIMPUESTO2" ColumnName="CUSAPORCENTAJEIMPUESTO2" />
+          <ScalarProperty Name="CIDFORMULAPORCIMPUESTO2" ColumnName="CIDFORMULAPORCIMPUESTO2" />
+          <ScalarProperty Name="CUSAIMPUESTO2" ColumnName="CUSAIMPUESTO2" />
+          <ScalarProperty Name="CIDFORMULAIMPUESTO2" ColumnName="CIDFORMULAIMPUESTO2" />
+          <ScalarProperty Name="CUSAPORCENTAJEIMPUESTO3" ColumnName="CUSAPORCENTAJEIMPUESTO3" />
+          <ScalarProperty Name="CIDFORMULAPORCIMPUESTO3" ColumnName="CIDFORMULAPORCIMPUESTO3" />
+          <ScalarProperty Name="CUSAIMPUESTO3" ColumnName="CUSAIMPUESTO3" />
+          <ScalarProperty Name="CIDFORMULAIMPUESTO3" ColumnName="CIDFORMULAIMPUESTO3" />
+          <ScalarProperty Name="CUSAPORCENTAJERETENCION1" ColumnName="CUSAPORCENTAJERETENCION1" />
+          <ScalarProperty Name="CIDFORMULAPORCRETENCION1" ColumnName="CIDFORMULAPORCRETENCION1" />
+          <ScalarProperty Name="CUSARETENCION1" ColumnName="CUSARETENCION1" />
+          <ScalarProperty Name="CIDFORMULARETENCION1" ColumnName="CIDFORMULARETENCION1" />
+          <ScalarProperty Name="CUSAPORCENTAJERETENCION2" ColumnName="CUSAPORCENTAJERETENCION2" />
+          <ScalarProperty Name="CIDFORMULAPORCRETENCION2" ColumnName="CIDFORMULAPORCRETENCION2" />
+          <ScalarProperty Name="CUSARETENCION2" ColumnName="CUSARETENCION2" />
+          <ScalarProperty Name="CIDFORMULARETENCION2" ColumnName="CIDFORMULARETENCION2" />
+          <ScalarProperty Name="CUSAPORCENTAJEDESCUENTO1" ColumnName="CUSAPORCENTAJEDESCUENTO1" />
+          <ScalarProperty Name="CIDFORMULAPORCDESCUENTO1" ColumnName="CIDFORMULAPORCDESCUENTO1" />
+          <ScalarProperty Name="CUSADESCUENTO1" ColumnName="CUSADESCUENTO1" />
+          <ScalarProperty Name="CIDFORMULADESCUENTO1" ColumnName="CIDFORMULADESCUENTO1" />
+          <ScalarProperty Name="CUSAPORCENTAJEDESCUENTO2" ColumnName="CUSAPORCENTAJEDESCUENTO2" />
+          <ScalarProperty Name="CIDFORMULAPORCDESCUENTO2" ColumnName="CIDFORMULAPORCDESCUENTO2" />
+          <ScalarProperty Name="CUSADESCUENTO2" ColumnName="CUSADESCUENTO2" />
+          <ScalarProperty Name="CIDFORMULADESCUENTO2" ColumnName="CIDFORMULADESCUENTO2" />
+          <ScalarProperty Name="CUSAPORCENTAJEDESCUENTO3" ColumnName="CUSAPORCENTAJEDESCUENTO3" />
+          <ScalarProperty Name="CIDFORMULAPORCDESCUENTO3" ColumnName="CIDFORMULAPORCDESCUENTO3" />
+          <ScalarProperty Name="CUSADESCUENTO3" ColumnName="CUSADESCUENTO3" />
+          <ScalarProperty Name="CIDFORMULADESCUENTO3" ColumnName="CIDFORMULADESCUENTO3" />
+          <ScalarProperty Name="CUSAPORCENTAJEDESCUENTO4" ColumnName="CUSAPORCENTAJEDESCUENTO4" />
+          <ScalarProperty Name="CIDFORMULAPORCDESCUENTO4" ColumnName="CIDFORMULAPORCDESCUENTO4" />
+          <ScalarProperty Name="CUSADESCUENTO4" ColumnName="CUSADESCUENTO4" />
+          <ScalarProperty Name="CIDFORMULADESCUENTO4" ColumnName="CIDFORMULADESCUENTO4" />
+          <ScalarProperty Name="CUSAPORCENTAJEDESCUENTO5" ColumnName="CUSAPORCENTAJEDESCUENTO5" />
+          <ScalarProperty Name="CIDFORMULAPORCDESCUENTO5" ColumnName="CIDFORMULAPORCDESCUENTO5" />
+          <ScalarProperty Name="CUSADESCUENTO5" ColumnName="CUSADESCUENTO5" />
+          <ScalarProperty Name="CIDFORMULADESCUENTO5" ColumnName="CIDFORMULADESCUENTO5" />
+          <ScalarProperty Name="CUSATOTAL" ColumnName="CUSATOTAL" />
+          <ScalarProperty Name="CANCHOREFERENCIA" ColumnName="CANCHOREFERENCIA" />
+          <ScalarProperty Name="CUSACLASIFICACIONMOVTO" ColumnName="CUSACLASIFICACIONMOVTO" />
+          <ScalarProperty Name="CANCHOVALORCLASIFICACION" ColumnName="CANCHOVALORCLASIFICACION" />
+          <ScalarProperty Name="CIDFORMULATOTAL" ColumnName="CIDFORMULATOTAL" />
+          <ScalarProperty Name="CUSADESCUENTODOC1" ColumnName="CUSADESCUENTODOC1" />
+          <ScalarProperty Name="CIDFORMULADESDOC1" ColumnName="CIDFORMULADESDOC1" />
+          <ScalarProperty Name="CUSADESCUENTODOC2" ColumnName="CUSADESCUENTODOC2" />
+          <ScalarProperty Name="CIDFORMULADESDOC2" ColumnName="CIDFORMULADESDOC2" />
+          <ScalarProperty Name="CUSAGASTO1" ColumnName="CUSAGASTO1" />
+          <ScalarProperty Name="CIDFORMULAGASTO1" ColumnName="CIDFORMULAGASTO1" />
+          <ScalarProperty Name="CUSAGASTO2" ColumnName="CUSAGASTO2" />
+          <ScalarProperty Name="CIDFORMULAGASTO2" ColumnName="CIDFORMULAGASTO2" />
+          <ScalarProperty Name="CUSAGASTO3" ColumnName="CUSAGASTO3" />
+          <ScalarProperty Name="CIDFORMULAGASTO3" ColumnName="CIDFORMULAGASTO3" />
+          <ScalarProperty Name="CUSATEXTOEXTRA1" ColumnName="CUSATEXTOEXTRA1" />
+          <ScalarProperty Name="CUSATEXTOEXTRA2" ColumnName="CUSATEXTOEXTRA2" />
+          <ScalarProperty Name="CUSATEXTOEXTRA3" ColumnName="CUSATEXTOEXTRA3" />
+          <ScalarProperty Name="CANCHOTEXTOEXTRA" ColumnName="CANCHOTEXTOEXTRA" />
+          <ScalarProperty Name="CUSAFECHAEXTRA" ColumnName="CUSAFECHAEXTRA" />
+          <ScalarProperty Name="CANCHOFECHAEXTRA" ColumnName="CANCHOFECHAEXTRA" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA1" ColumnName="CUSAIMPORTEEXTRA1" />
+          <ScalarProperty Name="CIDFORMULAEXTRA1" ColumnName="CIDFORMULAEXTRA1" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA2" ColumnName="CUSAIMPORTEEXTRA2" />
+          <ScalarProperty Name="CIDFORMULAEXTRA2" ColumnName="CIDFORMULAEXTRA2" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA3" ColumnName="CUSAIMPORTEEXTRA3" />
+          <ScalarProperty Name="CIDFORMULAEXTRA3" ColumnName="CIDFORMULAEXTRA3" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA4" ColumnName="CUSAIMPORTEEXTRA4" />
+          <ScalarProperty Name="CIDFORMULAEXTRA4" ColumnName="CIDFORMULAEXTRA4" />
+          <ScalarProperty Name="CUSATEXTOEXTRA1DOC" ColumnName="CUSATEXTOEXTRA1DOC" />
+          <ScalarProperty Name="CUSATEXTOEXTRA2DOC" ColumnName="CUSATEXTOEXTRA2DOC" />
+          <ScalarProperty Name="CUSATEXTOEXTRA3DOC" ColumnName="CUSATEXTOEXTRA3DOC" />
+          <ScalarProperty Name="CUSAFECHAEXTRADOC" ColumnName="CUSAFECHAEXTRADOC" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA1DOC" ColumnName="CUSAIMPORTEEXTRA1DOC" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA2DOC" ColumnName="CUSAIMPORTEEXTRA2DOC" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA3DOC" ColumnName="CUSAIMPORTEEXTRA3DOC" />
+          <ScalarProperty Name="CUSAIMPORTEEXTRA4DOC" ColumnName="CUSAIMPORTEEXTRA4DOC" />
+          <ScalarProperty Name="CUSAEXTRACOMOGASTO" ColumnName="CUSAEXTRACOMOGASTO" />
+          <ScalarProperty Name="CUSAOBSERVACIONES" ColumnName="CUSAOBSERVACIONES" />
+          <ScalarProperty Name="CPRESENTAFISCAL" ColumnName="CPRESENTAFISCAL" />
+          <ScalarProperty Name="CPRESENTAREFERENCIA" ColumnName="CPRESENTAREFERENCIA" />
+          <ScalarProperty Name="CPRESENTACONDICIONES" ColumnName="CPRESENTACONDICIONES" />
+          <ScalarProperty Name="CPRESENTAENVIO" ColumnName="CPRESENTAENVIO" />
+          <ScalarProperty Name="CPRESENTADETALLE" ColumnName="CPRESENTADETALLE" />
+          <ScalarProperty Name="CPRESENTAIMPRIMIR" ColumnName="CPRESENTAIMPRIMIR" />
+          <ScalarProperty Name="CPRESENTAPAGAR" ColumnName="CPRESENTAPAGAR" />
+          <ScalarProperty Name="CPRESENTASALDAR" ColumnName="CPRESENTASALDAR" />
+          <ScalarProperty Name="CPRESENTADOCUMENTAR" ColumnName="CPRESENTADOCUMENTAR" />
+          <ScalarProperty Name="CPRESENTAGASTOSCOMPRA" ColumnName="CPRESENTAGASTOSCOMPRA" />
+          <ScalarProperty Name="CSEGCONTCONCEPTO" ColumnName="CSEGCONTCONCEPTO" />
+          <ScalarProperty Name="CBANENCABEZADO" ColumnName="CBANENCABEZADO" />
+          <ScalarProperty Name="CBANMOVIMIENTO" ColumnName="CBANMOVIMIENTO" />
+          <ScalarProperty Name="CBANDESCUENTO" ColumnName="CBANDESCUENTO" />
+          <ScalarProperty Name="CBANIMPUESTO" ColumnName="CBANIMPUESTO" />
+          <ScalarProperty Name="CBANACCIONAUTOMATICA" ColumnName="CBANACCIONAUTOMATICA" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CNOFOLIO" ColumnName="CNOFOLIO" />
+          <ScalarProperty Name="CIDPROCESOSEGURIDAD" ColumnName="CIDPROCESOSEGURIDAD" />
+          <ScalarProperty Name="CUSAGTOMOV" ColumnName="CUSAGTOMOV" />
+          <ScalarProperty Name="CUSASCMOV" ColumnName="CUSASCMOV" />
+          <ScalarProperty Name="CIDASTOCON" ColumnName="CIDASTOCON" />
+          <ScalarProperty Name="CSCCPTO2" ColumnName="CSCCPTO2" />
+          <ScalarProperty Name="CSCCPTO3" ColumnName="CSCCPTO3" />
+          <ScalarProperty Name="CSCMOVTO" ColumnName="CSCMOVTO" />
+          <ScalarProperty Name="CIDCONAUTO" ColumnName="CIDCONAUTO" />
+          <ScalarProperty Name="CIDALMASUM" ColumnName="CIDALMASUM" />
+          <ScalarProperty Name="CUSACOMVTA" ColumnName="CUSACOMVTA" />
+          <ScalarProperty Name="CIDPRSEG02" ColumnName="CIDPRSEG02" />
+          <ScalarProperty Name="CIDPRSEG03" ColumnName="CIDPRSEG03" />
+          <ScalarProperty Name="CIDPRSEG04" ColumnName="CIDPRSEG04" />
+          <ScalarProperty Name="CIDPRSEG05" ColumnName="CIDPRSEG05" />
+          <ScalarProperty Name="CFORMAAJ01" ColumnName="CFORMAAJ01" />
+          <ScalarProperty Name="CIDPRSEG06" ColumnName="CIDPRSEG06" />
+          <ScalarProperty Name="CAPFORMULA" ColumnName="CAPFORMULA" />
+          <ScalarProperty Name="CESCFD" ColumnName="CESCFD" />
+          <ScalarProperty Name="CIDFIRMARL" ColumnName="CIDFIRMARL" />
+          <ScalarProperty Name="CGDAPASSW" ColumnName="CGDAPASSW" />
+          <ScalarProperty Name="CEMITEYENT" ColumnName="CEMITEYENT" />
+          <ScalarProperty Name="CBANCFD" ColumnName="CBANCFD" />
+          <ScalarProperty Name="CREPIMPCFD" ColumnName="CREPIMPCFD" />
+          <ScalarProperty Name="CIDDIRSUCU" ColumnName="CIDDIRSUCU" />
+          <ScalarProperty Name="CBANDIRSUC" ColumnName="CBANDIRSUC" />
+          <ScalarProperty Name="CVERFACELE" ColumnName="CVERFACELE" />
+          <ScalarProperty Name="CCALFECHAS" ColumnName="CCALFECHAS" />
+          <ScalarProperty Name="CTIPCAMTR1" ColumnName="CTIPCAMTR1" />
+          <ScalarProperty Name="CTIPCAMTR2" ColumnName="CTIPCAMTR2" />
+          <ScalarProperty Name="CCONSOLIDA" ColumnName="CCONSOLIDA" />
+          <ScalarProperty Name="CENVIODIG" ColumnName="CENVIODIG" />
+          <ScalarProperty Name="CBANTRANS" ColumnName="CBANTRANS" />
+          <ScalarProperty Name="CCONFNOAPR" ColumnName="CCONFNOAPR" />
+          <ScalarProperty Name="CNOAPROB" ColumnName="CNOAPROB" />
+          <ScalarProperty Name="CAUTOIMPR" ColumnName="CAUTOIMPR" />
+          <ScalarProperty Name="CRECIBECFD" ColumnName="CRECIBECFD" />
+          <ScalarProperty Name="CSISTORIG" ColumnName="CSISTORIG" />
+          <ScalarProperty Name="CIDCPTODE1" ColumnName="CIDCPTODE1" />
+          <ScalarProperty Name="CIDCPTODE2" ColumnName="CIDCPTODE2" />
+          <ScalarProperty Name="CIDCPTODE3" ColumnName="CIDCPTODE3" />
+          <ScalarProperty Name="CPLAMIGCFD" ColumnName="CPLAMIGCFD" />
+          <ScalarProperty Name="CIDPRSEG07" ColumnName="CIDPRSEG07" />
+          <ScalarProperty Name="CRESERVADO" ColumnName="CRESERVADO" />
+          <ScalarProperty Name="CVERREFER" ColumnName="CVERREFER" />
+          <ScalarProperty Name="CVERDOCORI" ColumnName="CVERDOCORI" />
+          <ScalarProperty Name="CCBB" ColumnName="CCBB" />
+          <ScalarProperty Name="CCARTAPOR" ColumnName="CCARTAPOR" />
+          <ScalarProperty Name="CCOMPDONAT" ColumnName="CCOMPDONAT" />
+          <ScalarProperty Name="COBSXML" ColumnName="COBSXML" />
+          <ScalarProperty Name="CRUTAENTREGA" ColumnName="CRUTAENTREGA" />
+          <ScalarProperty Name="CPREFIJOCONCEPTO" ColumnName="CPREFIJOCONCEPTO" />
+          <ScalarProperty Name="CREGIMFISC" ColumnName="CREGIMFISC" />
+          <ScalarProperty Name="CCOMPEDUCA" ColumnName="CCOMPEDUCA" />
+          <ScalarProperty Name="CMETODOPAG" ColumnName="CMETODOPAG" />
+          <ScalarProperty Name="CVERESQUE" ColumnName="CVERESQUE" />
+          <ScalarProperty Name="CIDFIRMADSL" ColumnName="CIDFIRMADSL" />
+          <ScalarProperty Name="CORDENCAPTURA" ColumnName="CORDENCAPTURA" />
+          <ScalarProperty Name="CESTATUS" ColumnName="CESTATUS" />
+          <ScalarProperty Name="CIDMONEDA" ColumnName="CIDMONEDA" />
+          <ScalarProperty Name="CIDCUENTA" ColumnName="CIDCUENTA" />
+          <ScalarProperty Name="CCLAVESAT" ColumnName="CCLAVESAT" />
+          <ScalarProperty Name="CIDPRSEG08" ColumnName="CIDPRSEG08" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admDocumentos">
+      <EntityTypeMapping TypeName="adEventModel.admDocumentos">
+        <MappingFragment StoreEntitySet="admDocumentos">
+          <ScalarProperty Name="CIDDOCUMENTO" ColumnName="CIDDOCUMENTO" />
+          <ScalarProperty Name="CIDDOCUMENTODE" ColumnName="CIDDOCUMENTODE" />
+          <ScalarProperty Name="CIDCONCEPTODOCUMENTO" ColumnName="CIDCONCEPTODOCUMENTO" />
+          <ScalarProperty Name="CSERIEDOCUMENTO" ColumnName="CSERIEDOCUMENTO" />
+          <ScalarProperty Name="CFOLIO" ColumnName="CFOLIO" />
+          <ScalarProperty Name="CFECHA" ColumnName="CFECHA" />
+          <ScalarProperty Name="CIDCLIENTEPROVEEDOR" ColumnName="CIDCLIENTEPROVEEDOR" />
+          <ScalarProperty Name="CRAZONSOCIAL" ColumnName="CRAZONSOCIAL" />
+          <ScalarProperty Name="CRFC" ColumnName="CRFC" />
+          <ScalarProperty Name="CIDAGENTE" ColumnName="CIDAGENTE" />
+          <ScalarProperty Name="CFECHAVENCIMIENTO" ColumnName="CFECHAVENCIMIENTO" />
+          <ScalarProperty Name="CFECHAPRONTOPAGO" ColumnName="CFECHAPRONTOPAGO" />
+          <ScalarProperty Name="CFECHAENTREGARECEPCION" ColumnName="CFECHAENTREGARECEPCION" />
+          <ScalarProperty Name="CFECHAULTIMOINTERES" ColumnName="CFECHAULTIMOINTERES" />
+          <ScalarProperty Name="CIDMONEDA" ColumnName="CIDMONEDA" />
+          <ScalarProperty Name="CTIPOCAMBIO" ColumnName="CTIPOCAMBIO" />
+          <ScalarProperty Name="CREFERENCIA" ColumnName="CREFERENCIA" />
+          <ScalarProperty Name="COBSERVACIONES" ColumnName="COBSERVACIONES" />
+          <ScalarProperty Name="CNATURALEZA" ColumnName="CNATURALEZA" />
+          <ScalarProperty Name="CIDDOCUMENTOORIGEN" ColumnName="CIDDOCUMENTOORIGEN" />
+          <ScalarProperty Name="CPLANTILLA" ColumnName="CPLANTILLA" />
+          <ScalarProperty Name="CUSACLIENTE" ColumnName="CUSACLIENTE" />
+          <ScalarProperty Name="CUSAPROVEEDOR" ColumnName="CUSAPROVEEDOR" />
+          <ScalarProperty Name="CAFECTADO" ColumnName="CAFECTADO" />
+          <ScalarProperty Name="CIMPRESO" ColumnName="CIMPRESO" />
+          <ScalarProperty Name="CCANCELADO" ColumnName="CCANCELADO" />
+          <ScalarProperty Name="CDEVUELTO" ColumnName="CDEVUELTO" />
+          <ScalarProperty Name="CIDPREPOLIZA" ColumnName="CIDPREPOLIZA" />
+          <ScalarProperty Name="CIDPREPOLIZACANCELACION" ColumnName="CIDPREPOLIZACANCELACION" />
+          <ScalarProperty Name="CESTADOCONTABLE" ColumnName="CESTADOCONTABLE" />
+          <ScalarProperty Name="CNETO" ColumnName="CNETO" />
+          <ScalarProperty Name="CIMPUESTO1" ColumnName="CIMPUESTO1" />
+          <ScalarProperty Name="CIMPUESTO2" ColumnName="CIMPUESTO2" />
+          <ScalarProperty Name="CIMPUESTO3" ColumnName="CIMPUESTO3" />
+          <ScalarProperty Name="CRETENCION1" ColumnName="CRETENCION1" />
+          <ScalarProperty Name="CRETENCION2" ColumnName="CRETENCION2" />
+          <ScalarProperty Name="CDESCUENTOMOV" ColumnName="CDESCUENTOMOV" />
+          <ScalarProperty Name="CDESCUENTODOC1" ColumnName="CDESCUENTODOC1" />
+          <ScalarProperty Name="CDESCUENTODOC2" ColumnName="CDESCUENTODOC2" />
+          <ScalarProperty Name="CGASTO1" ColumnName="CGASTO1" />
+          <ScalarProperty Name="CGASTO2" ColumnName="CGASTO2" />
+          <ScalarProperty Name="CGASTO3" ColumnName="CGASTO3" />
+          <ScalarProperty Name="CTOTAL" ColumnName="CTOTAL" />
+          <ScalarProperty Name="CPENDIENTE" ColumnName="CPENDIENTE" />
+          <ScalarProperty Name="CTOTALUNIDADES" ColumnName="CTOTALUNIDADES" />
+          <ScalarProperty Name="CDESCUENTOPRONTOPAGO" ColumnName="CDESCUENTOPRONTOPAGO" />
+          <ScalarProperty Name="CPORCENTAJEIMPUESTO1" ColumnName="CPORCENTAJEIMPUESTO1" />
+          <ScalarProperty Name="CPORCENTAJEIMPUESTO2" ColumnName="CPORCENTAJEIMPUESTO2" />
+          <ScalarProperty Name="CPORCENTAJEIMPUESTO3" ColumnName="CPORCENTAJEIMPUESTO3" />
+          <ScalarProperty Name="CPORCENTAJERETENCION1" ColumnName="CPORCENTAJERETENCION1" />
+          <ScalarProperty Name="CPORCENTAJERETENCION2" ColumnName="CPORCENTAJERETENCION2" />
+          <ScalarProperty Name="CPORCENTAJEINTERES" ColumnName="CPORCENTAJEINTERES" />
+          <ScalarProperty Name="CTEXTOEXTRA1" ColumnName="CTEXTOEXTRA1" />
+          <ScalarProperty Name="CTEXTOEXTRA2" ColumnName="CTEXTOEXTRA2" />
+          <ScalarProperty Name="CTEXTOEXTRA3" ColumnName="CTEXTOEXTRA3" />
+          <ScalarProperty Name="CFECHAEXTRA" ColumnName="CFECHAEXTRA" />
+          <ScalarProperty Name="CIMPORTEEXTRA1" ColumnName="CIMPORTEEXTRA1" />
+          <ScalarProperty Name="CIMPORTEEXTRA2" ColumnName="CIMPORTEEXTRA2" />
+          <ScalarProperty Name="CIMPORTEEXTRA3" ColumnName="CIMPORTEEXTRA3" />
+          <ScalarProperty Name="CIMPORTEEXTRA4" ColumnName="CIMPORTEEXTRA4" />
+          <ScalarProperty Name="CDESTINATARIO" ColumnName="CDESTINATARIO" />
+          <ScalarProperty Name="CNUMEROGUIA" ColumnName="CNUMEROGUIA" />
+          <ScalarProperty Name="CMENSAJERIA" ColumnName="CMENSAJERIA" />
+          <ScalarProperty Name="CCUENTAMENSAJERIA" ColumnName="CCUENTAMENSAJERIA" />
+          <ScalarProperty Name="CNUMEROCAJAS" ColumnName="CNUMEROCAJAS" />
+          <ScalarProperty Name="CPESO" ColumnName="CPESO" />
+          <ScalarProperty Name="CBANOBSERVACIONES" ColumnName="CBANOBSERVACIONES" />
+          <ScalarProperty Name="CBANDATOSENVIO" ColumnName="CBANDATOSENVIO" />
+          <ScalarProperty Name="CBANCONDICIONESCREDITO" ColumnName="CBANCONDICIONESCREDITO" />
+          <ScalarProperty Name="CBANGASTOS" ColumnName="CBANGASTOS" />
+          <ScalarProperty Name="CUNIDADESPENDIENTES" ColumnName="CUNIDADESPENDIENTES" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CIMPCHEQPAQ" ColumnName="CIMPCHEQPAQ" />
+          <ScalarProperty Name="CSISTORIG" ColumnName="CSISTORIG" />
+          <ScalarProperty Name="CIDMONEDCA" ColumnName="CIDMONEDCA" />
+          <ScalarProperty Name="CTIPOCAMCA" ColumnName="CTIPOCAMCA" />
+          <ScalarProperty Name="CESCFD" ColumnName="CESCFD" />
+          <ScalarProperty Name="CTIENECFD" ColumnName="CTIENECFD" />
+          <ScalarProperty Name="CLUGAREXPE" ColumnName="CLUGAREXPE" />
+          <ScalarProperty Name="CMETODOPAG" ColumnName="CMETODOPAG" />
+          <ScalarProperty Name="CNUMPARCIA" ColumnName="CNUMPARCIA" />
+          <ScalarProperty Name="CCANTPARCI" ColumnName="CCANTPARCI" />
+          <ScalarProperty Name="CCONDIPAGO" ColumnName="CCONDIPAGO" />
+          <ScalarProperty Name="CNUMCTAPAG" ColumnName="CNUMCTAPAG" />
+          <ScalarProperty Name="CGUIDDOCUMENTO" ColumnName="CGUIDDOCUMENTO" />
+          <ScalarProperty Name="CUSUARIO" ColumnName="CUSUARIO" />
+          <ScalarProperty Name="CIDPROYECTO" ColumnName="CIDPROYECTO" />
+          <ScalarProperty Name="CIDCUENTA" ColumnName="CIDCUENTA" />
+          <ScalarProperty Name="CTRANSACTIONID" ColumnName="CTRANSACTIONID" />
+          <ScalarProperty Name="CIDCOPIADE" ColumnName="CIDCOPIADE" />
+          <ScalarProperty Name="CVERESQUE" ColumnName="CVERESQUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admDocumentosModelo">
+      <EntityTypeMapping TypeName="adEventModel.admDocumentosModelo">
+        <MappingFragment StoreEntitySet="admDocumentosModelo">
+          <ScalarProperty Name="CIDDOCUMENTODE" ColumnName="CIDDOCUMENTODE" />
+          <ScalarProperty Name="CDESCRIPCION" ColumnName="CDESCRIPCION" />
+          <ScalarProperty Name="CNATURALEZA" ColumnName="CNATURALEZA" />
+          <ScalarProperty Name="CAFECTAEXISTENCIA" ColumnName="CAFECTAEXISTENCIA" />
+          <ScalarProperty Name="CMODULO" ColumnName="CMODULO" />
+          <ScalarProperty Name="CNOFOLIO" ColumnName="CNOFOLIO" />
+          <ScalarProperty Name="CIDCONCEPTODOCTOASUMIDO" ColumnName="CIDCONCEPTODOCTOASUMIDO" />
+          <ScalarProperty Name="CUSACLIENTE" ColumnName="CUSACLIENTE" />
+          <ScalarProperty Name="CUSAPROVEEDOR" ColumnName="CUSAPROVEEDOR" />
+          <ScalarProperty Name="CIDASIENTOCONTABLE" ColumnName="CIDASIENTOCONTABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admDomicilios">
+      <EntityTypeMapping TypeName="adEventModel.admDomicilios">
+        <MappingFragment StoreEntitySet="admDomicilios">
+          <ScalarProperty Name="CIDDIRECCION" ColumnName="CIDDIRECCION" />
+          <ScalarProperty Name="CIDCATALOGO" ColumnName="CIDCATALOGO" />
+          <ScalarProperty Name="CTIPOCATALOGO" ColumnName="CTIPOCATALOGO" />
+          <ScalarProperty Name="CTIPODIRECCION" ColumnName="CTIPODIRECCION" />
+          <ScalarProperty Name="CNOMBRECALLE" ColumnName="CNOMBRECALLE" />
+          <ScalarProperty Name="CNUMEROEXTERIOR" ColumnName="CNUMEROEXTERIOR" />
+          <ScalarProperty Name="CNUMEROINTERIOR" ColumnName="CNUMEROINTERIOR" />
+          <ScalarProperty Name="CCOLONIA" ColumnName="CCOLONIA" />
+          <ScalarProperty Name="CCODIGOPOSTAL" ColumnName="CCODIGOPOSTAL" />
+          <ScalarProperty Name="CTELEFONO1" ColumnName="CTELEFONO1" />
+          <ScalarProperty Name="CTELEFONO2" ColumnName="CTELEFONO2" />
+          <ScalarProperty Name="CTELEFONO3" ColumnName="CTELEFONO3" />
+          <ScalarProperty Name="CTELEFONO4" ColumnName="CTELEFONO4" />
+          <ScalarProperty Name="CEMAIL" ColumnName="CEMAIL" />
+          <ScalarProperty Name="CDIRECCIONWEB" ColumnName="CDIRECCIONWEB" />
+          <ScalarProperty Name="CPAIS" ColumnName="CPAIS" />
+          <ScalarProperty Name="CESTADO" ColumnName="CESTADO" />
+          <ScalarProperty Name="CCIUDAD" ColumnName="CCIUDAD" />
+          <ScalarProperty Name="CTEXTOEXTRA" ColumnName="CTEXTOEXTRA" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CMUNICIPIO" ColumnName="CMUNICIPIO" />
+          <ScalarProperty Name="CSUCURSAL" ColumnName="CSUCURSAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admFoliosDigitales">
+      <EntityTypeMapping TypeName="adEventModel.admFoliosDigitales">
+        <MappingFragment StoreEntitySet="admFoliosDigitales">
+          <ScalarProperty Name="CIDFOLDIG" ColumnName="CIDFOLDIG" />
+          <ScalarProperty Name="CIDDOCTODE" ColumnName="CIDDOCTODE" />
+          <ScalarProperty Name="CIDCPTODOC" ColumnName="CIDCPTODOC" />
+          <ScalarProperty Name="CIDDOCTO" ColumnName="CIDDOCTO" />
+          <ScalarProperty Name="CIDDOCALDI" ColumnName="CIDDOCALDI" />
+          <ScalarProperty Name="CIDFIRMARL" ColumnName="CIDFIRMARL" />
+          <ScalarProperty Name="CNOORDEN" ColumnName="CNOORDEN" />
+          <ScalarProperty Name="CSERIE" ColumnName="CSERIE" />
+          <ScalarProperty Name="CFOLIO" ColumnName="CFOLIO" />
+          <ScalarProperty Name="CNOAPROB" ColumnName="CNOAPROB" />
+          <ScalarProperty Name="CFECAPROB" ColumnName="CFECAPROB" />
+          <ScalarProperty Name="CESTADO" ColumnName="CESTADO" />
+          <ScalarProperty Name="CENTREGADO" ColumnName="CENTREGADO" />
+          <ScalarProperty Name="CFECHAEMI" ColumnName="CFECHAEMI" />
+          <ScalarProperty Name="CHORAEMI" ColumnName="CHORAEMI" />
+          <ScalarProperty Name="CEMAIL" ColumnName="CEMAIL" />
+          <ScalarProperty Name="CARCHDIDIS" ColumnName="CARCHDIDIS" />
+          <ScalarProperty Name="CIDCPTOORI" ColumnName="CIDCPTOORI" />
+          <ScalarProperty Name="CFECHACANC" ColumnName="CFECHACANC" />
+          <ScalarProperty Name="CHORACANC" ColumnName="CHORACANC" />
+          <ScalarProperty Name="CESTRAD" ColumnName="CESTRAD" />
+          <ScalarProperty Name="CCADPEDI" ColumnName="CCADPEDI" />
+          <ScalarProperty Name="CARCHCBB" ColumnName="CARCHCBB" />
+          <ScalarProperty Name="CINIVIG" ColumnName="CINIVIG" />
+          <ScalarProperty Name="CFINVIG" ColumnName="CFINVIG" />
+          <ScalarProperty Name="CTIPO" ColumnName="CTIPO" />
+          <ScalarProperty Name="CSERIEREC" ColumnName="CSERIEREC" />
+          <ScalarProperty Name="CFOLIOREC" ColumnName="CFOLIOREC" />
+          <ScalarProperty Name="CRFC" ColumnName="CRFC" />
+          <ScalarProperty Name="CRAZON" ColumnName="CRAZON" />
+          <ScalarProperty Name="CSISORIGEN" ColumnName="CSISORIGEN" />
+          <ScalarProperty Name="CEJERPOL" ColumnName="CEJERPOL" />
+          <ScalarProperty Name="CPERPOL" ColumnName="CPERPOL" />
+          <ScalarProperty Name="CTIPOPOL" ColumnName="CTIPOPOL" />
+          <ScalarProperty Name="CNUMPOL" ColumnName="CNUMPOL" />
+          <ScalarProperty Name="CTIPOLDESC" ColumnName="CTIPOLDESC" />
+          <ScalarProperty Name="CTOTAL" ColumnName="CTOTAL" />
+          <ScalarProperty Name="CALIASBDCT" ColumnName="CALIASBDCT" />
+          <ScalarProperty Name="CCFDPRUEBA" ColumnName="CCFDPRUEBA" />
+          <ScalarProperty Name="CDESESTADO" ColumnName="CDESESTADO" />
+          <ScalarProperty Name="CPAGADOBAN" ColumnName="CPAGADOBAN" />
+          <ScalarProperty Name="CDESPAGBAN" ColumnName="CDESPAGBAN" />
+          <ScalarProperty Name="CREFEREN01" ColumnName="CREFEREN01" />
+          <ScalarProperty Name="COBSERVA01" ColumnName="COBSERVA01" />
+          <ScalarProperty Name="CCODCONCBA" ColumnName="CCODCONCBA" />
+          <ScalarProperty Name="CDESCONCBA" ColumnName="CDESCONCBA" />
+          <ScalarProperty Name="CNUMCTABAN" ColumnName="CNUMCTABAN" />
+          <ScalarProperty Name="CFOLIOBAN" ColumnName="CFOLIOBAN" />
+          <ScalarProperty Name="CIDDOCDEBA" ColumnName="CIDDOCDEBA" />
+          <ScalarProperty Name="CUSUAUTBAN" ColumnName="CUSUAUTBAN" />
+          <ScalarProperty Name="CUUID" ColumnName="CUUID" />
+          <ScalarProperty Name="CUSUBAN01" ColumnName="CUSUBAN01" />
+          <ScalarProperty Name="CAUTUSBA01" ColumnName="CAUTUSBA01" />
+          <ScalarProperty Name="CUSUBAN02" ColumnName="CUSUBAN02" />
+          <ScalarProperty Name="CAUTUSBA02" ColumnName="CAUTUSBA02" />
+          <ScalarProperty Name="CUSUBAN03" ColumnName="CUSUBAN03" />
+          <ScalarProperty Name="CAUTUSBA03" ColumnName="CAUTUSBA03" />
+          <ScalarProperty Name="CDESCAUT01" ColumnName="CDESCAUT01" />
+          <ScalarProperty Name="CDESCAUT02" ColumnName="CDESCAUT02" />
+          <ScalarProperty Name="CDESCAUT03" ColumnName="CDESCAUT03" />
+          <ScalarProperty Name="CERRORVAL" ColumnName="CERRORVAL" />
+          <ScalarProperty Name="CACUSECAN" ColumnName="CACUSECAN" />
+          <ScalarProperty Name="CIDDOCTODSL" ColumnName="CIDDOCTODSL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admMovimientos">
+      <EntityTypeMapping TypeName="adEventModel.admMovimientos">
+        <MappingFragment StoreEntitySet="admMovimientos">
+          <ScalarProperty Name="COBJIMPU01" ColumnName="COBJIMPU01" />
+          <ScalarProperty Name="CIDMOVIMIENTO" ColumnName="CIDMOVIMIENTO" />
+          <ScalarProperty Name="CIDDOCUMENTO" ColumnName="CIDDOCUMENTO" />
+          <ScalarProperty Name="CNUMEROMOVIMIENTO" ColumnName="CNUMEROMOVIMIENTO" />
+          <ScalarProperty Name="CIDDOCUMENTODE" ColumnName="CIDDOCUMENTODE" />
+          <ScalarProperty Name="CIDPRODUCTO" ColumnName="CIDPRODUCTO" />
+          <ScalarProperty Name="CIDALMACEN" ColumnName="CIDALMACEN" />
+          <ScalarProperty Name="CUNIDADES" ColumnName="CUNIDADES" />
+          <ScalarProperty Name="CUNIDADESNC" ColumnName="CUNIDADESNC" />
+          <ScalarProperty Name="CUNIDADESCAPTURADAS" ColumnName="CUNIDADESCAPTURADAS" />
+          <ScalarProperty Name="CIDUNIDAD" ColumnName="CIDUNIDAD" />
+          <ScalarProperty Name="CIDUNIDADNC" ColumnName="CIDUNIDADNC" />
+          <ScalarProperty Name="CPRECIO" ColumnName="CPRECIO" />
+          <ScalarProperty Name="CPRECIOCAPTURADO" ColumnName="CPRECIOCAPTURADO" />
+          <ScalarProperty Name="CCOSTOCAPTURADO" ColumnName="CCOSTOCAPTURADO" />
+          <ScalarProperty Name="CCOSTOESPECIFICO" ColumnName="CCOSTOESPECIFICO" />
+          <ScalarProperty Name="CNETO" ColumnName="CNETO" />
+          <ScalarProperty Name="CIMPUESTO1" ColumnName="CIMPUESTO1" />
+          <ScalarProperty Name="CPORCENTAJEIMPUESTO1" ColumnName="CPORCENTAJEIMPUESTO1" />
+          <ScalarProperty Name="CIMPUESTO2" ColumnName="CIMPUESTO2" />
+          <ScalarProperty Name="CPORCENTAJEIMPUESTO2" ColumnName="CPORCENTAJEIMPUESTO2" />
+          <ScalarProperty Name="CIMPUESTO3" ColumnName="CIMPUESTO3" />
+          <ScalarProperty Name="CPORCENTAJEIMPUESTO3" ColumnName="CPORCENTAJEIMPUESTO3" />
+          <ScalarProperty Name="CRETENCION1" ColumnName="CRETENCION1" />
+          <ScalarProperty Name="CPORCENTAJERETENCION1" ColumnName="CPORCENTAJERETENCION1" />
+          <ScalarProperty Name="CRETENCION2" ColumnName="CRETENCION2" />
+          <ScalarProperty Name="CPORCENTAJERETENCION2" ColumnName="CPORCENTAJERETENCION2" />
+          <ScalarProperty Name="CDESCUENTO1" ColumnName="CDESCUENTO1" />
+          <ScalarProperty Name="CPORCENTAJEDESCUENTO1" ColumnName="CPORCENTAJEDESCUENTO1" />
+          <ScalarProperty Name="CDESCUENTO2" ColumnName="CDESCUENTO2" />
+          <ScalarProperty Name="CPORCENTAJEDESCUENTO2" ColumnName="CPORCENTAJEDESCUENTO2" />
+          <ScalarProperty Name="CDESCUENTO3" ColumnName="CDESCUENTO3" />
+          <ScalarProperty Name="CPORCENTAJEDESCUENTO3" ColumnName="CPORCENTAJEDESCUENTO3" />
+          <ScalarProperty Name="CDESCUENTO4" ColumnName="CDESCUENTO4" />
+          <ScalarProperty Name="CPORCENTAJEDESCUENTO4" ColumnName="CPORCENTAJEDESCUENTO4" />
+          <ScalarProperty Name="CDESCUENTO5" ColumnName="CDESCUENTO5" />
+          <ScalarProperty Name="CPORCENTAJEDESCUENTO5" ColumnName="CPORCENTAJEDESCUENTO5" />
+          <ScalarProperty Name="CTOTAL" ColumnName="CTOTAL" />
+          <ScalarProperty Name="CPORCENTAJECOMISION" ColumnName="CPORCENTAJECOMISION" />
+          <ScalarProperty Name="CREFERENCIA" ColumnName="CREFERENCIA" />
+          <ScalarProperty Name="COBSERVAMOV" ColumnName="COBSERVAMOV" />
+          <ScalarProperty Name="CAFECTAEXISTENCIA" ColumnName="CAFECTAEXISTENCIA" />
+          <ScalarProperty Name="CAFECTADOSALDOS" ColumnName="CAFECTADOSALDOS" />
+          <ScalarProperty Name="CAFECTADOINVENTARIO" ColumnName="CAFECTADOINVENTARIO" />
+          <ScalarProperty Name="CFECHA" ColumnName="CFECHA" />
+          <ScalarProperty Name="CMOVTOOCULTO" ColumnName="CMOVTOOCULTO" />
+          <ScalarProperty Name="CIDMOVTOOWNER" ColumnName="CIDMOVTOOWNER" />
+          <ScalarProperty Name="CIDMOVTOORIGEN" ColumnName="CIDMOVTOORIGEN" />
+          <ScalarProperty Name="CUNIDADESPENDIENTES" ColumnName="CUNIDADESPENDIENTES" />
+          <ScalarProperty Name="CUNIDADESNCPENDIENTES" ColumnName="CUNIDADESNCPENDIENTES" />
+          <ScalarProperty Name="CUNIDADESORIGEN" ColumnName="CUNIDADESORIGEN" />
+          <ScalarProperty Name="CUNIDADESNCORIGEN" ColumnName="CUNIDADESNCORIGEN" />
+          <ScalarProperty Name="CTIPOTRASPASO" ColumnName="CTIPOTRASPASO" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION" ColumnName="CIDVALORCLASIFICACION" />
+          <ScalarProperty Name="CTEXTOEXTRA1" ColumnName="CTEXTOEXTRA1" />
+          <ScalarProperty Name="CTEXTOEXTRA2" ColumnName="CTEXTOEXTRA2" />
+          <ScalarProperty Name="CTEXTOEXTRA3" ColumnName="CTEXTOEXTRA3" />
+          <ScalarProperty Name="CFECHAEXTRA" ColumnName="CFECHAEXTRA" />
+          <ScalarProperty Name="CIMPORTEEXTRA1" ColumnName="CIMPORTEEXTRA1" />
+          <ScalarProperty Name="CIMPORTEEXTRA2" ColumnName="CIMPORTEEXTRA2" />
+          <ScalarProperty Name="CIMPORTEEXTRA3" ColumnName="CIMPORTEEXTRA3" />
+          <ScalarProperty Name="CIMPORTEEXTRA4" ColumnName="CIMPORTEEXTRA4" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CGTOMOVTO" ColumnName="CGTOMOVTO" />
+          <ScalarProperty Name="CSCMOVTO" ColumnName="CSCMOVTO" />
+          <ScalarProperty Name="CCOMVENTA" ColumnName="CCOMVENTA" />
+          <ScalarProperty Name="CIDMOVTODESTINO" ColumnName="CIDMOVTODESTINO" />
+          <ScalarProperty Name="CNUMEROCONSOLIDACIONES" ColumnName="CNUMEROCONSOLIDACIONES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admProductos">
+      <EntityTypeMapping TypeName="adEventModel.admProductos">
+        <MappingFragment StoreEntitySet="admProductos">
+          <ScalarProperty Name="CIDPRODUCTO" ColumnName="CIDPRODUCTO" />
+          <ScalarProperty Name="CCODIGOPRODUCTO" ColumnName="CCODIGOPRODUCTO" />
+          <ScalarProperty Name="CNOMBREPRODUCTO" ColumnName="CNOMBREPRODUCTO" />
+          <ScalarProperty Name="CTIPOPRODUCTO" ColumnName="CTIPOPRODUCTO" />
+          <ScalarProperty Name="CFECHAALTAPRODUCTO" ColumnName="CFECHAALTAPRODUCTO" />
+          <ScalarProperty Name="CCONTROLEXISTENCIA" ColumnName="CCONTROLEXISTENCIA" />
+          <ScalarProperty Name="CIDFOTOPRODUCTO" ColumnName="CIDFOTOPRODUCTO" />
+          <ScalarProperty Name="CDESCRIPCIONPRODUCTO" ColumnName="CDESCRIPCIONPRODUCTO" />
+          <ScalarProperty Name="CMETODOCOSTEO" ColumnName="CMETODOCOSTEO" />
+          <ScalarProperty Name="CPESOPRODUCTO" ColumnName="CPESOPRODUCTO" />
+          <ScalarProperty Name="CCOMVENTAEXCEPPRODUCTO" ColumnName="CCOMVENTAEXCEPPRODUCTO" />
+          <ScalarProperty Name="CCOMCOBROEXCEPPRODUCTO" ColumnName="CCOMCOBROEXCEPPRODUCTO" />
+          <ScalarProperty Name="CCOSTOESTANDAR" ColumnName="CCOSTOESTANDAR" />
+          <ScalarProperty Name="CMARGENUTILIDAD" ColumnName="CMARGENUTILIDAD" />
+          <ScalarProperty Name="CSTATUSPRODUCTO" ColumnName="CSTATUSPRODUCTO" />
+          <ScalarProperty Name="CIDUNIDADBASE" ColumnName="CIDUNIDADBASE" />
+          <ScalarProperty Name="CIDUNIDADNOCONVERTIBLE" ColumnName="CIDUNIDADNOCONVERTIBLE" />
+          <ScalarProperty Name="CFECHABAJA" ColumnName="CFECHABAJA" />
+          <ScalarProperty Name="CIMPUESTO1" ColumnName="CIMPUESTO1" />
+          <ScalarProperty Name="CIMPUESTO2" ColumnName="CIMPUESTO2" />
+          <ScalarProperty Name="CIMPUESTO3" ColumnName="CIMPUESTO3" />
+          <ScalarProperty Name="CRETENCION1" ColumnName="CRETENCION1" />
+          <ScalarProperty Name="CRETENCION2" ColumnName="CRETENCION2" />
+          <ScalarProperty Name="CIDPADRECARACTERISTICA1" ColumnName="CIDPADRECARACTERISTICA1" />
+          <ScalarProperty Name="CIDPADRECARACTERISTICA2" ColumnName="CIDPADRECARACTERISTICA2" />
+          <ScalarProperty Name="CIDPADRECARACTERISTICA3" ColumnName="CIDPADRECARACTERISTICA3" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION1" ColumnName="CIDVALORCLASIFICACION1" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION2" ColumnName="CIDVALORCLASIFICACION2" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION3" ColumnName="CIDVALORCLASIFICACION3" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION4" ColumnName="CIDVALORCLASIFICACION4" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION5" ColumnName="CIDVALORCLASIFICACION5" />
+          <ScalarProperty Name="CIDVALORCLASIFICACION6" ColumnName="CIDVALORCLASIFICACION6" />
+          <ScalarProperty Name="CSEGCONTPRODUCTO1" ColumnName="CSEGCONTPRODUCTO1" />
+          <ScalarProperty Name="CSEGCONTPRODUCTO2" ColumnName="CSEGCONTPRODUCTO2" />
+          <ScalarProperty Name="CSEGCONTPRODUCTO3" ColumnName="CSEGCONTPRODUCTO3" />
+          <ScalarProperty Name="CTEXTOEXTRA1" ColumnName="CTEXTOEXTRA1" />
+          <ScalarProperty Name="CTEXTOEXTRA2" ColumnName="CTEXTOEXTRA2" />
+          <ScalarProperty Name="CTEXTOEXTRA3" ColumnName="CTEXTOEXTRA3" />
+          <ScalarProperty Name="CFECHAEXTRA" ColumnName="CFECHAEXTRA" />
+          <ScalarProperty Name="CIMPORTEEXTRA1" ColumnName="CIMPORTEEXTRA1" />
+          <ScalarProperty Name="CIMPORTEEXTRA2" ColumnName="CIMPORTEEXTRA2" />
+          <ScalarProperty Name="CIMPORTEEXTRA3" ColumnName="CIMPORTEEXTRA3" />
+          <ScalarProperty Name="CIMPORTEEXTRA4" ColumnName="CIMPORTEEXTRA4" />
+          <ScalarProperty Name="CPRECIO1" ColumnName="CPRECIO1" />
+          <ScalarProperty Name="CPRECIO2" ColumnName="CPRECIO2" />
+          <ScalarProperty Name="CPRECIO3" ColumnName="CPRECIO3" />
+          <ScalarProperty Name="CPRECIO4" ColumnName="CPRECIO4" />
+          <ScalarProperty Name="CPRECIO5" ColumnName="CPRECIO5" />
+          <ScalarProperty Name="CPRECIO6" ColumnName="CPRECIO6" />
+          <ScalarProperty Name="CPRECIO7" ColumnName="CPRECIO7" />
+          <ScalarProperty Name="CPRECIO8" ColumnName="CPRECIO8" />
+          <ScalarProperty Name="CPRECIO9" ColumnName="CPRECIO9" />
+          <ScalarProperty Name="CPRECIO10" ColumnName="CPRECIO10" />
+          <ScalarProperty Name="CBANUNIDADES" ColumnName="CBANUNIDADES" />
+          <ScalarProperty Name="CBANCARACTERISTICAS" ColumnName="CBANCARACTERISTICAS" />
+          <ScalarProperty Name="CBANMETODOCOSTEO" ColumnName="CBANMETODOCOSTEO" />
+          <ScalarProperty Name="CBANMAXMIN" ColumnName="CBANMAXMIN" />
+          <ScalarProperty Name="CBANPRECIO" ColumnName="CBANPRECIO" />
+          <ScalarProperty Name="CBANIMPUESTO" ColumnName="CBANIMPUESTO" />
+          <ScalarProperty Name="CBANCODIGOBARRA" ColumnName="CBANCODIGOBARRA" />
+          <ScalarProperty Name="CBANCOMPONENTE" ColumnName="CBANCOMPONENTE" />
+          <ScalarProperty Name="CTIMESTAMP" ColumnName="CTIMESTAMP" />
+          <ScalarProperty Name="CERRORCOSTO" ColumnName="CERRORCOSTO" />
+          <ScalarProperty Name="CFECHAERRORCOSTO" ColumnName="CFECHAERRORCOSTO" />
+          <ScalarProperty Name="CPRECIOCALCULADO" ColumnName="CPRECIOCALCULADO" />
+          <ScalarProperty Name="CESTADOPRECIO" ColumnName="CESTADOPRECIO" />
+          <ScalarProperty Name="CBANUBICACION" ColumnName="CBANUBICACION" />
+          <ScalarProperty Name="CESEXENTO" ColumnName="CESEXENTO" />
+          <ScalarProperty Name="CEXISTENCIANEGATIVA" ColumnName="CEXISTENCIANEGATIVA" />
+          <ScalarProperty Name="CCOSTOEXT1" ColumnName="CCOSTOEXT1" />
+          <ScalarProperty Name="CCOSTOEXT2" ColumnName="CCOSTOEXT2" />
+          <ScalarProperty Name="CCOSTOEXT3" ColumnName="CCOSTOEXT3" />
+          <ScalarProperty Name="CCOSTOEXT4" ColumnName="CCOSTOEXT4" />
+          <ScalarProperty Name="CCOSTOEXT5" ColumnName="CCOSTOEXT5" />
+          <ScalarProperty Name="CFECCOSEX1" ColumnName="CFECCOSEX1" />
+          <ScalarProperty Name="CFECCOSEX2" ColumnName="CFECCOSEX2" />
+          <ScalarProperty Name="CFECCOSEX3" ColumnName="CFECCOSEX3" />
+          <ScalarProperty Name="CFECCOSEX4" ColumnName="CFECCOSEX4" />
+          <ScalarProperty Name="CFECCOSEX5" ColumnName="CFECCOSEX5" />
+          <ScalarProperty Name="CMONCOSEX1" ColumnName="CMONCOSEX1" />
+          <ScalarProperty Name="CMONCOSEX2" ColumnName="CMONCOSEX2" />
+          <ScalarProperty Name="CMONCOSEX3" ColumnName="CMONCOSEX3" />
+          <ScalarProperty Name="CMONCOSEX4" ColumnName="CMONCOSEX4" />
+          <ScalarProperty Name="CMONCOSEX5" ColumnName="CMONCOSEX5" />
+          <ScalarProperty Name="CBANCOSEX" ColumnName="CBANCOSEX" />
+          <ScalarProperty Name="CESCUOTAI2" ColumnName="CESCUOTAI2" />
+          <ScalarProperty Name="CESCUOTAI3" ColumnName="CESCUOTAI3" />
+          <ScalarProperty Name="CIDUNIDADCOMPRA" ColumnName="CIDUNIDADCOMPRA" />
+          <ScalarProperty Name="CIDUNIDADVENTA" ColumnName="CIDUNIDADVENTA" />
+          <ScalarProperty Name="CSUBTIPO" ColumnName="CSUBTIPO" />
+          <ScalarProperty Name="CCODALTERN" ColumnName="CCODALTERN" />
+          <ScalarProperty Name="CNOMALTERN" ColumnName="CNOMALTERN" />
+          <ScalarProperty Name="CDESCCORTA" ColumnName="CDESCCORTA" />
+          <ScalarProperty Name="CIDMONEDA" ColumnName="CIDMONEDA" />
+          <ScalarProperty Name="CUSABASCU" ColumnName="CUSABASCU" />
+          <ScalarProperty Name="CTIPOPAQUE" ColumnName="CTIPOPAQUE" />
+          <ScalarProperty Name="CPRECSELEC" ColumnName="CPRECSELEC" />
+          <ScalarProperty Name="CDESGLOSAI2" ColumnName="CDESGLOSAI2" />
+          <ScalarProperty Name="CSEGCONTPRODUCTO4" ColumnName="CSEGCONTPRODUCTO4" />
+          <ScalarProperty Name="CSEGCONTPRODUCTO5" ColumnName="CSEGCONTPRODUCTO5" />
+          <ScalarProperty Name="CSEGCONTPRODUCTO6" ColumnName="CSEGCONTPRODUCTO6" />
+          <ScalarProperty Name="CSEGCONTPRODUCTO7" ColumnName="CSEGCONTPRODUCTO7" />
+          <ScalarProperty Name="CCTAPRED" ColumnName="CCTAPRED" />
+          <ScalarProperty Name="CNODESCOMP" ColumnName="CNODESCOMP" />
+          <ScalarProperty Name="CIDUNIXML" ColumnName="CIDUNIXML" />
+          <ScalarProperty Name="CCLAVESAT" ColumnName="CCLAVESAT" />
+          <ScalarProperty Name="CCANTIDADFISCAL" ColumnName="CCANTIDADFISCAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admUnidadesMedidaPeso">
+      <EntityTypeMapping TypeName="adEventModel.admUnidadesMedidaPeso">
+        <MappingFragment StoreEntitySet="admUnidadesMedidaPeso">
+          <ScalarProperty Name="CIDUNIDAD" ColumnName="CIDUNIDAD" />
+          <ScalarProperty Name="CNOMBREUNIDAD" ColumnName="CNOMBREUNIDAD" />
+          <ScalarProperty Name="CABREVIATURA" ColumnName="CABREVIATURA" />
+          <ScalarProperty Name="CDESPLIEGUE" ColumnName="CDESPLIEGUE" />
+          <ScalarProperty Name="CCLAVEINT" ColumnName="CCLAVEINT" />
+          <ScalarProperty Name="CCLAVESAT" ColumnName="CCLAVESAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bec_event_documento_abono">
+      <EntityTypeMapping TypeName="adEventModel.bec_event_documento_abono">
+        <MappingFragment StoreEntitySet="bec_event_documento_abono">
+          <ScalarProperty Name="procesado" ColumnName="procesado" />
+          <ScalarProperty Name="unix" ColumnName="unix" />
+          <ScalarProperty Name="id_contpaq_documento" ColumnName="id_contpaq_documento" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="id_documento_origen" ColumnName="id_documento_origen" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bec_event_documento_encabezado">
+      <EntityTypeMapping TypeName="adEventModel.bec_event_documento_encabezado">
+        <MappingFragment StoreEntitySet="bec_event_documento_encabezado">
+          <ScalarProperty Name="codigo_operador" ColumnName="codigo_operador" />
+          <ScalarProperty Name="id_operador" ColumnName="id_operador" />
+          <ScalarProperty Name="id_documento_origen" ColumnName="id_documento_origen" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="procesado" ColumnName="procesado" />
+          <ScalarProperty Name="unix" ColumnName="unix" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="serie_contpaq_documento" ColumnName="serie_contpaq_documento" />
+          <ScalarProperty Name="folio_contpaq_documento" ColumnName="folio_contpaq_documento" />
+          <ScalarProperty Name="id_contpaq_documento" ColumnName="id_contpaq_documento" />
+          <ScalarProperty Name="codigo_creador" ColumnName="codigo_creador" />
+          <ScalarProperty Name="id_creador" ColumnName="id_creador" />
+          <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bec_event_documento_movimiento">
+      <EntityTypeMapping TypeName="adEventModel.bec_event_documento_movimiento">
+        <MappingFragment StoreEntitySet="bec_event_documento_movimiento">
+          <ScalarProperty Name="id_movimiento_contpaq_defectuoso" ColumnName="id_movimiento_contpaq_defectuoso" />
+          <ScalarProperty Name="cantidad_producto_defectuoso" ColumnName="cantidad_producto_defectuoso" />
+          <ScalarProperty Name="procesado" ColumnName="procesado" />
+          <ScalarProperty Name="unix" ColumnName="unix" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="cantidad_producto" ColumnName="cantidad_producto" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="id_movimiento_contpaq" ColumnName="id_movimiento_contpaq" />
+          <ScalarProperty Name="id_documento_encabezado" ColumnName="id_documento_encabezado" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bec_event_historia_movimiento">
+      <EntityTypeMapping TypeName="adEventModel.bec_event_historia_movimiento">
+        <MappingFragment StoreEntitySet="bec_event_historia_movimiento">
+          <ScalarProperty Name="id_movimiento_contpaq" ColumnName="id_movimiento_contpaq" />
+          <ScalarProperty Name="procesado" ColumnName="procesado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="id_documento_movimiento" ColumnName="id_documento_movimiento" />
+          <ScalarProperty Name="id_documento_encabezado" ColumnName="id_documento_encabezado" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bec_event_cliente_documento">
+      <EntityTypeMapping TypeName="adEventModel.bec_event_cliente_documento">
+        <MappingFragment StoreEntitySet="bec_event_cliente_documento">
+          <ScalarProperty Name="codigo_agente" ColumnName="codigo_agente" />
+          <ScalarProperty Name="codigo_almacen_defectuoso" ColumnName="codigo_almacen_defectuoso" />
+          <ScalarProperty Name="codigo_pago" ColumnName="codigo_pago" />
+          <ScalarProperty Name="codigo_factura" ColumnName="codigo_factura" />
+          <ScalarProperty Name="codigo_entrada" ColumnName="codigo_entrada" />
+          <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
+          <ScalarProperty Name="codigo_documento" ColumnName="codigo_documento" />
+          <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

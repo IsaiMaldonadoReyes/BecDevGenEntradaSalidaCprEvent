@@ -46,9 +46,16 @@ namespace BecDevGenEntradaSalidaCprEvent
         StringBuilder InterpreteSDK = new StringBuilder(255);
         StiVariablesCollection variable = new StiVariablesCollection();
 
-        private List<admClientes> clientes;
+        private List<InformacionClientesConfigurados> clientes;
         private List<admAgentes> agentes;
         private List<admProductos> productos;
+
+        public class InformacionClientesConfigurados
+        {
+            public int CIDCLIENTEPROVEEDOR { get; set; }
+
+            public string CCODIGOCLIENTE { get; set; }
+        }
 
         public FormSalida()
         {
@@ -75,7 +82,9 @@ namespace BecDevGenEntradaSalidaCprEvent
             btnSalidaAgregarProducto.Enabled = false;
             cbxSalidaCliente.Enabled = false;
             txtSalidaCantidadProducto.Enabled = false;
-            cbxOperador.Enabled = false;
+            cbxOperador.Visible = false;
+            lblOperador.Visible = false;
+
 
             Documento.AccionDocumento = "crear";
 
@@ -85,10 +94,9 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                 lblSalidaFecha.Text = $"Fecha: {(Documento.IdDocumento == 0 ? DateTime.Now : salida.fecha_creacion):yyyy-MM-dd}";
                 lblRuta.Text = $"Ruta: {salida.codigo_cliente}";
-                lblOperador.Text = $"Operador: {salida.codigo_operador}";
+                //lblOperador.Text = $"Operador: {salida.codigo_operador}";
 
                 cbxSalidaCliente.Visible = false;
-                cbxOperador.Visible = false;
                 cbxSalidaProducto.Enabled = true;
 
                 txtSalidaCantidadProducto.Enabled = true;
@@ -105,7 +113,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             cbxSalidaCliente.Enabled = (Documento.IdDocumento == 0);
             this.Text = (Documento.IdDocumento == 0 ? "Event Express | Nueva salida" : "Event Express | Editar salida");
             CargarClientes();
-            CargarOperadores();
+            //CargarOperadores();
             CargarProductos();
         }
 
@@ -141,13 +149,22 @@ namespace BecDevGenEntradaSalidaCprEvent
         {
             using (adConexionDB adConnect = new adConexionDB())
             {
+                string codigoLogeado = LoginUsuario.CodigoUsuarioLogeado;
                 clientes = (from cliente in adConnect.admClientes
-                            where cliente.CIDALMACEN > 0 && cliente.CTIPOCLIENTE == 1 && cliente.CESTATUS == 1
+                            join conf in adConnect.bec_event_cliente_documento on cliente.CCODIGOCLIENTE equals conf.codigo_cliente
+                            where cliente.CIDALMACEN > 0 && cliente.CTIPOCLIENTE == 1
+                            && cliente.CESTATUS == 1
+                            && conf.codigo_agente == codigoLogeado
                             orderby cliente.CCODIGOCLIENTE
-                            select cliente).ToList();
+                            select new InformacionClientesConfigurados
+                            {
+                                CCODIGOCLIENTE = cliente.CCODIGOCLIENTE,
+                                CIDCLIENTEPROVEEDOR = cliente.CIDCLIENTEPROVEEDOR
+                            }).ToList();
+
                 foreach (var objLista in clientes)
                 {
-                    cbxSalidaCliente.Items.Add(objLista.CCODIGOCLIENTE + " | " + objLista.CRAZONSOCIAL);
+                    cbxSalidaCliente.Items.Add(objLista.CCODIGOCLIENTE);
                 }
             }
         }
@@ -324,7 +341,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del SetCurrentDirectory");
                 }
                 controlErrorSDK = SDK.fInicioSesionSDK(Usuario, Password);
-//                SDK.fInicioSesionSDKCONTPAQi("SUPERVISOR", "");
+                //                SDK.fInicioSesionSDKCONTPAQi("SUPERVISOR", "");
                 if (controlErrorSDK != 0)
                 {
                     SDK.fError(controlErrorSDK, InterpreteSDK, 255);
@@ -370,7 +387,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                 aFecha = DateTime.Now.ToString("MM/dd/yyyy"),
                                 aSerie = serieDocumento,
                                 aFolio = folioDocumento,
-                                aCodigoAgente = agentes[cbxOperador.SelectedIndex].CCODIGOAGENTE,
+                                //aCodigoAgente = agentes[cbxOperador.SelectedIndex].CCODIGOAGENTE,
                             };
 
                             controlErrorSDK = SDK.fAltaDocumento(ref idDocumento, ref tDoc);
@@ -750,9 +767,11 @@ namespace BecDevGenEntradaSalidaCprEvent
                 txtSalidaCantidadProducto.Enabled = true;
                 cbxSalidaProducto.Enabled = true;
                 btnSalidaAgregarProducto.Enabled = true;
-                cbxOperador.Enabled = true;
+                //cbxOperador.Enabled = true;
 
                 btnSalidaBorrar.Enabled = true;
+
+                cbxSalidaProducto.Focus();
             }
         }
 
@@ -836,6 +855,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     adConnect.SaveChanges();
 
                     cbxSalidaProducto.Focus();
+
                 }
             }
         }

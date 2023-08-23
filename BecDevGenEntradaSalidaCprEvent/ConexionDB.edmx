@@ -812,6 +812,7 @@
           <Property Name="codigo_factura" Type="nvarchar(max)" />
           <Property Name="codigo_pago" Type="nvarchar(max)" />
           <Property Name="codigo_almacen_defectuoso" Type="nvarchar" MaxLength="50" />
+          <Property Name="codigo_agente" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="bec_event_documento_abono">
           <Key>
@@ -1722,7 +1723,6 @@
           <EntitySet Name="admProductos" EntityType="Self.admProductos" />
           <EntitySet Name="admUnidadesMedidaPeso" EntityType="Self.admUnidadesMedidaPeso" />
           <EntitySet Name="bec_event_documento_abono" EntityType="adEventModel.bec_event_documento_abono" />
-          <EntitySet Name="bec_event_cliente_documento" EntityType="adEventModel.bec_event_cliente_documento" />
           <EntitySet Name="bec_event_documento_encabezado" EntityType="adEventModel.bec_event_documento_encabezado" />
           <EntitySet Name="bec_event_documento_movimiento" EntityType="adEventModel.bec_event_documento_movimiento" />
           <AssociationSet Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado" Association="adEventModel.FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
@@ -1730,6 +1730,7 @@
             <End Role="bec_event_documento_movimiento" EntitySet="bec_event_documento_movimiento" />
           </AssociationSet>
           <EntitySet Name="bec_event_historia_movimiento" EntityType="adEventModel.bec_event_historia_movimiento" />
+          <EntitySet Name="bec_event_cliente_documento" EntityType="adEventModel.bec_event_cliente_documento" />
         </EntityContainer>
         <EntityType Name="bec_event_documento_abono">
           <Key>
@@ -1742,19 +1743,6 @@
           <Property Name="id_contpaq_documento" Type="Int32" />
           <Property Name="unix" Type="Double" />
           <Property Name="procesado" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="bec_event_cliente_documento">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="codigo_cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="codigo_documento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="codigo_salida" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="codigo_entrada" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="codigo_factura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="codigo_pago" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="codigo_almacen_defectuoso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="bec_event_documento_encabezado">
           <Key>
@@ -1820,6 +1808,20 @@
           <Property Name="fecha" Type="DateTime" Precision="3" />
           <Property Name="procesado" Type="Boolean" />
           <Property Name="id_movimiento_contpaq" Type="Int32" />
+        </EntityType>
+        <EntityType Name="bec_event_cliente_documento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_documento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_salida" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_entrada" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_factura" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_pago" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_almacen_defectuoso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_agente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2646,20 +2648,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="bec_event_cliente_documento">
-            <EntityTypeMapping TypeName="adEventModel.bec_event_cliente_documento">
-              <MappingFragment StoreEntitySet="bec_event_cliente_documento">
-                <ScalarProperty Name="codigo_almacen_defectuoso" ColumnName="codigo_almacen_defectuoso" />
-                <ScalarProperty Name="codigo_pago" ColumnName="codigo_pago" />
-                <ScalarProperty Name="codigo_factura" ColumnName="codigo_factura" />
-                <ScalarProperty Name="codigo_entrada" ColumnName="codigo_entrada" />
-                <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
-                <ScalarProperty Name="codigo_documento" ColumnName="codigo_documento" />
-                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="bec_event_documento_encabezado">
             <EntityTypeMapping TypeName="adEventModel.bec_event_documento_encabezado">
               <MappingFragment StoreEntitySet="bec_event_documento_encabezado">
@@ -2708,6 +2696,21 @@
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="id_documento_movimiento" ColumnName="id_documento_movimiento" />
                 <ScalarProperty Name="id_documento_encabezado" ColumnName="id_documento_encabezado" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bec_event_cliente_documento">
+            <EntityTypeMapping TypeName="adEventModel.bec_event_cliente_documento">
+              <MappingFragment StoreEntitySet="bec_event_cliente_documento">
+                <ScalarProperty Name="codigo_agente" ColumnName="codigo_agente" />
+                <ScalarProperty Name="codigo_almacen_defectuoso" ColumnName="codigo_almacen_defectuoso" />
+                <ScalarProperty Name="codigo_pago" ColumnName="codigo_pago" />
+                <ScalarProperty Name="codigo_factura" ColumnName="codigo_factura" />
+                <ScalarProperty Name="codigo_entrada" ColumnName="codigo_entrada" />
+                <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
+                <ScalarProperty Name="codigo_documento" ColumnName="codigo_documento" />
+                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

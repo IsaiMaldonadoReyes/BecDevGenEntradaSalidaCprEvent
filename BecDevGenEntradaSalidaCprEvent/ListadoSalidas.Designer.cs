@@ -33,24 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvSalidaListadoSalidas = new System.Windows.Forms.DataGridView();
-            this.id_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_operador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salida_accion = new System.Windows.Forms.DataGridViewImageColumn();
-            this.entrada_accion = new System.Windows.Forms.DataGridViewImageColumn();
-            this.liquidar_accion = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSalidaNuevoFormulario = new System.Windows.Forms.Button();
             this.lblUsuarioLogeado = new MaterialSkin.Controls.MaterialLabel();
@@ -59,6 +51,13 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.id_salida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida_fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida_documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salida_accion = new System.Windows.Forms.DataGridViewImageColumn();
+            this.entrada_accion = new System.Windows.Forms.DataGridViewImageColumn();
+            this.liquidar_accion = new System.Windows.Forms.DataGridViewImageColumn();
             btnSalidaActualizar = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -121,9 +120,9 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.45454F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.54546F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvSalidaListadoSalidas, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblUsuarioLogeado, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgvSalidaListadoSalidas, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 20);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
@@ -162,7 +161,6 @@
             this.id_salida,
             this.salida_fecha,
             this.salida_cliente,
-            this.salida_operador,
             this.salida_documento,
             this.salida_accion,
             this.entrada_accion,
@@ -192,99 +190,6 @@
             this.dgvSalidaListadoSalidas.TabIndex = 0;
             this.dgvSalidaListadoSalidas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalidaListadoSalidas_CellContentClick);
             this.dgvSalidaListadoSalidas.SizeChanged += new System.EventHandler(this.dgvSalidaListadoSalidas_SizeChanged);
-            // 
-            // id_salida
-            // 
-            this.id_salida.FillWeight = 20.30457F;
-            this.id_salida.HeaderText = "ID";
-            this.id_salida.MinimumWidth = 6;
-            this.id_salida.Name = "id_salida";
-            this.id_salida.ReadOnly = true;
-            this.id_salida.Visible = false;
-            // 
-            // salida_fecha
-            // 
-            this.salida_fecha.FillWeight = 10F;
-            this.salida_fecha.HeaderText = "Fecha";
-            this.salida_fecha.MinimumWidth = 100;
-            this.salida_fecha.Name = "salida_fecha";
-            this.salida_fecha.ReadOnly = true;
-            // 
-            // salida_cliente
-            // 
-            this.salida_cliente.FillWeight = 20F;
-            this.salida_cliente.HeaderText = "Ruta";
-            this.salida_cliente.MinimumWidth = 100;
-            this.salida_cliente.Name = "salida_cliente";
-            this.salida_cliente.ReadOnly = true;
-            // 
-            // salida_operador
-            // 
-            this.salida_operador.FillWeight = 30F;
-            this.salida_operador.HeaderText = "Operador";
-            this.salida_operador.MinimumWidth = 300;
-            this.salida_operador.Name = "salida_operador";
-            this.salida_operador.ReadOnly = true;
-            // 
-            // salida_documento
-            // 
-            this.salida_documento.FillWeight = 10F;
-            this.salida_documento.HeaderText = "Documento salida";
-            this.salida_documento.MinimumWidth = 100;
-            this.salida_documento.Name = "salida_documento";
-            this.salida_documento.ReadOnly = true;
-            this.salida_documento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // salida_accion
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(10);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
-            this.salida_accion.DefaultCellStyle = dataGridViewCellStyle3;
-            this.salida_accion.FillWeight = 10F;
-            this.salida_accion.HeaderText = "Salida";
-            this.salida_accion.Image = ((System.Drawing.Image)(resources.GetObject("salida_accion.Image")));
-            this.salida_accion.MinimumWidth = 30;
-            this.salida_accion.Name = "salida_accion";
-            this.salida_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.salida_accion.ToolTipText = "Visualizar detalle de la salida del almacén";
-            // 
-            // entrada_accion
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(10);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
-            this.entrada_accion.DefaultCellStyle = dataGridViewCellStyle4;
-            this.entrada_accion.FillWeight = 10F;
-            this.entrada_accion.HeaderText = "Devolución";
-            this.entrada_accion.Image = ((System.Drawing.Image)(resources.GetObject("entrada_accion.Image")));
-            this.entrada_accion.MinimumWidth = 30;
-            this.entrada_accion.Name = "entrada_accion";
-            this.entrada_accion.ReadOnly = true;
-            this.entrada_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.entrada_accion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.entrada_accion.ToolTipText = "Crear devolución sobre salida";
-            // 
-            // liquidar_accion
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(10);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
-            this.liquidar_accion.DefaultCellStyle = dataGridViewCellStyle5;
-            this.liquidar_accion.FillWeight = 10F;
-            this.liquidar_accion.HeaderText = "Liquidación";
-            this.liquidar_accion.Image = ((System.Drawing.Image)(resources.GetObject("liquidar_accion.Image")));
-            this.liquidar_accion.MinimumWidth = 30;
-            this.liquidar_accion.Name = "liquidar_accion";
-            this.liquidar_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.liquidar_accion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.liquidar_accion.ToolTipText = "Liquidar productos";
             // 
             // tableLayoutPanel3
             // 
@@ -420,6 +325,91 @@
             this.dataGridViewImageColumn3.ToolTipText = "Liquidar productos";
             this.dataGridViewImageColumn3.Width = 96;
             // 
+            // id_salida
+            // 
+            this.id_salida.FillWeight = 20.30457F;
+            this.id_salida.HeaderText = "ID";
+            this.id_salida.MinimumWidth = 6;
+            this.id_salida.Name = "id_salida";
+            this.id_salida.ReadOnly = true;
+            this.id_salida.Visible = false;
+            // 
+            // salida_fecha
+            // 
+            this.salida_fecha.FillWeight = 10F;
+            this.salida_fecha.HeaderText = "Fecha";
+            this.salida_fecha.MinimumWidth = 100;
+            this.salida_fecha.Name = "salida_fecha";
+            this.salida_fecha.ReadOnly = true;
+            // 
+            // salida_cliente
+            // 
+            this.salida_cliente.FillWeight = 20F;
+            this.salida_cliente.HeaderText = "Ruta";
+            this.salida_cliente.MinimumWidth = 100;
+            this.salida_cliente.Name = "salida_cliente";
+            this.salida_cliente.ReadOnly = true;
+            // 
+            // salida_documento
+            // 
+            this.salida_documento.FillWeight = 10F;
+            this.salida_documento.HeaderText = "Documento salida";
+            this.salida_documento.MinimumWidth = 100;
+            this.salida_documento.Name = "salida_documento";
+            this.salida_documento.ReadOnly = true;
+            this.salida_documento.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // salida_accion
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle3.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle3.NullValue")));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(10);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
+            this.salida_accion.DefaultCellStyle = dataGridViewCellStyle3;
+            this.salida_accion.FillWeight = 10F;
+            this.salida_accion.HeaderText = "Salida";
+            this.salida_accion.Image = ((System.Drawing.Image)(resources.GetObject("salida_accion.Image")));
+            this.salida_accion.MinimumWidth = 30;
+            this.salida_accion.Name = "salida_accion";
+            this.salida_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.salida_accion.ToolTipText = "Visualizar detalle de la salida del almacén";
+            // 
+            // entrada_accion
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle4.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle4.NullValue")));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(10);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
+            this.entrada_accion.DefaultCellStyle = dataGridViewCellStyle4;
+            this.entrada_accion.FillWeight = 10F;
+            this.entrada_accion.HeaderText = "Devolución";
+            this.entrada_accion.Image = ((System.Drawing.Image)(resources.GetObject("entrada_accion.Image")));
+            this.entrada_accion.MinimumWidth = 30;
+            this.entrada_accion.Name = "entrada_accion";
+            this.entrada_accion.ReadOnly = true;
+            this.entrada_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.entrada_accion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.entrada_accion.ToolTipText = "Crear devolución sobre salida";
+            // 
+            // liquidar_accion
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(10);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
+            this.liquidar_accion.DefaultCellStyle = dataGridViewCellStyle5;
+            this.liquidar_accion.FillWeight = 10F;
+            this.liquidar_accion.HeaderText = "Liquidación";
+            this.liquidar_accion.Image = ((System.Drawing.Image)(resources.GetObject("liquidar_accion.Image")));
+            this.liquidar_accion.MinimumWidth = 30;
+            this.liquidar_accion.Name = "liquidar_accion";
+            this.liquidar_accion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.liquidar_accion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.liquidar_accion.ToolTipText = "Liquidar productos";
+            // 
             // ListadoSalidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -463,7 +453,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn id_salida;
         private System.Windows.Forms.DataGridViewTextBoxColumn salida_fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn salida_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salida_operador;
         private System.Windows.Forms.DataGridViewTextBoxColumn salida_documento;
         private System.Windows.Forms.DataGridViewImageColumn salida_accion;
         private System.Windows.Forms.DataGridViewImageColumn entrada_accion;

@@ -69,28 +69,22 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB dbConnect = new adConexionDB())
             {
                 var listaDVGSalidas = (from salidas in dbConnect.bec_event_documento_encabezado
-                                       join operador in dbConnect.admAgentes on salidas.id_operador equals operador.CIDAGENTE
                                        where salidas.id_creador == LoginUsuario.IdUsuarioLogeado
                                        && salidas.estado == "pendiente"
                                        && salidas.tipo == "remision"
                                        && salidas.id_contpaq_documento != null
                                        orderby salidas.fecha_creacion descending
-                                       select new
-                                       {
-                                           salidas,
-                                           operador
-                                       }).ToList();
+                                       select salidas).ToList();
 
                 foreach (var objLista in listaDVGSalidas)
                 {
                     DataGridViewRow newRow = new DataGridViewRow();
 
                     newRow.CreateCells(dgvSalidaListadoSalidas);
-                    newRow.Cells[0].Value = objLista.salidas.id;
-                    newRow.Cells[1].Value = Convert.ToDateTime(objLista.salidas.fecha_creacion).ToString("dd-MM-yyyy HH:mm");
-                    newRow.Cells[2].Value = objLista.salidas.codigo_cliente;
-                    newRow.Cells[3].Value = objLista.operador.CCODIGOAGENTE;
-                    newRow.Cells[4].Value = objLista.salidas.serie_contpaq_documento + objLista.salidas.folio_contpaq_documento;
+                    newRow.Cells[0].Value = objLista.id;
+                    newRow.Cells[1].Value = Convert.ToDateTime(objLista.fecha_creacion).ToString("dd-MM-yyyy HH:mm");
+                    newRow.Cells[2].Value = objLista.codigo_cliente;
+                    newRow.Cells[3].Value = objLista.serie_contpaq_documento + objLista.folio_contpaq_documento;
                     dgvSalidaListadoSalidas.Rows.Add(newRow);
                 }
             }
@@ -361,11 +355,10 @@ namespace BecDevGenEntradaSalidaCprEvent
         {
             dgvSalidaListadoSalidas.Columns[1].Width = (int)(dgvSalidaListadoSalidas.Width * 0.1);
             dgvSalidaListadoSalidas.Columns[2].Width = (int)(dgvSalidaListadoSalidas.Width * 0.2);
-            dgvSalidaListadoSalidas.Columns[3].Width = (int)(dgvSalidaListadoSalidas.Width * 0.40);
-            dgvSalidaListadoSalidas.Columns[4].Width = (int)(dgvSalidaListadoSalidas.Width * 0.1);
+            dgvSalidaListadoSalidas.Columns[3].Width = (int)(dgvSalidaListadoSalidas.Width * 0.1);
+            dgvSalidaListadoSalidas.Columns[4].Width = 100;
             dgvSalidaListadoSalidas.Columns[5].Width = 100;
             dgvSalidaListadoSalidas.Columns[6].Width = 100;
-            dgvSalidaListadoSalidas.Columns[7].Width = 100;
 
         }
 

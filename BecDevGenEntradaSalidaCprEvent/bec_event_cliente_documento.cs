@@ -22,5 +22,6 @@ namespace BecDevGenEntradaSalidaCprEvent
         public string codigo_factura { get; set; }
         public string codigo_pago { get; set; }
         public string codigo_almacen_defectuoso { get; set; }
+        public string codigo_agente { get; set; }
     }
 }
