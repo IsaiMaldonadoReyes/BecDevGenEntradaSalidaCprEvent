@@ -12,5 +12,7 @@ namespace BecDevGenEntradaSalidaCprEvent
         public static int IdUsuarioLogeado { get; set; }
         public static string CodigoUsuarioLogeado { get; set; }
         public static string TipoUsuarioLogeado { get; set; }
+        public static string AlmacenUsuarioLogeado { get; set; }
+        public static int IdAlmacenUsuarioLogeado { get; set; }
     }
 }

@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSalida));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmsSalidaListaProducto = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
@@ -87,12 +87,12 @@
             this.materialCard1.Depth = 0;
             this.materialCard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(13, 86);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(13, 14, 13, 14);
+            this.materialCard1.Location = new System.Drawing.Point(10, 70);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(10, 11, 10, 11);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
-            this.materialCard1.Size = new System.Drawing.Size(1641, 1133);
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
+            this.materialCard1.Size = new System.Drawing.Size(1230, 814);
             this.materialCard1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -104,19 +104,19 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgvSalidaListaProducto, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 14);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 11);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1615, 1105);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1210, 792);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.materialDivider1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.lblCantidad, 0, 8);
@@ -130,23 +130,22 @@
             this.tableLayoutPanel3.Controls.Add(this.lblRuta, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.lblOperador, 0, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 10);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(8, 8);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 12;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 86F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(592, 1085);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(443, 776);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // materialDivider1
@@ -155,11 +154,10 @@
             this.tableLayoutPanel3.SetColumnSpan(this.materialDivider1, 2);
             this.materialDivider1.Depth = 0;
             this.materialDivider1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialDivider1.Location = new System.Drawing.Point(4, 78);
-            this.materialDivider1.Margin = new System.Windows.Forms.Padding(4);
+            this.materialDivider1.Location = new System.Drawing.Point(3, 63);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(584, 4);
+            this.materialDivider1.Size = new System.Drawing.Size(437, 4);
             this.materialDivider1.TabIndex = 22;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -169,10 +167,10 @@
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.ForeColor = System.Drawing.Color.Gray;
-            this.lblCantidad.Location = new System.Drawing.Point(0, 524);
+            this.lblCantidad.Location = new System.Drawing.Point(0, 418);
             this.lblCantidad.Margin = new System.Windows.Forms.Padding(0);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(123, 32);
+            this.lblCantidad.Size = new System.Drawing.Size(124, 32);
             this.lblCantidad.TabIndex = 21;
             this.lblCantidad.Text = "Cantidad";
             // 
@@ -184,13 +182,13 @@
             this.txtSalidaCantidadProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtSalidaCantidadProducto.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtSalidaCantidadProducto.LeadingIcon = null;
-            this.txtSalidaCantidadProducto.Location = new System.Drawing.Point(7, 562);
-            this.txtSalidaCantidadProducto.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtSalidaCantidadProducto.Location = new System.Drawing.Point(5, 455);
+            this.txtSalidaCantidadProducto.Margin = new System.Windows.Forms.Padding(5);
             this.txtSalidaCantidadProducto.MaxLength = 50;
             this.txtSalidaCantidadProducto.MouseState = MaterialSkin.MouseState.OUT;
             this.txtSalidaCantidadProducto.Multiline = false;
             this.txtSalidaCantidadProducto.Name = "txtSalidaCantidadProducto";
-            this.txtSalidaCantidadProducto.Size = new System.Drawing.Size(186, 50);
+            this.txtSalidaCantidadProducto.Size = new System.Drawing.Size(140, 50);
             this.txtSalidaCantidadProducto.TabIndex = 10;
             this.txtSalidaCantidadProducto.Text = "";
             this.txtSalidaCantidadProducto.TrailingIcon = null;
@@ -202,10 +200,10 @@
             this.lblProducto.AutoSize = true;
             this.lblProducto.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProducto.ForeColor = System.Drawing.Color.Gray;
-            this.lblProducto.Location = new System.Drawing.Point(0, 388);
+            this.lblProducto.Location = new System.Drawing.Point(0, 308);
             this.lblProducto.Margin = new System.Windows.Forms.Padding(0);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(122, 32);
+            this.lblProducto.Size = new System.Drawing.Size(123, 32);
             this.lblProducto.TabIndex = 20;
             this.lblProducto.Text = "Producto";
             // 
@@ -215,10 +213,10 @@
             this.cbxSalidaProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxSalidaProducto.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSalidaProducto.FormattingEnabled = true;
-            this.cbxSalidaProducto.Location = new System.Drawing.Point(7, 426);
-            this.cbxSalidaProducto.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cbxSalidaProducto.Location = new System.Drawing.Point(5, 345);
+            this.cbxSalidaProducto.Margin = new System.Windows.Forms.Padding(5);
             this.cbxSalidaProducto.Name = "cbxSalidaProducto";
-            this.cbxSalidaProducto.Size = new System.Drawing.Size(578, 40);
+            this.cbxSalidaProducto.Size = new System.Drawing.Size(433, 40);
             this.cbxSalidaProducto.TabIndex = 4;
             this.cbxSalidaProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxSalidaProducto_KeyPress);
             // 
@@ -228,10 +226,10 @@
             this.cbxOperador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxOperador.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxOperador.FormattingEnabled = true;
-            this.cbxOperador.Location = new System.Drawing.Point(7, 290);
-            this.cbxOperador.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cbxOperador.Location = new System.Drawing.Point(5, 235);
+            this.cbxOperador.Margin = new System.Windows.Forms.Padding(5);
             this.cbxOperador.Name = "cbxOperador";
-            this.cbxOperador.Size = new System.Drawing.Size(578, 40);
+            this.cbxOperador.Size = new System.Drawing.Size(433, 40);
             this.cbxOperador.TabIndex = 23;
             this.cbxOperador.SelectedIndexChanged += new System.EventHandler(this.cbxOperador_SelectedIndexChanged);
             // 
@@ -243,10 +241,10 @@
             this.cbxSalidaCliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxSalidaCliente.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSalidaCliente.FormattingEnabled = true;
-            this.cbxSalidaCliente.Location = new System.Drawing.Point(7, 154);
-            this.cbxSalidaCliente.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cbxSalidaCliente.Location = new System.Drawing.Point(5, 125);
+            this.cbxSalidaCliente.Margin = new System.Windows.Forms.Padding(5);
             this.cbxSalidaCliente.Name = "cbxSalidaCliente";
-            this.cbxSalidaCliente.Size = new System.Drawing.Size(578, 40);
+            this.cbxSalidaCliente.Size = new System.Drawing.Size(433, 40);
             this.cbxSalidaCliente.TabIndex = 3;
             this.cbxSalidaCliente.SelectedIndexChanged += new System.EventHandler(this.cbxSalidaCliente_SelectedIndexChanged);
             // 
@@ -261,13 +259,12 @@
             this.tableLayoutPanel4.Controls.Add(this.btnSalidaCompletar, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnSalidaAgregarProducto, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 1003);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 709);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(584, 78);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(437, 64);
             this.tableLayoutPanel4.TabIndex = 17;
             // 
             // btnSalidaBorrar
@@ -280,7 +277,7 @@
             this.btnSalidaBorrar.Location = new System.Drawing.Point(0, 0);
             this.btnSalidaBorrar.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalidaBorrar.Name = "btnSalidaBorrar";
-            this.btnSalidaBorrar.Size = new System.Drawing.Size(194, 78);
+            this.btnSalidaBorrar.Size = new System.Drawing.Size(145, 64);
             this.btnSalidaBorrar.TabIndex = 24;
             this.btnSalidaBorrar.Text = "ELIMINAR SALIDA";
             this.btnSalidaBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -295,10 +292,10 @@
             this.btnSalidaCompletar.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalidaCompletar.ForeColor = System.Drawing.Color.White;
             this.btnSalidaCompletar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalidaCompletar.Image")));
-            this.btnSalidaCompletar.Location = new System.Drawing.Point(194, 0);
+            this.btnSalidaCompletar.Location = new System.Drawing.Point(145, 0);
             this.btnSalidaCompletar.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalidaCompletar.Name = "btnSalidaCompletar";
-            this.btnSalidaCompletar.Size = new System.Drawing.Size(194, 78);
+            this.btnSalidaCompletar.Size = new System.Drawing.Size(145, 64);
             this.btnSalidaCompletar.TabIndex = 24;
             this.btnSalidaCompletar.Text = "COMPLETAR SALIDA";
             this.btnSalidaCompletar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -313,10 +310,10 @@
             this.btnSalidaAgregarProducto.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalidaAgregarProducto.ForeColor = System.Drawing.Color.White;
             this.btnSalidaAgregarProducto.Image = ((System.Drawing.Image)(resources.GetObject("btnSalidaAgregarProducto.Image")));
-            this.btnSalidaAgregarProducto.Location = new System.Drawing.Point(388, 0);
+            this.btnSalidaAgregarProducto.Location = new System.Drawing.Point(290, 0);
             this.btnSalidaAgregarProducto.Margin = new System.Windows.Forms.Padding(0);
             this.btnSalidaAgregarProducto.Name = "btnSalidaAgregarProducto";
-            this.btnSalidaAgregarProducto.Size = new System.Drawing.Size(196, 78);
+            this.btnSalidaAgregarProducto.Size = new System.Drawing.Size(147, 64);
             this.btnSalidaAgregarProducto.TabIndex = 24;
             this.btnSalidaAgregarProducto.Text = "AGREGAR PRODUCTO";
             this.btnSalidaAgregarProducto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -333,12 +330,12 @@
             this.lblSalidaFecha.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblSalidaFecha.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
             this.lblSalidaFecha.ForeColor = System.Drawing.Color.Gray;
-            this.lblSalidaFecha.Location = new System.Drawing.Point(7, 6);
-            this.lblSalidaFecha.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.lblSalidaFecha.Location = new System.Drawing.Point(5, 5);
+            this.lblSalidaFecha.Margin = new System.Windows.Forms.Padding(5);
             this.lblSalidaFecha.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblSalidaFecha.Name = "lblSalidaFecha";
-            this.lblSalidaFecha.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblSalidaFecha.Size = new System.Drawing.Size(578, 62);
+            this.lblSalidaFecha.Padding = new System.Windows.Forms.Padding(5);
+            this.lblSalidaFecha.Size = new System.Drawing.Size(433, 50);
             this.lblSalidaFecha.TabIndex = 24;
             this.lblSalidaFecha.Text = "Fecha";
             this.lblSalidaFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -351,11 +348,10 @@
             this.lblRuta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblRuta.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblRuta.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.lblRuta.Location = new System.Drawing.Point(4, 86);
-            this.lblRuta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRuta.Location = new System.Drawing.Point(3, 70);
             this.lblRuta.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblRuta.Name = "lblRuta";
-            this.lblRuta.Size = new System.Drawing.Size(584, 62);
+            this.lblRuta.Size = new System.Drawing.Size(437, 50);
             this.lblRuta.TabIndex = 25;
             this.lblRuta.Text = "Ruta";
             this.lblRuta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -368,11 +364,10 @@
             this.lblOperador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblOperador.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblOperador.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            this.lblOperador.Location = new System.Drawing.Point(4, 222);
-            this.lblOperador.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOperador.Location = new System.Drawing.Point(3, 180);
             this.lblOperador.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblOperador.Name = "lblOperador";
-            this.lblOperador.Size = new System.Drawing.Size(584, 62);
+            this.lblOperador.Size = new System.Drawing.Size(437, 50);
             this.lblOperador.TabIndex = 26;
             this.lblOperador.Text = "Operador";
             this.lblOperador.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -380,47 +375,47 @@
             // dgvSalidaListaProducto
             // 
             this.dgvSalidaListaProducto.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvSalidaListaProducto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvSalidaListaProducto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSalidaListaProducto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalidaListaProducto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSalidaListaProducto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.dgvSalidaListaProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSalidaListaProducto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvSalidaListaProducto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(62)))), ((int)(((byte)(158)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalidaListaProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(62)))), ((int)(((byte)(158)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalidaListaProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSalidaListaProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSalidaListaProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.producto,
             this.cantidad});
             this.dgvSalidaListaProducto.ContextMenuStrip = this.cmsSalidaListaProducto;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalidaListaProducto.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(141)))), ((int)(((byte)(156)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalidaListaProducto.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSalidaListaProducto.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSalidaListaProducto.EnableHeadersVisualStyles = false;
-            this.dgvSalidaListaProducto.Location = new System.Drawing.Point(610, 8);
-            this.dgvSalidaListaProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvSalidaListaProducto.Location = new System.Drawing.Point(456, 7);
+            this.dgvSalidaListaProducto.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSalidaListaProducto.Name = "dgvSalidaListaProducto";
             this.dgvSalidaListaProducto.RowHeadersVisible = false;
             this.dgvSalidaListaProducto.RowHeadersWidth = 51;
             this.dgvSalidaListaProducto.RowTemplate.Height = 60;
             this.dgvSalidaListaProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalidaListaProducto.Size = new System.Drawing.Size(995, 1089);
+            this.dgvSalidaListaProducto.Size = new System.Drawing.Size(747, 778);
             this.dgvSalidaListaProducto.TabIndex = 6;
             this.dgvSalidaListaProducto.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvSalidaListaProducto_MouseDown);
             // 
@@ -451,13 +446,13 @@
             // 
             // FormSalida
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1667, 1231);
+            this.ClientSize = new System.Drawing.Size(1250, 894);
             this.Controls.Add(this.materialCard1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSalida";
-            this.Padding = new System.Windows.Forms.Padding(13, 86, 13, 12);
+            this.Padding = new System.Windows.Forms.Padding(10, 70, 10, 10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Salida de producto del almacén | Nueva salida";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

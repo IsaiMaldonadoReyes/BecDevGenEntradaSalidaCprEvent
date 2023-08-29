@@ -33,7 +33,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbAlmacen = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
@@ -68,7 +68,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbAlmacen, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.dtpFechaInicial, 1, 4);
@@ -109,16 +109,16 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.label1.Text = "Selecciona los filtros para poder ejecutar el reporte";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lbAlmacen
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(5, 55);
-            this.label2.Margin = new System.Windows.Forms.Padding(5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 50);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Almacén * ";
+            this.lbAlmacen.AutoSize = true;
+            this.lbAlmacen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbAlmacen.Location = new System.Drawing.Point(5, 55);
+            this.lbAlmacen.Margin = new System.Windows.Forms.Padding(5);
+            this.lbAlmacen.Name = "lbAlmacen";
+            this.lbAlmacen.Size = new System.Drawing.Size(90, 50);
+            this.lbAlmacen.TabIndex = 1;
+            this.lbAlmacen.Text = "Almacén * ";
             // 
             // label3
             // 
@@ -150,6 +150,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.dtpFechaInicial.Name = "dtpFechaInicial";
             this.dtpFechaInicial.Size = new System.Drawing.Size(260, 20);
             this.dtpFechaInicial.TabIndex = 5;
+            this.dtpFechaInicial.ValueChanged += new System.EventHandler(this.dtpFechaFinal_ValueChanged);
             // 
             // dtpFechaFinal
             // 
@@ -159,6 +160,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             this.dtpFechaFinal.Name = "dtpFechaFinal";
             this.dtpFechaFinal.Size = new System.Drawing.Size(260, 20);
             this.dtpFechaFinal.TabIndex = 6;
+            this.dtpFechaFinal.ValueChanged += new System.EventHandler(this.dtpFechaFinal_ValueChanged);
             // 
             // btnEjecutarReporte
             // 
@@ -246,7 +248,7 @@ namespace BecDevGenEntradaSalidaCprEvent
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbAlmacen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpFechaInicial;

@@ -51,13 +51,24 @@ namespace BecDevGenEntradaSalidaCprEvent
         private void RptInventarioPorAlmacen_Load(object sender, EventArgs e)
         {
             cargarAlmacenes(cbxAlmacen);
+
+            if (!LoginUsuario.TipoUsuarioLogeado.Equals("almacen"))
+            {
+                cbxAlmacen.Show();
+                lbAlmacen.Show();
+            }
+            else
+            {
+                cbxAlmacen.Hide();
+                lbAlmacen.Hide();
+            }
         }
 
         private void btnEjecutarReporte_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = true;
             progressBar1.Minimum = 0;
-            progressBar1.Maximum = 4;
+            progressBar1.Maximum = 3;
             progressBar1.Value = 0;
             progressBar1.Step = 1;
 
@@ -71,16 +82,20 @@ namespace BecDevGenEntradaSalidaCprEvent
             StringBuilder mensaje = new StringBuilder("Verifica lo siguiente:\n\n");
             string camposVacios = "";
             string tipoMensajeDevuelto = "";
-            int almacen = almacenes[cbxAlmacen.SelectedIndex].CIDALMACEN;
+            int almacen = 0;
 
-
-            if (cbxAlmacen.SelectedIndex < 0)
+            if (!LoginUsuario.TipoUsuarioLogeado.Equals("almacen"))
             {
-                camposVacios += "\n \t❎ Almacén";
+                if (cbxAlmacen.SelectedIndex < 0)
+                {
+                    camposVacios += "\n \t❎ Almacén";
+                }
             }
 
             if (camposVacios.Equals(""))
             {
+                almacen = LoginUsuario.TipoUsuarioLogeado.Equals("almacen") ? LoginUsuario.IdAlmacenUsuarioLogeado : almacenes[cbxAlmacen.SelectedIndex].CIDALMACEN;
+                
                 if (xlApp != null)
                 {
                     xlLibro = xlApp.Workbooks.Add(misValue);
@@ -104,9 +119,6 @@ namespace BecDevGenEntradaSalidaCprEvent
                                 xlApp.Quit();
                                 Marshal.ReleaseComObject(xlLibro);
                                 Marshal.ReleaseComObject(xlApp);
-
-
-
 
                                 mensaje.AppendFormat($"Archivo creado en la siguiente ruta: \n\n\n{mdoc}\\InventarioPorAlmacen_{DateTime.Now.ToString("yyyy-MM-dd_HHmm")}.xlsx");
                                 MaterialMessageBox.Show(mensaje.ToString(), "✔️ Reporte creado correctamente");
@@ -449,7 +461,9 @@ namespace BecDevGenEntradaSalidaCprEvent
 		                                    INNER JOIN bec_event_cliente_documento AS becClienteDocumento ON concepto.CCODIGOCONCEPTO = becClienteDocumento.codigo_documento
 		                                    INNER JOIN bec_event_documento_encabezado AS becEncabezado ON becClienteDocumento.codigo_cliente = becEncabezado.codigo_cliente
 		                                    INNER JOIN bec_event_documento_movimiento AS becMovimiento ON becEncabezado.id = becMovimiento.id_documento_encabezado AND becMovimiento.codigo_producto = producto.CCODIGOPRODUCTO
-		                            WHERE   becEncabezado.estado = 'pendiente' AND becEncabezado.tipo = 'remision'
+		                            WHERE   becEncabezado.estado = 'pendiente' 
+                                            AND becEncabezado.tipo = 'remision'
+                                            AND becMovimiento.procesado = 1
 		                                    AND almacen.CIDALMACEN = @idAlmacen 
 		                                    AND CONVERT(date, becEncabezado.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
 		                                    AND concepto.CIDDOCUMENTODE = 3
