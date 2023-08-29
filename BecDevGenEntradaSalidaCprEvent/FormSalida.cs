@@ -808,6 +808,11 @@ namespace BecDevGenEntradaSalidaCprEvent
                             adConnect.bec_event_documento_movimiento.Remove(relacionCuenta);
                             adConnect.SaveChanges();
 
+
+                            var condicion = adConnect.bec_event_historia_movimiento.Where(x => x.id_documento_movimiento == idMovimiento);
+                            adConnect.bec_event_historia_movimiento.RemoveRange(condicion);
+                            adConnect.SaveChanges();
+
                             CargarDGVProductos(Documento.IdDocumento);
 
                             var existenMovivimientos = (from salida in adConnect.bec_event_documento_movimiento

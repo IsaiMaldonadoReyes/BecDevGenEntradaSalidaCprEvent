@@ -54,13 +54,24 @@ namespace BecDevGenEntradaSalidaCprEvent
         private void RptResumenMovimientosDetalladoPorRuta_Load(object sender, EventArgs e)
         {
             cargarAlmacenes();
+
+            if (!LoginUsuario.TipoUsuarioLogeado.Equals("almacen"))
+            {
+                cbxAlmacenes.Show();
+                lbAlmacen.Show();
+            }
+            else
+            {
+                cbxAlmacenes.Hide();
+                lbAlmacen.Hide();
+            }
         }
 
         private void btnEjecutarReporte_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = true;
             progressBar1.Minimum = 0;
-            progressBar1.Maximum = 4;
+            progressBar1.Maximum = 3;
             progressBar1.Value = 0;
             progressBar1.Step = 1;
 
@@ -78,26 +89,39 @@ namespace BecDevGenEntradaSalidaCprEvent
             List<admAlmacenes> almacenesSeleccionados = new List<admAlmacenes>();
             string tipoMovimiento = cbxTipoMovimiento.SelectedItem.ToString();
 
-            for (var i = 0; i < cbxAlmacenes.CheckBoxItems.Count; i++)
+            if (LoginUsuario.TipoUsuarioLogeado.Equals("almacen"))
             {
-                CheckBoxComboBoxItem item = cbxAlmacenes.CheckBoxItems[i];
-
-                if (item.Checked)
+                admAlmacenes almacen = new admAlmacenes();
+                almacen.CIDALMACEN = LoginUsuario.IdAlmacenUsuarioLogeado;
+                almacen.CNOMBREALMACEN = LoginUsuario.AlmacenUsuarioLogeado;
+                almacenesSeleccionados.Add(almacen);
+            }
+            else
+            {
+                for (var i = 0; i < cbxAlmacenes.CheckBoxItems.Count; i++)
                 {
-                    admAlmacenes almacen = new admAlmacenes();
+                    CheckBoxComboBoxItem item = cbxAlmacenes.CheckBoxItems[i];
 
-                    almacen.CIDALMACEN = this.almacenes[i].CIDALMACEN;
-                    almacen.CNOMBREALMACEN = this.almacenes[i].CNOMBREALMACEN;
+                    if (item.Checked)
+                    {
+                        admAlmacenes almacen = new admAlmacenes();
 
-                    almacenesSeleccionados.Add(almacen);
+                        almacen.CIDALMACEN = this.almacenes[i].CIDALMACEN;
+                        almacen.CNOMBREALMACEN = this.almacenes[i].CNOMBREALMACEN;
+
+                        almacenesSeleccionados.Add(almacen);
+                    }
                 }
             }
 
-
-            if (almacenesSeleccionados.Count < 0)
+            if (!LoginUsuario.TipoUsuarioLogeado.Equals("almacen"))
             {
-                camposVacios += "\n \t❎ Almacenes";
+                if (almacenesSeleccionados.Count < 0)
+                {
+                    camposVacios += "\n \t❎ Almacenes";
+                }
             }
+
             if (cbxTipoMovimiento.SelectedIndex < 0)
             {
                 camposVacios += "\n \t❎ Tipo de movimiento";

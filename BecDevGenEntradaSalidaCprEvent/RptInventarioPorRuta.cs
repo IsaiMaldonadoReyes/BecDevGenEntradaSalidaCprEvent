@@ -53,13 +53,24 @@ namespace BecDevGenEntradaSalidaCprEvent
         private void RptInventarioPorRuta_Load(object sender, EventArgs e)
         {
             cargarAlmacenes(cbxAlmacen);
+
+            if (!LoginUsuario.TipoUsuarioLogeado.Equals("almacen"))
+            {
+                cbxAlmacen.Show();
+                lbAlmacen.Show();
+            }
+            else
+            {
+                cbxAlmacen.Hide();
+                lbAlmacen.Hide();
+            }
         }
 
         private void btnEjecutarReporte_Click(object sender, EventArgs e)
         {
             progressBar1.Visible = true;
             progressBar1.Minimum = 0;
-            progressBar1.Maximum = 4;
+            progressBar1.Maximum = 3;
             progressBar1.Value = 0;
             progressBar1.Step = 1;
 
@@ -74,16 +85,20 @@ namespace BecDevGenEntradaSalidaCprEvent
             string camposVacios = "";
             string nombreReporte = "InventarioPorRuta";
             string tipoMensajeDevuelto = "";
-            int almacen = almacenes[cbxAlmacen.SelectedIndex].CIDALMACEN;
+            int almacen = 0;
 
-
-            if (cbxAlmacen.SelectedIndex < 0)
+            if (!LoginUsuario.TipoUsuarioLogeado.Equals("almacen"))
             {
-                camposVacios += "\n \t❎ Almacén";
+                if (cbxAlmacen.SelectedIndex < 0)
+                {
+                    camposVacios += "\n \t❎ Almacén";
+                }
             }
 
             if (camposVacios.Equals(""))
             {
+                almacen = LoginUsuario.TipoUsuarioLogeado.Equals("almacen") ? LoginUsuario.IdAlmacenUsuarioLogeado : almacenes[cbxAlmacen.SelectedIndex].CIDALMACEN;
+
                 if (xlApp != null)
                 {
                     xlLibro = xlApp.Workbooks.Add(misValue);
@@ -422,6 +437,7 @@ namespace BecDevGenEntradaSalidaCprEvent
 	                    AND producto.CTIPOPRODUCTO = 1		
 	                    AND becEncabezado.tipo = 'remision'
 	                    AND almacen.CIDALMACEN = @idAlmacen
+                        AND becMovimiento.procesado = 1
 	                    AND CONVERT(date, becEncabezado.fecha_creacion) BETWEEN @fechaInicio AND @fechaFin
                 ORDER BY 
 	                    becEncabezado.codigo_cliente

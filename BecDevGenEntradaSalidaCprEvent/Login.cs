@@ -68,10 +68,31 @@ namespace BecDevGenEntradaSalidaCprEvent
                     }
                     else if (loginPassword == loginAgente.CTEXTOEXTRA1)
                     {
+
+                        var almacenCliente = (from concepto in dbConnect.admConceptos
+                                              join almacen in dbConnect.admAlmacenes on concepto.CIDALMASUM equals almacen.CIDALMACEN
+                                              join cliente in dbConnect.bec_event_cliente_documento on concepto.CCODIGOCONCEPTO equals cliente.codigo_documento
+                                              where concepto.CIDDOCUMENTODE == 3
+                                              && cliente.codigo_agente == loginAgente.CCODIGOAGENTE
+                                              group almacen by new { almacen.CIDALMACEN, almacen.CNOMBREALMACEN, almacen.CCODIGOALMACEN } into agrupador
+                                              select new
+                                              {
+                                                  CIDALMACEN = agrupador.Key.CIDALMACEN,
+                                                  CNOMBREALMACEN = agrupador.Key.CNOMBREALMACEN,
+                                                  CCODIGOALMACEN = agrupador.Key.CCODIGOALMACEN,
+                                              }).FirstOrDefault();
+
                         loginCorrecto = true;
                         LoginUsuario.IdUsuarioLogeado = loginAgente.CIDAGENTE;
                         LoginUsuario.CodigoUsuarioLogeado = loginAgente.CCODIGOAGENTE;
                         LoginUsuario.TipoUsuarioLogeado = loginAgente.CTEXTOEXTRA2;
+
+                        if (!loginAgente.CTEXTOEXTRA2.Equals("administracion"))
+                        {
+                            LoginUsuario.AlmacenUsuarioLogeado = almacenCliente.CCODIGOALMACEN;
+                            LoginUsuario.IdAlmacenUsuarioLogeado = almacenCliente.CIDALMACEN;
+                        }
+
                     }
                     else
                     {
@@ -104,7 +125,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     Close();
                     //Dispose();
                 }
-                
+
             }
             else
             {
