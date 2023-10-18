@@ -374,19 +374,19 @@ namespace BecDevGenEntradaSalidaCprEvent
                     var existenSalidas = (from entSalida in adConnect.bec_event_documento_movimiento
                                           where entSalida.id_documento_encabezado == idSalida
                                           && entSalida.tipo == "salida"
-                                          //&& entSalida.cantidad_producto >= 0
+                                          && entSalida.cantidad_producto > 0
                                           select entSalida).ToList();
 
                     var existenEntradas = (from entradaSal in adConnect.bec_event_documento_movimiento
                                            where entradaSal.id_documento_encabezado == idEntrada
                                            && entradaSal.tipo == "entrada"
-                                           //&& entradaSal.cantidad_producto >= 0
+                                           && entradaSal.cantidad_producto > 0
                                            select entradaSal).ToList();
 
                     var existenFacturas = (from entSalFac in adConnect.bec_event_documento_movimiento
                                            where entSalFac.id_documento_encabezado == idFactura
                                            && entSalFac.tipo == "factura"
-                                           //&& entSalFac.cantidad_producto >= 0
+                                           && entSalFac.cantidad_producto > 0
                                            select entSalFac).ToList();
 
                     var conceptosPorCliente = (from documento in adConnect.bec_event_cliente_documento
