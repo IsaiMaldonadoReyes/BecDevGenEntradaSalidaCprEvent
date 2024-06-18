@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Stimulsoft.Base.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,10 +8,18 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity.Core.Common.EntitySql;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExcelDataReader;
+using IExcelDataReader = ExcelDataReader.IExcelDataReader;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
+using Microsoft.Office.Interop.Excel;
+using BecDevGenEntradaSalidaCprEvent.Procesos;
+using static Stimulsoft.Base.Registry;
 
 namespace BecDevGenEntradaSalidaCprEvent
 {
@@ -23,20 +32,6 @@ namespace BecDevGenEntradaSalidaCprEvent
         StringBuilder InterpreteSDK = new StringBuilder(255);
 
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
-        public class MyMaterialLabel : MaterialSkin.Controls.MaterialLabel
-        {
-            private Font _font;
-
-            public override Font Font
-            {
-                get { return _font; }
-                set
-                {
-                    _font = new Font(value.FontFamily, 16f, value.Style);
-                    base.Font = _font;
-                }
-            }
-        }
 
         public ListadoSalidas()
         {
@@ -57,8 +52,41 @@ namespace BecDevGenEntradaSalidaCprEvent
 
         private void Principal_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             lblUsuarioLogeado.Text = LoginUsuario.CodigoUsuarioLogeado + " | " + LoginUsuario.TipoUsuarioLogeado;
             CargarListado();
+
+            int errorSdk = 0;
+
+            errorSdk = SDK.SetCurrentDirectory(CurrentDirectory);
+            if (errorSdk != 0)
+            {
+                SDK.fError(errorSdk, InterpreteSDK, 255);
+            }
+            errorSdk = SDK.fInicioSesionSDK(Usuario, Password);
+
+            SDK.fInicioSesionSDKCONTPAQi(Usuario, Password);
+            if (errorSdk != 0)
+            {
+                SDK.fError(errorSdk, InterpreteSDK, 255);
+            }
+            errorSdk = SDK.fSetNombrePAQ("CONTPAQ I Comercial");
+            if (errorSdk != 0)
+            {
+                SDK.fError(errorSdk, InterpreteSDK, 255);
+            }
+
+            string rutaDirectorioProyecto = "";
+            string rutaFormatoPrincipal = "";
+
+            rutaDirectorioProyecto = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            rutaFormatoPrincipal = Path.Combine(rutaDirectorioProyecto, "label.rtf");
+
+            string rtfContent = File.ReadAllText(rutaFormatoPrincipal);
+
+            richTextBox1.Rtf = rtfContent;
+
         }
 
         public void CargarListado()
@@ -95,10 +123,16 @@ namespace BecDevGenEntradaSalidaCprEvent
             switch (materialTabControl1.SelectedIndex)
             {
                 case 0:
-                    this.Text = "Event | Listado de salidas pendientes";
+                    this.Text = "Event | Carga de salidas y devoluciones";
                     break;
                 case 1:
-                    this.Text = "Event | Devolución de productos";
+                    this.Text = "Event | Carga de ventas";
+                    break;
+                case 2:
+                    this.Text = "Event | Listado de salidas pendientes";
+                    break;
+                case 3:
+                    this.Text = "Event | Reportes";
                     break;
             }
         }
@@ -209,22 +243,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                            select remisionMov).ToList();
 
 
-                controlErrorSDK = SDK.SetCurrentDirectory(CurrentDirectory);
-                if (controlErrorSDK != 0)
-                {
-                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                }
-                controlErrorSDK = SDK.fInicioSesionSDK(Usuario, Password);
-                SDK.fInicioSesionSDKCONTPAQi("SUPERVISOR", "");
-                if (controlErrorSDK != 0)
-                {
-                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                }
-                controlErrorSDK = SDK.fSetNombrePAQ("CONTPAQ I Comercial");
-                if (controlErrorSDK != 0)
-                {
-                    SDK.fError(controlErrorSDK, InterpreteSDK, 255);
-                }
+
                 controlErrorSDK = SDK.fAbreEmpresa(Empresa);
 
                 if (controlErrorSDK != 0)
@@ -347,7 +366,6 @@ namespace BecDevGenEntradaSalidaCprEvent
                 }
 
                 SDK.fCierraEmpresa();
-                SDK.fTerminaSDK();
             }
         }
 
@@ -364,12 +382,18 @@ namespace BecDevGenEntradaSalidaCprEvent
 
         private void ListadoSalidas_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            try
+            {
+                SDK.fTerminaSDK();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void btnGuardarDocumento_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnRptInventarioPorAlmacen_Click(object sender, EventArgs e)
@@ -406,6 +430,121 @@ namespace BecDevGenEntradaSalidaCprEvent
         {
             RptResumenMovimientosDetalladoPorRuta rptResumenMovimientosDetalladoPorRuta = new RptResumenMovimientosDetalladoPorRuta();
             rptResumenMovimientosDetalladoPorRuta.ShowDialog();
+        }
+
+        private void btnBuscarARchivo_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtArchivoRuta.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void btnProcesarSalidasDevoluciones_Click(object sender, EventArgs e)
+        {
+            string rutaArchivoExcel = txtArchivoRuta.Text;
+            string camposVacios = "";
+
+            DateTime foo = DateTime.Now;
+            long unixTime = ((DateTimeOffset)foo).ToUnixTimeMilliseconds();
+            double unix = unixTime;
+
+            bool checCp = checkDevoluciones.Checked;
+
+            StringBuilder builderMsg = new StringBuilder("Verifique lo siguiente:\n\n");
+
+            if (rutaArchivoExcel.Equals(""))
+            {
+                camposVacios += "\n Debe seleccionar el archivo. ";
+            }
+
+            if (!camposVacios.Equals(""))
+            {
+                builderMsg.AppendFormat(camposVacios);
+                MaterialMessageBox.Show(builderMsg.ToString(), "Advertencia");
+            }
+            else
+            {
+                using (adConexionDB dbConnect = new adConexionDB())
+                {
+                    string proceso = ExcelSalidasDevoluciones.ProcesarExcelSalidasDevoluciones(rutaArchivoExcel, checCp, dbConnect, unix);
+
+                    if (proceso.Equals(""))
+                    {
+                        proceso = ExcelSalidasDevoluciones.ProcesarSalidasDevoluciones(checCp, dbConnect, unix, Empresa, InterpreteSDK);
+                        builderMsg.AppendFormat(proceso);
+                        MaterialMessageBox.Show(builderMsg.ToString(), "Verificar lo siguiente");
+                    }
+                    else
+                    {
+                        builderMsg.AppendFormat(proceso);
+                        MaterialMessageBox.Show(builderMsg.ToString(), "Advertencia");
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                txtArchivoRutaVenta.Text = openFileDialog2.FileName;
+            }
+        }
+
+        private void btnProcesarVentas_Click(object sender, EventArgs e)
+        {
+            string rutaArchivoExcel = txtArchivoRutaVenta.Text;
+            string camposVacios = "";
+
+            DateTime foo = DateTime.Now;
+            long unixTime = ((DateTimeOffset)foo).ToUnixTimeMilliseconds();
+            double unix = unixTime;
+
+
+            StringBuilder builderMsg = new StringBuilder("Verifique lo siguiente:\n\n");
+
+            if (rutaArchivoExcel.Equals(""))
+            {
+                camposVacios += "\n Debe seleccionar el archivo. ";
+            }
+
+            if (!camposVacios.Equals(""))
+            {
+                builderMsg.AppendFormat(camposVacios);
+                MaterialMessageBox.Show(builderMsg.ToString(), "Advertencia");
+            }
+            else
+            {
+                using (adConexionDB dbConnect = new adConexionDB())
+                {
+                    string proceso = ExcelVentas.ProcesarExcelVentas(rutaArchivoExcel, dbConnect, unix);
+
+                    if (proceso.Equals(""))
+                    {
+                        proceso = ExcelVentas.ProcesarVentas(dbConnect, unix, Empresa, InterpreteSDK);
+                        builderMsg.AppendFormat(proceso);
+                        MaterialMessageBox.Show(builderMsg.ToString(), "Verificar lo siguiente");
+                    }
+                    else
+                    {
+                        builderMsg.AppendFormat(proceso);
+                        MaterialMessageBox.Show(builderMsg.ToString(), "Advertencia");
+                    }
+                }
+            }
+        }
+
+        private void btnVerEjemploVenta_Click(object sender, EventArgs e)
+        {
+            dialogConfigAyudaVenta dialogConfig = new dialogConfigAyudaVenta();
+            dialogConfig.ShowDialog();
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            InventarioEnRuta dialogConfig = new InventarioEnRuta();
+            dialogConfig.ShowDialog();
         }
     }
 }

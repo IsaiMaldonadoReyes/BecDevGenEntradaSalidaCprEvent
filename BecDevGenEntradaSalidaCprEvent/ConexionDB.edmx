@@ -875,6 +875,30 @@
           <Property Name="procesado" Type="bit" />
           <Property Name="id_movimiento_contpaq" Type="int" />
         </EntityType>
+        <EntityType Name="bec_event_salida_devolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="tipo_movimiento" Type="nvarchar(max)" />
+          <Property Name="unix" Type="float" />
+          <Property Name="folio_definido" Type="nvarchar" MaxLength="50" />
+          <Property Name="codigo_producto" Type="nvarchar(max)" />
+          <Property Name="cantidad_movimiento" Type="float" />
+          <Property Name="ruta_almacen" Type="nvarchar(max)" />
+          <Property Name="id_agente" Type="int" />
+          <Property Name="serie_salida" Type="nvarchar(max)" />
+          <Property Name="folio_salida" Type="float" />
+          <Property Name="id_documento_salida" Type="int" />
+          <Property Name="id_movimiento_salida" Type="int" />
+          <Property Name="procesado_salida" Type="bit" />
+          <Property Name="serie_entrada" Type="nvarchar" MaxLength="50" />
+          <Property Name="folio_entrada" Type="float" />
+          <Property Name="id_documento_entrada" Type="int" />
+          <Property Name="id_movimiento_entrada" Type="int" />
+          <Property Name="procesado_entrada" Type="bit" />
+        </EntityType>
         <Association Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
           <End Role="bec_event_documento_encabezado" Type="Self.bec_event_documento_encabezado" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -906,6 +930,7 @@
           <EntitySet Name="bec_event_documento_encabezado" EntityType="Self.bec_event_documento_encabezado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bec_event_documento_movimiento" EntityType="Self.bec_event_documento_movimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bec_event_historia_movimiento" EntityType="Self.bec_event_historia_movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bec_event_salida_devolucion" EntityType="Self.bec_event_salida_devolucion" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado" Association="Self.FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
             <End Role="bec_event_documento_encabezado" EntitySet="bec_event_documento_encabezado" />
             <End Role="bec_event_documento_movimiento" EntitySet="bec_event_documento_movimiento" />
@@ -1731,6 +1756,7 @@
           </AssociationSet>
           <EntitySet Name="bec_event_historia_movimiento" EntityType="adEventModel.bec_event_historia_movimiento" />
           <EntitySet Name="bec_event_cliente_documento" EntityType="adEventModel.bec_event_cliente_documento" />
+          <EntitySet Name="bec_event_salida_devolucion" EntityType="adEventModel.bec_event_salida_devolucion" />
         </EntityContainer>
         <EntityType Name="bec_event_documento_abono">
           <Key>
@@ -1822,6 +1848,30 @@
           <Property Name="codigo_pago" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="codigo_almacen_defectuoso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="codigo_agente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bec_event_salida_devolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="tipo_movimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="unix" Type="Double" />
+          <Property Name="folio_definido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cantidad_movimiento" Type="Double" />
+          <Property Name="ruta_almacen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_agente" Type="Int32" />
+          <Property Name="serie_salida" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="folio_salida" Type="Double" />
+          <Property Name="id_documento_salida" Type="Int32" />
+          <Property Name="id_movimiento_salida" Type="Int32" />
+          <Property Name="procesado_salida" Type="Boolean" />
+          <Property Name="serie_entrada" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="folio_entrada" Type="Double" />
+          <Property Name="id_documento_entrada" Type="Int32" />
+          <Property Name="id_movimiento_entrada" Type="Int32" />
+          <Property Name="procesado_entrada" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2711,6 +2761,31 @@
                 <ScalarProperty Name="codigo_salida" ColumnName="codigo_salida" />
                 <ScalarProperty Name="codigo_documento" ColumnName="codigo_documento" />
                 <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bec_event_salida_devolucion">
+            <EntityTypeMapping TypeName="adEventModel.bec_event_salida_devolucion">
+              <MappingFragment StoreEntitySet="bec_event_salida_devolucion">
+                <ScalarProperty Name="procesado_entrada" ColumnName="procesado_entrada" />
+                <ScalarProperty Name="id_movimiento_entrada" ColumnName="id_movimiento_entrada" />
+                <ScalarProperty Name="id_documento_entrada" ColumnName="id_documento_entrada" />
+                <ScalarProperty Name="folio_entrada" ColumnName="folio_entrada" />
+                <ScalarProperty Name="serie_entrada" ColumnName="serie_entrada" />
+                <ScalarProperty Name="procesado_salida" ColumnName="procesado_salida" />
+                <ScalarProperty Name="id_movimiento_salida" ColumnName="id_movimiento_salida" />
+                <ScalarProperty Name="id_documento_salida" ColumnName="id_documento_salida" />
+                <ScalarProperty Name="folio_salida" ColumnName="folio_salida" />
+                <ScalarProperty Name="serie_salida" ColumnName="serie_salida" />
+                <ScalarProperty Name="id_agente" ColumnName="id_agente" />
+                <ScalarProperty Name="ruta_almacen" ColumnName="ruta_almacen" />
+                <ScalarProperty Name="cantidad_movimiento" ColumnName="cantidad_movimiento" />
+                <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+                <ScalarProperty Name="folio_definido" ColumnName="folio_definido" />
+                <ScalarProperty Name="unix" ColumnName="unix" />
+                <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -172,6 +172,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     return;
                 }
 
+                /*
                 controlErrorSDK = SDK.SetCurrentDirectory(CurrentDirectory);
                 if (controlErrorSDK != 0)
                 {
@@ -191,6 +192,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     SDK.fError(controlErrorSDK, InterpreteSDK, 255);
                     //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fSetNombrePAQ");
                 }
+                */
                 controlErrorSDK = SDK.fAbreEmpresa(Empresa);
 
                 if (controlErrorSDK != 0)
@@ -261,7 +263,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     }
 
                     SDK.fCierraEmpresa();
-                    SDK.fTerminaSDK();
+                    //SDK.fTerminaSDK();
                 }
             }
 

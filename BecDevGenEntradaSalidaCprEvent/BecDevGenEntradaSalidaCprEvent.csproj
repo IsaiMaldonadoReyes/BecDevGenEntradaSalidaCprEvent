@@ -45,6 +45,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
     <Reference Include="LibExcel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
       <HintPath>..\packages\Stimulsoft.Reports.Net.2017.2.4\lib\net40\LibExcel.dll</HintPath>
     </Reference>
@@ -103,6 +109,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xaml" />
@@ -167,6 +174,9 @@
     <Compile Include="bec_event_historia_movimiento.cs">
       <DependentUpon>ConexionDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="bec_event_salida_devolucion.cs">
+      <DependentUpon>ConexionDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ConexionDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -182,6 +192,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConexionDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="dialogConfigAyudaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogConfigAyudaVenta.Designer.cs">
+      <DependentUpon>dialogConfigAyudaVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDevolucion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,11 +210,24 @@
     <Compile Include="FormPagoLiquidacion.Designer.cs">
       <DependentUpon>FormPagoLiquidacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventarioEnRuta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventarioEnRuta.Designer.cs">
+      <DependentUpon>InventarioEnRuta.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoLiquidaciones.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ListadoLiquidaciones.Designer.cs">
       <DependentUpon>ListadoLiquidaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\ExcelSalidasDevoluciones.cs" />
+    <Compile Include="Procesos\ExcelVentas.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RptHistoricoMovimientosGeneral.cs">
       <SubType>Form</SubType>
@@ -259,6 +288,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="uAyudaVentas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="uAyudaVentas.Designer.cs">
+      <DependentUpon>uAyudaVentas.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="dialogConfigAyudaVenta.resx">
+      <DependentUpon>dialogConfigAyudaVenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDevolucion.resx">
       <DependentUpon>FormDevolucion.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSalida.resx">
       <DependentUpon>FormSalida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventarioEnRuta.resx">
+      <DependentUpon>InventarioEnRuta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoLiquidaciones.resx">
       <DependentUpon>ListadoLiquidaciones.cs</DependentUpon>
@@ -280,6 +321,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RptHistoricoMovimientosGeneral.resx">
       <DependentUpon>RptHistoricoMovimientosGeneral.cs</DependentUpon>
@@ -298,6 +340,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RptResumenMovimientosGlobalDelDia.resx">
       <DependentUpon>RptResumenMovimientosGlobalDelDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uAyudaVentas.resx">
+      <DependentUpon>uAyudaVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="ConexionDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -360,6 +405,7 @@
     <Content Include="Localization\uk.xml" />
     <Content Include="Localization\zh-CHS.xml" />
     <Content Include="Localization\zh-CHT.xml" />
+    <None Include="Resources\excel.png" />
     <None Include="bin\Debug\BECMA COLOR.png" />
     <None Include="bin\Debug\img\actualizar.png" />
     <None Include="bin\Debug\img\salida.png" />

@@ -20,7 +20,6 @@ namespace BecDevGenEntradaSalidaCprEvent
     public partial class ListadoLiquidaciones : MaterialForm
     {
         readonly MaterialSkin.MaterialSkinManager materialSkinManager;
-        string LocalDirectory = ConfigurationManager.AppSettings["LocalDirectory"].ToString();
         StiVariablesCollection variable = new StiVariablesCollection();
 
         public List<admClientes> clientes;
@@ -32,6 +31,11 @@ namespace BecDevGenEntradaSalidaCprEvent
         public List<admConceptos> facturas;
         public List<admConceptos> pagos;
 
+        string CurrentDirectory = ConfigurationManager.AppSettings["CurrentDirectory"].ToString();
+        string Usuario = ConfigurationManager.AppSettings["Usuario"].ToString();
+        string Password = ConfigurationManager.AppSettings["Password"].ToString();
+        string Empresa = ConfigurationManager.AppSettings["Empresa"].ToString();
+        StringBuilder InterpreteSDK = new StringBuilder(255);
 
         public class MyMaterialLabel : MaterialSkin.Controls.MaterialLabel
         {
@@ -80,6 +84,26 @@ namespace BecDevGenEntradaSalidaCprEvent
             CargarAgentes(cbxAgente);
 
             CargarDGV();
+
+            int errorSdk = 0;
+
+            errorSdk = SDK.SetCurrentDirectory(CurrentDirectory);
+            if (errorSdk != 0)
+            {
+                SDK.fError(errorSdk, InterpreteSDK, 255);
+            }
+            errorSdk = SDK.fInicioSesionSDK(Usuario, Password);
+
+            SDK.fInicioSesionSDKCONTPAQi(Usuario, Password);
+            if (errorSdk != 0)
+            {
+                SDK.fError(errorSdk, InterpreteSDK, 255);
+            }
+            errorSdk = SDK.fSetNombrePAQ("CONTPAQ I Comercial");
+            if (errorSdk != 0)
+            {
+                SDK.fError(errorSdk, InterpreteSDK, 255);
+            }
         }
 
         public void CargarAgentes(ComboBox combo)
@@ -87,11 +111,12 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB ObjCompac = new adConexionDB())
             {
                 agentes = (from cliente in ObjCompac.admAgentes
-                            orderby cliente.CCODIGOAGENTE ascending
-                            select cliente).ToList();
-                foreach (var objLista in clientes)
+                           where !cliente.CTEXTOEXTRA1.Equals("")
+                           orderby cliente.CCODIGOAGENTE ascending
+                           select cliente).ToList();
+                foreach (var objLista in agentes)
                 {
-                    combo.Items.Add(objLista.CCODIGOCLIENTE);
+                    combo.Items.Add(objLista.CCODIGOAGENTE);
                 }
             }
         }
@@ -131,9 +156,9 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB ObjCompac = new adConexionDB())
             {
                 remisiones = (from concepto in ObjCompac.admConceptos
-                             where concepto.CIDDOCUMENTODE == idDocumentoDe
-                             orderby concepto.CNOMBRECONCEPTO ascending
-                             select concepto).ToList();
+                              where concepto.CIDDOCUMENTODE == idDocumentoDe
+                              orderby concepto.CNOMBRECONCEPTO ascending
+                              select concepto).ToList();
 
                 foreach (var objLista in remisiones)
                 {
@@ -146,9 +171,9 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB ObjCompac = new adConexionDB())
             {
                 facturas = (from concepto in ObjCompac.admConceptos
-                             where concepto.CIDDOCUMENTODE == idDocumentoDe
-                             orderby concepto.CNOMBRECONCEPTO ascending
-                             select concepto).ToList();
+                            where concepto.CIDDOCUMENTODE == idDocumentoDe
+                            orderby concepto.CNOMBRECONCEPTO ascending
+                            select concepto).ToList();
 
                 foreach (var objLista in facturas)
                 {
@@ -162,9 +187,9 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB ObjCompac = new adConexionDB())
             {
                 entradas = (from concepto in ObjCompac.admConceptos
-                             where concepto.CIDDOCUMENTODE == idDocumentoDe
-                             orderby concepto.CNOMBRECONCEPTO ascending
-                             select concepto).ToList();
+                            where concepto.CIDDOCUMENTODE == idDocumentoDe
+                            orderby concepto.CNOMBRECONCEPTO ascending
+                            select concepto).ToList();
 
                 foreach (var objLista in entradas)
                 {
@@ -178,9 +203,9 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB ObjCompac = new adConexionDB())
             {
                 salidas = (from concepto in ObjCompac.admConceptos
-                             where concepto.CIDDOCUMENTODE == idDocumentoDe
-                             orderby concepto.CNOMBRECONCEPTO ascending
-                             select concepto).ToList();
+                           where concepto.CIDDOCUMENTODE == idDocumentoDe
+                           orderby concepto.CNOMBRECONCEPTO ascending
+                           select concepto).ToList();
 
                 foreach (var objLista in salidas)
                 {
@@ -194,9 +219,9 @@ namespace BecDevGenEntradaSalidaCprEvent
             using (adConexionDB ObjCompac = new adConexionDB())
             {
                 pagos = (from concepto in ObjCompac.admConceptos
-                             where concepto.CIDDOCUMENTODE == idDocumentoDe
-                             orderby concepto.CNOMBRECONCEPTO ascending
-                             select concepto).ToList();
+                         where concepto.CIDDOCUMENTODE == idDocumentoDe
+                         orderby concepto.CNOMBRECONCEPTO ascending
+                         select concepto).ToList();
 
                 foreach (var objLista in pagos)
                 {
@@ -293,8 +318,10 @@ namespace BecDevGenEntradaSalidaCprEvent
 
         private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string rutaProyecto = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory);
+
             StiReport report = new StiReport();
-            report.Load(LocalDirectory + "\\ReporteSalidas.mrt");
+            report.Load(rutaProyecto + "\\ReporteSalidas.mrt");
             report.Design();
         }
 
@@ -492,6 +519,26 @@ namespace BecDevGenEntradaSalidaCprEvent
         {
             RptResumenMovimientosDetalladoPorRuta rptResumenMovimientosDetalladoPorRuta = new RptResumenMovimientosDetalladoPorRuta();
             rptResumenMovimientosDetalladoPorRuta.ShowDialog();
+        }
+
+        private void ListadoLiquidaciones_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                SDK.fTerminaSDK();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void modificarReporteVentasTMEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string rutaProyecto = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory);
+
+            StiReport report = new StiReport();
+            report.Load(rutaProyecto + "\\ReporteInventarioEnRuta.mrt");
+            report.Design();
         }
     }
 }

@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <ConvertNulls>False</ConvertNulls>
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Zeus Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Zeus</Alias>
+        <ConnectionStringEncrypted>9Mjh61sM2YFrE6HM+5ykF9Fgz81OXaMJaEclBMP4oCeCcPdLyF1K+UZdOQhhBWUP31rBy8ldGoV/XKW95R13C/Vs0StNW/KF4luEBOq4oi/E0NVjRQOjyEV7ufhpTGXv1T7fDe9d+s1pYeiQwz2kf9nIaSvGa3vx4lHNmHpcoI/ecNHLT1/73Q==</ConnectionStringEncrypted>
+        <Key>ed262536e1cf4fe881dba1f19aabac78</Key>
+        <Name>Zeus</Name>
+      </Zeus>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <Qry Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Qry</Alias>
+        <Columns isList="true" count="7">
+          <value>cantidadProducto,System.Double</value>
+          <value>cliente,System.String</value>
+          <value>codigoProducto,System.String</value>
+          <value>fecha_creacion,System.DateTime</value>
+          <value>folio,System.Double</value>
+          <value>nombreProducto,System.String</value>
+          <value>operador,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>77ef79c83e594542b6c5938b50390f0f</Key>
+        <Name>Qry</Name>
+        <NameInSource>Zeus</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>pIdAlmacen,vIdAlmacen,8,0</value>
+        </Parameters>
+        <SqlCommand>SELECT 
+	encabezado.fecha_creacion
+	, encabezado.folio_contpaq_documento AS folio
+	, cliente.CRAZONSOCIAL AS cliente
+	, producto.CCODIGOPRODUCTO AS codigoProducto
+	, producto.CNOMBREPRODUCTO AS nombreProducto
+	, movimiento.cantidad_producto AS cantidadProducto
+	FROM bec_event_documento_encabezado encabezado
+INNER JOIN bec_event_documento_movimiento AS movimiento 
+	ON encabezado.id = movimiento.id_documento_encabezado
+INNER JOIN admProductos AS producto
+	ON movimiento.codigo_producto = producto.CCODIGOPRODUCTO
+INNER JOIN admClientes AS cliente
+	ON encabezado.codigo_cliente = cliente.CCODIGOCLIENTE
+WHERE encabezado.id = @pIdAlmacen
+
+</SqlCommand>
+      </Qry>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="1">
+      <value>,vIdAlmacen,vIdAlmacen,,System.Int32,,False,False,True,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="3">
+        <PageHeaderBand1 Ref="5" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19.6,1.4</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text36 Ref="6" type="Text" isKey="true">
+              <Border>All;Black;1;None;False;4;Black</Border>
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>9.8,0.4,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>e7a67e4616fc444dac7307b2241e7709</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{Format("{0:dd-MM-yyyy}", Qry.fecha_creacion)}</Text>
+              <TextBrush>[4:43:109]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text36>
+            <Text1 Ref="7" type="Text" isKey="true">
+              <Border>All;Black;1;None;False;4;Black</Border>
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,0,12.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Guid>e8f0dd0fe7d4458b88ad23255bfc2374</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>Ticket de salida</Text>
+              <TextBrush>[4:43:109]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text11 Ref="8" type="Text" isKey="true">
+              <Border>Right;White;3;Solid;False;4;White</Border>
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,1,1.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>313fdcb4e5f74803926ff0161e80874e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>Ruta</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text11>
+            <Text14 Ref="9" type="Text" isKey="true">
+              <Border>None;[4:43:109];2;Solid;False;4;Black</Border>
+              <Brush>[245:245:245]</Brush>
+              <ClientRectangle>1.6,1,3.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>0f1fe70d25d04f0aac7e4b4eb02f4e83</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{Qry.cliente}</Text>
+              <TextBrush>[12:12:12]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text6 Ref="10" type="Text" isKey="true">
+              <Border>Right;White;3;Solid;False;4;White</Border>
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,0.4,1.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>2d3d8ee7aca140bcb9b1bb611dc2d990</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>Salida</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text7 Ref="11" type="Text" isKey="true">
+              <Border>None;[4:43:109];2;Solid;False;4;Black</Border>
+              <Brush>[245:245:245]</Brush>
+              <ClientRectangle>1.6,0.4,3.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>bf8e0a191ae24903a73de125fa5d54c9</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{Qry.folio}</Text>
+              <TextBrush>[12:12:12]</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageHeaderBand1>
+        <GroupHeaderBand1 Ref="12" type="GroupHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>0,2.6,19.6,0.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text3 Ref="13" type="Text" isKey="true">
+              <Border>Right;White;3;Solid;False;4;White</Border>
+              <Brush>[4:43:109]</Brush>
+              <ClientRectangle>0,0,8.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>27f1ad19c19d4577a8e030f2a90b340b</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text>Producto</Text>
+              <TextBrush>White</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text10 Ref="14" type="Text" isKey="true">
+              <Border>Right;White;3;Solid;False;4;White</Border>
+              <Brush>[4:43:109]</Brush>
+              <ClientRectangle>8.2,0,2.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>f53ae3250c6b4121b969a64864171d5f</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text>Entregado</Text>
+              <TextBrush>White</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+            <Text9 Ref="15" type="Text" isKey="true">
+              <Border>Right;White;3;Solid;False;4;White</Border>
+              <Brush>[4:43:109]</Brush>
+              <ClientRectangle>10.6,0,2.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Guid>3e5724d52644470d8d8ecd7a861b0a22</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text>Devuelto</Text>
+              <TextBrush>White</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>GroupHeaderBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </GroupHeaderBand1>
+        <DataBand1 Ref="16" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,4,19.6,0.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text8 Ref="17" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;[4:43:109];1;Solid;False;4;Black</Border>
+              <Brush>[245:245:245]</Brush>
+              <ClientRectangle>0,0,8.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>0b80301c19214c659dae7c016d86b050</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="4" />
+              <Parent isRef="16" />
+              <Text>{Qry.codigoProducto} | {Qry.nombreProducto}</Text>
+              <TextBrush>[12:12:12]</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text4 Ref="18" type="Text" isKey="true">
+              <Border>All;[4:43:109];1;Solid;False;4;Black</Border>
+              <Brush>[245:245:245]</Brush>
+              <ClientRectangle>8.2,0,2.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>f84945e615a2427db5211f49780d45fd</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="4" />
+              <Parent isRef="16" />
+              <Text>{Qry.cantidadProducto}</Text>
+              <TextBrush>[12:12:12]</TextBrush>
+              <TextFormat Ref="19" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text5 Ref="20" type="Text" isKey="true">
+              <Border>All;[4:43:109];1;Solid;False;4;Black</Border>
+              <Brush>[245:245:245]</Brush>
+              <ClientRectangle>10.6,0,2.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>8bb8e8ae64c94b4497edf62bf5d36923</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="4" />
+              <Parent isRef="16" />
+              <TextBrush>[12:12:12]</TextBrush>
+              <TextFormat Ref="21" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>Qry</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>7585f73ff0fb4724bc4932e4a5b3072d</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>27.9</PageHeight>
+      <PageWidth>21.6</PageWidth>
+      <PaperSize>Letter</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="22" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="23" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>6/17/2024 6:30:03 PM</ReportChanged>
+  <ReportCreated>9/9/2021 6:02:05 PM</ReportCreated>
+  <ReportFile>C:\Users\isai_\source\repos\Event\BecDevGenEntradaSalidaCprEvent\BecDevGenEntradaSalidaCprEvent\bin\Debug\\ReporteInventarioEnRuta.mrt</ReportFile>
+  <ReportGuid>524cdb265ac949408cbe5ac3a78d2295</ReportGuid>
+  <ReportImage isNull="true" />
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2017.2.4.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

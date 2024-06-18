@@ -204,39 +204,47 @@ namespace BecDevGenEntradaSalidaCprEvent
 
         private void btnDevolucionCompletar_Click(object sender, EventArgs e)
         {
-            double devolucionCantidad = 0;
-            double devolucionCantidadDefectuoso = 0;
-            double TiempoUnix = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
-
-            int controlErrorSDK = 0;
-
-            int idMovimientoRemision = 0;
-            int idRemisionOrigen = Documento.IdDocumento;
-            int idSalida = 0;
-            int idEntrada = 0;
-            int idFactura = 0;
-
-            int idDocumentoSalida = 0;
-            int idMovimientoSalida = 0;
-            double folioSalida = 0;
-            string serieSalida = "";
-
-            int idDocumentoEntrada = 0;
-            int idMovimientoEntrada = 0;
-            double folioEntrada = 0;
-            string serieEntrada = "";
-
-            int idDocumentoFactura = 0;
-            int idMovimientoFactura = 0;
-            double folioFactura = 0;
-            string serieFactura = "";
-
-            string mensajeError = "";
-            StringBuilder mensaje = new StringBuilder("Verificar lo siguiente:\n\n");
-            StringBuilder InterpreteSDK = new StringBuilder(255);
-
             using (adConexionDB adConnect = new adConexionDB())
             {
+
+                var existenSalidas = (from entSalida in adConnect.bec_event_documento_movimiento
+                                      where entSalida.id_documento_encabezado == 2682
+                                      && entSalida.tipo == "salida"
+                                      && entSalida.cantidad_producto > 0
+                                      select entSalida).ToList();
+
+                double devolucionCantidad = 0;
+                double devolucionCantidadDefectuoso = 0;
+                double TiempoUnix = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
+
+                int controlErrorSDK = 0;
+
+                int idMovimientoRemision = 0;
+                int idRemisionOrigen = Documento.IdDocumento;
+                int idSalida = 0;
+                int idEntrada = 0;
+                int idFactura = 0;
+
+                int idDocumentoSalida = 0;
+                int idMovimientoSalida = 0;
+                double folioSalida = 0;
+                string serieSalida = "";
+
+                int idDocumentoEntrada = 0;
+                int idMovimientoEntrada = 0;
+                double folioEntrada = 0;
+                string serieEntrada = "";
+
+                int idDocumentoFactura = 0;
+                int idMovimientoFactura = 0;
+                double folioFactura = 0;
+                string serieFactura = "";
+
+                string mensajeError = "";
+                StringBuilder mensaje = new StringBuilder("Verificar lo siguiente:\n\n");
+                StringBuilder InterpreteSDK = new StringBuilder(255);
+
+
                 var documentoRemision = (from remision in adConnect.bec_event_documento_encabezado
                                          where remision.id == idRemisionOrigen
                                          && remision.tipo == "remision"
@@ -346,7 +354,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     adConnect.bec_event_documento_movimiento.Add(movimientoDevolucionFactura);
                 }
                 adConnect.SaveChanges();
-
+                /*
                 controlErrorSDK = SDK.SetCurrentDirectory(CurrentDirectory);
                 if (controlErrorSDK != 0)
                 {
@@ -363,6 +371,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                 {
                     SDK.fError(controlErrorSDK, InterpreteSDK, 255);
                 }
+                */
                 controlErrorSDK = SDK.fAbreEmpresa(Empresa);
 
                 if (controlErrorSDK != 0)
@@ -371,11 +380,11 @@ namespace BecDevGenEntradaSalidaCprEvent
                 }
                 else
                 {
-                    var existenSalidas = (from entSalida in adConnect.bec_event_documento_movimiento
-                                          where entSalida.id_documento_encabezado == idSalida
-                                          && entSalida.tipo == "salida"
-                                          && entSalida.cantidad_producto > 0
-                                          select entSalida).ToList();
+                    existenSalidas = (from entSalida in adConnect.bec_event_documento_movimiento
+                                      where entSalida.id_documento_encabezado == idSalida
+                                      && entSalida.tipo == "salida"
+                                      && entSalida.cantidad_producto > 0
+                                      select entSalida).ToList();
 
                     var existenEntradas = (from entradaSal in adConnect.bec_event_documento_movimiento
                                            where entradaSal.id_documento_encabezado == idEntrada
@@ -444,7 +453,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                                           && mvRemision.tipo == "remision"
                                                           && mvSalida.id == objMovimientoSalida.id
 
-                                                          select new { almComercial.CCODIGOALMACEN}).FirstOrDefault();
+                                                          select new { almComercial.CCODIGOALMACEN }).FirstOrDefault();
 
                                     SDK.fBuscarIdDocumento(idDocumentoSalida);
 
@@ -538,23 +547,23 @@ namespace BecDevGenEntradaSalidaCprEvent
                                                 {
 
                                                     var almacenXEntrada = (from mvSalida in adConnect.bec_event_documento_movimiento
-                                                                          join hdSalida in adConnect.bec_event_documento_encabezado on mvSalida.id_documento_encabezado equals hdSalida.id
+                                                                           join hdSalida in adConnect.bec_event_documento_encabezado on mvSalida.id_documento_encabezado equals hdSalida.id
 
-                                                                          join hdRemision in adConnect.bec_event_documento_encabezado on hdSalida.id_documento_origen equals hdRemision.id
-                                                                          join mvRemision in adConnect.bec_event_documento_movimiento on hdRemision.id equals mvRemision.id_documento_encabezado
+                                                                           join hdRemision in adConnect.bec_event_documento_encabezado on hdSalida.id_documento_origen equals hdRemision.id
+                                                                           join mvRemision in adConnect.bec_event_documento_movimiento on hdRemision.id equals mvRemision.id_documento_encabezado
 
-                                                                          join movComercial in adConnect.admMovimientos on mvRemision.id_movimiento_contpaq equals movComercial.CIDMOVTOOWNER
-                                                                          join proComercial in adConnect.admProductos on movComercial.CIDPRODUCTO equals proComercial.CIDPRODUCTO
-                                                                          join almComercial in adConnect.admAlmacenes on movComercial.CIDALMACEN equals almComercial.CIDALMACEN
-                                                                          where mvSalida.codigo_producto == objMovimientoEntrada.codigo_producto
-                                                                          && mvRemision.codigo_producto == objMovimientoEntrada.codigo_producto
-                                                                          && hdSalida.tipo == "entrada"
-                                                                          && hdRemision.tipo == "remision"
-                                                                          && mvSalida.tipo == "entrada"
-                                                                          && mvRemision.tipo == "remision"
-                                                                          && mvSalida.id == objMovimientoEntrada.id
+                                                                           join movComercial in adConnect.admMovimientos on mvRemision.id_movimiento_contpaq equals movComercial.CIDMOVTOOWNER
+                                                                           join proComercial in adConnect.admProductos on movComercial.CIDPRODUCTO equals proComercial.CIDPRODUCTO
+                                                                           join almComercial in adConnect.admAlmacenes on movComercial.CIDALMACEN equals almComercial.CIDALMACEN
+                                                                           where mvSalida.codigo_producto == objMovimientoEntrada.codigo_producto
+                                                                           && mvRemision.codigo_producto == objMovimientoEntrada.codigo_producto
+                                                                           && hdSalida.tipo == "entrada"
+                                                                           && hdRemision.tipo == "remision"
+                                                                           && mvSalida.tipo == "entrada"
+                                                                           && mvRemision.tipo == "remision"
+                                                                           && mvSalida.id == objMovimientoEntrada.id
 
-                                                                          select new { almComercial.CCODIGOALMACEN }).FirstOrDefault();
+                                                                           select new { almComercial.CCODIGOALMACEN }).FirstOrDefault();
 
 
                                                     SDK.tMovimiento tMovEntrada = new SDK.tMovimiento
@@ -679,7 +688,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                     string updateEncabezadoRemision = $" UPDATE bec_event_documento_encabezado SET estado = 'terminada' WHERE id = {idRemisionOrigen}";
                                     adConnect.Database.ExecuteSqlCommand(updateEncabezadoRemision);
 
-                                    mensaje.AppendFormat($"Liquidación completada correctamente. \n\n"); 
+                                    mensaje.AppendFormat($"Liquidación completada correctamente. \n\n");
                                     MaterialMessageBox.Show(mensaje.ToString(), "✔️ Liquidación creada correctamente.                                             ");
 
                                     ListadoSalidas formPrincipal = new ListadoSalidas();
@@ -697,7 +706,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     }
 
                     SDK.fCierraEmpresa();
-                    SDK.fTerminaSDK();
+                    //SDK.fTerminaSDK();
                 }
 
             }

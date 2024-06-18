@@ -61,7 +61,6 @@
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbxDocumentoRemision = new MaterialSkin.Controls.MaterialComboBox();
             this.dgvDocumentos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ruta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,19 +73,20 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGuardarDocumento = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbxDocumentoSalida = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbxDocumentoFactura = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbxDocumentoEntrada = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbxDocumentoPago = new MaterialSkin.Controls.MaterialComboBox();
-            this.cbxRuta = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbxAlmacenDefectuoso = new MaterialSkin.Controls.MaterialComboBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbxAgente = new MaterialSkin.Controls.MaterialComboBox();
+            this.cbxDocumentoRemision = new System.Windows.Forms.ComboBox();
+            this.cbxDocumentoFactura = new System.Windows.Forms.ComboBox();
+            this.cbxDocumentoSalida = new System.Windows.Forms.ComboBox();
+            this.cbxDocumentoEntrada = new System.Windows.Forms.ComboBox();
+            this.cbxDocumentoPago = new System.Windows.Forms.ComboBox();
+            this.cbxRuta = new System.Windows.Forms.ComboBox();
+            this.cbxAlmacenDefectuoso = new System.Windows.Forms.ComboBox();
+            this.cbxAgente = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -102,6 +102,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.modificarReporteVentasTMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnSalidaActualizar = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -382,7 +383,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(776, 497);
+            this.tabPage2.Size = new System.Drawing.Size(776, 496);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Configuración";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -399,7 +400,7 @@
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
-            this.materialCard2.Size = new System.Drawing.Size(776, 497);
+            this.materialCard2.Size = new System.Drawing.Size(776, 496);
             this.materialCard2.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -408,22 +409,22 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.materialLabel4, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoRemision, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.dgvDocumentos, 0, 11);
             this.tableLayoutPanel4.Controls.Add(this.btnGuardarDocumento, 0, 10);
             this.tableLayoutPanel4.Controls.Add(this.materialLabel8, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoSalida, 0, 3);
             this.tableLayoutPanel4.Controls.Add(this.materialLabel9, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoFactura, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.materialLabel11, 1, 2);
-            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoEntrada, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.materialLabel5, 1, 4);
             this.tableLayoutPanel4.Controls.Add(this.materialLabel1, 0, 4);
+            this.tableLayoutPanel4.Controls.Add(this.materialLabel2, 0, 6);
+            this.tableLayoutPanel4.Controls.Add(this.materialLabel3, 1, 6);
+            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoRemision, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoFactura, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoSalida, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoEntrada, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.cbxDocumentoPago, 0, 5);
             this.tableLayoutPanel4.Controls.Add(this.cbxRuta, 1, 5);
-            this.tableLayoutPanel4.Controls.Add(this.materialLabel2, 0, 6);
             this.tableLayoutPanel4.Controls.Add(this.cbxAlmacenDefectuoso, 0, 7);
-            this.tableLayoutPanel4.Controls.Add(this.materialLabel3, 1, 6);
             this.tableLayoutPanel4.Controls.Add(this.cbxAgente, 1, 7);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(10, 11);
@@ -441,7 +442,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.53846F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(756, 475);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(756, 474);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // materialLabel4
@@ -458,29 +459,6 @@
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Documento remisión";
             this.materialLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbxDocumentoRemision
-            // 
-            this.cbxDocumentoRemision.AutoResize = false;
-            this.cbxDocumentoRemision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxDocumentoRemision.Depth = 0;
-            this.cbxDocumentoRemision.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxDocumentoRemision.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxDocumentoRemision.DropDownHeight = 174;
-            this.cbxDocumentoRemision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDocumentoRemision.DropDownWidth = 121;
-            this.cbxDocumentoRemision.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxDocumentoRemision.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbxDocumentoRemision.FormattingEnabled = true;
-            this.cbxDocumentoRemision.IntegralHeight = false;
-            this.cbxDocumentoRemision.ItemHeight = 43;
-            this.cbxDocumentoRemision.Location = new System.Drawing.Point(3, 27);
-            this.cbxDocumentoRemision.MaxDropDownItems = 4;
-            this.cbxDocumentoRemision.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbxDocumentoRemision.Name = "cbxDocumentoRemision";
-            this.cbxDocumentoRemision.Size = new System.Drawing.Size(372, 49);
-            this.cbxDocumentoRemision.StartIndex = 0;
-            this.cbxDocumentoRemision.TabIndex = 1;
             // 
             // dgvDocumentos
             // 
@@ -511,12 +489,12 @@
             this.dgvDocumentos.ContextMenuStrip = this.contextMenuStrip2;
             this.dgvDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDocumentos.EnableHeadersVisualStyles = false;
-            this.dgvDocumentos.Location = new System.Drawing.Point(3, 365);
+            this.dgvDocumentos.Location = new System.Drawing.Point(3, 363);
             this.dgvDocumentos.Name = "dgvDocumentos";
             this.dgvDocumentos.RowHeadersVisible = false;
             this.dgvDocumentos.RowHeadersWidth = 51;
             this.dgvDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDocumentos.Size = new System.Drawing.Size(750, 107);
+            this.dgvDocumentos.Size = new System.Drawing.Size(750, 108);
             this.dgvDocumentos.TabIndex = 4;
             this.dgvDocumentos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvDocumentos_MouseDown);
             // 
@@ -569,12 +547,12 @@
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eliminarToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(118, 26);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(133, 28);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -588,12 +566,12 @@
             this.btnGuardarDocumento.HighEmphasis = true;
             this.btnGuardarDocumento.Icon = null;
             this.btnGuardarDocumento.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnGuardarDocumento.Location = new System.Drawing.Point(4, 340);
+            this.btnGuardarDocumento.Location = new System.Drawing.Point(4, 339);
             this.btnGuardarDocumento.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnGuardarDocumento.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGuardarDocumento.Name = "btnGuardarDocumento";
             this.btnGuardarDocumento.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnGuardarDocumento.Size = new System.Drawing.Size(748, 16);
+            this.btnGuardarDocumento.Size = new System.Drawing.Size(748, 15);
             this.btnGuardarDocumento.TabIndex = 5;
             this.btnGuardarDocumento.Text = "Guardar";
             this.btnGuardarDocumento.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -617,30 +595,6 @@
             this.materialLabel8.Text = "Documento salida";
             this.materialLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbxDocumentoSalida
-            // 
-            this.cbxDocumentoSalida.AutoResize = false;
-            this.cbxDocumentoSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxDocumentoSalida.Depth = 0;
-            this.cbxDocumentoSalida.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxDocumentoSalida.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxDocumentoSalida.DropDownHeight = 174;
-            this.cbxDocumentoSalida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDocumentoSalida.DropDownWidth = 121;
-            this.cbxDocumentoSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxDocumentoSalida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbxDocumentoSalida.FormattingEnabled = true;
-            this.cbxDocumentoSalida.IntegralHeight = false;
-            this.cbxDocumentoSalida.ItemHeight = 43;
-            this.cbxDocumentoSalida.Location = new System.Drawing.Point(2, 99);
-            this.cbxDocumentoSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbxDocumentoSalida.MaxDropDownItems = 4;
-            this.cbxDocumentoSalida.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbxDocumentoSalida.Name = "cbxDocumentoSalida";
-            this.cbxDocumentoSalida.Size = new System.Drawing.Size(374, 49);
-            this.cbxDocumentoSalida.StartIndex = 0;
-            this.cbxDocumentoSalida.TabIndex = 7;
-            // 
             // materialLabel9
             // 
             this.materialLabel9.AutoSize = true;
@@ -657,30 +611,6 @@
             this.materialLabel9.Text = "Documento factura";
             this.materialLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbxDocumentoFactura
-            // 
-            this.cbxDocumentoFactura.AutoResize = false;
-            this.cbxDocumentoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxDocumentoFactura.Depth = 0;
-            this.cbxDocumentoFactura.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxDocumentoFactura.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxDocumentoFactura.DropDownHeight = 174;
-            this.cbxDocumentoFactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDocumentoFactura.DropDownWidth = 121;
-            this.cbxDocumentoFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxDocumentoFactura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbxDocumentoFactura.FormattingEnabled = true;
-            this.cbxDocumentoFactura.IntegralHeight = false;
-            this.cbxDocumentoFactura.ItemHeight = 43;
-            this.cbxDocumentoFactura.Location = new System.Drawing.Point(380, 26);
-            this.cbxDocumentoFactura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbxDocumentoFactura.MaxDropDownItems = 4;
-            this.cbxDocumentoFactura.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbxDocumentoFactura.Name = "cbxDocumentoFactura";
-            this.cbxDocumentoFactura.Size = new System.Drawing.Size(374, 49);
-            this.cbxDocumentoFactura.StartIndex = 0;
-            this.cbxDocumentoFactura.TabIndex = 9;
-            // 
             // materialLabel11
             // 
             this.materialLabel11.AutoSize = true;
@@ -696,30 +626,6 @@
             this.materialLabel11.TabIndex = 10;
             this.materialLabel11.Text = "Documento entrada";
             this.materialLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbxDocumentoEntrada
-            // 
-            this.cbxDocumentoEntrada.AutoResize = false;
-            this.cbxDocumentoEntrada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxDocumentoEntrada.Depth = 0;
-            this.cbxDocumentoEntrada.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxDocumentoEntrada.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxDocumentoEntrada.DropDownHeight = 174;
-            this.cbxDocumentoEntrada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDocumentoEntrada.DropDownWidth = 121;
-            this.cbxDocumentoEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxDocumentoEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbxDocumentoEntrada.FormattingEnabled = true;
-            this.cbxDocumentoEntrada.IntegralHeight = false;
-            this.cbxDocumentoEntrada.ItemHeight = 43;
-            this.cbxDocumentoEntrada.Location = new System.Drawing.Point(380, 99);
-            this.cbxDocumentoEntrada.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbxDocumentoEntrada.MaxDropDownItems = 4;
-            this.cbxDocumentoEntrada.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbxDocumentoEntrada.Name = "cbxDocumentoEntrada";
-            this.cbxDocumentoEntrada.Size = new System.Drawing.Size(374, 49);
-            this.cbxDocumentoEntrada.StartIndex = 0;
-            this.cbxDocumentoEntrada.TabIndex = 11;
             // 
             // materialLabel5
             // 
@@ -751,54 +657,6 @@
             this.materialLabel1.Text = "Documento pago";
             this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbxDocumentoPago
-            // 
-            this.cbxDocumentoPago.AutoResize = false;
-            this.cbxDocumentoPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxDocumentoPago.Depth = 0;
-            this.cbxDocumentoPago.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxDocumentoPago.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxDocumentoPago.DropDownHeight = 174;
-            this.cbxDocumentoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDocumentoPago.DropDownWidth = 121;
-            this.cbxDocumentoPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxDocumentoPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbxDocumentoPago.FormattingEnabled = true;
-            this.cbxDocumentoPago.IntegralHeight = false;
-            this.cbxDocumentoPago.ItemHeight = 43;
-            this.cbxDocumentoPago.Location = new System.Drawing.Point(2, 172);
-            this.cbxDocumentoPago.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbxDocumentoPago.MaxDropDownItems = 4;
-            this.cbxDocumentoPago.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbxDocumentoPago.Name = "cbxDocumentoPago";
-            this.cbxDocumentoPago.Size = new System.Drawing.Size(374, 49);
-            this.cbxDocumentoPago.StartIndex = 0;
-            this.cbxDocumentoPago.TabIndex = 13;
-            // 
-            // cbxRuta
-            // 
-            this.cbxRuta.AutoResize = false;
-            this.cbxRuta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxRuta.Depth = 0;
-            this.cbxRuta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxRuta.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxRuta.DropDownHeight = 174;
-            this.cbxRuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxRuta.DropDownWidth = 121;
-            this.cbxRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxRuta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbxRuta.FormattingEnabled = true;
-            this.cbxRuta.IntegralHeight = false;
-            this.cbxRuta.ItemHeight = 43;
-            this.cbxRuta.Location = new System.Drawing.Point(380, 172);
-            this.cbxRuta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbxRuta.MaxDropDownItems = 4;
-            this.cbxRuta.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbxRuta.Name = "cbxRuta";
-            this.cbxRuta.Size = new System.Drawing.Size(374, 49);
-            this.cbxRuta.StartIndex = 0;
-            this.cbxRuta.TabIndex = 14;
-            // 
             // materialLabel2
             // 
             this.materialLabel2.AutoSize = true;
@@ -814,30 +672,6 @@
             this.materialLabel2.Text = "Almacén defectuoso";
             this.materialLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cbxAlmacenDefectuoso
-            // 
-            this.cbxAlmacenDefectuoso.AutoResize = false;
-            this.cbxAlmacenDefectuoso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxAlmacenDefectuoso.Depth = 0;
-            this.cbxAlmacenDefectuoso.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxAlmacenDefectuoso.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxAlmacenDefectuoso.DropDownHeight = 174;
-            this.cbxAlmacenDefectuoso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxAlmacenDefectuoso.DropDownWidth = 121;
-            this.cbxAlmacenDefectuoso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxAlmacenDefectuoso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbxAlmacenDefectuoso.FormattingEnabled = true;
-            this.cbxAlmacenDefectuoso.IntegralHeight = false;
-            this.cbxAlmacenDefectuoso.ItemHeight = 43;
-            this.cbxAlmacenDefectuoso.Location = new System.Drawing.Point(2, 245);
-            this.cbxAlmacenDefectuoso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbxAlmacenDefectuoso.MaxDropDownItems = 4;
-            this.cbxAlmacenDefectuoso.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbxAlmacenDefectuoso.Name = "cbxAlmacenDefectuoso";
-            this.cbxAlmacenDefectuoso.Size = new System.Drawing.Size(374, 49);
-            this.cbxAlmacenDefectuoso.StartIndex = 0;
-            this.cbxAlmacenDefectuoso.TabIndex = 16;
-            // 
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
@@ -851,29 +685,101 @@
             this.materialLabel3.TabIndex = 17;
             this.materialLabel3.Text = "Agente acceso";
             // 
+            // cbxDocumentoRemision
+            // 
+            this.cbxDocumentoRemision.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxDocumentoRemision.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxDocumentoRemision.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxDocumentoRemision.FormattingEnabled = true;
+            this.cbxDocumentoRemision.Location = new System.Drawing.Point(2, 26);
+            this.cbxDocumentoRemision.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxDocumentoRemision.Name = "cbxDocumentoRemision";
+            this.cbxDocumentoRemision.Size = new System.Drawing.Size(374, 21);
+            this.cbxDocumentoRemision.TabIndex = 19;
+            // 
+            // cbxDocumentoFactura
+            // 
+            this.cbxDocumentoFactura.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxDocumentoFactura.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxDocumentoFactura.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxDocumentoFactura.FormattingEnabled = true;
+            this.cbxDocumentoFactura.Location = new System.Drawing.Point(380, 26);
+            this.cbxDocumentoFactura.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxDocumentoFactura.Name = "cbxDocumentoFactura";
+            this.cbxDocumentoFactura.Size = new System.Drawing.Size(374, 21);
+            this.cbxDocumentoFactura.TabIndex = 20;
+            // 
+            // cbxDocumentoSalida
+            // 
+            this.cbxDocumentoSalida.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxDocumentoSalida.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxDocumentoSalida.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxDocumentoSalida.FormattingEnabled = true;
+            this.cbxDocumentoSalida.Location = new System.Drawing.Point(2, 99);
+            this.cbxDocumentoSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxDocumentoSalida.Name = "cbxDocumentoSalida";
+            this.cbxDocumentoSalida.Size = new System.Drawing.Size(374, 21);
+            this.cbxDocumentoSalida.TabIndex = 21;
+            // 
+            // cbxDocumentoEntrada
+            // 
+            this.cbxDocumentoEntrada.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxDocumentoEntrada.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxDocumentoEntrada.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxDocumentoEntrada.FormattingEnabled = true;
+            this.cbxDocumentoEntrada.Location = new System.Drawing.Point(380, 99);
+            this.cbxDocumentoEntrada.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxDocumentoEntrada.Name = "cbxDocumentoEntrada";
+            this.cbxDocumentoEntrada.Size = new System.Drawing.Size(374, 21);
+            this.cbxDocumentoEntrada.TabIndex = 22;
+            // 
+            // cbxDocumentoPago
+            // 
+            this.cbxDocumentoPago.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxDocumentoPago.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxDocumentoPago.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxDocumentoPago.FormattingEnabled = true;
+            this.cbxDocumentoPago.Location = new System.Drawing.Point(2, 172);
+            this.cbxDocumentoPago.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxDocumentoPago.Name = "cbxDocumentoPago";
+            this.cbxDocumentoPago.Size = new System.Drawing.Size(374, 21);
+            this.cbxDocumentoPago.TabIndex = 23;
+            // 
+            // cbxRuta
+            // 
+            this.cbxRuta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxRuta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxRuta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxRuta.FormattingEnabled = true;
+            this.cbxRuta.Location = new System.Drawing.Point(380, 172);
+            this.cbxRuta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxRuta.Name = "cbxRuta";
+            this.cbxRuta.Size = new System.Drawing.Size(374, 21);
+            this.cbxRuta.TabIndex = 24;
+            // 
+            // cbxAlmacenDefectuoso
+            // 
+            this.cbxAlmacenDefectuoso.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxAlmacenDefectuoso.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxAlmacenDefectuoso.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxAlmacenDefectuoso.FormattingEnabled = true;
+            this.cbxAlmacenDefectuoso.Location = new System.Drawing.Point(2, 245);
+            this.cbxAlmacenDefectuoso.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxAlmacenDefectuoso.Name = "cbxAlmacenDefectuoso";
+            this.cbxAlmacenDefectuoso.Size = new System.Drawing.Size(374, 21);
+            this.cbxAlmacenDefectuoso.TabIndex = 25;
+            // 
             // cbxAgente
             // 
-            this.cbxAgente.AutoResize = false;
-            this.cbxAgente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbxAgente.Depth = 0;
+            this.cbxAgente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxAgente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxAgente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxAgente.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbxAgente.DropDownHeight = 174;
-            this.cbxAgente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxAgente.DropDownWidth = 121;
-            this.cbxAgente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbxAgente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbxAgente.FormattingEnabled = true;
-            this.cbxAgente.IntegralHeight = false;
-            this.cbxAgente.ItemHeight = 43;
             this.cbxAgente.Location = new System.Drawing.Point(380, 245);
             this.cbxAgente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cbxAgente.MaxDropDownItems = 4;
-            this.cbxAgente.MouseState = MaterialSkin.MouseState.OUT;
             this.cbxAgente.Name = "cbxAgente";
-            this.cbxAgente.Size = new System.Drawing.Size(374, 49);
-            this.cbxAgente.StartIndex = 0;
-            this.cbxAgente.TabIndex = 18;
+            this.cbxAgente.Size = new System.Drawing.Size(374, 21);
+            this.cbxAgente.TabIndex = 26;
             // 
             // tabPage3
             // 
@@ -881,7 +787,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage3.Size = new System.Drawing.Size(776, 497);
+            this.tabPage3.Size = new System.Drawing.Size(776, 496);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reportes";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -898,7 +804,7 @@
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14, 14, 14, 14);
-            this.materialCard3.Size = new System.Drawing.Size(770, 491);
+            this.materialCard3.Size = new System.Drawing.Size(770, 490);
             this.materialCard3.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -926,7 +832,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(742, 463);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(742, 462);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // btnRptInventarioPorAlmacen
@@ -1112,14 +1018,15 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modificarToolStripMenuItem});
+            this.modificarToolStripMenuItem,
+            this.modificarReporteVentasTMEToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(275, 80);
             // 
             // modificarToolStripMenuItem
             // 
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(274, 24);
             this.modificarToolStripMenuItem.Text = "Modificar";
             this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
             // 
@@ -1141,6 +1048,13 @@
             this.dataGridViewImageColumn4.ToolTipText = "Abono";
             this.dataGridViewImageColumn4.Width = 30;
             // 
+            // modificarReporteVentasTMEToolStripMenuItem
+            // 
+            this.modificarReporteVentasTMEToolStripMenuItem.Name = "modificarReporteVentasTMEToolStripMenuItem";
+            this.modificarReporteVentasTMEToolStripMenuItem.Size = new System.Drawing.Size(274, 24);
+            this.modificarReporteVentasTMEToolStripMenuItem.Text = "Modificar reporte ventas TME";
+            this.modificarReporteVentasTMEToolStripMenuItem.Click += new System.EventHandler(this.modificarReporteVentasTMEToolStripMenuItem_Click);
+            // 
             // ListadoLiquidaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1156,6 +1070,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Event Express | Listado de liquidaciones";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ListadoLiquidaciones_FormClosing);
             this.Load += new System.EventHandler(this.Principal_Load);
             this.tabPage1.ResumeLayout(false);
             this.materialCard1.ResumeLayout(false);
@@ -1197,21 +1112,14 @@
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialComboBox cbxDocumentoRemision;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private System.Windows.Forms.DataGridView dgvDocumentos;
         private MaterialSkin.Controls.MaterialButton btnGuardarDocumento;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
-        private MaterialSkin.Controls.MaterialComboBox cbxDocumentoSalida;
-        private MaterialSkin.Controls.MaterialComboBox cbxDocumentoFactura;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialComboBox cbxDocumentoEntrada;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialComboBox cbxDocumentoPago;
-        private MaterialSkin.Controls.MaterialComboBox cbxRuta;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialComboBox cbxAlmacenDefectuoso;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ruta;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -1232,7 +1140,6 @@
         private MaterialSkin.Controls.MaterialButton btnRptResumenMovimientosDetalladoPorRuta;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialComboBox cbxAgente;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn salida_fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn salida_cliente;
@@ -1240,5 +1147,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewTextBoxColumn pendiente;
         private System.Windows.Forms.DataGridViewImageColumn abono_accion;
+        private System.Windows.Forms.ComboBox cbxDocumentoRemision;
+        private System.Windows.Forms.ComboBox cbxDocumentoFactura;
+        private System.Windows.Forms.ComboBox cbxDocumentoSalida;
+        private System.Windows.Forms.ComboBox cbxDocumentoEntrada;
+        private System.Windows.Forms.ComboBox cbxDocumentoPago;
+        private System.Windows.Forms.ComboBox cbxRuta;
+        private System.Windows.Forms.ComboBox cbxAlmacenDefectuoso;
+        private System.Windows.Forms.ComboBox cbxAgente;
+        private System.Windows.Forms.ToolStripMenuItem modificarReporteVentasTMEToolStripMenuItem;
     }
 }

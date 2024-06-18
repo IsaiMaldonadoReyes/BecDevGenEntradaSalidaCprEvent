@@ -870,6 +870,30 @@
     <Property Name="procesado" Type="bit" />
     <Property Name="id_movimiento_contpaq" Type="int" />
   </EntityType>
+  <EntityType Name="bec_event_salida_devolucion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_creacion" Type="datetime" />
+    <Property Name="tipo_movimiento" Type="nvarchar(max)" />
+    <Property Name="unix" Type="float" />
+    <Property Name="folio_definido" Type="nvarchar" MaxLength="50" />
+    <Property Name="codigo_producto" Type="nvarchar(max)" />
+    <Property Name="cantidad_movimiento" Type="float" />
+    <Property Name="ruta_almacen" Type="nvarchar(max)" />
+    <Property Name="id_agente" Type="int" />
+    <Property Name="serie_salida" Type="nvarchar(max)" />
+    <Property Name="folio_salida" Type="float" />
+    <Property Name="id_documento_salida" Type="int" />
+    <Property Name="id_movimiento_salida" Type="int" />
+    <Property Name="procesado_salida" Type="bit" />
+    <Property Name="serie_entrada" Type="nvarchar" MaxLength="50" />
+    <Property Name="folio_entrada" Type="float" />
+    <Property Name="id_documento_entrada" Type="int" />
+    <Property Name="id_movimiento_entrada" Type="int" />
+    <Property Name="procesado_entrada" Type="bit" />
+  </EntityType>
   <Association Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
     <End Role="bec_event_documento_encabezado" Type="Self.bec_event_documento_encabezado" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -901,6 +925,7 @@
     <EntitySet Name="bec_event_documento_encabezado" EntityType="Self.bec_event_documento_encabezado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bec_event_documento_movimiento" EntityType="Self.bec_event_documento_movimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="bec_event_historia_movimiento" EntityType="Self.bec_event_historia_movimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bec_event_salida_devolucion" EntityType="Self.bec_event_salida_devolucion" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_bec_event_documento_movimiento_bec_event_documento_encabezado" Association="Self.FK_bec_event_documento_movimiento_bec_event_documento_encabezado">
       <End Role="bec_event_documento_encabezado" EntitySet="bec_event_documento_encabezado" />
       <End Role="bec_event_documento_movimiento" EntitySet="bec_event_documento_movimiento" />

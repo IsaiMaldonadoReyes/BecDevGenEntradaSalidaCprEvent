@@ -816,6 +816,7 @@
     </AssociationSet>
     <EntitySet Name="bec_event_historia_movimiento" EntityType="adEventModel.bec_event_historia_movimiento" />
     <EntitySet Name="bec_event_cliente_documento" EntityType="adEventModel.bec_event_cliente_documento" />
+    <EntitySet Name="bec_event_salida_devolucion" EntityType="adEventModel.bec_event_salida_devolucion" />
   </EntityContainer>
   <EntityType Name="bec_event_documento_abono">
     <Key>
@@ -907,5 +908,29 @@
     <Property Name="codigo_pago" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="codigo_almacen_defectuoso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="codigo_agente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="bec_event_salida_devolucion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+    <Property Name="tipo_movimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="unix" Type="Double" />
+    <Property Name="folio_definido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="codigo_producto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="cantidad_movimiento" Type="Double" />
+    <Property Name="ruta_almacen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="id_agente" Type="Int32" />
+    <Property Name="serie_salida" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="folio_salida" Type="Double" />
+    <Property Name="id_documento_salida" Type="Int32" />
+    <Property Name="id_movimiento_salida" Type="Int32" />
+    <Property Name="procesado_salida" Type="Boolean" />
+    <Property Name="serie_entrada" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="folio_entrada" Type="Double" />
+    <Property Name="id_documento_entrada" Type="Int32" />
+    <Property Name="id_movimiento_entrada" Type="Int32" />
+    <Property Name="procesado_entrada" Type="Boolean" />
   </EntityType>
 </Schema>

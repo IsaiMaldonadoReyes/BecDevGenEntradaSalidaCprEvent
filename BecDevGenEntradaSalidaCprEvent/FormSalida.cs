@@ -41,7 +41,6 @@ namespace BecDevGenEntradaSalidaCprEvent
         string User = ConfigurationManager.AppSettings["user"].ToString();
         string PasswordDB = ConfigurationManager.AppSettings["passwordDB"].ToString();
         string Database = ConfigurationManager.AppSettings["database"].ToString();
-        string LocalDirectory = ConfigurationManager.AppSettings["LocalDirectory"].ToString();
 
         StringBuilder InterpreteSDK = new StringBuilder(255);
         StiVariablesCollection variable = new StiVariablesCollection();
@@ -334,6 +333,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                        && salida.estado == "pendiente"
                                        //&& salida.id_contpaq_documento == null
                                        select salida).FirstOrDefault<bec_event_documento_encabezado>();
+                /*
                 controlErrorSDK = SDK.SetCurrentDirectory(CurrentDirectory);
                 if (controlErrorSDK != 0)
                 {
@@ -353,6 +353,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                     SDK.fError(controlErrorSDK, InterpreteSDK, 255);
                     //MaterialMessageBox.Show(InterpreteSDK.ToString(), "⚠︎ Error en la creación del fSetNombrePAQ");
                 }
+                */
                 controlErrorSDK = SDK.fAbreEmpresa(Empresa);
 
                 if (controlErrorSDK != 0)
@@ -624,17 +625,18 @@ namespace BecDevGenEntradaSalidaCprEvent
                 }
 
                 SDK.fCierraEmpresa();
-                SDK.fTerminaSDK();
+                //SDK.fTerminaSDK();
             }
 
         }
 
         private void GenerarTicketSalida(int idSalida)
         {
+            string rutaProyecto = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory);
+
             try
             {
                 string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                SDK.SetCurrentDirectory(LocalDirectory);
 
                 StiReport mrt = new StiReport();
                 Stimulsoft.Base.StiLicense.Key = @"6vJhGtLLLz2GNviWmUTrhSqnOItdDwjBylQzQcAOiHkpNBNlI/1rz4ZIh+PJP5PlDY/b4HIU9O1e2oNddG4xhdP1Uw" +
@@ -645,7 +647,7 @@ namespace BecDevGenEntradaSalidaCprEvent
                                                 "TmjKyp+M2ke67s6b1DC0jEsUaNOm00YzFl+YAnDDdbsvBQQUnF9mSNxpsxfQcqV3sufAAf80H5DvKJ5oo+3p3BWGnH" +
                                                 "X3Ix+cK/Ymh6cj/89F+Q5mPxOhizMVgl7RLS";
 
-                mrt.Load(LocalDirectory + "ReporteSalidas.mrt");
+                mrt.Load(rutaProyecto + "ReporteSalidas.mrt");
                 mrt.ReportName = "ReporteSalidas.mrt";
 
                 addVar("vIdAlmacen", idSalida.ToString());
@@ -667,6 +669,7 @@ namespace BecDevGenEntradaSalidaCprEvent
             {
                 MaterialMessageBox.Show($"El formato de PDF se encuentra abierto, por favor cierrelo y vuelva a intentarlo.                                                                                            ", "⚠︎ Error al abrir el PDF6");
             }
+            
         }
 
         private void btnSalidaBorrar_Click(object sender, EventArgs e)

@@ -41,5 +41,6 @@ namespace BecDevGenEntradaSalidaCprEvent
         public virtual DbSet<bec_event_documento_movimiento> bec_event_documento_movimiento { get; set; }
         public virtual DbSet<bec_event_historia_movimiento> bec_event_historia_movimiento { get; set; }
         public virtual DbSet<bec_event_cliente_documento> bec_event_cliente_documento { get; set; }
+        public virtual DbSet<bec_event_salida_devolucion> bec_event_salida_devolucion { get; set; }
     }
 }

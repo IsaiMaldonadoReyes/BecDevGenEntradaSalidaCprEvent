@@ -887,5 +887,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="bec_event_salida_devolucion">
+      <EntityTypeMapping TypeName="adEventModel.bec_event_salida_devolucion">
+        <MappingFragment StoreEntitySet="bec_event_salida_devolucion">
+          <ScalarProperty Name="procesado_entrada" ColumnName="procesado_entrada" />
+          <ScalarProperty Name="id_movimiento_entrada" ColumnName="id_movimiento_entrada" />
+          <ScalarProperty Name="id_documento_entrada" ColumnName="id_documento_entrada" />
+          <ScalarProperty Name="folio_entrada" ColumnName="folio_entrada" />
+          <ScalarProperty Name="serie_entrada" ColumnName="serie_entrada" />
+          <ScalarProperty Name="procesado_salida" ColumnName="procesado_salida" />
+          <ScalarProperty Name="id_movimiento_salida" ColumnName="id_movimiento_salida" />
+          <ScalarProperty Name="id_documento_salida" ColumnName="id_documento_salida" />
+          <ScalarProperty Name="folio_salida" ColumnName="folio_salida" />
+          <ScalarProperty Name="serie_salida" ColumnName="serie_salida" />
+          <ScalarProperty Name="id_agente" ColumnName="id_agente" />
+          <ScalarProperty Name="ruta_almacen" ColumnName="ruta_almacen" />
+          <ScalarProperty Name="cantidad_movimiento" ColumnName="cantidad_movimiento" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="folio_definido" ColumnName="folio_definido" />
+          <ScalarProperty Name="unix" ColumnName="unix" />
+          <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
