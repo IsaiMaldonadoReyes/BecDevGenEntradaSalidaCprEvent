@@ -45,6 +45,7 @@
             this.dtpInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpFinal = new System.Windows.Forms.DateTimePicker();
             this.btnEjecutarInventarioEnRuta = new MaterialSkin.Controls.MaterialButton();
+            this.pgInventarioEnRuta = new System.Windows.Forms.ProgressBar();
             this.materialCard1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,11 +84,12 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.dtpInicial, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.dtpFinal, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.btnEjecutarInventarioEnRuta, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.btnEjecutarInventarioEnRuta, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.pgInventarioEnRuta, 0, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(14, 14);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -96,6 +98,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(366, 605);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -106,7 +109,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(284, 15);
+            this.label1.Size = new System.Drawing.Size(245, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Selecciona los filtros para poder ejecutar el reporte";
             // 
@@ -115,7 +118,7 @@
             this.chkCedis.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.chkCedis, 2);
             this.chkCedis.Depth = 0;
-            this.chkCedis.Location = new System.Drawing.Point(0, 60);
+            this.chkCedis.Location = new System.Drawing.Point(0, 59);
             this.chkCedis.Margin = new System.Windows.Forms.Padding(0);
             this.chkCedis.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chkCedis.MouseState = MaterialSkin.MouseState.HOVER;
@@ -131,36 +134,36 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 120);
+            this.label2.Location = new System.Drawing.Point(3, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 15);
+            this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "CEDIS inicial";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 180);
+            this.label3.Location = new System.Drawing.Point(3, 177);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 15);
+            this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "CEDIS final";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 240);
+            this.label4.Location = new System.Drawing.Point(3, 236);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 15);
+            this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Ruta inicial";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 300);
+            this.label5.Location = new System.Drawing.Point(3, 295);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 15);
+            this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Ruta final";
             // 
@@ -168,7 +171,7 @@
             // 
             this.cbxCedisInicial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxCedisInicial.FormattingEnabled = true;
-            this.cbxCedisInicial.Location = new System.Drawing.Point(103, 123);
+            this.cbxCedisInicial.Location = new System.Drawing.Point(103, 121);
             this.cbxCedisInicial.Name = "cbxCedisInicial";
             this.cbxCedisInicial.Size = new System.Drawing.Size(260, 21);
             this.cbxCedisInicial.TabIndex = 6;
@@ -178,7 +181,7 @@
             // 
             this.cbxCedisFinal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxCedisFinal.FormattingEnabled = true;
-            this.cbxCedisFinal.Location = new System.Drawing.Point(103, 183);
+            this.cbxCedisFinal.Location = new System.Drawing.Point(103, 180);
             this.cbxCedisFinal.Name = "cbxCedisFinal";
             this.cbxCedisFinal.Size = new System.Drawing.Size(260, 21);
             this.cbxCedisFinal.TabIndex = 7;
@@ -187,7 +190,7 @@
             // 
             this.cbxRutaInicial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxRutaInicial.FormattingEnabled = true;
-            this.cbxRutaInicial.Location = new System.Drawing.Point(103, 243);
+            this.cbxRutaInicial.Location = new System.Drawing.Point(103, 239);
             this.cbxRutaInicial.Name = "cbxRutaInicial";
             this.cbxRutaInicial.Size = new System.Drawing.Size(260, 21);
             this.cbxRutaInicial.TabIndex = 8;
@@ -196,7 +199,7 @@
             // 
             this.cbxRutaFinal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxRutaFinal.FormattingEnabled = true;
-            this.cbxRutaFinal.Location = new System.Drawing.Point(103, 303);
+            this.cbxRutaFinal.Location = new System.Drawing.Point(103, 298);
             this.cbxRutaFinal.Name = "cbxRutaFinal";
             this.cbxRutaFinal.Size = new System.Drawing.Size(260, 21);
             this.cbxRutaFinal.TabIndex = 9;
@@ -204,18 +207,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 360);
+            this.label6.Location = new System.Drawing.Point(3, 354);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 15);
+            this.label6.Size = new System.Drawing.Size(66, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Fecha inicial";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 420);
+            this.label7.Location = new System.Drawing.Point(3, 413);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 15);
+            this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Fecha final";
             // 
@@ -223,7 +226,7 @@
             // 
             this.dtpInicial.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInicial.Location = new System.Drawing.Point(103, 363);
+            this.dtpInicial.Location = new System.Drawing.Point(103, 357);
             this.dtpInicial.Name = "dtpInicial";
             this.dtpInicial.Size = new System.Drawing.Size(260, 20);
             this.dtpInicial.TabIndex = 12;
@@ -232,7 +235,7 @@
             // 
             this.dtpFinal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFinal.Location = new System.Drawing.Point(103, 423);
+            this.dtpFinal.Location = new System.Drawing.Point(103, 416);
             this.dtpFinal.Name = "dtpFinal";
             this.dtpFinal.Size = new System.Drawing.Size(260, 20);
             this.dtpFinal.TabIndex = 13;
@@ -258,6 +261,15 @@
             this.btnEjecutarInventarioEnRuta.UseAccentColor = false;
             this.btnEjecutarInventarioEnRuta.UseVisualStyleBackColor = true;
             this.btnEjecutarInventarioEnRuta.Click += new System.EventHandler(this.btnEjecutarInventarioEnRuta_Click);
+            // 
+            // pgInventarioEnRuta
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.pgInventarioEnRuta, 2);
+            this.pgInventarioEnRuta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgInventarioEnRuta.Location = new System.Drawing.Point(3, 475);
+            this.pgInventarioEnRuta.Name = "pgInventarioEnRuta";
+            this.pgInventarioEnRuta.Size = new System.Drawing.Size(360, 4);
+            this.pgInventarioEnRuta.TabIndex = 15;
             // 
             // InventarioEnRuta
             // 
@@ -294,5 +306,6 @@
         private System.Windows.Forms.DateTimePicker dtpInicial;
         private System.Windows.Forms.DateTimePicker dtpFinal;
         private MaterialSkin.Controls.MaterialButton btnEjecutarInventarioEnRuta;
+        private System.Windows.Forms.ProgressBar pgInventarioEnRuta;
     }
 }

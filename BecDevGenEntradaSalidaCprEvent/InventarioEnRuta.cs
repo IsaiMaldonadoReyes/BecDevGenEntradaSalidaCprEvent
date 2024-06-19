@@ -5,9 +5,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BecDevGenEntradaSalidaCprEvent
 {
@@ -18,6 +21,7 @@ namespace BecDevGenEntradaSalidaCprEvent
 
         List<admAlmacenes> almacenes;
         List<bec_event_cliente_documento> rutasDocumento;
+        RptXLInventarioPorAlmacen xlInventarioPorAlmacen = new RptXLInventarioPorAlmacen();
 
         public InventarioEnRuta()
         {
@@ -107,9 +111,179 @@ namespace BecDevGenEntradaSalidaCprEvent
             cargarAlmacenes(cbxCedisInicial);
         }
 
+        public string ValidarFiltros()
+        {
+            string filtrosFaltantes = "";
+
+            if (cbxCedisInicial.SelectedIndex < 0)
+            {
+                filtrosFaltantes += "\n \t⦿ Rango inicial de Cedis";
+            }
+
+            if (chkCedis.Checked)
+            {
+                if (cbxCedisFinal.SelectedIndex < 0)
+                {
+                    filtrosFaltantes += "\n \t⦿ Rango final de Cedis";
+                }
+            }
+            else
+            {
+                if (cbxRutaInicial.SelectedIndex < 0)
+                {
+                    filtrosFaltantes += "\n \t⦿ Rango incial de Ruta";
+                }
+
+                if (cbxRutaFinal.SelectedIndex < 0)
+                {
+                    filtrosFaltantes += "\n \t⦿ Rango final de Ruta";
+                }
+            }
+
+            return filtrosFaltantes;
+        }
+
+        public void xlCrearHojas(Excel.Workbook xlLibro)
+        {
+            StringBuilder mensaje = new StringBuilder("Verifica lo siguiente:\n\n");
+            string cadenaDeConexion = "";
+            DataTable sqlDetalle = new DataTable();
+            Excel.Worksheet xlHoja = new Excel.Worksheet();
+
+            DateTime fechaFinal = Convert.ToDateTime(dtpFinal.Value);
+            DateTime fechaInicial = Convert.ToDateTime(dtpInicial.Value);
+
+            using (adConexionDB conexion = new adConexionDB())
+            {
+                //cadenaDeConexion = conexion.Database.Connection.ConnectionString = conexion.Database.Connection.ConnectionString.Replace(conexion.Database.Connection.Database, empresaAlias);
+
+                cadenaDeConexion = conexion.Database.Connection.ConnectionString;
+
+                try
+                {
+                    foreach (admAlmacenes cedis in almacenes)
+                    {
+                        sqlDetalle = xlInventarioPorAlmacen.xlObtenerResumen(cadenaDeConexion, fechaInicial, fechaFinal, almacenes);
+
+                        if (sqlDetalle != null || sqlDetalle.Rows.Count != 0)
+                        {
+                            xlHoja = (Excel.Worksheet)xlLibro.Worksheets.get_Item(xlLibro.Sheets.Count);
+                            xlHoja.Name = cedis.CCODIGOALMACEN.ToString();
+                            xlInventarioPorAlmacen.xlLlenarHoja(xlHoja, "Inventario por cedis", LoginUsuario.CodigoUsuarioLogeado, fechaInicial, fechaFinal, sqlDetalle, almacenes);
+                            xlHoja = (Excel.Worksheet)xlLibro.Worksheets.Add(After: xlLibro.Sheets[xlLibro.Sheets.Count]);
+                            pgInventarioEnRuta.PerformStep();
+
+                        }
+                    }
+                    // Eliminar última hoja creada
+                    xlHoja = (Excel.Worksheet)xlLibro.Worksheets.get_Item(xlLibro.Sheets.Count);
+                    xlHoja.Delete(); // Nota: la hoja no se puede eliminar es porque se encuentra activa
+                }
+                catch (Exception ex)
+                {
+                    mensaje.AppendFormat("La empresa no se encuentra configurada para el sistema CONTPAQi.\n" + ex.ToString());
+                    MaterialMessageBox.Show(mensaje.ToString(), "⚠︎ Empresa no corresponde al sistema CONTPAQi");
+                }
+            }
+        }
+
+        public void xlEjecutarReporte(string nombreLibro)
+        {
+            StringBuilder mensaje = new StringBuilder("Verifica lo siguiente:\n\n");
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook xlLibro;
+            object misValue = Missing.Value;
+
+            string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string rutaExcel = mdoc + "\\" + nombreLibro + "_" + DateTime.Now.ToString("yyyy-MM-dd_HHmmss") + ".xlsx";
+
+            if (xlApp != null)
+            {
+                //rutaExcel = DuplicarFormatoPrincipal(xlApp, misValue, nombreLibro);
+
+                if (!rutaExcel.Equals("Ruta no encontrada"))
+                {
+                    //try
+                    //{
+                    xlLibro = xlApp.Workbooks.Add(misValue);
+                    xlApp.DisplayAlerts = false;
+                    xlApp.Visible = false;
+
+                    // Desactiva alertas de confirmación antes de la eliminación de hojas ebido que al eliminar un hoja de forma manual se muestra una ventana emergente que espera una aprobación para poder eliminar
+
+                    // si es por cedis mandar a llamar a ejecutar reporte xlCrearHojas si no llamar a xlCrearHoja
+
+                    if (chkCedis.Checked)
+                    {
+                        xlCrearHojas(xlLibro);
+                    }
+                    
+
+                    xlLibro.SaveAs(rutaExcel, Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    xlLibro.Close(true, misValue, misValue);
+                    xlApp.Quit();
+                    Marshal.ReleaseComObject(xlLibro);
+                    Marshal.ReleaseComObject(xlApp);
+
+                    pgInventarioEnRuta.PerformStep();
+                    mensaje.AppendFormat($"Archivo creado en la siguiente ruta: \n{rutaExcel}");
+                    MaterialMessageBox.Show(mensaje.ToString(), "✔️ Reporte creado correctamente");
+
+                    pgInventarioEnRuta.Value = 0;
+                    // Abrir el archivo de Excel después de guardarlo
+                    System.Diagnostics.Process.Start(rutaExcel);
+                    //}
+                    //catch (COMException ex)
+                    //{
+                    //    pgInventarioEnRuta.Value = 0;
+                    //    mensaje.AppendFormat("Microsoft Excel está ocupado en otro proceso. Por favor, asegúrese de no tener seleccionada una celda de edición en otro proceso");
+                    //    MaterialMessageBox.Show(mensaje.ToString(), "❎ Error al interactuar con Microsoft Excel");
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    pgInventarioEnRuta.Value = 0;
+                    //    mensaje.AppendFormat("Ocurrió un error al momento de crear el reporte, por favor cierre el programa y vuelva a intentarlo nuevamente.");
+                    //    MaterialMessageBox.Show(ex.ToString(), "❎ Ha ocurrido un error");
+                    //}
+                }
+                else
+                {
+                    pgInventarioEnRuta.Value = 0;
+                    mensaje.AppendFormat("La ruta del Formato Principal no se encontró. Por favor, asegúrese de importar la plantilla de Excel.");
+                    MaterialMessageBox.Show(mensaje.ToString(), "❎ Ha ocurrido un error");
+                }
+            }
+            else
+            {
+                pgInventarioEnRuta.Value = 0;
+                mensaje.AppendFormat("Para ejecutar el reporte, es necesario utilizar Microsoft Excel. \nPor favor, asegúrese de que la aplicación esté instalada y se esté ejecutando correctamente.\n\n");
+                MaterialMessageBox.Show(mensaje.ToString(), "❎ Microsoft Excel no responde");
+
+            }
+        }
+
         private void btnEjecutarInventarioEnRuta_Click(object sender, EventArgs e)
         {
+            StringBuilder mensaje = new StringBuilder("Verifica lo siguiente:\n\n");
+            string filtrosFaltantes = ValidarFiltros();
 
+            if (filtrosFaltantes.Equals(""))
+            {
+                pgInventarioEnRuta.Visible = true;
+                pgInventarioEnRuta.Minimum = 0;
+                pgInventarioEnRuta.Maximum = 3;
+                pgInventarioEnRuta.Value = 0;
+                pgInventarioEnRuta.Step = 1;
+                pgInventarioEnRuta.PerformStep();
+
+
+                xlEjecutarReporte("InventarioEnRuta");
+            }
+            else
+            {
+                mensaje.AppendFormat("Es necesario seleccionar los siguientes filtros para poder ejecutar el reporte, por favor:  \n" + filtrosFaltantes + "\n\n💡 Nota: los campos marcados con un (*) son requeridos para ejecutar el proceso.");
+                MaterialMessageBox.Show(mensaje.ToString(), "⚠︎ Información incompleta");
+            }
         }
 
         private void cbxCedisInicial_SelectedIndexChanged(object sender, EventArgs e)
