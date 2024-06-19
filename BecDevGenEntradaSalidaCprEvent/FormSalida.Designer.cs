@@ -170,7 +170,7 @@
             this.lblCantidad.Location = new System.Drawing.Point(0, 418);
             this.lblCantidad.Margin = new System.Windows.Forms.Padding(0);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(123, 32);
+            this.lblCantidad.Size = new System.Drawing.Size(124, 32);
             this.lblCantidad.TabIndex = 21;
             this.lblCantidad.Text = "Cantidad";
             // 
@@ -203,7 +203,7 @@
             this.lblProducto.Location = new System.Drawing.Point(0, 308);
             this.lblProducto.Margin = new System.Windows.Forms.Padding(0);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(122, 32);
+            this.lblProducto.Size = new System.Drawing.Size(123, 32);
             this.lblProducto.TabIndex = 20;
             this.lblProducto.Text = "Producto";
             // 

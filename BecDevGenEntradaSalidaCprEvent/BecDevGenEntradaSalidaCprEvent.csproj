@@ -210,6 +210,7 @@
     <Compile Include="FormPagoLiquidacion.Designer.cs">
       <DependentUpon>FormPagoLiquidacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperExcelInterop.cs" />
     <Compile Include="InventarioEnRuta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +266,7 @@
     <Compile Include="RptResumenMovimientosGlobalDelDia.Designer.cs">
       <DependentUpon>RptResumenMovimientosGlobalDelDia.cs</DependentUpon>
     </Compile>
+    <Compile Include="RptXLInventarioPorAlmacen.cs" />
     <Compile Include="SDK.cs" />
     <Compile Include="Sesion\Documento.cs" />
     <Compile Include="FormSalida.cs">
