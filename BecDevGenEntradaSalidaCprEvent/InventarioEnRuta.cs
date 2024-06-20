@@ -159,17 +159,63 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                 cadenaDeConexion = conexion.Database.Connection.ConnectionString;
 
+                var cedisInicio = almacenes[cbxCedisInicial.SelectedIndex].CCODIGOALMACEN;
+                var cedisFinal = chkCedis.Checked == true ? almacenes[cbxCedisFinal.SelectedIndex].CCODIGOALMACEN : almacenes[cbxCedisInicial.SelectedIndex].CCODIGOALMACEN;
+
+                int indexInicio = almacenes.FindIndex(a => a.CCODIGOALMACEN == cedisInicio);
+                int indexFinal = almacenes.FindIndex(a => a.CCODIGOALMACEN == cedisFinal);
+
+
+                if (indexInicio > indexFinal)
+                {
+                    var temp = indexInicio;
+                    indexInicio = indexFinal;
+                    indexFinal = temp;
+                }
+
+                // Filtrar los almacenes entre los índices obtenidos (inclusive)
+                var almacenesEntreCedis = almacenes
+                    .Skip(indexInicio)
+                    .Take(indexFinal - indexInicio + 1)
+                    .ToArray();
+
                 try
                 {
-                    foreach (admAlmacenes cedis in almacenes)
+
+                    foreach (admAlmacenes cedis in almacenesEntreCedis)
                     {
-                        sqlDetalle = xlInventarioPorAlmacen.xlObtenerResumen(cadenaDeConexion, fechaInicial, fechaFinal, almacenes);
+
+                        if (chkCedis.Checked)
+                        {
+                            sqlDetalle = xlInventarioPorAlmacen.xlObtenerResumen(cadenaDeConexion, fechaInicial, fechaFinal, cedis.CCODIGOALMACEN);
+                        }
+                        else
+                        {
+                            var rutaInicio = rutasDocumento[cbxRutaInicial.SelectedIndex].codigo_cliente;
+                            var rutaFinal = rutasDocumento[cbxRutaFinal.SelectedIndex].codigo_cliente;
+
+                            int indexInicioRuta = rutasDocumento.FindIndex(a => a.codigo_cliente == rutaInicio);
+                            int indexFinalRuta = rutasDocumento.FindIndex(a => a.codigo_cliente == rutaFinal);
+
+
+                            if (indexInicioRuta > indexFinalRuta)
+                            {
+                                var temp = indexInicioRuta;
+                                indexInicioRuta = indexFinalRuta;
+                                indexFinalRuta = temp;
+                            }
+                            var rutasEntreCedis = rutasDocumento
+                                .Skip(indexInicioRuta)
+                                .Take(indexFinalRuta - indexInicioRuta + 1)
+                                .ToArray();
+                            sqlDetalle = xlInventarioPorAlmacen.xlObtenerResumen(cadenaDeConexion, fechaInicial, fechaFinal, cedis.CCODIGOALMACEN, rutasEntreCedis);
+                        }
 
                         if (sqlDetalle != null || sqlDetalle.Rows.Count != 0)
                         {
                             xlHoja = (Excel.Worksheet)xlLibro.Worksheets.get_Item(xlLibro.Sheets.Count);
                             xlHoja.Name = cedis.CCODIGOALMACEN.ToString();
-                            xlInventarioPorAlmacen.xlLlenarHoja(xlHoja, "Inventario por cedis", LoginUsuario.CodigoUsuarioLogeado, fechaInicial, fechaFinal, sqlDetalle, almacenes);
+                            xlInventarioPorAlmacen.xlLlenarHoja(xlHoja, "Inventario por cedis", LoginUsuario.CodigoUsuarioLogeado, fechaInicial, fechaFinal, sqlDetalle, cedis.CNOMBREALMACEN);
                             xlHoja = (Excel.Worksheet)xlLibro.Worksheets.Add(After: xlLibro.Sheets[xlLibro.Sheets.Count]);
                             pgInventarioEnRuta.PerformStep();
 
@@ -213,11 +259,9 @@ namespace BecDevGenEntradaSalidaCprEvent
 
                     // si es por cedis mandar a llamar a ejecutar reporte xlCrearHojas si no llamar a xlCrearHoja
 
-                    if (chkCedis.Checked)
-                    {
-                        xlCrearHojas(xlLibro);
-                    }
-                    
+
+                    xlCrearHojas(xlLibro);
+
 
                     xlLibro.SaveAs(rutaExcel, Excel.XlFileFormat.xlOpenXMLWorkbook, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlLibro.Close(true, misValue, misValue);

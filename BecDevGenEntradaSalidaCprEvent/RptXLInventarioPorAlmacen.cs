@@ -15,18 +15,18 @@ namespace BecDevGenEntradaSalidaCprEvent
         HelperExcelInterop excel = new HelperExcelInterop();
 
 
-        public void xlLlenarHoja(Excel.Worksheet xlHoja, string tituloReporte, string usuario, DateTime fechaInicial, DateTime fechaFinal, DataTable xlDetalle, List<admAlmacenes> cedis)
+        public void xlLlenarHoja(Excel.Worksheet xlHoja, string tituloReporte, string usuario, DateTime fechaInicial, DateTime fechaFinal, DataTable xlDetalle, string cedis)
         {
             int filasTotalesMatriz = 0;
             int columnasTotalesMatriz = 0;
             int xlFilaInicio = 4;
             int xlColumnaInicio = 1;
 
-            string cedisConcatenados = String.Join(", ", cedis.Select(temporal => $"'{temporal.CCODIGOALMACEN}'"));
+            //string cedisConcatenados = String.Join(", ", cedis.Select(temporal => $"'{temporal.CCODIGOALMACEN}'"));
 
 
             xlHoja.Activate();
-            string filtrosSeleccionados = cedisConcatenados + " | " + fechaInicial.ToString("dd/MM/yyyy") + " a " + fechaFinal.ToString("dd/MM/yyyy") + " | Generado por: " + usuario;
+            string filtrosSeleccionados = cedis + " | " + fechaInicial.ToString("dd/MM/yyyy") + " a " + fechaFinal.ToString("dd/MM/yyyy") + " | Generado por: " + usuario;
             excel.dibujarEncabezadoPrincipal(xlHoja, tituloReporte, filtrosSeleccionados, "F");
 
             // Fijar fila y columna
@@ -74,32 +74,38 @@ namespace BecDevGenEntradaSalidaCprEvent
 
 
 
-        public DataTable xlObtenerResumen(string cadenaDeConexion, DateTime fechaInicial, DateTime fechaFinal, List<admAlmacenes> cedis)
+        public DataTable xlObtenerResumen(string cadenaDeConexion, DateTime fechaInicial, DateTime fechaFinal, string cedis)
         {
             return xlObtenerResumen(cadenaDeConexion, fechaInicial, fechaFinal, cedis, null, null);
         }
 
-        public DataTable xlObtenerResumen(string cadenaDeConexion, DateTime fechaInicial, DateTime fechaFinal, admAlmacenes almacen, List<bec_event_cliente_documento> rutas)
+        public DataTable xlObtenerResumen(string cadenaDeConexion, DateTime fechaInicial, DateTime fechaFinal, string cedis, bec_event_cliente_documento[] rutasEntreCedis)
         {
-            return xlObtenerResumen(cadenaDeConexion, fechaInicial, fechaFinal, null, almacen, rutas);
+            return xlObtenerResumen(cadenaDeConexion, fechaInicial, fechaFinal, cedis, null, rutasEntreCedis);
         }
 
 
-        public DataTable xlObtenerResumen(string cadenaDeConexion, DateTime fechaInicial, DateTime fechaFinal, List<admAlmacenes> cedis, admAlmacenes almacen, List<bec_event_cliente_documento> rutas)
+        public DataTable xlObtenerResumen(string cadenaDeConexion, DateTime fechaInicial, DateTime fechaFinal, string cedis, admAlmacenes almacen, bec_event_cliente_documento[] rutasEntreCedis)
         {
             DataTable xlDetalle = new DataTable();
             string cedisConcatenados = "";
             string rutasConcatenadas = "";
 
+            /*
             if (!IsListNullOrEmpty(cedis))
             {
                 cedisConcatenados = String.Join(", ", cedis.Select(temporal => $"'{temporal.CCODIGOALMACEN}'"));
             }
+			*/
 
-            if (!IsListNullOrEmpty(rutas))
+            if (rutasEntreCedis != null)
             {
-                cedisConcatenados = almacen.CCODIGOALMACEN;
-                rutasConcatenadas = String.Join(", ", rutas.Select(temporal => $"'{temporal.codigo_cliente}'"));
+                if ((rutasEntreCedis).Length > 0)
+                {
+                    //cedisConcatenados = almacen.CCODIGOALMACEN;
+                    rutasConcatenadas = String.Join(", ", rutasEntreCedis.Select(temporal => $"'{temporal.codigo_cliente}'"));
+                }
+
             }
 
             string fechaInicio = fechaInicial.ToString("yyyy-MM-dd");
@@ -138,8 +144,8 @@ namespace BecDevGenEntradaSalidaCprEvent
 					salidaDevolucion.tipo_movimiento = 'salida'
 					AND salidaDevolucion.procesado_salida = 1
 					AND salidaDevolucion.procesado_entrada = 1
-					AND almacenSalida.CCODIGOALMACEN IN ({cedisConcatenados})
-					{(string.IsNullOrEmpty(rutasConcatenadas) ? "" : $"AND salidaDevolucion.ruta_almacen IN({ rutasConcatenadas})")}
+					AND almacenSalida.CCODIGOALMACEN IN ('{cedis}')
+					{(string.IsNullOrEmpty(rutasConcatenadas) ? "" : $"AND salidaDevolucion.ruta_almacen IN({rutasConcatenadas})")}
 					AND salida.CFECHA BETWEEN @fechaInicio AND @fechaFin
 
 				GROUP BY
@@ -172,8 +178,8 @@ namespace BecDevGenEntradaSalidaCprEvent
 					salidaDevolucion.tipo_movimiento = 'devolucion'
 					AND salidaDevolucion.procesado_salida = 1
 					AND salidaDevolucion.procesado_entrada = 1
-					AND almacenSalida.CCODIGOALMACEN IN ({cedisConcatenados})
-					{(string.IsNullOrEmpty(rutasConcatenadas) ? "" : $"AND salidaDevolucion.ruta_almacen IN({ rutasConcatenadas})")}
+					AND almacenSalida.CCODIGOALMACEN IN ('{cedis}')
+					{(string.IsNullOrEmpty(rutasConcatenadas) ? "" : $"AND salidaDevolucion.ruta_almacen IN({rutasConcatenadas})")}
 					AND salida.CFECHA BETWEEN @fechaInicio AND @fechaFin
 
 				GROUP BY
@@ -206,8 +212,8 @@ namespace BecDevGenEntradaSalidaCprEvent
 				WHERE 
 					salidaDevolucion.tipo_movimiento = 'venta'
 					AND salidaDevolucion.procesado_salida = 1
-					AND almacenSalida.CCODIGOALMACEN IN ({cedisConcatenados})
-					{(string.IsNullOrEmpty(rutasConcatenadas) ? "" : $"AND salidaDevolucion.ruta_almacen IN({ rutasConcatenadas})")}
+					AND almacenSalida.CCODIGOALMACEN IN ('{cedis}')
+					{(string.IsNullOrEmpty(rutasConcatenadas) ? "" : $"AND salidaDevolucion.ruta_almacen IN({rutasConcatenadas})")}
 					AND salida.CFECHA BETWEEN @fechaInicio AND @fechaFin
 
 				GROUP BY
